@@ -109,6 +109,39 @@ Wan2.1 / 18K standalone random mask：
 
 该实验虽然减少了一次 `exp2`，但额外 LDS 占用和访问路径导致性能明显退化，因此不采纳。当前代码已回退该实验，仅保留本文档记录，避免后续重复尝试同一路径。
 
+## 2026-06-22 - K/V 常驻 LDS 实验（编译失败，未采纳）
+
+### 实验内容
+
+- 当前每个 CTA 固定处理一个 `kv_block`，因此 K/V tile 在整个 active query block 循环中保持不变。
+- 尝试在 active loop 外一次性将 K 和 V tile 加载到 LDS，循环内复用，避免每个 active query block 都重复从 global memory 加载 K/V。
+
+### 编译结果
+
+该实验无法通过编译：
+
+```text
+local memory (73728) exceeds limit (65536)
+```
+
+原因是常驻 K/V 需要额外 LDS：
+
+```text
+K tile: 64 * 128 * bf16 = 16 KB
+V tile: 64 * 128 * bf16 = 16 KB
+```
+
+叠加现有 Q、P/dO、ds/q、acc staging 等 LDS 需求后，总 LDS 达到约 72 KB，超过当前 gfx936 kernel 的 64 KB local memory 限制。
+
+### 结论
+
+该路径不可行，代码已回退。后续如果要减少 K/V 重复加载，需要考虑更细粒度的方式，例如：
+
+- 只常驻 K 或只常驻 V，而不是同时常驻；
+- 缩小某些临时 LDS buffer；
+- 改变计算顺序，避免同时保留多个大 tile；
+- 或通过更激进的 split pipeline 重新设计 LDS 生命周期。
+
 ## 2026-06-22 - `aec2a85` - 将 query tile 调整到 BlockM=64
 
 ### 改动内容
