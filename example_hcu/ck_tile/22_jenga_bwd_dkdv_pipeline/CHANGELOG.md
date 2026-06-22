@@ -181,6 +181,44 @@ Wan2.1 / 18K standalone random mask：
 
 该实验正确性通过，但性能明显退化，因此不采纳。原因推测是额外常驻 K tile 增加 LDS 压力，降低 occupancy 或 LDS 调度效率，收益无法抵消资源压力。代码已回退。
 
+## 2026-06-22 - full tile / boundary tile 分支拆分实验（未采纳）
+
+### 实验内容
+
+- 在移除冗余 block mask 检查后，内层 sweep 中仍保留了：
+
+```cpp
+valid = !is_boundary || (row_valid && n < seqlen)
+```
+
+- 尝试将 full tile 和 boundary tile 拆成两个独立分支：
+  - full tile 路径直接计算，不再生成 `valid` 条件；
+  - boundary tile 路径保留 `row_valid && n < seqlen`。
+
+### 正确性验证
+
+synthetic mask 和 random mask 小规模测试均通过：
+
+```text
+Validation: PASS
+dK cosine=0.999995
+dV cosine=0.999994 ~ 0.999995
+```
+
+### 性能结果
+
+Wan2.1 / 18K standalone random mask 两次测试波动较大：
+
+| 版本 | standalone 耗时 |
+| :--- | ---: |
+| 移除冗余 block mask 检查后 | 50.25 ms |
+| full/boundary 拆分，第 1 次 | 48.73 ms |
+| full/boundary 拆分，第 2 次 | 94.70 ms |
+
+### 结论
+
+该实验正确性通过，但性能不稳定，有明显退化风险，因此不采纳。代码已回退。后续如果要优化 full tile fast path，需要结合编译资源、寄存器使用、occupancy 和汇编差异进一步分析，而不是简单复制两套 sweep 代码。
+
 ## 2026-06-22 - `aec2a85` - 将 query tile 调整到 BlockM=64
 
 ### 改动内容
