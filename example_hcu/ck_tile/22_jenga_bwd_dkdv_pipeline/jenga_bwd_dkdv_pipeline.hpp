@@ -194,16 +194,31 @@ struct JengaBwdDkdvPipeline
             const auto qk_out = qk_gemm.MakeOuputLayout(qk_acc);
             constexpr auto qk_spans = decltype(qk_out)::get_distributed_spans();
 
-            ck_tile::sweep_tile_span(qk_spans[ck_tile::number<0>{}], [&](auto idx0) {
+            constexpr auto M_spans = qk_spans[ck_tile::number<0>{}];
+            float lse_regs[decltype(M_spans)::Impl::size()];
+            float delta_regs[decltype(M_spans)::Impl::size()];
+
+            ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
                 constexpr auto dummy_tile_idx = ck_tile::make_tuple(idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
                 const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
                     qk_out.get_tile_distribution(), dummy_tile_idx);
                 const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
                 const ck_tile::index_t m     = q_start + m_rel;
                 const bool row_valid         = m < args.N_Q && m < seqlen;
-                const float row_lse_log2 =
-                    row_valid ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
-                              : 0.0f;
+                lse_regs[decltype(idx0)::Impl::at(0)] = row_valid ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
+                                           : 0.0f;
+                delta_regs[decltype(idx0)::Impl::at(0)] = row_valid ? delta_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_delta_m]
+                                             : 0.0f;
+            });
+
+            ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
+                constexpr auto dummy_tile_idx = ck_tile::make_tuple(idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
+                const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                    qk_out.get_tile_distribution(), dummy_tile_idx);
+                const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
+                const ck_tile::index_t m     = q_start + m_rel;
+                const bool row_valid         = m < args.N_Q && m < seqlen;
+                const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
 
                 ck_tile::sweep_tile_span(qk_spans[ck_tile::number<1>{}], [&](auto idx1) {
                     constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
@@ -215,8 +230,8 @@ struct JengaBwdDkdvPipeline
                                                      ? (qb * 2 + (m_rel >= 64 ? 1 : 0))
                                                      : qb;
                     const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
-                                            static_cast<size_t>(mask_qb) * args.stride_bm +
-                                            static_cast<size_t>(kv_block) * args.stride_bn;
+                                             static_cast<size_t>(mask_qb) * args.stride_bm +
+                                             static_cast<size_t>(kv_block) * args.stride_bn;
                     const bool is_active = args.block_mask_ptr[mask_idx] != 0;
                     const bool valid             = row_valid && n < seqlen && is_active;
                     const float p =
@@ -366,12 +381,8 @@ struct JengaBwdDkdvPipeline
                 const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
                 const ck_tile::index_t m     = q_start + m_rel;
                 const bool row_valid         = m < args.N_Q && m < seqlen;
-                const float row_lse_log2 =
-                    row_valid ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
-                              : 0.0f;
-                const float delta =
-                    row_valid ? delta_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_delta_m]
-                              : 0.0f;
+                const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
+                const float delta            = delta_regs[decltype(idx0)::Impl::at(0)];
 
                 ck_tile::sweep_tile_span(dp_spans[ck_tile::number<1>{}], [&](auto idx1) {
                     constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
@@ -383,8 +394,8 @@ struct JengaBwdDkdvPipeline
                                                      ? (qb * 2 + (m_rel >= 64 ? 1 : 0))
                                                      : qb;
                     const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
-                                            static_cast<size_t>(mask_qb) * args.stride_bm +
-                                            static_cast<size_t>(kv_block) * args.stride_bn;
+                                             static_cast<size_t>(mask_qb) * args.stride_bm +
+                                             static_cast<size_t>(kv_block) * args.stride_bn;
                     const bool is_active = args.block_mask_ptr[mask_idx] != 0;
                     const bool valid             = row_valid && n < seqlen && is_active;
  
