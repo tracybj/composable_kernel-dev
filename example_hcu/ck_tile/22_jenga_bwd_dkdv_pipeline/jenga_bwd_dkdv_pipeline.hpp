@@ -89,6 +89,9 @@ struct JengaBwdDkdvPipeline
             static_cast<ck_tile::long_index_t>(off_hz) * args.stride_lz;
         constexpr float qk_scale = ck_tile::log2e_v<float>;
         const float scale_log2e  = args.sm_scale * qk_scale;
+        constexpr int QVecLoadIters = (BlockM * HeadDim) / (8 * ThreadsPerBlock);
+        constexpr int KVVecLoadIters = (BlockN * HeadDim) / (8 * ThreadsPerBlock);
+        constexpr int TransposedMVecIters = BlockM / 16;
 
         __shared__ typename Policy::LdsStorage smem;
 
@@ -125,7 +128,7 @@ struct JengaBwdDkdvPipeline
                 const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_qm);
                 int4* q_smem_vec = reinterpret_cast<int4*>(q_smem);
                 #pragma unroll
-                for(int i = 0; i < 8; ++i)
+                for(int i = 0; i < QVecLoadIters; ++i)
                 {
                     q_smem_vec[threadIdx.x + i * 256] = q_ptr_vec[threadIdx.x + i * 256];
                 }
@@ -133,7 +136,7 @@ struct JengaBwdDkdvPipeline
                 const int4* k_ptr_vec = reinterpret_cast<const int4*>(k_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_kn);
                 int4* k_smem_vec = reinterpret_cast<int4*>(k_smem);
                 #pragma unroll
-                for(int i = 0; i < 4; ++i)
+                for(int i = 0; i < KVVecLoadIters; ++i)
                 {
                     k_smem_vec[threadIdx.x + i * 256] = k_ptr_vec[threadIdx.x + i * 256];
                 }
@@ -226,9 +229,7 @@ struct JengaBwdDkdvPipeline
                         qk_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const ck_tile::index_t mask_qb = (args.stride_bz / args.stride_bm > args.N_Q_BLOCKS)
-                                                     ? (qb * 2 + (m_rel >= 64 ? 1 : 0))
-                                                     : qb;
+                    const ck_tile::index_t mask_qb = (q_start + m_rel) / args.M0;
                     const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
                                              static_cast<size_t>(mask_qb) * args.stride_bm +
                                              static_cast<size_t>(kv_block) * args.stride_bn;
@@ -247,7 +248,7 @@ struct JengaBwdDkdvPipeline
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
                 #pragma unroll
-                for(int i = 0; i < 8; ++i)
+                for(int i = 0; i < TransposedMVecIters; ++i)
                 {
                     int m_rel = thread_m_rel + i * 16;
                     int m = q_start + m_rel;
@@ -305,7 +306,7 @@ struct JengaBwdDkdvPipeline
                 const int4* dp_do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_dom);
                 int4* dp_do_smem_vec = reinterpret_cast<int4*>(dp_do_smem);
                 #pragma unroll
-                for(int i = 0; i < 8; ++i)
+                for(int i = 0; i < QVecLoadIters; ++i)
                 {
                     dp_do_smem_vec[threadIdx.x + i * 256] = dp_do_ptr_vec[threadIdx.x + i * 256];
                 }
@@ -313,7 +314,7 @@ struct JengaBwdDkdvPipeline
                 const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
                 int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
                 #pragma unroll
-                for(int i = 0; i < 4; ++i)
+                for(int i = 0; i < KVVecLoadIters; ++i)
                 {
                     v_smem_vec[threadIdx.x + i * 256] = v_ptr_vec[threadIdx.x + i * 256];
                 }
@@ -390,9 +391,7 @@ struct JengaBwdDkdvPipeline
                         dp_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const ck_tile::index_t mask_qb = (args.stride_bz / args.stride_bm > args.N_Q_BLOCKS)
-                                                     ? (qb * 2 + (m_rel >= 64 ? 1 : 0))
-                                                     : qb;
+                    const ck_tile::index_t mask_qb = (q_start + m_rel) / args.M0;
                     const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
                                              static_cast<size_t>(mask_qb) * args.stride_bm +
                                              static_cast<size_t>(kv_block) * args.stride_bn;
@@ -413,7 +412,7 @@ struct JengaBwdDkdvPipeline
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
                 #pragma unroll
-                for(int i = 0; i < 8; ++i)
+                for(int i = 0; i < TransposedMVecIters; ++i)
                 {
                     int m_rel = thread_m_rel + i * 16;
                     int m = q_start + m_rel;

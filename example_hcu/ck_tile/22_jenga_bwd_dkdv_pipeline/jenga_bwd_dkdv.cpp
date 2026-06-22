@@ -25,7 +25,7 @@ float jenga_bwd_dkdv_pipeline_calc(const ck_tile::example::jenga::jenga_bwd_dkdv
         VGradDataType,
         AccDataType,
         LSEDataType,
-        128, // BlockM
+        64,  // BlockM
         64,  // BlockN
         128, // HeadDim
         28,  // dummy MaxNnz

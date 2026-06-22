@@ -470,9 +470,9 @@ int run_jenga_bwd_dkdv_example(int argc, char* argv[])
     const int repeat            = arg_parser.get_int("repeat");
     const bool gpu_timer        = arg_parser.get_str("timer") != "cpu";
 
-    if(D != 128 || M0 != 128 || N0 != 64)
+    if(D != 128 || M0 != 64 || N0 != 64)
     {
-        std::cerr << "This first clean example supports d=128, m0=128, n0=64." << std::endl;
+        std::cerr << "This first clean example supports d=128, m0=64, n0=64." << std::endl;
         return 0;
     }
 

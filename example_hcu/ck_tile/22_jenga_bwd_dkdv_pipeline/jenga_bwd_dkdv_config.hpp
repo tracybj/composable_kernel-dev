@@ -44,7 +44,7 @@ struct JengaBwdDkdvProblem
 struct jenga_bwd_dkdv_traits
 {
     std::string data_type = "bf16";
-    index_t block_m      = 128;
+    index_t block_m      = 64;
     index_t block_n      = 64;
     index_t head_dim     = 128;
     index_t max_nnz      = 28;

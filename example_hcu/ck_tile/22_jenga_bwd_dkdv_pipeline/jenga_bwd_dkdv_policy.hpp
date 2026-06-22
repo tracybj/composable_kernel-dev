@@ -14,9 +14,11 @@ namespace ck_tile {
 namespace example {
 namespace jenga {
 
+using JengaWarpGemmMmacBF16BF16F32_WT16x16x64_MR1NR1MI1NI1 = WarpGemmImpl<
+    WarpGemmAttributeMmacIterateK<WarpGemmAttributeMmacImplBf16Bf16F32M16N16K16, 1, 1, 1, 1, 4>>;
+
 struct JengaMmacQKConfig
 {
-    static constexpr ck_tile::index_t kM         = 128;
     static constexpr ck_tile::index_t kN         = 64;
     static constexpr ck_tile::index_t kK         = 128;
     static constexpr ck_tile::index_t kBlockSize = 256;
@@ -37,8 +39,9 @@ struct JengaMmacQKPolicy
     }
 };
 
+template <typename Problem>
 using JengaMmacQKGemmShape =
-    ck_tile::TileGemmShape<ck_tile::sequence<JengaMmacQKConfig::kM,
+    ck_tile::TileGemmShape<ck_tile::sequence<Problem::BlockM,
                                              JengaMmacQKConfig::kN,
                                              JengaMmacQKConfig::kK>,
                            typename JengaMmacQKConfig::BlockWarps,
@@ -50,7 +53,7 @@ using JengaMmacQKGemmProblem =
                               typename Problem::KDataType,
                               typename Problem::AccDataType,
                               256,
-                              JengaMmacQKGemmShape>;
+                              JengaMmacQKGemmShape<Problem>>;
 
 template <typename Problem>
 using JengaMmacQKBlockGemm =
@@ -60,12 +63,11 @@ struct JengaMmacDVConfig
 {
     static constexpr ck_tile::index_t kM         = 64;
     static constexpr ck_tile::index_t kN         = 128;
-    static constexpr ck_tile::index_t kK         = 128;
     static constexpr ck_tile::index_t kBlockSize = 256;
 
     using BlockWarps = ck_tile::sequence<2, 2, 1>;
-    using WarpTile   = ck_tile::sequence<16, 16, 128>;
-    using WarpGemm   = ck_tile::WarpGemmMmacBF16BF16F32_WT16x16x128_MR1NR1MI1NI1;
+    using WarpTile   = ck_tile::sequence<16, 16, 64>;
+    using WarpGemm   = JengaWarpGemmMmacBF16BF16F32_WT16x16x64_MR1NR1MI1NI1;
 };
 
 struct JengaMmacDVPolicy
@@ -79,10 +81,11 @@ struct JengaMmacDVPolicy
     }
 };
 
+template <typename Problem>
 using JengaMmacDVGemmShape =
     ck_tile::TileGemmShape<ck_tile::sequence<JengaMmacDVConfig::kM,
                                              JengaMmacDVConfig::kN,
-                                             JengaMmacDVConfig::kK>,
+                                             Problem::BlockM>,
                            typename JengaMmacDVConfig::BlockWarps,
                            typename JengaMmacDVConfig::WarpTile>;
 
@@ -92,7 +95,7 @@ using JengaMmacDVGemmProblem =
                               typename Problem::OGradDataType,
                               typename Problem::AccDataType,
                               256,
-                              JengaMmacDVGemmShape>;
+                              JengaMmacDVGemmShape<Problem>>;
 
 template <typename Problem>
 using JengaMmacDVBlockGemm =
@@ -100,7 +103,6 @@ using JengaMmacDVBlockGemm =
 
 struct JengaMmacDPConfig
 {
-    static constexpr ck_tile::index_t kM         = 128;
     static constexpr ck_tile::index_t kN         = 64;
     static constexpr ck_tile::index_t kK         = 128;
     static constexpr ck_tile::index_t kBlockSize = 256;
@@ -121,8 +123,9 @@ struct JengaMmacDPPolicy
     }
 };
 
+template <typename Problem>
 using JengaMmacDPGemmShape =
-    ck_tile::TileGemmShape<ck_tile::sequence<JengaMmacDPConfig::kM,
+    ck_tile::TileGemmShape<ck_tile::sequence<Problem::BlockM,
                                              JengaMmacDPConfig::kN,
                                              JengaMmacDPConfig::kK>,
                            typename JengaMmacDPConfig::BlockWarps,
@@ -134,7 +137,7 @@ using JengaMmacDPGemmProblem =
                               typename Problem::VDataType,
                               typename Problem::AccDataType,
                               256,
-                              JengaMmacDPGemmShape>;
+                              JengaMmacDPGemmShape<Problem>>;
 
 template <typename Problem>
 using JengaMmacDPBlockGemm =
@@ -144,12 +147,11 @@ struct JengaMmacDKConfig
 {
     static constexpr ck_tile::index_t kM         = 64;
     static constexpr ck_tile::index_t kN         = 128;
-    static constexpr ck_tile::index_t kK         = 128;
     static constexpr ck_tile::index_t kBlockSize = 256;
 
     using BlockWarps = ck_tile::sequence<2, 2, 1>;
-    using WarpTile   = ck_tile::sequence<16, 16, 128>;
-    using WarpGemm   = ck_tile::WarpGemmMmacBF16BF16F32_WT16x16x128_MR1NR1MI1NI1;
+    using WarpTile   = ck_tile::sequence<16, 16, 64>;
+    using WarpGemm   = JengaWarpGemmMmacBF16BF16F32_WT16x16x64_MR1NR1MI1NI1;
 };
 
 struct JengaMmacDKPolicy
@@ -163,10 +165,11 @@ struct JengaMmacDKPolicy
     }
 };
 
+template <typename Problem>
 using JengaMmacDKGemmShape =
     ck_tile::TileGemmShape<ck_tile::sequence<JengaMmacDKConfig::kM,
                                              JengaMmacDKConfig::kN,
-                                             JengaMmacDKConfig::kK>,
+                                             Problem::BlockM>,
                            typename JengaMmacDKConfig::BlockWarps,
                            typename JengaMmacDKConfig::WarpTile>;
 
@@ -176,7 +179,7 @@ using JengaMmacDKGemmProblem =
                               typename Problem::QDataType,
                               typename Problem::AccDataType,
                               256,
-                              JengaMmacDKGemmShape>;
+                              JengaMmacDKGemmShape<Problem>>;
 
 template <typename Problem>
 using JengaMmacDKBlockGemm =
