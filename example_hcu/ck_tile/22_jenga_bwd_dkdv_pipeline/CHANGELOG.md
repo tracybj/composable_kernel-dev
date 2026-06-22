@@ -142,6 +142,45 @@ V tile: 64 * 128 * bf16 = 16 KB
 - 改变计算顺序，避免同时保留多个大 tile；
 - 或通过更激进的 split pipeline 重新设计 LDS 生命周期。
 
+## 2026-06-22 - 仅 K 常驻 LDS 实验（未采纳）
+
+### 实验内容
+
+- 在 K/V 同时常驻 LDS 超出 64KB 限制后，进一步尝试只将 K tile 常驻 LDS。
+- K tile 在每个 CTA 中随 `kv_block` 固定，理论上可以在 active query block 循环外加载一次，然后供所有 QK GEMM 复用。
+- V tile 仍保持原逻辑，在 DP 阶段按 active query block 加载。
+
+### 正确性验证
+
+synthetic mask 和 random mask 小规模测试均通过：
+
+```text
+Validation: PASS
+dK cosine=0.999995
+dV cosine=0.999994 ~ 0.999995
+```
+
+### 性能结果
+
+Wan2.1 / 18K standalone random mask：
+
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -m0=64 -n0=64 \
+  -text_blocks=0 -text_amp=0.0 \
+  -mask_type=random -k_active=28 \
+  -warmup=5 -repeat=20 -timer=gpu -v=0
+```
+
+| 版本 | standalone 耗时 |
+| :--- | ---: |
+| 移除冗余 block mask 检查后 | 50.25 ms |
+| 仅 K 常驻 LDS | 70.89 ms |
+
+### 结论
+
+该实验正确性通过，但性能明显退化，因此不采纳。原因推测是额外常驻 K tile 增加 LDS 压力，降低 occupancy 或 LDS 调度效率，收益无法抵消资源压力。代码已回退。
+
 ## 2026-06-22 - `aec2a85` - 将 query tile 调整到 BlockM=64
 
 ### 改动内容
