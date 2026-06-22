@@ -1,0 +1,849 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026, Advanced Micro Devices, Inc. All rights reserved.
+
+#pragma once
+
+#include "jenga_bwd_dq_policy.hpp"
+
+namespace ck_tile {
+namespace example {
+namespace jenga {
+
+template <typename Problem, typename Policy = JengaBwdDqDefaultPolicy>
+struct JengaBwdDqGroupedM2PipelineOpt
+{
+    using QDataType     = typename Problem::QDataType;
+    using KDataType     = typename Problem::KDataType;
+    using VDataType     = typename Problem::VDataType;
+    using OGradDataType = typename Problem::OGradDataType;
+    using DQDataType    = typename Problem::DQDataType;
+    using AccDataType   = typename Problem::AccDataType;
+
+    static constexpr index_t LogicalBlockM   = Problem::BlockM;
+    static constexpr index_t GroupM          = 2;
+    static constexpr index_t BlockM          = LogicalBlockM * GroupM;
+    static constexpr index_t BlockN          = Problem::BlockN;
+    static constexpr index_t HeadDim         = Problem::HeadDim;
+    static constexpr index_t MaxNnz          = Problem::MaxNnz;
+    static constexpr index_t ThreadsPerBlock = Policy::template GetBlockSize<Problem>();
+    static constexpr index_t KSpan           = BlockN * HeadDim;
+    static constexpr const char* name        = "groupm2_kvshare_db_dqreg_fast_lut_opt";
+
+    CK_TILE_HOST_DEVICE static constexpr index_t GetSmemSize() { return 0; }
+
+    template <typename QBlockWindow,
+              typename KTensorView,
+              typename VTensorView,
+              typename OGradBlockWindow,
+              typename DeltaBlockWindow,
+              typename LseBlockWindow,
+              typename DQBlockWindow>
+    CK_TILE_DEVICE void operator()(const QBlockWindow& q_block_window,
+                                   const KTensorView& k_tensor_view,
+                                   const VTensorView& v_tensor_view,
+                                   const OGradBlockWindow& dout_block_window,
+                                   const DeltaBlockWindow&,
+                                   const LseBlockWindow&,
+                                   DQBlockWindow& dq_block_window,
+                                   const jenga_bwd_dq_args& a,
+                                   void*) const
+    {
+        static_assert(Policy::template IsSupported<Problem>());
+
+        const index_t group_m_block = static_cast<index_t>(blockIdx.x) * GroupM;
+        const index_t off_hz        = static_cast<index_t>(blockIdx.y);
+        const index_t batch_id      = off_hz / a.nhead;
+        const index_t seqlen        = static_cast<index_t>(a.seqlens[batch_id]);
+        const index_t row_start0    = group_m_block * LogicalBlockM;
+        const index_t row_start1    = row_start0 + LogicalBlockM;
+
+        if(row_start0 >= seqlen)
+        {
+            return;
+        }
+
+        const QDataType* q        = q_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+        const KDataType* k        = k_tensor_view.get_buffer_view().p_data_;
+        const VDataType* v        = v_tensor_view.get_buffer_view().p_data_;
+        const OGradDataType* dout = dout_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+        DQDataType* dq            = dq_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+
+        const index_t num_q_blocks = integer_divide_ceil(a.seqlen_q, LogicalBlockM);
+        const bool valid1          = row_start1 < seqlen;
+        const int num_active0      = a.lut_size[off_hz * num_q_blocks + group_m_block];
+        const int num_active1 =
+            valid1 ? a.lut_size[off_hz * num_q_blocks + group_m_block + 1] : 0;
+
+        if(num_active0 != MaxNnz || (valid1 && num_active1 != MaxNnz) ||
+           seqlen % LogicalBlockM != 0 || seqlen % BlockN != 0)
+        {
+            return;
+        }
+
+        constexpr auto qk_gemm = Policy::template GetQKRegBlockGemm<Problem>();
+        constexpr auto dp_gemm = Policy::template GetDPBlockGemm<Problem>();
+        constexpr auto dq_gemm = Policy::template GetDQRegBlockGemm<Problem>();
+
+        auto dq_tile0 = decltype(dq_gemm)::MakeCBlockTile();
+        auto dq_tile1 = decltype(dq_gemm)::MakeCBlockTile();
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile0);
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile1);
+
+        auto q_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            q,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_qm, a.stride_qk),
+            number<1>{},
+            number<1>{});
+        auto dout_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            dout,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_dom, a.stride_dok),
+            number<1>{},
+            number<1>{});
+
+        auto q_window0 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start0, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+        auto q_window1 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start1, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+        auto dout_window0 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start0, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+        auto dout_window1 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start1, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+
+        const auto q_tile0    = load_tile(q_window0);
+        const auto q_tile1    = load_tile(q_window1);
+        const auto dout_tile0 = load_tile(dout_window0);
+        const auto dout_tile1 = load_tile(dout_window1);
+
+        // LDS buffers: exactly 32 KB total to ensure 2 CTAs per CU occupancy
+        __shared__ KDataType k_lds[KSpan];
+        __shared__ VDataType v_lds[KSpan];
+
+        // Retrieve the thread's constant local row coordinate local_m
+        index_t local_m = 0;
+        {
+            auto dummy_dp_tile = decltype(dp_gemm)::MakeCBlockTile();
+            sweep_tile(dummy_dp_tile, [&](auto idx) {
+                local_m = get_x_indices_from_distributed_indices(dummy_dp_tile.get_tile_distribution(), idx)[number<0>{}];
+            });
+        }
+
+        // Hoist LSE and Delta global loads once before the entire loop
+        const float lse0 = static_cast<const float*>(a.lse)
+                               [off_hz * a.stride_lz + (row_start0 + local_m) * a.stride_lm];
+        const float delta0 = static_cast<const float*>(a.deltas)
+                                 [off_hz * a.stride_dz + (row_start0 + local_m) * a.stride_dm];
+        
+        float lse1 = 0.0f;
+        float delta1 = 0.0f;
+        if(valid1)
+        {
+            lse1 = static_cast<const float*>(a.lse)
+                       [off_hz * a.stride_lz + (row_start1 + local_m) * a.stride_lm];
+            delta1 = static_cast<const float*>(a.deltas)
+                         [off_hz * a.stride_dz + (row_start1 + local_m) * a.stride_dm];
+        }
+
+        constexpr auto kv_lds_desc = make_naive_tensor_descriptor(
+            make_tuple(number<BlockN>{}, number<HeadDim>{}),
+            make_tuple(number<HeadDim>{}, number<1>{}),
+            number<8>{},
+            number<1>{});
+        auto k_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            k + off_hz * a.stride_kz,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_kn, a.stride_kk),
+            number<1>{},
+            number<1>{});
+        auto v_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            v + off_hz * a.stride_vz,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_vn, a.stride_vk),
+            number<1>{},
+            number<1>{});
+
+        const auto get_dram_windows = [&](int block_idx) {
+            const index_t start_n  = static_cast<index_t>(block_idx) * BlockN;
+            auto k_dram_window =
+                make_tile_window(k_bh_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {start_n, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            auto v_dram_window =
+                make_tile_window(v_bh_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {start_n, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            return make_tuple(k_dram_window, v_dram_window);
+        };
+
+        const auto store_to_lds = [&](const auto& k_tile, const auto& v_tile) {
+            auto k_lds_view = make_tensor_view<address_space_enum::lds>(k_lds, kv_lds_desc);
+            auto v_lds_view = make_tensor_view<address_space_enum::lds>(v_lds, kv_lds_desc);
+            auto k_lds_window =
+                make_tile_window(k_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            auto v_lds_window =
+                make_tile_window(v_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            store_tile(k_lds_window, k_tile);
+            store_tile(v_lds_window, v_tile);
+        };
+
+        const auto compute_one = [&](auto& dq_tile,
+                                     const auto& q_tile,
+                                     const auto& dout_tile,
+                                     int block_idx,
+                                     float row_lse,
+                                     float delta) {
+            constexpr auto k_lds_desc = make_naive_tensor_descriptor(
+                make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                make_tuple(number<HeadDim>{}, number<1>{}),
+                number<8>{},
+                number<1>{});
+            auto k_lds_view = make_tensor_view<address_space_enum::lds>(
+                k_lds, k_lds_desc);
+            auto k_gemm_window =
+                make_tile_window(k_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0});
+
+            auto qk_tile = decltype(qk_gemm)::MakeCBlockTile();
+            tile_elementwise_inout([](auto& x) { x = 0.0f; }, qk_tile);
+            qk_gemm(qk_tile, q_tile, k_gemm_window);
+
+            auto v_lds_view = make_tensor_view<address_space_enum::lds>(
+                v_lds, k_lds_desc);
+            auto v_reg_window =
+                make_tile_window(v_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeVRegBlockDistribution<Problem>());
+            const auto v_tile = load_tile(v_reg_window);
+            auto dp_tile      = dp_gemm(dout_tile, v_tile);
+            auto ds_tile =
+                tile_elementwise_in([](auto) { return type_convert<QDataType>(0.0f); }, dp_tile);
+
+            const bool has_text_bias = a.text_amp != 0.0f && block_idx >= a.text_block_start;
+            const float qk_scale     = a.sm_scale * 1.4426950408889634f;
+            sweep_tile(dp_tile, [&](auto idx) {
+                float qk = qk_tile[idx] * qk_scale;
+                if(has_text_bias)
+                {
+                    qk += a.text_amp;
+                }
+                const float p  = exp2f(qk - row_lse);
+                const float ds = p * (dp_tile[idx] - delta);
+                ds_tile(idx)   = type_convert<QDataType>(ds);
+            });
+
+            constexpr auto kt_lds_desc = make_naive_tensor_descriptor(
+                make_tuple(number<HeadDim>{}, number<BlockN>{}),
+                make_tuple(number<1>{}, number<HeadDim>{}));
+            auto kt_lds_view = make_tensor_view<address_space_enum::lds>(
+                k_lds, kt_lds_desc);
+            auto kt_gemm_window =
+                make_tile_window(kt_lds_view,
+                                 make_tuple(number<HeadDim>{}, number<BlockN>{}),
+                                 {0, 0});
+            dq_gemm(dq_tile, ds_tile, kt_gemm_window);
+        };
+
+        const auto get_lut0 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + group_m_block * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+        const auto get_lut1 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + (group_m_block + 1) * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+
+        bool can_shift_share = valid1;
+        for(index_t i = 1; i < MaxNnz; ++i)
+        {
+            can_shift_share = can_shift_share && get_lut0(i) == get_lut1(i - 1);
+        }
+        if(!can_shift_share)
+        {
+            return;
+        }
+
+        const auto get_shift_block = [&](index_t shared_i) {
+            if(shared_i == 0)
+            {
+                return get_lut0(0);
+            }
+            if(shared_i == MaxNnz)
+            {
+                return get_lut1(MaxNnz - 1);
+            }
+            return get_lut0(shared_i);
+        };
+
+        // 1. Initial Load of block 0
+        const int first_block_idx = get_shift_block(0);
+        auto [k_dram_win_0, v_dram_win_0] = get_dram_windows(first_block_idx);
+        auto k_reg = load_tile(k_dram_win_0);
+        auto v_reg = load_tile(v_dram_win_0);
+
+        store_to_lds(k_reg, v_reg);
+        block_sync_lds();
+
+        // 2. Loop with Register-Staged Prefetching
+        for(index_t shared_i = 0; shared_i <= MaxNnz; ++shared_i)
+        {
+            using KRegTileType = decltype(k_reg);
+            using VRegTileType = decltype(v_reg);
+
+            KRegTileType k_reg_next;
+            VRegTileType v_reg_next;
+
+            // Global Prefetch: Load the next block from DRAM to Registers
+            if(shared_i + 1 <= MaxNnz)
+            {
+                const int next_block_idx = get_shift_block(shared_i + 1);
+                auto [k_dram_win_next, v_dram_win_next] = get_dram_windows(next_block_idx);
+                k_reg_next = load_tile(k_dram_win_next);
+                v_reg_next = load_tile(v_dram_win_next);
+            }
+
+            // Computation using current block (which resides in LDS)
+            const int block_idx = get_shift_block(shared_i);
+            if(shared_i < MaxNnz)
+            {
+                compute_one(dq_tile0, q_tile0, dout_tile0, block_idx, lse0, delta0);
+            }
+            if(shared_i > 0)
+            {
+                compute_one(dq_tile1, q_tile1, dout_tile1, block_idx, lse1, delta1);
+            }
+
+            // Sync LDS to wait until all threads finish using LDS data of the current block
+            block_sync_lds();
+
+            // Store the prefetched block from registers to LDS
+            if(shared_i + 1 <= MaxNnz)
+            {
+                store_to_lds(k_reg_next, v_reg_next);
+                block_sync_lds();
+            }
+        }
+
+        sweep_tile(dq_tile0, [&](auto idx) {
+            const auto x_indices =
+                get_x_indices_from_distributed_indices(dq_tile0.get_tile_distribution(), idx);
+            const index_t local_m = x_indices[number<0>{}];
+            const index_t d       = x_indices[number<1>{}];
+            const index_t row_id  = row_start0 + local_m;
+            dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                type_convert<DQDataType>(dq_tile0[idx] * a.sm_scale);
+        });
+
+        if(valid1)
+        {
+            sweep_tile(dq_tile1, [&](auto idx) {
+                const auto x_indices =
+                    get_x_indices_from_distributed_indices(dq_tile1.get_tile_distribution(), idx);
+                const index_t local_m = x_indices[number<0>{}];
+                const index_t d       = x_indices[number<1>{}];
+                const index_t row_id  = row_start1 + local_m;
+                dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                    type_convert<DQDataType>(dq_tile1[idx] * a.sm_scale);
+            });
+        }
+    }
+};
+
+template <typename Problem, typename Policy = JengaBwdDqDefaultPolicy>
+struct JengaBwdDqGroupedM4Pipeline
+{
+    using QDataType     = typename Problem::QDataType;
+    using KDataType     = typename Problem::KDataType;
+    using VDataType     = typename Problem::VDataType;
+    using OGradDataType = typename Problem::OGradDataType;
+    using DQDataType    = typename Problem::DQDataType;
+    using AccDataType   = typename Problem::AccDataType;
+
+    static constexpr index_t LogicalBlockM   = Problem::BlockM;
+    static constexpr index_t GroupM          = 4;
+    static constexpr index_t BlockM          = LogicalBlockM * GroupM;
+    static constexpr index_t BlockN          = Problem::BlockN;
+    static constexpr index_t HeadDim         = Problem::HeadDim;
+    static constexpr index_t MaxNnz          = Problem::MaxNnz;
+    static constexpr index_t ThreadsPerBlock = Policy::template GetBlockSize<Problem>();
+    static constexpr index_t KSpan           = BlockN * HeadDim;
+    static constexpr const char* name        = "groupm4_kvshare_db_dqreg_fast_lut";
+
+    CK_TILE_HOST_DEVICE static constexpr index_t GetSmemSize() { return 0; }
+
+    template <typename QBlockWindow,
+              typename KTensorView,
+              typename VTensorView,
+              typename OGradBlockWindow,
+              typename DeltaBlockWindow,
+              typename LseBlockWindow,
+              typename DQBlockWindow>
+    CK_TILE_DEVICE void operator()(const QBlockWindow& q_block_window,
+                                   const KTensorView& k_tensor_view,
+                                   const VTensorView& v_tensor_view,
+                                   const OGradBlockWindow& dout_block_window,
+                                   const DeltaBlockWindow&,
+                                   const LseBlockWindow&,
+                                   DQBlockWindow& dq_block_window,
+                                   const jenga_bwd_dq_args& a,
+                                   void*) const
+    {
+        static_assert(Policy::template IsSupported<Problem>());
+
+        const index_t group_m_block = static_cast<index_t>(blockIdx.x) * GroupM;
+        const index_t off_hz        = static_cast<index_t>(blockIdx.y);
+        const index_t batch_id      = off_hz / a.nhead;
+        const index_t seqlen        = static_cast<index_t>(a.seqlens[batch_id]);
+        const index_t row_start0    = group_m_block * LogicalBlockM;
+        const index_t row_start1    = row_start0 + LogicalBlockM;
+        const index_t row_start2    = row_start1 + LogicalBlockM;
+        const index_t row_start3    = row_start2 + LogicalBlockM;
+
+        if(row_start0 >= seqlen)
+        {
+            return;
+        }
+
+        const QDataType* q        = q_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+        const KDataType* k        = k_tensor_view.get_buffer_view().p_data_;
+        const VDataType* v        = v_tensor_view.get_buffer_view().p_data_;
+        const OGradDataType* dout = dout_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+        DQDataType* dq            = dq_block_window.get_bottom_tensor_view().get_buffer_view().p_data_;
+
+        const index_t num_q_blocks = integer_divide_ceil(a.seqlen_q, LogicalBlockM);
+        const bool valid1          = row_start1 < seqlen;
+        const bool valid2          = row_start2 < seqlen;
+        const bool valid3          = row_start3 < seqlen;
+        
+        const int num_active0      = a.lut_size[off_hz * num_q_blocks + group_m_block];
+        const int num_active1      = valid1 ? a.lut_size[off_hz * num_q_blocks + group_m_block + 1] : 0;
+        const int num_active2      = valid2 ? a.lut_size[off_hz * num_q_blocks + group_m_block + 2] : 0;
+        const int num_active3      = valid3 ? a.lut_size[off_hz * num_q_blocks + group_m_block + 3] : 0;
+
+        if(num_active0 != MaxNnz || 
+           (valid1 && num_active1 != MaxNnz) ||
+           (valid2 && num_active2 != MaxNnz) ||
+           (valid3 && num_active3 != MaxNnz) ||
+           seqlen % LogicalBlockM != 0 || seqlen % BlockN != 0)
+        {
+            return;
+        }
+
+        constexpr auto qk_gemm = Policy::template GetQKRegBlockGemm<Problem>();
+        constexpr auto dp_gemm = Policy::template GetDPBlockGemm<Problem>();
+        constexpr auto dq_gemm = Policy::template GetDQRegBlockGemm<Problem>();
+
+        auto dq_tile0 = decltype(dq_gemm)::MakeCBlockTile();
+        auto dq_tile1 = decltype(dq_gemm)::MakeCBlockTile();
+        auto dq_tile2 = decltype(dq_gemm)::MakeCBlockTile();
+        auto dq_tile3 = decltype(dq_gemm)::MakeCBlockTile();
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile0);
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile1);
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile2);
+        tile_elementwise_inout([](auto& x) { x = 0.0f; }, dq_tile3);
+
+        auto q_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            q,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_qm, a.stride_qk),
+            number<1>{},
+            number<1>{});
+        auto dout_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            dout,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_dom, a.stride_dok),
+            number<1>{},
+            number<1>{});
+
+        auto q_window0 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start0, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+        auto q_window1 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start1, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+        auto q_window2 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start2, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+        auto q_window3 =
+            make_tile_window(q_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start3, 0},
+                             Policy::template MakeQOGradDQBlockTileDistribution<Problem>());
+
+        auto dout_window0 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start0, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+        auto dout_window1 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start1, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+        auto dout_window2 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start2, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+        auto dout_window3 =
+            make_tile_window(dout_bh_view,
+                             make_tuple(number<LogicalBlockM>{}, number<HeadDim>{}),
+                             {row_start3, 0},
+                             Policy::template MakeOGradRegBlockDistribution<Problem>());
+
+        const auto q_tile0    = load_tile(q_window0);
+        const auto q_tile1    = load_tile(q_window1);
+        const auto q_tile2    = load_tile(q_window2);
+        const auto q_tile3    = load_tile(q_window3);
+        const auto dout_tile0 = load_tile(dout_window0);
+        const auto dout_tile1 = load_tile(dout_window1);
+        const auto dout_tile2 = load_tile(dout_window2);
+        const auto dout_tile3 = load_tile(dout_window3);
+
+        // LDS buffers: exactly 32 KB total to ensure 2 CTAs per CU occupancy
+        __shared__ KDataType k_lds[KSpan];
+        __shared__ VDataType v_lds[KSpan];
+
+        // Retrieve the thread's constant local row coordinate local_m
+        index_t local_m = 0;
+        {
+            auto dummy_dp_tile = decltype(dp_gemm)::MakeCBlockTile();
+            sweep_tile(dummy_dp_tile, [&](auto idx) {
+                local_m = get_x_indices_from_distributed_indices(dummy_dp_tile.get_tile_distribution(), idx)[number<0>{}];
+            });
+        }
+
+        // Hoist LSE and Delta global loads once before the entire loop
+        const float lse0 = static_cast<const float*>(a.lse)
+                               [off_hz * a.stride_lz + (row_start0 + local_m) * a.stride_lm];
+        const float delta0 = static_cast<const float*>(a.deltas)
+                                 [off_hz * a.stride_dz + (row_start0 + local_m) * a.stride_dm];
+        
+        float lse1 = 0.0f;
+        float delta1 = 0.0f;
+        if(valid1)
+        {
+            lse1 = static_cast<const float*>(a.lse)
+                       [off_hz * a.stride_lz + (row_start1 + local_m) * a.stride_lm];
+            delta1 = static_cast<const float*>(a.deltas)
+                         [off_hz * a.stride_dz + (row_start1 + local_m) * a.stride_dm];
+        }
+
+        float lse2 = 0.0f;
+        float delta2 = 0.0f;
+        if(valid2)
+        {
+            lse2 = static_cast<const float*>(a.lse)
+                       [off_hz * a.stride_lz + (row_start2 + local_m) * a.stride_lm];
+            delta2 = static_cast<const float*>(a.deltas)
+                         [off_hz * a.stride_dz + (row_start2 + local_m) * a.stride_dm];
+        }
+
+        float lse3 = 0.0f;
+        float delta3 = 0.0f;
+        if(valid3)
+        {
+            lse3 = static_cast<const float*>(a.lse)
+                       [off_hz * a.stride_lz + (row_start3 + local_m) * a.stride_lm];
+            delta3 = static_cast<const float*>(a.deltas)
+                         [off_hz * a.stride_dz + (row_start3 + local_m) * a.stride_dm];
+        }
+
+        constexpr auto kv_lds_desc = make_naive_tensor_descriptor(
+            make_tuple(number<BlockN>{}, number<HeadDim>{}),
+            make_tuple(number<HeadDim>{}, number<1>{}),
+            number<8>{},
+            number<1>{});
+        auto k_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            k + off_hz * a.stride_kz,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_kn, a.stride_kk),
+            number<1>{},
+            number<1>{});
+        auto v_bh_view = make_naive_tensor_view<address_space_enum::global>(
+            v + off_hz * a.stride_vz,
+            make_tuple(a.seqlen_q, number<HeadDim>{}),
+            make_tuple(a.stride_vn, a.stride_vk),
+            number<1>{},
+            number<1>{});
+
+        const auto get_dram_windows = [&](int block_idx) {
+            const index_t start_n  = static_cast<index_t>(block_idx) * BlockN;
+            auto k_dram_window =
+                make_tile_window(k_bh_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {start_n, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            auto v_dram_window =
+                make_tile_window(v_bh_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {start_n, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            return make_tuple(k_dram_window, v_dram_window);
+        };
+
+        const auto store_to_lds = [&](const auto& k_tile, const auto& v_tile) {
+            auto k_lds_view = make_tensor_view<address_space_enum::lds>(k_lds, kv_lds_desc);
+            auto v_lds_view = make_tensor_view<address_space_enum::lds>(v_lds, kv_lds_desc);
+            auto k_lds_window =
+                make_tile_window(k_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            auto v_lds_window =
+                make_tile_window(v_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeKVBlockTileDistribution<Problem>());
+            store_tile(k_lds_window, k_tile);
+            store_tile(v_lds_window, v_tile);
+        };
+
+        const auto compute_one = [&](auto& dq_tile,
+                                     const auto& q_tile,
+                                     const auto& dout_tile,
+                                     int block_idx,
+                                     float row_lse,
+                                     float delta) {
+            constexpr auto k_lds_desc = make_naive_tensor_descriptor(
+                make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                make_tuple(number<HeadDim>{}, number<1>{}),
+                number<8>{},
+                number<1>{});
+            auto k_lds_view = make_tensor_view<address_space_enum::lds>(
+                k_lds, k_lds_desc);
+            auto k_gemm_window =
+                make_tile_window(k_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0});
+
+            auto qk_tile = decltype(qk_gemm)::MakeCBlockTile();
+            tile_elementwise_inout([](auto& x) { x = 0.0f; }, qk_tile);
+            qk_gemm(qk_tile, q_tile, k_gemm_window);
+
+            auto v_lds_view = make_tensor_view<address_space_enum::lds>(
+                v_lds, k_lds_desc);
+            auto v_reg_window =
+                make_tile_window(v_lds_view,
+                                 make_tuple(number<BlockN>{}, number<HeadDim>{}),
+                                 {0, 0},
+                                 Policy::template MakeVRegBlockDistribution<Problem>());
+            const auto v_tile = load_tile(v_reg_window);
+            auto dp_tile      = dp_gemm(dout_tile, v_tile);
+            auto ds_tile =
+                tile_elementwise_in([](auto) { return type_convert<QDataType>(0.0f); }, dp_tile);
+
+            const bool has_text_bias = a.text_amp != 0.0f && block_idx >= a.text_block_start;
+            const float qk_scale     = a.sm_scale * 1.4426950408889634f;
+            sweep_tile(dp_tile, [&](auto idx) {
+                float qk = qk_tile[idx] * qk_scale;
+                if(has_text_bias)
+                {
+                    qk += a.text_amp;
+                }
+                const float p  = exp2f(qk - row_lse);
+                const float ds = p * (dp_tile[idx] - delta);
+                ds_tile(idx)   = type_convert<QDataType>(ds);
+            });
+
+            constexpr auto kt_lds_desc = make_naive_tensor_descriptor(
+                make_tuple(number<HeadDim>{}, number<BlockN>{}),
+                make_tuple(number<1>{}, number<HeadDim>{}));
+            auto kt_lds_view = make_tensor_view<address_space_enum::lds>(
+                k_lds, kt_lds_desc);
+            auto kt_gemm_window =
+                make_tile_window(kt_lds_view,
+                                 make_tuple(number<HeadDim>{}, number<BlockN>{}),
+                                 {0, 0});
+            dq_gemm(dq_tile, ds_tile, kt_gemm_window);
+        };
+
+        const auto get_lut0 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + group_m_block * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+        const auto get_lut1 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + (group_m_block + 1) * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+        const auto get_lut2 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + (group_m_block + 2) * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+        const auto get_lut3 = [&](index_t i) {
+            return a.lut[off_hz * a.stride_lutz + (group_m_block + 3) * a.stride_lutm +
+                         i * a.stride_lutk];
+        };
+
+        bool can_shift_share = valid3;
+        for(index_t i = 1; i < MaxNnz; ++i)
+        {
+            can_shift_share = can_shift_share && 
+                              get_lut0(i) == get_lut1(i - 1) &&
+                              get_lut1(i) == get_lut2(i - 1) &&
+                              get_lut2(i) == get_lut3(i - 1);
+        }
+        if(!can_shift_share)
+        {
+            return;
+        }
+
+        const auto get_shift_block = [&](index_t shared_i) {
+            if(shared_i == 0)
+            {
+                return get_lut0(0);
+            }
+            if(shared_i == MaxNnz)
+            {
+                return get_lut1(MaxNnz - 1);
+            }
+            if(shared_i == MaxNnz + 1)
+            {
+                return get_lut2(MaxNnz - 1);
+            }
+            if(shared_i == MaxNnz + 2)
+            {
+                return get_lut3(MaxNnz - 1);
+            }
+            return get_lut0(shared_i);
+        };
+
+        // 1. Initial Load of block 0
+        const int first_block_idx = get_shift_block(0);
+        auto [k_dram_win_0, v_dram_win_0] = get_dram_windows(first_block_idx);
+        auto k_reg = load_tile(k_dram_win_0);
+        auto v_reg = load_tile(v_dram_win_0);
+
+        store_to_lds(k_reg, v_reg);
+        block_sync_lds();
+
+        // 2. Loop with Register-Staged Prefetching
+        for(index_t shared_i = 0; shared_i <= MaxNnz + 2; ++shared_i)
+        {
+            using KRegTileType = decltype(k_reg);
+            using VRegTileType = decltype(v_reg);
+
+            KRegTileType k_reg_next;
+            VRegTileType v_reg_next;
+
+            // Global Prefetch: Load the next block from DRAM to Registers
+            if(shared_i + 1 <= MaxNnz + 2)
+            {
+                const int next_block_idx = get_shift_block(shared_i + 1);
+                auto [k_dram_win_next, v_dram_win_next] = get_dram_windows(next_block_idx);
+                k_reg_next = load_tile(k_dram_win_next);
+                v_reg_next = load_tile(v_dram_win_next);
+            }
+
+            // Computation using current block (which resides in LDS)
+            const int block_idx = get_shift_block(shared_i);
+            if(shared_i < MaxNnz)
+            {
+                compute_one(dq_tile0, q_tile0, dout_tile0, block_idx, lse0, delta0);
+            }
+            if(shared_i >= 1 && shared_i < MaxNnz + 1)
+            {
+                compute_one(dq_tile1, q_tile1, dout_tile1, block_idx, lse1, delta1);
+            }
+            if(shared_i >= 2 && shared_i < MaxNnz + 2)
+            {
+                compute_one(dq_tile2, q_tile2, dout_tile2, block_idx, lse2, delta2);
+            }
+            if(shared_i >= 3 && shared_i < MaxNnz + 3)
+            {
+                compute_one(dq_tile3, q_tile3, dout_tile3, block_idx, lse3, delta3);
+            }
+
+            // Sync LDS to wait until all threads finish using LDS data of the current block
+            block_sync_lds();
+
+            // Store the prefetched block from registers to LDS
+            if(shared_i + 1 <= MaxNnz + 2)
+            {
+                store_to_lds(k_reg_next, v_reg_next);
+                block_sync_lds();
+            }
+        }
+
+        sweep_tile(dq_tile0, [&](auto idx) {
+            const auto x_indices =
+                get_x_indices_from_distributed_indices(dq_tile0.get_tile_distribution(), idx);
+            const index_t local_m = x_indices[number<0>{}];
+            const index_t d       = x_indices[number<1>{}];
+            const index_t row_id  = row_start0 + local_m;
+            dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                type_convert<DQDataType>(dq_tile0[idx] * a.sm_scale);
+        });
+
+        if(valid1)
+        {
+            sweep_tile(dq_tile1, [&](auto idx) {
+                const auto x_indices =
+                    get_x_indices_from_distributed_indices(dq_tile1.get_tile_distribution(), idx);
+                const index_t local_m = x_indices[number<0>{}];
+                const index_t d       = x_indices[number<1>{}];
+                const index_t row_id  = row_start1 + local_m;
+                dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                    type_convert<DQDataType>(dq_tile1[idx] * a.sm_scale);
+            });
+        }
+
+        if(valid2)
+        {
+            sweep_tile(dq_tile2, [&](auto idx) {
+                const auto x_indices =
+                    get_x_indices_from_distributed_indices(dq_tile2.get_tile_distribution(), idx);
+                const index_t local_m = x_indices[number<0>{}];
+                const index_t d       = x_indices[number<1>{}];
+                const index_t row_id  = row_start2 + local_m;
+                dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                    type_convert<DQDataType>(dq_tile2[idx] * a.sm_scale);
+            });
+        }
+
+        if(valid3)
+        {
+            sweep_tile(dq_tile3, [&](auto idx) {
+                const auto x_indices =
+                    get_x_indices_from_distributed_indices(dq_tile3.get_tile_distribution(), idx);
+                const index_t local_m = x_indices[number<0>{}];
+                const index_t d       = x_indices[number<1>{}];
+                const index_t row_id  = row_start3 + local_m;
+                dq[row_id * a.stride_dqm + d * a.stride_dqk] =
+                    type_convert<DQDataType>(dq_tile3[idx] * a.sm_scale);
+            });
+        }
+    }
+};
+
+} // namespace jenga
+} // namespace example
+} // namespace ck_tile
