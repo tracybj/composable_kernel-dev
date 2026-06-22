@@ -229,12 +229,7 @@ struct JengaBwdDkdvPipeline
                         qk_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const ck_tile::index_t mask_qb = (q_start + m_rel) / args.M0;
-                    const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
-                                             static_cast<size_t>(mask_qb) * args.stride_bm +
-                                             static_cast<size_t>(kv_block) * args.stride_bn;
-                    const bool is_active = args.block_mask_ptr[mask_idx] != 0;
-                    const bool valid             = row_valid && n < seqlen && is_active;
+                    const bool valid             = !is_boundary || (row_valid && n < seqlen);
                     const float p =
                         valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;
                     p_t_smem[static_cast<ck_tile::long_index_t>(n_rel) * BlockM + m_rel] =
@@ -391,12 +386,7 @@ struct JengaBwdDkdvPipeline
                         dp_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const ck_tile::index_t mask_qb = (q_start + m_rel) / args.M0;
-                    const size_t mask_idx = static_cast<size_t>(off_hz) * args.stride_bz +
-                                             static_cast<size_t>(mask_qb) * args.stride_bm +
-                                             static_cast<size_t>(kv_block) * args.stride_bn;
-                    const bool is_active = args.block_mask_ptr[mask_idx] != 0;
-                    const bool valid             = row_valid && n < seqlen && is_active;
+                    const bool valid             = !is_boundary || (row_valid && n < seqlen);
  
                     const float p =
                         valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;

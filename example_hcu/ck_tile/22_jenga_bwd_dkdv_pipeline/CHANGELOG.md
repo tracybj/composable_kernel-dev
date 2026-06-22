@@ -3,6 +3,72 @@
 This file records functional changes, optimization notes, and validation results for
 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline`.
 
+## 2026-06-22 - Remove redundant block-mask checks in LUT-driven loop
+
+### Changes
+
+- Removed the per-element `block_mask_ptr` lookup from the `P` and `ds` sweep loops.
+- The kernel already iterates active query blocks through the reverse LUT, so every
+  `(qb, kv_block)` pair in the inner loop is active by construction.
+- Kept boundary checks for partial sequence tiles:
+  - full tiles use `valid = true`
+  - boundary tiles use `row_valid && n < seqlen`
+
+### Validation
+
+Standalone correctness:
+
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=1 -n_q=128 -n_kv=128 -m0=64 -n0=64 \
+  -text_blocks=0 -text_amp=0.0 -mask_radius=1 \
+  -warmup=0 -repeat=1 -timer=cpu -v=1
+```
+
+Result:
+
+```text
+Validation: PASS
+dK cosine=0.999995
+dV cosine=0.999994
+```
+
+Random-mask correctness:
+
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=1 -n_q=256 -n_kv=256 -m0=64 -n0=64 \
+  -text_blocks=0 -text_amp=0.0 -mask_type=random -k_active=2 \
+  -warmup=0 -repeat=1 -timer=cpu -v=1
+```
+
+Result:
+
+```text
+Validation: PASS
+dK cosine=0.999995
+dV cosine=0.999995
+```
+
+Wan2.1 standalone timing with random mask:
+
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -m0=64 -n0=64 \
+  -text_blocks=0 -text_amp=0.0 \
+  -mask_type=random -k_active=28 \
+  -warmup=5 -repeat=20 -timer=gpu -v=0
+```
+
+Result:
+
+| Version | Standalone time |
+| :--- | ---: |
+| BlockM=64 baseline | 62.59 ms |
+| Remove redundant block-mask checks | 50.25 ms |
+
+Speedup: about `1.25x`.
+
 ## 2026-06-22 - `aec2a85` - Tune Jenga dK/dV pipeline for 64 query blocks
 
 ### Changes
