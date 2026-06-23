@@ -13,24 +13,6 @@
   - boundary tile: `valid = row_valid && n < seqlen`
 
 ### 正确性验证
-
-小规模 synthetic mask：
-
-```bash
-/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
-  -b=1 -h=1 -n_q=128 -n_kv=128 -m0=64 -n0=64 \
-  -text_blocks=0 -text_amp=0.0 -mask_radius=1 \
-  -warmup=0 -repeat=1 -timer=cpu -v=1
-```
-
-结果：
-
-```text
-Validation: PASS
-dK cosine=0.999995
-dV cosine=0.999994
-```
-
 小规模 random mask：
 
 ```bash
@@ -48,24 +30,37 @@ dK cosine=0.999995
 dV cosine=0.999995
 ```
 
-### 性能结果
+### Python binding benchmark 结果
 
-Wan2.1 / 18K standalone random mask：
+将当前 example kernel 同步到 `heyi_test/jenga_sla_test/hcu_extensions` 的既有 `ck_tile_jenga` binding 后测试：
 
 ```bash
-/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
-  -b=1 -h=40 -n_q=18048 -n_kv=18048 -m0=64 -n0=64 \
-  -text_blocks=0 -text_amp=0.0 \
-  -mask_type=random -k_active=28 \
-  -warmup=5 -repeat=20 -timer=gpu -v=0
+cd /workspace/heyi_test/jenga_sla_test
+python3 benchmark_kernels_ck.py --size short --heads 1 --warmup 1 --repeat 2
+python3 benchmark_kernels_ck.py --size wan2.1 --heads 40 --warmup 3 --repeat 10
 ```
 
-| 版本 | standalone 耗时 |
-| :--- | ---: |
-| BlockM=64 baseline | 62.59 ms |
-| 移除冗余 block mask 检查 | 50.25 ms |
+小规模 sanity 结果：
 
-收益：约 `1.25x`。
+| 项目 | Triton | CK Tile | 加速比 |
+| :--- | ---: | ---: | ---: |
+| Total backward | 1.01 ms | 0.91 ms | 1.11x |
+| Isolated dK/dV | 0.24 ms | 0.37 ms | 0.65x |
+
+Wan2.1 / 18K / H=40 结果：
+
+| 项目 | Triton | CK Tile | 加速比 |
+| :--- | ---: | ---: | ---: |
+| Total backward | 365.50 ms | 244.35 ms | 1.50x |
+| Isolated dK/dV | 268.14 ms | 148.33 ms | 1.81x |
+
+正确性：
+
+| Tensor | max_diff | mean_diff | cos_sim |
+| :--- | ---: | ---: | ---: |
+| dQ | 0.000000e+00 | 0.000000e+00 | 1.00000024 |
+| dK | 3.906250e-03 | 1.238873e-04 | 0.99999279 |
+| dV | 2.929688e-03 | 1.237167e-04 | 0.99999285 |
 
 ### 结论
 
