@@ -249,21 +249,17 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
                     int4 val = *do_ptr_vec;
-                    const OGradDataType* val_bf16 = reinterpret_cast<const OGradDataType*>(&val);
-                    #pragma unroll
-                    for(int j = 0; j < 8; ++j)
-                    {
-                        do_t_smem[(thread_d + j) * BlockM + m_rel] = val_bf16[j];
-                    }
+                    int4* do_t_smem_vec = reinterpret_cast<int4*>(do_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
+                    *do_t_smem_vec = val;
                 }
             }
             else
             {
-                for(ck_tile::index_t linear = threadIdx.x; linear < HeadDim * BlockM;
+                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
                     linear += blockDim.x)
                 {
-                    const ck_tile::index_t d     = linear / BlockM;
-                    const ck_tile::index_t m_rel = linear - d * BlockM;
+                    const ck_tile::index_t m_rel = linear / HeadDim;
+                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
                     const ck_tile::index_t m     = q_start + m_rel;
                     do_t_smem[linear] =
                         (m < args.N_Q && m < seqlen && d < args.D)
@@ -278,7 +274,7 @@ struct JengaBwdDkdvPipeline
             auto p_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
                 p_t_smem, MakeSimpleLdsDescriptor<BlockN, BlockM>());
             auto do_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                do_t_smem, MakeSimpleLdsDescriptor<HeadDim, BlockM>());
+                do_t_smem, MakeTransposedLdsDescriptor<HeadDim, BlockM>());
 
             auto p_t_lds_window = ck_tile::make_tile_window(
                 p_t_lds_view,
@@ -408,21 +404,17 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
                     int4 val = *q_ptr_vec;
-                    const QDataType* val_bf16 = reinterpret_cast<const QDataType*>(&val);
-                    #pragma unroll
-                    for(int j = 0; j < 8; ++j)
-                    {
-                        q_t_smem[(thread_d + j) * BlockM + m_rel] = val_bf16[j];
-                    }
+                    int4* q_t_smem_vec = reinterpret_cast<int4*>(q_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
+                    *q_t_smem_vec = val;
                 }
             }
             else
             {
-                for(ck_tile::index_t linear = threadIdx.x; linear < HeadDim * BlockM;
+                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
                     linear += blockDim.x)
                 {
-                    const ck_tile::index_t d     = linear / BlockM;
-                    const ck_tile::index_t m_rel = linear - d * BlockM;
+                    const ck_tile::index_t m_rel = linear / HeadDim;
+                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
                     const ck_tile::index_t m     = q_start + m_rel;
                     q_t_smem[linear] =
                         (m < args.N_Q && m < seqlen && d < args.D)
@@ -437,7 +429,7 @@ struct JengaBwdDkdvPipeline
             auto ds_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
                 ds_t_smem, MakeSimpleLdsDescriptor<BlockN, BlockM>());
             auto q_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                q_t_smem, MakeSimpleLdsDescriptor<HeadDim, BlockM>());
+                q_t_smem, MakeTransposedLdsDescriptor<HeadDim, BlockM>());
 
             auto ds_t_lds_window = ck_tile::make_tile_window(
                 ds_t_lds_view,

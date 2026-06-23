@@ -195,6 +195,24 @@ CK_TILE_HOST_DEVICE constexpr auto MakeSimpleLdsDescriptor()
         ck_tile::number<1>{});
 }
 
+template <ck_tile::index_t K, ck_tile::index_t M>
+CK_TILE_HOST_DEVICE constexpr auto MakeTransposedLdsDescriptor()
+{
+    const auto desc_raw = ck_tile::make_naive_tensor_descriptor(
+        ck_tile::make_tuple(ck_tile::number<M>{}, ck_tile::number<K>{}),
+        ck_tile::make_tuple(ck_tile::number<K>{}, ck_tile::number<1>{}),
+        ck_tile::number<8>{},
+        ck_tile::number<1>{});
+
+    return ck_tile::transform_tensor_descriptor(
+        desc_raw,
+        ck_tile::make_tuple(ck_tile::make_pass_through_transform(ck_tile::number<M>{}),
+                            ck_tile::make_pass_through_transform(ck_tile::number<K>{})),
+        ck_tile::make_tuple(ck_tile::sequence<0>{}, ck_tile::sequence<1>{}),
+        ck_tile::make_tuple(ck_tile::sequence<1>{}, ck_tile::sequence<0>{}));
+}
+
+
 template <ck_tile::index_t M, ck_tile::index_t N, typename BlockGemm, typename AccTile, typename AccDataType>
 CK_TILE_DEVICE void StoreMmacOutputTileToLdsRowMajor(const BlockGemm& block_gemm,
                                                      const AccTile& acc_tile,

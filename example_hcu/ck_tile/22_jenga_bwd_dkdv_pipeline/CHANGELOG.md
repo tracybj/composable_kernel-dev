@@ -310,3 +310,45 @@ Wan2.1 standalone random mask：
 | 优化版 | LSE/Delta hoisting | 246 | 0 | 263.48 ms |
 
 结论：LSE/Delta hoisting 没有引入 scratch spill，并带来约 `1.43x` 加速。
+
+## 2026-06-23 - LDS 写入 Bank 冲突优化与全向量化写入
+
+### 改动内容
+
+- 优化了 Phase 2 (`do_t`) 和 Phase 4 (`q_t`) 写入 LDS 的布局，将原本以 16-bit 为单位的转置写入，改为了以原生行优先（Row-Major，`BlockM x HeadDim`）布局的写入。
+- 实现了使用 128位向量指令 `int4` (`ds_write_b128`) 将 `do_t` 和 `q_t` 一次性向量化写入 LDS，完全消除了 LDS 写入时的 Bank 冲突。
+- 引入了转置视图描述符生成器 `MakeTransposedLdsDescriptor<K, M>()`。利用 `ck_tile` 编译期的维度转置映射，使得 `dv_gemm` 和 `dk_gemm` 在读取 LDS 时自动按转置坐标进行，完美兼容原先的 GEMM 模块。
+
+### 正确性验证
+
+在 `-m0=64 -n0=64` 配置下：
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 -v=1 -mask_type=random -k_active=10
+```
+
+结果：
+```text
+Validation: PASS
+dK cosine=0.999995
+dV cosine=0.999995
+```
+
+### 性能结果
+
+针对 Wan2.1 尺度，`k_active=93` (实际迭代93次) 的性能对比：
+
+```bash
+/workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 -v=0 -warmup=5 -repeat=10 -mask_type=random -k_active=93
+```
+
+| 版本 | 机制 | VGPR | SGPR | Scratch bytes | standalone 耗时 | 相比 baseline 加速比 |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| 64x64 baseline (LSE Hoisted) | 原版转置写入布局 | 194 | 86 | 0 | 160.91 ms | 1.00x |
+| **64x64 向量化无冲突写入** | **Row-Major 写入 + 编译期转置视图** | **194** | **86** | **0** | **105.03 ms** | **1.53x (提升 35%)** |
+
+### 结论
+
+该优化大幅提升了 LDS 写入带宽并彻底解决了 Bank 冲突，在不增加额外 VGPR 寄存器负担（0 字节 Scratch 溢出）的前提下，实现 35% 性能提速，决定采纳并合入。
+
