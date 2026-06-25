@@ -255,9 +255,13 @@ struct JengaBwdDkdvDefaultPolicy
         typename Problem::AccDataType qk[Problem::BlockM * Problem::BlockN];
         struct
         {
-            typename Problem::QDataType p_t[Problem::BlockN * Problem::BlockM];
             typename Problem::OGradDataType do_t[Problem::HeadDim * Problem::BlockM];
-        } dv_input;
+            union
+            {
+                typename Problem::QDataType p_t[Problem::BlockN * Problem::BlockM];
+                typename Problem::VDataType v[Problem::BlockN * Problem::HeadDim];
+            } rhs;
+        } dv_dp_input;
         struct
         {
             typename Problem::QDataType ds_t[Problem::BlockN * Problem::BlockM];

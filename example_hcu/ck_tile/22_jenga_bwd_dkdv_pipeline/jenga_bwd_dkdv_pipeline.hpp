@@ -191,10 +191,10 @@ struct JengaBwdDkdvPipeline
             qk_gemm(qk_acc, q_lds_window, k_lds_window);
             ck_tile::block_sync_lds();
 
-            QDataType* p_t_smem      = smem.dv_input.p_t;
-            OGradDataType* do_t_smem = smem.dv_input.do_t;
+            OGradDataType* do_t_smem = smem.dv_dp_input.do_t;
+            QDataType* p_t_smem      = smem.dv_dp_input.rhs.p_t;
 
-            const auto qk_out = qk_gemm.MakeOuputLayout(qk_acc);
+            auto qk_out = qk_gemm.MakeOuputLayout(qk_acc);
             constexpr auto qk_spans = decltype(qk_out)::get_distributed_spans();
 
             constexpr auto M_spans = qk_spans[ck_tile::number<0>{}];
@@ -232,6 +232,7 @@ struct JengaBwdDkdvPipeline
                     const bool valid             = !is_boundary || (row_valid && n < seqlen);
                     const float p =
                         valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;
+                    qk_out(tile_idx) = p;
                     p_t_smem[static_cast<ck_tile::long_index_t>(n_rel) * BlockM + m_rel] =
                         ck_tile::type_convert<QDataType>(p);
                 });
@@ -289,19 +290,11 @@ struct JengaBwdDkdvPipeline
 
             ck_tile::block_sync_lds();
 
-            auto dp_do_smem = reinterpret_cast<OGradDataType*>(smem.qk_input.q);
-            auto v_smem     = reinterpret_cast<VDataType*>(smem.qk_input.k);
+            auto dp_do_smem = smem.dv_dp_input.do_t;
+            auto v_smem     = smem.dv_dp_input.rhs.v;
 
             if(!is_boundary)
             {
-                const int4* dp_do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_dom);
-                int4* dp_do_smem_vec = reinterpret_cast<int4*>(dp_do_smem);
-                #pragma unroll
-                for(int i = 0; i < QVecLoadIters; ++i)
-                {
-                    dp_do_smem_vec[threadIdx.x + i * 256] = dp_do_ptr_vec[threadIdx.x + i * 256];
-                }
-
                 const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
                 int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
                 #pragma unroll
@@ -312,19 +305,6 @@ struct JengaBwdDkdvPipeline
             }
             else
             {
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t m_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
-                    const ck_tile::index_t m     = q_start + m_rel;
-                    dp_do_smem[linear] =
-                        (m < args.N_Q && m < seqlen && d < args.D)
-                            ? do_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_dom +
-                                     static_cast<ck_tile::long_index_t>(d) * args.stride_dod]
-                            : ck_tile::type_convert<OGradDataType>(0.0f);
-                }
-
                 for(ck_tile::index_t linear = threadIdx.x; linear < BlockN * HeadDim;
                     linear += blockDim.x)
                 {
@@ -384,8 +364,7 @@ struct JengaBwdDkdvPipeline
                     const ck_tile::index_t n     = start_n + n_rel;
                     const bool valid             = !is_boundary || (row_valid && n < seqlen);
  
-                    const float p =
-                        valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;
+                    const float p = valid ? qk_out[tile_idx] : 0.0f;
                     const float ds = p * (dp_out[tile_idx] - delta);
                     ds_t_smem[static_cast<ck_tile::long_index_t>(n_rel) * BlockM + m_rel] =
                         ck_tile::type_convert<QDataType>(ds);

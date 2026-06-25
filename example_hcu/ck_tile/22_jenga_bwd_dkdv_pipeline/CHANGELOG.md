@@ -2,6 +2,71 @@
 
 本文档用于记录 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline` 的每次关键提交、优化思路、测试命令和测试结果，方便后续回溯。
 
+## 2026-06-25 - 复用 Softmax 寄存器结果与 dO LDS，减少重复计算/加载
+
+### 改动内容
+
+- 将 QK sweep 中第一次计算得到的 Softmax `P` 原地写回 `qk_out` 寄存器 tile。
+- dS sweep 直接复用 `qk_out` 中的 `P`，不再第二次执行 `exp2(qk - lse)`。
+- 调整 `LdsStorage` 中 dV/DP 阶段的 LDS overlay：
+  - `do_t` 固定放在前半段 LDS，dV 阶段加载一次后保留到 DP 阶段复用。
+  - `p_t` 和 `v` 在后半段 LDS 中串行复用；dV GEMM 结束后，`p_t` 不再需要，可被 `v` 覆盖。
+- DP 阶段不再从 global memory 第二次加载 `dO`，只加载当前 `kv_block` 的 `V` tile。
+- 最大 LDS footprint 没有增加，仍保持在原有 Q/K 或 dO/V overlay 的 32KB 级别。
+
+### 正确性验证
+
+在 `ck_yyc` 中绑定 GPU 7：
+
+```bash
+HSA_VISIBLE_DEVICES=7 /workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果：
+
+```text
+Average time: 0.557444 ms
+dK max_diff=7.62939e-06 mean_diff=6.9046e-07 cosine=0.999995
+dV max_diff=0.00012207 mean_diff=2.54243e-05 cosine=0.999995
+Validation: PASS
+```
+
+### 性能结果
+
+在 `ck_yyc` 中绑定 GPU 7：
+
+```bash
+HSA_VISIBLE_DEVICES=7 /workspace/composable_kernel-dev/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+两次结果：
+
+```text
+Average time: 99.8423 ms
+Average time: 99.8171 ms
+Average time: 99.782 ms
+```
+
+资源元数据：
+
+```text
+vgpr_count: 256
+sgpr_count: 104
+vgpr_spill_count: 14
+sgpr_spill_count: 0
+amdhsa_private_segment_fixed_size: 60
+```
+
+### 结论
+
+该优化正确性通过，性能相对 `64x64 向量化无冲突写入` 版本记录的 `105.03 ms` 提升到约 `99.8 ms`。代价是出现轻微 VGPR spill（14），但没有 SGPR spill，且实测性能稳定，因此保留。
+
 ## 2026-06-22 - 移除 LUT 驱动循环中的冗余 block mask 检查
 
 ### 改动内容
@@ -351,4 +416,3 @@ dV cosine=0.999995
 ### 结论
 
 该优化大幅提升了 LDS 写入带宽并彻底解决了 Bank 冲突，在不增加额外 VGPR 寄存器负担（0 字节 Scratch 溢出）的前提下，实现 35% 性能提速，决定采纳并合入。
-
