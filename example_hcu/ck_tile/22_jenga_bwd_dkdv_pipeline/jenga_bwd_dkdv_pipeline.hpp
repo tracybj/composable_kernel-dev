@@ -11,7 +11,7 @@ namespace ck_tile {
 namespace example {
 namespace jenga {
 
-template <typename Problem, typename Policy = JengaBwdDkdvDefaultPolicy<Problem>>
+template <typename Problem, typename Policy = JengaBwdDkdvDefaultPolicy<Problem>, bool FullTile = false>
 struct JengaBwdDkdvPipeline
 {
     using QDataType     = typename Problem::QDataType;
@@ -95,7 +95,8 @@ struct JengaBwdDkdvPipeline
 
         __shared__ typename Policy::LdsStorage smem;
 
-        const bool block_is_boundary = (start_n + BlockN > seqlen) || (args.D < HeadDim);
+        const bool block_is_boundary =
+            FullTile ? false : ((start_n + BlockN > seqlen) || (args.D < HeadDim));
         const bool block_can_vectorize_transposed_do = (args.stride_dom % 8 == 0) && (args.stride_dod == 1) && (reinterpret_cast<std::uintptr_t>(do_ptr) % 16 == 0);
         const bool block_can_vectorize_transposed_q  = (args.stride_qm % 8 == 0) && (args.stride_qd == 1) && (reinterpret_cast<std::uintptr_t>(q_ptr) % 16 == 0);
 
@@ -122,8 +123,27 @@ struct JengaBwdDkdvPipeline
                 continue;
             }
 
-            const bool is_boundary = block_is_boundary || (q_start + BlockM > seqlen);
-            if(!is_boundary)
+            const bool is_boundary =
+                FullTile ? false : (block_is_boundary || (q_start + BlockM > seqlen));
+            if constexpr(FullTile)
+            {
+                const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_qm);
+                int4* q_smem_vec = reinterpret_cast<int4*>(q_smem);
+                #pragma unroll
+                for(int i = 0; i < QVecLoadIters; ++i)
+                {
+                    q_smem_vec[threadIdx.x + i * 256] = q_ptr_vec[threadIdx.x + i * 256];
+                }
+
+                const int4* k_ptr_vec = reinterpret_cast<const int4*>(k_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_kn);
+                int4* k_smem_vec = reinterpret_cast<int4*>(k_smem);
+                #pragma unroll
+                for(int i = 0; i < KVVecLoadIters; ++i)
+                {
+                    k_smem_vec[threadIdx.x + i * 256] = k_ptr_vec[threadIdx.x + i * 256];
+                }
+            }
+            else if(!is_boundary)
             {
                 const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_qm);
                 int4* q_smem_vec = reinterpret_cast<int4*>(q_smem);
@@ -207,11 +227,19 @@ struct JengaBwdDkdvPipeline
                     qk_out.get_tile_distribution(), dummy_tile_idx);
                 const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
                 const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = m < args.N_Q && m < seqlen;
-                lse_regs[decltype(idx0)::Impl::at(0)] = row_valid ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
-                                           : 0.0f;
-                delta_regs[decltype(idx0)::Impl::at(0)] = row_valid ? delta_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_delta_m]
-                                             : 0.0f;
+                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
+                lse_regs[decltype(idx0)::Impl::at(0)] =
+                    FullTile ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
+                             : (row_valid
+                                    ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
+                                    : 0.0f);
+                delta_regs[decltype(idx0)::Impl::at(0)] =
+                    FullTile
+                        ? delta_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_delta_m]
+                        : (row_valid
+                               ? delta_ptr[static_cast<ck_tile::long_index_t>(m) *
+                                           args.stride_delta_m]
+                               : 0.0f);
             });
 
             ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
@@ -220,7 +248,7 @@ struct JengaBwdDkdvPipeline
                     qk_out.get_tile_distribution(), dummy_tile_idx);
                 const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
                 const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = m < args.N_Q && m < seqlen;
+                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
                 const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
 
                 ck_tile::sweep_tile_span(qk_spans[ck_tile::number<1>{}], [&](auto idx1) {
@@ -229,7 +257,7 @@ struct JengaBwdDkdvPipeline
                         qk_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const bool valid             = !is_boundary || (row_valid && n < seqlen);
+                    const bool valid             = FullTile ? true : (!is_boundary || (row_valid && n < seqlen));
                     const float p =
                         valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;
                     qk_out(tile_idx) = p;
@@ -238,8 +266,24 @@ struct JengaBwdDkdvPipeline
                 });
             });
 
-            const bool can_vectorize_transposed_do = !is_boundary && block_can_vectorize_transposed_do;
-            if(can_vectorize_transposed_do)
+            const bool can_vectorize_transposed_do =
+                FullTile ? true : (!is_boundary && block_can_vectorize_transposed_do);
+            if constexpr(FullTile)
+            {
+                const int thread_m_rel = threadIdx.x >> 4;
+                const int thread_d     = (threadIdx.x & 15) << 3;
+                #pragma unroll
+                for(int i = 0; i < TransposedMVecIters; ++i)
+                {
+                    int m_rel = thread_m_rel + i * 16;
+                    int m = q_start + m_rel;
+                    const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
+                    int4 val = *do_ptr_vec;
+                    int4* do_t_smem_vec = reinterpret_cast<int4*>(do_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
+                    *do_t_smem_vec = val;
+                }
+            }
+            else if(can_vectorize_transposed_do)
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
@@ -293,7 +337,17 @@ struct JengaBwdDkdvPipeline
             auto dp_do_smem = smem.dv_dp_input.do_t;
             auto v_smem     = smem.dv_dp_input.rhs.v;
 
-            if(!is_boundary)
+            if constexpr(FullTile)
+            {
+                const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
+                int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
+                #pragma unroll
+                for(int i = 0; i < KVVecLoadIters; ++i)
+                {
+                    v_smem_vec[threadIdx.x + i * 256] = v_ptr_vec[threadIdx.x + i * 256];
+                }
+            }
+            else if(!is_boundary)
             {
                 const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
                 int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
@@ -352,7 +406,7 @@ struct JengaBwdDkdvPipeline
                     dp_out.get_tile_distribution(), dummy_tile_idx);
                 const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
                 const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = m < args.N_Q && m < seqlen;
+                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
                 const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
                 const float delta            = delta_regs[decltype(idx0)::Impl::at(0)];
 
@@ -362,7 +416,7 @@ struct JengaBwdDkdvPipeline
                         dp_out.get_tile_distribution(), tile_idx);
                     const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
                     const ck_tile::index_t n     = start_n + n_rel;
-                    const bool valid             = !is_boundary || (row_valid && n < seqlen);
+                    const bool valid             = FullTile ? true : (!is_boundary || (row_valid && n < seqlen));
  
                     const float p = valid ? qk_out[tile_idx] : 0.0f;
                     const float ds = p * (dp_out[tile_idx] - delta);
@@ -371,8 +425,24 @@ struct JengaBwdDkdvPipeline
                 });
             });
 
-            const bool can_vectorize_transposed_q = !is_boundary && block_can_vectorize_transposed_q;
-            if(can_vectorize_transposed_q)
+            const bool can_vectorize_transposed_q =
+                FullTile ? true : (!is_boundary && block_can_vectorize_transposed_q);
+            if constexpr(FullTile)
+            {
+                const int thread_m_rel = threadIdx.x >> 4;
+                const int thread_d     = (threadIdx.x & 15) << 3;
+                #pragma unroll
+                for(int i = 0; i < TransposedMVecIters; ++i)
+                {
+                    int m_rel = thread_m_rel + i * 16;
+                    int m = q_start + m_rel;
+                    const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
+                    int4 val = *q_ptr_vec;
+                    int4* q_t_smem_vec = reinterpret_cast<int4*>(q_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
+                    *q_t_smem_vec = val;
+                }
+            }
+            else if(can_vectorize_transposed_q)
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
@@ -427,9 +497,34 @@ struct JengaBwdDkdvPipeline
         StoreMmacOutputTileToLdsRowMajor<BlockN, HeadDim>(dv_gemm, dv_acc, smem.qk);
         ck_tile::block_sync_lds();
 
-        const bool is_boundary_write = (start_n + BlockN > seqlen) || (args.D < HeadDim);
-        const bool can_vectorize_write_dv = !is_boundary_write && (args.stride_dvn % 8 == 0) && (args.stride_dvd == 1) && (reinterpret_cast<std::uintptr_t>(dv_ptr) % 16 == 0);
-        if(can_vectorize_write_dv)
+        const bool is_boundary_write =
+            FullTile ? false : ((start_n + BlockN > seqlen) || (args.D < HeadDim));
+        const bool can_vectorize_write_dv =
+            FullTile ? true
+                     : (!is_boundary_write && (args.stride_dvn % 8 == 0) &&
+                        (args.stride_dvd == 1) &&
+                        (reinterpret_cast<std::uintptr_t>(dv_ptr) % 16 == 0));
+        if constexpr(FullTile)
+        {
+            const int thread_n_rel = threadIdx.x >> 4;
+            const int thread_d     = (threadIdx.x & 15) << 3;
+            #pragma unroll
+            for(int i = 0; i < BlockN / 16; ++i)
+            {
+                int n_rel = thread_n_rel + i * 16;
+                int n = start_n + n_rel;
+                int offset = n_rel * HeadDim + thread_d;
+                ck_tile::bf16_t val_bf16[8];
+                #pragma unroll
+                for(int j = 0; j < 8; ++j)
+                {
+                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j]);
+                }
+                int4* dv_ptr_vec = reinterpret_cast<int4*>(dv_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dvn + thread_d);
+                *dv_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
+            }
+        }
+        else if(can_vectorize_write_dv)
         {
             const int thread_n_rel = threadIdx.x >> 4;
             const int thread_d     = (threadIdx.x & 15) << 3;
@@ -471,8 +566,32 @@ struct JengaBwdDkdvPipeline
         StoreMmacOutputTileToLdsRowMajor<BlockN, HeadDim>(dk_gemm, dk_acc, smem.qk);
         ck_tile::block_sync_lds();
 
-        const bool can_vectorize_write_dk = !is_boundary_write && (args.stride_dkn % 8 == 0) && (args.stride_dkd == 1) && (reinterpret_cast<std::uintptr_t>(dk_ptr) % 16 == 0);
-        if(can_vectorize_write_dk)
+        const bool can_vectorize_write_dk =
+            FullTile ? true
+                     : (!is_boundary_write && (args.stride_dkn % 8 == 0) &&
+                        (args.stride_dkd == 1) &&
+                        (reinterpret_cast<std::uintptr_t>(dk_ptr) % 16 == 0));
+        if constexpr(FullTile)
+        {
+            const int thread_n_rel = threadIdx.x >> 4;
+            const int thread_d     = (threadIdx.x & 15) << 3;
+            #pragma unroll
+            for(int i = 0; i < BlockN / 16; ++i)
+            {
+                int n_rel = thread_n_rel + i * 16;
+                int n = start_n + n_rel;
+                int offset = n_rel * HeadDim + thread_d;
+                ck_tile::bf16_t val_bf16[8];
+                #pragma unroll
+                for(int j = 0; j < 8; ++j)
+                {
+                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j] * args.sm_scale);
+                }
+                int4* dk_ptr_vec = reinterpret_cast<int4*>(dk_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dkn + thread_d);
+                *dk_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
+            }
+        }
+        else if(can_vectorize_write_dk)
         {
             const int thread_n_rel = threadIdx.x >> 4;
             const int thread_d     = (threadIdx.x & 15) << 3;

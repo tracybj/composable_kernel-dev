@@ -2,6 +2,183 @@
 
 本文档用于记录 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline` 的每次关键提交、优化思路、测试命令和测试结果，方便后续回溯。
 
+## 2026-06-25 - Full-tile specialization，编译期裁剪 boundary/scalar 分支
+
+### 改动内容
+
+- 为 `JengaBwdDkdvPipeline` 增加 `FullTile` 模板参数。
+- Host 侧在满足以下条件时选择 full-tile kernel：
+  - `B == 1`
+  - `N_Q == N_KV`
+  - `N_Q` / `N_KV` 都按 `64` 对齐
+  - `D == 128`
+  - Q/K/V/dO/dK/dV 的 stride 和指针对齐满足现有 `int4` 128bit fast path 条件
+- `FullTile=true` 时，编译期裁剪掉：
+  - Q/K/V/dO/Q reload 的 boundary scalar fallback
+  - softmax/dS sweep 中的 `row_valid` / `n < seqlen` masking
+  - dK/dV writeback 的 boundary scalar fallback
+- 保留默认 `FullTile=false` kernel，非完整 tile 或未满足 128bit fast path 条件时仍走原通用路径。
+- 注意：host 侧无法直接检查 device `seqlens_ptr` 是否全为满长。当前 full-tile 选择只用于本 example 的 `B=1` 满长 case；若后续接入通用 varlen API，需要额外传入 host-side full-seqlen flag 或单独预检查，不能把 fallback 通用 pipeline 编进 full-tile 热 kernel，否则会明显拉高资源压力并退化性能。
+
+### 正确性验证
+
+在 `ck_yyc` 中绑定 GPU 7：
+
+```bash
+HSA_VISIBLE_DEVICES=7 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果：
+
+```text
+full_tile=1
+Average time: 0.558882 ms
+dK max_diff=7.62939e-06 mean_diff=6.9046e-07 cosine=0.999995
+dV max_diff=0.00012207 mean_diff=2.54243e-05 cosine=0.999995
+Validation: PASS
+```
+
+### 性能结果
+
+在 `ck_yyc` 中绑定 GPU 7：
+
+```bash
+HSA_VISIBLE_DEVICES=7 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+三次结果：
+
+```text
+Average time: 89.7658 ms
+Average time: 89.7464 ms
+Average time: 89.7387 ms
+```
+
+fallback 小样本验证：
+
+```bash
+HSA_VISIBLE_DEVICES=7 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=2 -h=1 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果：
+
+```text
+full_tile=0
+Average time: 0.711992 ms
+Validation: PASS
+```
+
+### 结论
+
+该优化正确性通过，性能相对上一版约 `99.8 ms` 提升到约 `89.75 ms`，保留。
+
+## 2026-06-25 - P/dS row-major LDS + transposed descriptor 实验（未采纳）
+
+### 实验内容
+
+- 将 P 和 dS 的 LDS 写入从 `[N,M]` 转置布局改成 row-major `[M,N]`：
+  - 原写入：`buf[n_rel * BlockM + m_rel]`
+  - 实验写入：`buf[m_rel * BlockN + n_rel]`
+- dV/dK GEMM 输入通过 `MakeTransposedLdsDescriptor<BlockN, BlockM>()` 继续呈现为 `[N,M]`。
+- 目标是改善 P/dS 生成阶段的 LDS 写入连续性，不增加 LDS footprint，不改变 GEMM shape。
+
+### 验证结果
+
+正确性通过：
+
+```text
+Average time: 0.576471 ms
+dK cosine=0.999995
+dV cosine=0.999995
+Validation: PASS
+```
+
+大 case 性能退化：
+
+```text
+Average time: 117.496 ms
+```
+
+### 结论
+
+该实验虽然数值正确，但性能从约 `99.8 ms` 退化到 `117.5 ms`。推测原 `[N,M]` LDS 布局虽然写入时更像转置散写，但更匹配后续 dV/dK GEMM 的 LDS 读取模式。因此该实验已回退，不采纳。
+
+## 2026-06-25 - dK AReg 与 WT16x32 warp tile 探索（未采纳）
+
+### 背景
+
+继续评估 `22_jenga_bwd_dkdv_pipeline` 的后续优化方向，重点关注：
+
+- 是否能把当前 `ASmemBSmem` 的某个 operand 改成 register tile，减少 LDS traffic。
+- dV/dK 是否能从 `WT16x16x64` 改成更宽的 `WT16x32x64`，让 N/D 方向覆盖更贴近 128bit vector load/store 和 64B cacheline。
+- 保持现有 Q/K/V/dO/dQ reload/DK/DV write 的 `int4` 128bit 连续访问快路径，不引入破坏 16B 对齐的 LDS/global access pattern。
+
+### dK AReg 实验结论
+
+- 尝试只把 dK 的 A operand `dS^T` 从 LDS 改成 register tile，保留 Q 作为 BSmem。
+- 当前 `dp_out/qk_out` 的分布是 `[M,N]`，而 dK A 需要 `[N,M]`。这不是同一线程内简单换索引，原 LDS 路径实际承担了跨 lane/跨 warp 的转置重排。
+- 直接使用 `transpose_tile2d(ds_t_reg, ds_mn_reg)` 编译失败，原因是输入/输出 distributed tensor 的 replication 和 hidden shape 不匹配。
+
+编译失败特征：
+
+```text
+transpose_tile2d: rs_lengths / hs_lengthss mismatch
+pack expansion contains parameter packs with different lengths
+```
+
+结论：dK AReg 方向不能只改 block gemm typedef。若继续推进，需要写专用 register shuffle/preshuffle，把 `[M,N]` 的 dS 正确重排到 dK A 的 `[N,M]` AReg distribution；这会增加 VGPR 和实现风险。
+
+### WT16x32x64 普通 MMAC 实验结论
+
+- 尝试把 dV/dK 从局部 `WT16x16x64_MR1NR1MI1NI1` 改成 `WT16x32x64_MR1NR1MI1NI2`。
+- 编译在 `load_tile` 的 LDS 读取处失败。
+
+编译失败特征：
+
+```text
+static assertion failed due to requirement 'd % load_store_traits::ScalarPerVector == 0'
+```
+
+结论：普通 NI2 形状会让部分 B operand LDS load 落到不满足 vector load 对齐的位置，和当前芯片 128bit 加载/64B cacheline 的优化目标冲突。因此不能只通过 policy 切换到 `WT16x32x64_NI2`。
+
+### WT16x32x64 TransC 实验结论
+
+- 尝试把 dV/dK 改成 CK 现有 alias `WarpGemmMmacBF16BF16F32_WT16x32x64_MR1NR2MI1NI1_TRANSC`。
+- 编译在 `MmacBlockGemmASmemBSmemCRegV1::MakeOuputLayout` 处失败，出现负长度 distributed tensor。
+
+编译失败特征：
+
+```text
+thread_buffer<float, -8>
+thread_buffer<float, -2>
+static_for<0, -1, 1>
+```
+
+结论：该 TransC alias 不能直接和当前 `ASmemBSmem` block gemm/output layout helper 组合。若继续推进，需要配套专用 block gemm、BReg/preshuffle，或重写 output layout。
+
+### 当前建议
+
+短期保留当前 `WT16x16x64 + ASmemBSmem` 方案。下一轮更值得尝试的方向：
+
+- 优先保持现有 `int4` 128bit global load/store 路径，减少 boundary 分支进入概率或扩大 fast path 覆盖。
+- 针对 dK AReg 只做专用 shuffle 原型，先用小 kernel 验证 distribution 正确性和 VGPR 增量，再接入主 pipeline。
+- 如果继续探索 `WT16x32`，应同时设计 B operand 的 register/preshuffle 路径，而不是只替换 warp tile。
+
+验证状态：失败实验均已回退，当前 baseline 可重新编译通过：
+
+```bash
+docker exec ck_yyc cmake --build /workspace/composable_kernel-dev-github/build --target tile_example_jenga_bwd_dkdv -j 4
+```
+
 ## 2026-06-25 - 复用 Softmax 寄存器结果与 dO LDS，减少重复计算/加载
 
 ### 改动内容
