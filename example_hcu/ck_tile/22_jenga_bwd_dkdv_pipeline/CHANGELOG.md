@@ -2,6 +2,178 @@
 
 本文档用于记录 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline` 的每次关键提交、优化思路、测试命令和测试结果，方便后续回溯。
 
+## 2026-06-26 - q_t-only XOR LDS swizzle 实验（已提交）
+
+### 实验内容
+
+- 新增 `MakeXorSimpleLdsDescriptor` / `MakeXorTransposedLdsDescriptor`，用 `KPack=8` 做 LDS 物理 XOR remap。
+- 最终只对 dK GEMM 的 `q_t` LDS tile 启用 XOR 物理布局与 transposed descriptor。
+- `Q/K/V/p_t/ds_t/do_t` 保持线性 LDS 布局，避免把复杂 XOR 寻址扩散到 softmax/dS 或 DP/DV 热路径。
+- 对比尝试过的完整 selective XOR（`do_t + q_t`）版本：正确但性能退化明显，因此没有采用 `do_t` XOR。
+
+### 验证结果
+
+在 `ck_yyc` 中绑定 GPU 4：
+
+```bash
+HSA_VISIBLE_DEVICES=4 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果正确：
+
+```text
+Average time: 0.676164 ms
+dK cosine=0.999995
+dV cosine=0.999995
+Validation: PASS
+```
+
+大 case 性能：
+
+```bash
+HSA_VISIBLE_DEVICES=4 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+```text
+Average time: 92.2857 ms
+```
+
+完整 selective XOR（`do_t + q_t`）对照：
+
+```text
+Correctness: PASS
+Average time: 206.347 ms
+```
+
+### 结论
+
+- `q_t-only XOR` 数值正确，但相对 GPU 4 baseline 约 `86.9 ms` 仍偏慢。
+- `do_t` 不适合启用 XOR：同一 LDS tile 同时服务 DV 的转置读和 DP 的普通读，启用 XOR 后两个 GEMM descriptor 都变复杂，代价远大于 bank conflict 收益。
+- 本提交保留 q_t-only XOR 版本，用于后续结合 profiler 继续分析 bank conflict、VGPR/scratch 与 scheduler stall 的权衡。
+
+## 2026-06-26 - BlockN=32 split-KV full-tile 实验（未采纳）
+
+### 实验内容
+
+- 新增 `BlockN=32` 的 full-tile specialization，尝试把原始 `64x64` KV block 拆成两个 `64x32` half block。
+- `start_n` 按 32 递增，reverse LUT / text block 判断仍映射回原始 64-block mask。
+- 目标是降低最大 LDS footprint，缓解 profiler 中观察到的 `thread group limit LDS = 1` 与 `Insufficient CU LDS` 问题。
+
+### 验证结果
+
+在 `ck_yyc` 中绑定 GPU 4：
+
+```bash
+HSA_VISIBLE_DEVICES=4 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果正确：
+
+```text
+Average time: 0.635202 ms
+dK cosine=0.999995
+dV cosine=0.999995
+Validation: PASS
+```
+
+大 case 性能：
+
+```bash
+HSA_VISIBLE_DEVICES=4 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+```text
+Average time: 127.331 ms
+```
+
+### 结论
+
+- 该实验数值正确，但性能明显慢于 `BlockN=64` baseline（GPU 4 上约 `86.9 ms`）。
+- 虽然 `BlockN=32` 理论上能降低 Q/K LDS footprint，但原始 mask 分块是 `64x64`，拆成两个 half block 会让 workgroup 数量翻倍，并重复执行 Q/dO 加载、softmax/dS sweep 与部分 LDS/GEMM 流程。
+- 重复计算和调度开销超过了 LDS footprint 降低的潜在收益，因此该实验已回退，不采纳。
+
+## 2026-06-26 - LDS descriptor swizzle 与 K/V register staging 实验（未采纳）
+
+### 测试口径
+
+在 `ck_yyc` 中绑定 GPU 4，性能数据统一使用历史对齐参数：
+
+```bash
+HSA_VISIBLE_DEVICES=4 /workspace/composable_kernel-dev-github/build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+当前干净 baseline：
+
+```text
+Average time: 86.8992 ms
+```
+
+### LDS descriptor XOR swizzle 实验
+
+- 将 `MakeSimpleLdsDescriptor` 改为基于 `KPack=8` 的 XOR transform descriptor。
+- `MakeTransposedLdsDescriptor` 复用 swizzled base descriptor 后再交换维度。
+- 目标是降低 profiler 中观察到的 LDS bank conflict。
+
+结果：
+
+```text
+Correctness: FAIL
+Average time: 254.771 ms
+dK cosine=0.00171289
+dV cosine=0.138595
+```
+
+结论：该 descriptor 破坏了现有 LDS 写入布局与 GEMM 读取描述之间的一致性，数值错误且性能严重退化，已回退。
+
+### Full-tile K/V register staging 实验
+
+- 在 `FullTile=true` 路径中，将当前 `kv_block` 的 K/V tile 用 `int4` 预先加载到寄存器数组。
+- active q-block loop 内复用寄存器值写入 LDS，减少 K/V global load 次数。
+
+结果：
+
+```text
+Correctness: PASS
+Average time: 88.5636 ms
+```
+
+结论：虽然正确，但比 baseline `86.8992 ms` 慢。推测增加的 VGPR/live range 与调度压力抵消了 global load 减少收益，已回退。
+
+### Full-tile K-only register staging 实验
+
+- 只对 K tile 做 `int4` register staging，V 保持 loop 内直接 global load。
+- 目标是降低 staging 寄存器压力，验证 K 复用是否单独有收益。
+
+结果：
+
+```text
+Correctness: PASS
+Average time: 88.0981 ms
+```
+
+结论：K-only 仍慢于 baseline，说明当前瓶颈不优先在 K/V 重复 global load；该实验已回退。
+
+### 当前判断
+
+- 继续保留现有 full-tile specialization baseline。
+- 短期不再优先做 K/V register staging。
+- LDS conflict 优化不能只替换 descriptor，需要同步设计 LDS 写入布局与 GEMM 读取 descriptor。
+
 ## 2026-06-26 - LDS Padding 性能优化扫参实验（未采纳）
 
 ### 实验内容
