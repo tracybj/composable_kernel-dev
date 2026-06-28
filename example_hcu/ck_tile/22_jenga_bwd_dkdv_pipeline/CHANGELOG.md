@@ -2,6 +2,43 @@
 
 本文档用于记录 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline` 的每次关键提交、优化思路、测试命令和测试结果，方便后续回溯。
 
+## 2026-06-28 - 恢复 86.9 ms 基线并清理历史接口残留
+
+### 改动内容
+
+- 以已验证的 `f294d2c` 为基线，放弃后续性能退化的 XOR、padding、shuffle 和未完成 BTRANS 实验路径。
+- 删除未被 kernel 使用的编译期 `MaxNnz` 模板参数。
+- 删除未实例化的 `jenga_bwd_dkdv_traits` 和 `JengaBwdDkdvTypeName`。
+- 从 kernel 参数中删除未使用的 `o_ptr`、`bias_ptr`、`block_mask_ptr` 和 `dq_tmp_ptr`。
+- 删除 example 中对应的无效 GPU buffer、Host-to-Device 拷贝和参数赋值。
+- 未改变 GEMM shape、LDS 布局、计算流程或 full-tile specialization。
+
+### 正确性验证
+
+```bash
+HSA_VISIBLE_DEVICES=7 ./build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=2 -n_q=256 -n_kv=256 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=10 \
+  -warmup=0 -repeat=1 -timer=gpu -v=1
+```
+
+结果：`Validation: PASS`，dK/dV cosine 均为 `0.999995`。
+
+### 性能验证
+
+```bash
+HSA_VISIBLE_DEVICES=7 ./build/bin/tile_example_jenga_bwd_dkdv \
+  -b=1 -h=40 -n_q=18048 -n_kv=18048 -d=128 -m0=64 -n0=64 \
+  -mask_type=random -k_active=93 \
+  -warmup=5 -repeat=10 -timer=gpu -v=0
+```
+
+三次结果：`86.8909 ms`、`86.8952 ms`、`86.8627 ms`，平均 `86.8829 ms`。清理前同提交复测平均约 `86.8919 ms`，性能保持不变。
+
+### 结论
+
+该版本作为后续优化的干净基线。新实验必须在独立分支中同时记录正确性、18K 性能、VGPR、LDS 和 scratch；只有优于本基线且无资源回退的版本才合入主线。
+
 ## 2026-06-26 - LDS Padding 性能优化扫参实验（未采纳）
 
 ### 实验内容

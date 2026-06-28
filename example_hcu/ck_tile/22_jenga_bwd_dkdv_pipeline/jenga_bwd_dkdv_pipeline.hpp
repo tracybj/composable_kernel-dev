@@ -26,7 +26,6 @@ struct JengaBwdDkdvPipeline
     static constexpr index_t BlockM          = Problem::BlockM;
     static constexpr index_t BlockN          = Problem::BlockN;
     static constexpr index_t HeadDim         = Problem::HeadDim;
-    static constexpr index_t MaxNnz          = Problem::MaxNnz;
     static constexpr index_t ThreadsPerBlock = Problem::ThreadsPerBlock;
 
     CK_TILE_DEVICE static void run(const jenga_bwd_dkdv_args& args,

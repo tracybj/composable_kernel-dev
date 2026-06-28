@@ -676,49 +676,39 @@ int run_jenga_bwd_dkdv_example(int argc, char* argv[])
     ck_tile::DeviceMem q_buf(q_numel * sizeof(QDataType));
     ck_tile::DeviceMem k_buf(kv_numel * sizeof(KDataType));
     ck_tile::DeviceMem v_buf(kv_numel * sizeof(VDataType));
-    ck_tile::DeviceMem o_buf(q_numel * sizeof(ODataType));
     ck_tile::DeviceMem do_buf(q_numel * sizeof(OGradDataType));
     ck_tile::DeviceMem delta_buf(lse_numel * sizeof(AccDataType));
     ck_tile::DeviceMem lse_buf(lse_numel * sizeof(LSEDataType));
     ck_tile::DeviceMem lse_text_buf(lse_numel * sizeof(LSEDataType));
-    ck_tile::DeviceMem block_mask_buf(mask_numel * sizeof(int32_t));
     ck_tile::DeviceMem rlut_buf(rlut.size() * sizeof(int32_t));
     ck_tile::DeviceMem rlut_size_buf(rlut_size.size() * sizeof(int32_t));
     ck_tile::DeviceMem seqlens_buf(B * sizeof(int32_t));
-    ck_tile::DeviceMem dq_tmp_buf(q_numel * sizeof(AccDataType));
     ck_tile::DeviceMem dk_buf(kv_numel * sizeof(KGradDataType));
     ck_tile::DeviceMem dv_buf(kv_numel * sizeof(VGradDataType));
 
     q_buf.ToDevice(q.data());
     k_buf.ToDevice(k.data());
     v_buf.ToDevice(v.data());
-    o_buf.ToDevice(o.data());
     do_buf.ToDevice(dout.data());
     delta_buf.ToDevice(delta.data());
     lse_buf.ToDevice(lse_for_pipeline.data());
     lse_text_buf.ToDevice(lse_text_for_pipeline.data());
-    block_mask_buf.ToDevice(block_mask.data());
     rlut_buf.ToDevice(rlut.data());
     rlut_size_buf.ToDevice(rlut_size.data());
     seqlens_buf.ToDevice(seqlens.data());
-    dq_tmp_buf.SetZero();
     dk_buf.SetZero();
     dv_buf.SetZero();
 
     args.q_ptr = q_buf.GetDeviceBuffer();
     args.k_ptr = k_buf.GetDeviceBuffer();
     args.v_ptr = v_buf.GetDeviceBuffer();
-    args.o_ptr = o_buf.GetDeviceBuffer();
     args.do_ptr = do_buf.GetDeviceBuffer();
     args.delta_ptr = delta_buf.GetDeviceBuffer();
     args.lse_ptr = lse_buf.GetDeviceBuffer();
     args.lse_text_ptr = lse_text_buf.GetDeviceBuffer();
-    args.bias_ptr = nullptr;
-    args.block_mask_ptr = static_cast<const int32_t*>(block_mask_buf.GetDeviceBuffer());
     args.rlut_ptr = static_cast<const int32_t*>(rlut_buf.GetDeviceBuffer());
     args.rlut_size_ptr = static_cast<const int32_t*>(rlut_size_buf.GetDeviceBuffer());
     args.seqlens_ptr = static_cast<const int32_t*>(seqlens_buf.GetDeviceBuffer());
-    args.dq_tmp_ptr = dq_tmp_buf.GetDeviceBuffer();
     args.dk_ptr = dk_buf.GetDeviceBuffer();
     args.dv_ptr = dv_buf.GetDeviceBuffer();
 
@@ -740,17 +730,13 @@ int run_jenga_bwd_dkdv_example(int argc, char* argv[])
         args.q_ptr = q.data();
         args.k_ptr = k.data();
         args.v_ptr = v.data();
-        args.o_ptr = o.data();
         args.do_ptr = dout.data();
         args.delta_ptr = delta.data();
         args.lse_ptr = lse.data();
         args.lse_text_ptr = nullptr;
-        args.bias_ptr = nullptr;
-        args.block_mask_ptr = block_mask.data();
         args.rlut_ptr = rlut.data();
         args.rlut_size_ptr = rlut_size.data();
         args.seqlens_ptr = seqlens.data();
-        args.dq_tmp_ptr = nullptr;
         args.dk_ptr = dk_ref.data();
         args.dv_ptr = dv_ref.data();
 
