@@ -26,6 +26,7 @@ struct JengaBwdDkdvPipeline
     static constexpr index_t BlockM          = Problem::BlockM;
     static constexpr index_t BlockN          = Problem::BlockN;
     static constexpr index_t HeadDim         = Problem::HeadDim;
+    static constexpr index_t MaxNnz          = Problem::MaxNnz;
     static constexpr index_t ThreadsPerBlock = Problem::ThreadsPerBlock;
 
     CK_TILE_DEVICE static void run(const jenga_bwd_dkdv_args& args,
@@ -35,6 +36,10 @@ struct JengaBwdDkdvPipeline
                                    ck_tile::index_t head,
                                    ck_tile::index_t seqlen)
     {
+        constexpr ck_tile::index_t DirectLoadElems = 4 / sizeof(KDataType);
+        constexpr ck_tile::index_t KDirectLoadIters =
+            (BlockN * HeadDim) / (DirectLoadElems * ThreadsPerBlock);
+
         constexpr auto qk_gemm = typename Policy::QKBlockGemm{};
         constexpr auto dv_gemm = typename Policy::DVBlockGemm{};
         constexpr auto dp_gemm = typename Policy::DPBlockGemm{};
@@ -134,13 +139,25 @@ struct JengaBwdDkdvPipeline
                     q_smem_vec[threadIdx.x + i * 256] = q_ptr_vec[threadIdx.x + i * 256];
                 }
 
-                const int4* k_ptr_vec = reinterpret_cast<const int4*>(k_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_kn);
-                int4* k_smem_vec = reinterpret_cast<int4*>(k_smem);
                 #pragma unroll
-                for(int i = 0; i < KVVecLoadIters; ++i)
+                for(int i = 0; i < KDirectLoadIters; ++i)
                 {
-                    k_smem_vec[threadIdx.x + i * 256] = k_ptr_vec[threadIdx.x + i * 256];
+                    const ck_tile::index_t lds_offset =
+                        (threadIdx.x + i * ThreadsPerBlock) * DirectLoadElems;
+                    const ck_tile::index_t n_rel = lds_offset / HeadDim;
+                    const ck_tile::index_t d     = lds_offset - n_rel * HeadDim;
+                    const ck_tile::index_t global_offset =
+                        (start_n + n_rel) * args.stride_kn + d * args.stride_kd;
+
+                    ck_tile::amd_direct_load_global_to_lds<KDataType, DirectLoadElems>(
+                        k_ptr,
+                        global_offset,
+                        k_smem,
+                        lds_offset,
+                        true,
+                        args.N_KV * args.stride_kn);
                 }
+                ck_tile::async_load_fence();
             }
             else if(!is_boundary)
             {

@@ -2,6 +2,35 @@
 
 本文档用于记录 `example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline` 的每次关键提交、优化思路、测试命令和测试结果，方便后续回溯。
 
+## 2026-06-29 - K global-to-LDS direct load（保留）
+
+### 改动
+
+- 仅将 full-tile K 搬运从 `global_load_dwordx4 + ds_write_b128` 改为
+  `amd_direct_load_global_to_lds` 的 4-byte global-to-LDS 直达加载。
+- Q/V/dO 搬运、LDS 布局、GEMM shape 和 fallback kernel 均保持不变。
+- gfx936 ISA 已生成 `s_mov_b32 m0` 和 `buffer_load_dword ... lds`，K payload
+  不再经过临时 VGPR 和显式 `ds_write`。
+
+### 正确性与资源
+
+- full-tile 小规模验证 PASS，dK/dV cosine 均为 `0.999995`。
+- full-tile kernel：LDS `32768` bytes、scratch `0`、VGPR `254`，干净基线约为
+  `240` VGPR。额外 VGPR 来自手写展开的 16 组 direct-load 地址状态，后续可用静态
+  tile distribution 和递增 `m0` 继续优化。
+
+### 性能
+
+`N=18048`、`k_active=93`、warmup 5、repeat 10，严格串行三次：
+
+```text
+85.9683 ms
+85.9607 ms
+85.9503 ms
+```
+
+干净基线平均 `86.8829 ms`，稳定提升约 `0.92 ms`（`1.1%`），保留该版本。
+
 ## 2026-06-28 - 恢复 86.9 ms 基线并清理历史接口残留
 
 ### 改动内容
