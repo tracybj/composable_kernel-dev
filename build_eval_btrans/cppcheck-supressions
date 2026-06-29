@@ -1,0 +1,12 @@
+ConfigurationNotChecked
+constStatement
+duplicateCondition
+noExplicitConstructor
+passedByValue
+preprocessorErrorDirective
+shadowVariable
+unusedFunction
+unusedPrivateFunction
+unusedStructMember
+unmatchedSuppression
+*:/usr/*

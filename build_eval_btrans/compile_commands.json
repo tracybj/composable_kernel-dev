@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/library/src/utility",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/device_memory.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/device_memory.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/device_memory.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/device_memory.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/library/src/utility",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/host_tensor.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/host_tensor.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/host_tensor.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/host_tensor.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/library/src/utility",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/convolution_parameter.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/convolution_parameter.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/convolution_parameter.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/convolution_parameter.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profiler.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profiler.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profiler.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profiler.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_data.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_data.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_data.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_data.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_weight.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_weight.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_weight.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_weight.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_layout_transform.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_layout_transform.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_layout_transform.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_layout_transform.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_relu.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_relu.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_relu.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_relu.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans/profiler/src",
+  "command": "/usr/bin/c++ -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -isystem /opt/dtk/hip/include -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_add_relu.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_add_relu.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_add_relu.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_add_relu.cpp.o"
+}
+]

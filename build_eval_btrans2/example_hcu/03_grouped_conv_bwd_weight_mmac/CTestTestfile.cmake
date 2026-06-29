@@ -1,0 +1,16 @@
+# CMake generated Testfile for 
+# Source directory: /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac
+# Build directory: /workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(example_grouped_conv_bwd_weight_mmac_nhwc_fp16 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_weight_mmac_nhwc_fp16")
+set_tests_properties(example_grouped_conv_bwd_weight_mmac_nhwc_fp16 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;3;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_weight_mmac_nchwc32_fp16 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_weight_mmac_nchwc32_fp16")
+set_tests_properties(example_grouped_conv_bwd_weight_mmac_nchwc32_fp16 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;4;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16")
+set_tests_properties(example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;5;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet")
+set_tests_properties(example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;6;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_weight_mmac_nchw_v2_fp16 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_weight_mmac_nchw_v2_fp16")
+set_tests_properties(example_grouped_conv_bwd_weight_mmac_nchw_v2_fp16 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;7;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeLists.txt;0;")

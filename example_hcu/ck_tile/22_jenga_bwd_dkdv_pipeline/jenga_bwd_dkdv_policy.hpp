@@ -212,6 +212,48 @@ CK_TILE_HOST_DEVICE constexpr auto MakeTransposedLdsDescriptor()
         ck_tile::make_tuple(ck_tile::sequence<1>{}, ck_tile::sequence<0>{}));
 }
 
+template <ck_tile::index_t M, ck_tile::index_t K, ck_tile::index_t KPack = 8>
+CK_TILE_HOST_DEVICE constexpr auto MakeXorSimpleLdsDescriptor()
+{
+    constexpr auto desc_0 = ck_tile::make_naive_tensor_descriptor(
+        ck_tile::make_tuple(ck_tile::number<K / KPack>{},
+                            ck_tile::number<M>{},
+                            ck_tile::number<KPack>{}),
+        ck_tile::make_tuple(ck_tile::number<KPack>{}, ck_tile::number<K>{}, ck_tile::number<1>{}),
+        ck_tile::number<KPack>{},
+        ck_tile::number<1>{});
+
+    constexpr auto desc_permuted = ck_tile::transform_tensor_descriptor(
+        desc_0,
+        ck_tile::make_tuple(ck_tile::make_xor_transform(ck_tile::make_tuple(ck_tile::number<M>{},
+                                                                           ck_tile::number<K / KPack>{})),
+                            ck_tile::make_pass_through_transform(ck_tile::number<KPack>{})),
+        ck_tile::make_tuple(ck_tile::sequence<1, 0>{}, ck_tile::sequence<2>{}),
+        ck_tile::make_tuple(ck_tile::sequence<1, 0>{}, ck_tile::sequence<2>{}));
+
+    constexpr auto desc_final = ck_tile::transform_tensor_descriptor(
+        desc_permuted,
+        ck_tile::make_tuple(ck_tile::make_pass_through_transform(ck_tile::number<M>{}),
+                            ck_tile::make_merge_transform_v3_division_mod(
+                                ck_tile::make_tuple(ck_tile::number<K / KPack>{}, ck_tile::number<KPack>{}))),
+        ck_tile::make_tuple(ck_tile::sequence<1>{}, ck_tile::sequence<0, 2>{}),
+        ck_tile::make_tuple(ck_tile::sequence<0>{}, ck_tile::sequence<1>{}));
+
+    return desc_final;
+}
+
+template <ck_tile::index_t K, ck_tile::index_t M, ck_tile::index_t KPack = 8>
+CK_TILE_HOST_DEVICE constexpr auto MakeXorTransposedLdsDescriptor()
+{
+    const auto desc_raw_xor = MakeXorSimpleLdsDescriptor<M, K, KPack>();
+
+    return ck_tile::transform_tensor_descriptor(
+        desc_raw_xor,
+        ck_tile::make_tuple(ck_tile::make_pass_through_transform(ck_tile::number<M>{}),
+                            ck_tile::make_pass_through_transform(ck_tile::number<K>{})),
+        ck_tile::make_tuple(ck_tile::sequence<0>{}, ck_tile::sequence<1>{}),
+        ck_tile::make_tuple(ck_tile::sequence<1>{}, ck_tile::sequence<0>{}));
+}
 
 template <ck_tile::index_t M, ck_tile::index_t N, typename BlockGemm, typename AccTile, typename AccDataType>
 CK_TILE_DEVICE void StoreMmacOutputTileToLdsRowMajor(const BlockGemm& block_gemm,

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../lib/libutility.a CMakeFiles/utility.dir/device_memory.cpp.o CMakeFiles/utility.dir/host_tensor.cpp.o CMakeFiles/utility.dir/convolution_parameter.cpp.o
+/usr/bin/ranlib ../../../lib/libutility.a

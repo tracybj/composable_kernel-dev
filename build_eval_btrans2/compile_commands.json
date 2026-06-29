@@ -1,0 +1,278 @@
+[
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/library/src/utility",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/device_memory.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/device_memory.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/device_memory.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/device_memory.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/library/src/utility",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/host_tensor.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/host_tensor.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/host_tensor.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/host_tensor.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/library/src/utility",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -xhip --offload-arch=gfx936 -o CMakeFiles/utility.dir/convolution_parameter.cpp.o -c /workspace/composable_kernel-dev-github/library/src/utility/convolution_parameter.cpp",
+  "file": "/workspace/composable_kernel-dev-github/library/src/utility/convolution_parameter.cpp",
+  "output": "library/src/utility/CMakeFiles/utility.dir/convolution_parameter.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.dir/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/01_grouped_conv_fwd_mmac/CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.dir/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.dir/grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/01_grouped_conv_fwd_mmac/CMakeFiles/example_grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.dir/grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.dir/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp",
+  "output": "example_hcu/01_grouped_conv_fwd_mmac/CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.dir/grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_fp8.dir/grouped_conv_fwd_mmac_nhwc_fp8.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_fp8.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_fp8.cpp",
+  "output": "example_hcu/01_grouped_conv_fwd_mmac/CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_fp8.dir/grouped_conv_fwd_mmac_nhwc_fp8.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_int4.dir/grouped_conv_fwd_mmac_nhwc_int4.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_int4.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/grouped_conv_fwd_mmac_nhwc_int4.cpp",
+  "output": "example_hcu/01_grouped_conv_fwd_mmac/CMakeFiles/example_grouped_conv_fwd_mmac_nhwc_int4.dir/grouped_conv_fwd_mmac_nhwc_int4.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/02_grouped_conv_bwd_data_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.dir/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/02_grouped_conv_bwd_data_mmac/CMakeFiles/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.dir/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/02_grouped_conv_bwd_data_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.dir/grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/02_grouped_conv_bwd_data_mmac/CMakeFiles/example_grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.dir/grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/02_grouped_conv_bwd_data_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.dir/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp",
+  "output": "example_hcu/02_grouped_conv_bwd_data_mmac/CMakeFiles/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.dir/grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_fp16.dir/grouped_conv_bwd_weight_mmac_nhwc_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_fp16.cpp",
+  "output": "example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_fp16.dir/grouped_conv_bwd_weight_mmac_nhwc_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_weight_mmac_nchwc32_fp16.dir/grouped_conv_bwd_weight_mmac_nchwc32_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nchwc32_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nchwc32_fp16.cpp",
+  "output": "example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeFiles/example_grouped_conv_bwd_weight_mmac_nchwc32_fp16.dir/grouped_conv_bwd_weight_mmac_nchwc32_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.dir/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.cpp",
+  "output": "example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.dir/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.dir/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.cpp",
+  "output": "example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeFiles/example_grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.dir/grouped_conv_bwd_weight_mmac_nhwc_v2_fp16_wavelet.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/03_grouped_conv_bwd_weight_mmac",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_bwd_weight_mmac_nchw_v2_fp16.dir/grouped_conv_bwd_weight_mmac_nchw_v2_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nchw_v2_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/03_grouped_conv_bwd_weight_mmac/grouped_conv_bwd_weight_mmac_nchw_v2_fp16.cpp",
+  "output": "example_hcu/03_grouped_conv_bwd_weight_mmac/CMakeFiles/example_grouped_conv_bwd_weight_mmac_nchw_v2_fp16.dir/grouped_conv_bwd_weight_mmac_nchw_v2_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/04_tensor_layout_transform",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_tensor_layout_transform_ngchw_ngchwc32_fp16.dir/layout_transform_ngchw_ngchwc32_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/04_tensor_layout_transform/layout_transform_ngchw_ngchwc32_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/04_tensor_layout_transform/layout_transform_ngchw_ngchwc32_fp16.cpp",
+  "output": "example_hcu/04_tensor_layout_transform/CMakeFiles/example_tensor_layout_transform_ngchw_ngchwc32_fp16.dir/layout_transform_ngchw_ngchwc32_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nt_fp16.dir/gemm_mmac_nt_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nt_fp16.dir/gemm_mmac_nt_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_tn_v2_fp16.dir/gemm_mmac_tn_v2_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_tn_v2_fp16.dir/gemm_mmac_tn_v2_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_tn_v2_fp16_cshuffle.dir/gemm_mmac_tn_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_tn_v2_fp16_cshuffle.dir/gemm_mmac_tn_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_tt_v2_fp16_cshuffle.dir/gemm_mmac_tt_v2_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tt_v2_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tt_v2_fp16_cshuffle.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_tt_v2_fp16_cshuffle.dir/gemm_mmac_tt_v2_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nn_v1_fp16_cshuffle.dir/gemm_mmac_nn_v1_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nn_v1_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nn_v1_fp16_cshuffle.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nn_v1_fp16_cshuffle.dir/gemm_mmac_nn_v1_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle.dir/gemm_mmac_nt_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle.dir/gemm_mmac_nt_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_a.dir/gemm_mmac_nt_fp16_cshuffle_a.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_a.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_a.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_a.dir/gemm_mmac_nt_fp16_cshuffle_a.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_b.dir/gemm_mmac_nt_fp16_cshuffle_b.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_b.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_b.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_b.dir/gemm_mmac_nt_fp16_cshuffle_b.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_c.dir/gemm_mmac_nt_fp16_cshuffle_c.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_c.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_nt_fp16_cshuffle_c.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_nt_fp16_cshuffle_c.dir/gemm_mmac_nt_fp16_cshuffle_c.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_tn_v2_fp16_cshuffle_nm.dir/gemm_mmac_tn_v2_fp16_cshuffle_nm.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16_cshuffle_nm.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tn_v2_fp16_cshuffle_nm.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_tn_v2_fp16_cshuffle_nm.dir/gemm_mmac_tn_v2_fp16_cshuffle_nm.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/05_gemm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_mmac_tt_v2_fp16_cshuffle_nm.dir/gemm_mmac_tt_v2_fp16_cshuffle_nm.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tt_v2_fp16_cshuffle_nm.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/05_gemm/gemm_mmac_tt_v2_fp16_cshuffle_nm.cpp",
+  "output": "example_hcu/05_gemm/CMakeFiles/example_gemm_mmac_tt_v2_fp16_cshuffle_nm.dir/gemm_mmac_tt_v2_fp16_cshuffle_nm.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/06_gemm_bias_activation",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_bias_relu_mmac_fp16.dir/gemm_bias_relu_mmac_fp16.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/06_gemm_bias_activation/gemm_bias_relu_mmac_fp16.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/06_gemm_bias_activation/gemm_bias_relu_mmac_fp16.cpp",
+  "output": "example_hcu/06_gemm_bias_activation/CMakeFiles/example_gemm_bias_relu_mmac_fp16.dir/gemm_bias_relu_mmac_fp16.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/06_gemm_bias_activation",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_gemm_bias_relu_mmac_fp16_wavelet.dir/gemm_bias_relu_mmac_fp16_wavelet.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/06_gemm_bias_activation/gemm_bias_relu_mmac_fp16_wavelet.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/06_gemm_bias_activation/gemm_bias_relu_mmac_fp16_wavelet.cpp",
+  "output": "example_hcu/06_gemm_bias_activation/CMakeFiles/example_gemm_bias_relu_mmac_fp16_wavelet.dir/gemm_bias_relu_mmac_fp16_wavelet.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/07_grouped_conv_fwd_bias_activation",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -mllvm -support-768-vgprs=true -Rpass-analysis=kernel-resource-usage --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.dir/grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/07_grouped_conv_fwd_bias_activation/grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/07_grouped_conv_fwd_bias_activation/grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.cpp",
+  "output": "example_hcu/07_grouped_conv_fwd_bias_activation/CMakeFiles/example_grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.dir/grouped_conv_fwd_bias_relu_mmac_nhwc_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/08_batchnorm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_batchnorm_backward.dir/batchnorm_backward_nchw.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/08_batchnorm/batchnorm_backward_nchw.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/08_batchnorm/batchnorm_backward_nchw.cpp",
+  "output": "example_hcu/08_batchnorm/CMakeFiles/example_batchnorm_backward.dir/batchnorm_backward_nchw.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/08_batchnorm",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_batchnorm_forward_training.dir/batchnorm_forward_training_nchw.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/08_batchnorm/batchnorm_forward_training_nchw.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/08_batchnorm/batchnorm_forward_training_nchw.cpp",
+  "output": "example_hcu/08_batchnorm/CMakeFiles/example_batchnorm_forward_training.dir/batchnorm_forward_training_nchw.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/09_grouped_conv_fwd_bias_add_activation",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -mllvm -support-768-vgprs=true -Rpass-analysis=kernel-resource-usage --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/example_grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.dir/grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/09_grouped_conv_fwd_bias_add_activation/grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/09_grouped_conv_fwd_bias_add_activation/grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.cpp",
+  "output": "example_hcu/09_grouped_conv_fwd_bias_add_activation/CMakeFiles/example_grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.dir/grouped_conv_fwd_bias_add_relu_mmac_nhwc_fp16_cshuffle.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/ck_tile/20_jenga_bwd_dq",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -Wno-undefined-func-template -Wno-float-equal -save-temps -xhip -o CMakeFiles/tile_example_jenga_bwd_dq.dir/example_jenga_bwd_dq.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq/example_jenga_bwd_dq.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq/example_jenga_bwd_dq.cpp",
+  "output": "example_hcu/ck_tile/20_jenga_bwd_dq/CMakeFiles/tile_example_jenga_bwd_dq.dir/example_jenga_bwd_dq.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/ck_tile/20_jenga_bwd_dq",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -Wno-undefined-func-template -Wno-float-equal -save-temps -xhip -o CMakeFiles/tile_example_jenga_bwd_dq.dir/jenga_bwd_dq.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq/jenga_bwd_dq.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/ck_tile/20_jenga_bwd_dq/jenga_bwd_dq.cpp",
+  "output": "example_hcu/ck_tile/20_jenga_bwd_dq/CMakeFiles/tile_example_jenga_bwd_dq.dir/jenga_bwd_dq.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -mllvm -amdgpu-spill-vgpr-to-agpr=true -xhip -o CMakeFiles/tile_example_jenga_bwd_dkdv.dir/jenga_bwd_dkdv.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline/jenga_bwd_dkdv.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline/jenga_bwd_dkdv.cpp",
+  "output": "example_hcu/ck_tile/22_jenga_bwd_dkdv_pipeline/CMakeFiles/tile_example_jenga_bwd_dkdv.dir/jenga_bwd_dkdv.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/ck_tile/23_jenga_preprocess",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/tile_example_jenga_bwd_preprocess.dir/jenga_bwd_preprocess.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/ck_tile/23_jenga_preprocess/jenga_bwd_preprocess.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/ck_tile/23_jenga_preprocess/jenga_bwd_preprocess.cpp",
+  "output": "example_hcu/ck_tile/23_jenga_preprocess/CMakeFiles/tile_example_jenga_bwd_preprocess.dir/jenga_bwd_preprocess.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/ck_tile/24_jenga_lut",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -I/workspace/composable_kernel-dev-github/example_hcu/ck_tile -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension --offload-arch=gfx936 -Xarch_gfx936 -mllvm=-enable-num-vgprs-768=true -xhip -o CMakeFiles/tile_example_jenga_lut.dir/jenga_lut.cpp.o -c /workspace/composable_kernel-dev-github/example_hcu/ck_tile/24_jenga_lut/jenga_lut.cpp",
+  "file": "/workspace/composable_kernel-dev-github/example_hcu/ck_tile/24_jenga_lut/jenga_lut.cpp",
+  "output": "example_hcu/ck_tile/24_jenga_lut/CMakeFiles/tile_example_jenga_lut.dir/jenga_lut.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profiler.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profiler.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profiler.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profiler.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_data.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_data.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_data.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_data.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_weight.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_weight.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_bwd_weight.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_bwd_weight.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_layout_transform.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_layout_transform.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_layout_transform.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_layout_transform.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_relu.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_relu.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_relu.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_relu.cpp.o"
+},
+{
+  "directory": "/workspace/composable_kernel-dev-github/build_eval_btrans2/profiler/src",
+  "command": "/opt/dtk/bin/aicc -DCK_EXPERIMENTAL_BIT_INT_EXTENSION -D__HIP_PLATFORM_AMD__=1 -D__HIP_PLATFORM_HCC__=1 -D__HIP_ROCclr__=1 -I/workspace/composable_kernel-dev-github/profiler/include -I/workspace/composable_kernel-dev-github/library/include -I/workspace/composable_kernel-dev-github/include -isystem /opt/dtk/llvm/lib/clang/17.0.0/include/.. -DJENGA_DKDV_EXPERIMENT_BTRANS -O3 -DNDEBUG -std=c++17   -w -w -Wno-bit-int-extension -Wno-global-constructors -xhip --offload-arch=gfx936 -o CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_add_relu.cpp.o -c /workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_add_relu.cpp",
+  "file": "/workspace/composable_kernel-dev-github/profiler/src/profile_grouped_conv_fwd_bias_add_relu.cpp",
+  "output": "profiler/src/CMakeFiles/ckProfiler.dir/profile_grouped_conv_fwd_bias_add_relu.cpp.o"
+}
+]

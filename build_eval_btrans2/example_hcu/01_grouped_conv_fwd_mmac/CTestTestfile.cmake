@@ -1,0 +1,16 @@
+# CMake generated Testfile for 
+# Source directory: /workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac
+# Build directory: /workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/01_grouped_conv_fwd_mmac
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle")
+set_tests_properties(example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;11;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle")
+set_tests_properties(example_grouped_conv_fwd_mmac_nchw_v2_fp16_cshuffle PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;12;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed")
+set_tests_properties(example_grouped_conv_fwd_mmac_nhwc_v2_fp16_cshuffle_mixed PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;13;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_fwd_mmac_nhwc_fp8 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_fwd_mmac_nhwc_fp8")
+set_tests_properties(example_grouped_conv_fwd_mmac_nhwc_fp8 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;28;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_fwd_mmac_nhwc_int4 "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_fwd_mmac_nhwc_int4")
+set_tests_properties(example_grouped_conv_fwd_mmac_nhwc_int4 PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;29;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/01_grouped_conv_fwd_mmac/CMakeLists.txt;0;")

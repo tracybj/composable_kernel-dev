@@ -29,6 +29,12 @@ struct JengaBwdDkdvPipeline
     static constexpr index_t MaxNnz          = Problem::MaxNnz;
     static constexpr index_t ThreadsPerBlock = Problem::ThreadsPerBlock;
 
+    template <ck_tile::index_t K, ck_tile::index_t KPack = 8>
+    CK_TILE_DEVICE static constexpr ck_tile::index_t GetXorLdsOffset(ck_tile::index_t m, ck_tile::index_t k)
+    {
+        return m * K + ((k / KPack) ^ (m % (K / KPack))) * KPack + (k % KPack);
+    }
+
     CK_TILE_DEVICE static void run(const jenga_bwd_dkdv_args& args,
                                    ck_tile::index_t kv_block,
                                    ck_tile::index_t off_hz,
@@ -288,6 +294,8 @@ struct JengaBwdDkdvPipeline
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
+                int4* do_t_smem_base =
+                    reinterpret_cast<int4*>(do_t_smem + thread_m_rel * HeadDim + thread_d);
                 #pragma unroll
                 for(int i = 0; i < TransposedMVecIters; ++i)
                 {
@@ -295,14 +303,15 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
                     int4 val = *do_ptr_vec;
-                    int4* do_t_smem_vec = reinterpret_cast<int4*>(do_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
-                    *do_t_smem_vec = val;
+                    do_t_smem_base[i * 256] = val;
                 }
             }
             else if(can_vectorize_transposed_do)
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
+                int4* do_t_smem_base =
+                    reinterpret_cast<int4*>(do_t_smem + thread_m_rel * HeadDim + thread_d);
                 #pragma unroll
                 for(int i = 0; i < TransposedMVecIters; ++i)
                 {
@@ -310,8 +319,7 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
                     int4 val = *do_ptr_vec;
-                    int4* do_t_smem_vec = reinterpret_cast<int4*>(do_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
-                    *do_t_smem_vec = val;
+                    do_t_smem_base[i * 256] = val;
                 }
             }
             else
@@ -447,6 +455,10 @@ struct JengaBwdDkdvPipeline
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
+                const int k_outer      = thread_d >> 3;
+                const int k_outer_phys = k_outer ^ thread_m_rel;
+                int4* q_t_smem_base =
+                    reinterpret_cast<int4*>(q_t_smem + thread_m_rel * HeadDim + k_outer_phys * 8);
                 #pragma unroll
                 for(int i = 0; i < TransposedMVecIters; ++i)
                 {
@@ -454,14 +466,17 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
                     int4 val = *q_ptr_vec;
-                    int4* q_t_smem_vec = reinterpret_cast<int4*>(q_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
-                    *q_t_smem_vec = val;
+                    q_t_smem_base[i * 256] = val;
                 }
             }
             else if(can_vectorize_transposed_q)
             {
                 const int thread_m_rel = threadIdx.x >> 4;
                 const int thread_d     = (threadIdx.x & 15) << 3;
+                const int k_outer      = thread_d >> 3;
+                const int k_outer_phys = k_outer ^ thread_m_rel;
+                int4* q_t_smem_base =
+                    reinterpret_cast<int4*>(q_t_smem + thread_m_rel * HeadDim + k_outer_phys * 8);
                 #pragma unroll
                 for(int i = 0; i < TransposedMVecIters; ++i)
                 {
@@ -469,8 +484,7 @@ struct JengaBwdDkdvPipeline
                     int m = q_start + m_rel;
                     const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
                     int4 val = *q_ptr_vec;
-                    int4* q_t_smem_vec = reinterpret_cast<int4*>(q_t_smem + static_cast<ck_tile::long_index_t>(m_rel) * HeadDim + thread_d);
-                    *q_t_smem_vec = val;
+                    q_t_smem_base[i * 256] = val;
                 }
             }
             else
@@ -481,7 +495,7 @@ struct JengaBwdDkdvPipeline
                     const ck_tile::index_t m_rel = linear / HeadDim;
                     const ck_tile::index_t d     = linear - m_rel * HeadDim;
                     const ck_tile::index_t m     = q_start + m_rel;
-                    q_t_smem[linear] =
+                    q_t_smem[GetXorLdsOffset<HeadDim, 8>(m_rel, d)] =
                         (m < args.N_Q && m < seqlen && d < args.D)
                             ? q_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_qm +
                                     static_cast<ck_tile::long_index_t>(d) * args.stride_qd]
@@ -494,7 +508,7 @@ struct JengaBwdDkdvPipeline
             auto ds_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
                 ds_t_smem, MakeSimpleLdsDescriptor<BlockN, BlockM>());
             auto q_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                q_t_smem, MakeTransposedLdsDescriptor<HeadDim, BlockM>());
+                q_t_smem, MakeXorTransposedLdsDescriptor<HeadDim, BlockM>());
 
             auto ds_t_lds_window = ck_tile::make_tile_window(
                 ds_t_lds_view,

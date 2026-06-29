@@ -1,0 +1,12 @@
+# CMake generated Testfile for 
+# Source directory: /workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac
+# Build directory: /workspace/composable_kernel-dev-github/build_eval_btrans2/example_hcu/02_grouped_conv_bwd_data_mmac
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle")
+set_tests_properties(example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;9;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle")
+set_tests_properties(example_grouped_conv_bwd_data_mmac_nchw_v2_fp16_cshuffle PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;10;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;0;")
+add_test(example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed "/workspace/composable_kernel-dev-github/build_eval_btrans2/bin/example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed")
+set_tests_properties(example_grouped_conv_bwd_data_mmac_nhwc_v2_fp16_cshuffle_mixed PROPERTIES  _BACKTRACE_TRIPLES "/workspace/composable_kernel-dev-github/example_hcu/CMakeLists.txt;14;add_test;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;11;add_example_executable;/workspace/composable_kernel-dev-github/example_hcu/02_grouped_conv_bwd_data_mmac/CMakeLists.txt;0;")
