@@ -11,7 +11,7 @@ namespace ck_tile {
 namespace example {
 namespace jenga {
 
-template <typename Problem, typename Policy = JengaBwdDkdvDefaultPolicy<Problem>, bool FullTile = false>
+template <typename Problem, typename Policy = JengaBwdDkdvDefaultPolicy<Problem>>
 struct JengaBwdDkdvPipeline
 {
     using QDataType     = typename Problem::QDataType;
@@ -29,12 +29,6 @@ struct JengaBwdDkdvPipeline
     static constexpr index_t MaxNnz          = Problem::MaxNnz;
     static constexpr index_t ThreadsPerBlock = Problem::ThreadsPerBlock;
 
-    template <ck_tile::index_t K, ck_tile::index_t KPack = 8>
-    CK_TILE_DEVICE static constexpr ck_tile::index_t GetXorLdsOffset(ck_tile::index_t m, ck_tile::index_t k)
-    {
-        return m * K + ((k / KPack) ^ (m % (K / KPack))) * KPack + (k % KPack);
-    }
-
     CK_TILE_DEVICE static void run(const jenga_bwd_dkdv_args& args,
                                    ck_tile::index_t kv_block,
                                    ck_tile::index_t off_hz,
@@ -42,14 +36,28 @@ struct JengaBwdDkdvPipeline
                                    ck_tile::index_t head,
                                    ck_tile::index_t seqlen)
     {
-        constexpr ck_tile::index_t DirectLoadElems = 4 / sizeof(KDataType);
-        constexpr ck_tile::index_t KDirectLoadIters =
-            (BlockN * HeadDim) / (DirectLoadElems * ThreadsPerBlock);
+        run_impl<true, true>(args, kv_block, off_hz, batch, head, seqlen);
+    }
 
+    template <bool ComputeDV, bool ComputeDK>
+    CK_TILE_DEVICE static void run_impl(const jenga_bwd_dkdv_args& args,
+                                        ck_tile::index_t kv_block,
+                                        ck_tile::index_t off_hz,
+                                        ck_tile::index_t batch,
+                                        ck_tile::index_t head,
+                                        ck_tile::index_t seqlen)
+    {
         constexpr auto qk_gemm = typename Policy::QKBlockGemm{};
+        constexpr auto qk_areg_bsmem_gemm = typename Policy::QKARegBSmemBlockGemm{};
+        constexpr auto qk_chunk_asmem_breg_gemm = typename Policy::QKChunkASmemBRegBlockGemm{};
         constexpr auto dv_gemm = typename Policy::DVBlockGemm{};
+        constexpr auto dv_breg_gemm = typename Policy::DVBRegBlockGemm{};
+        constexpr auto dv_k32_breg_gemm = typename Policy::DVK32BRegBlockGemm{};
         constexpr auto dp_gemm = typename Policy::DPBlockGemm{};
+        constexpr auto dp_k32_gemm = typename Policy::DPK32BlockGemm{};
+        constexpr auto dp_k32_areg_breg_gemm = typename Policy::DPK32ARegBRegBlockGemm{};
         constexpr auto dk_gemm = typename Policy::DKBlockGemm{};
+        constexpr auto dk_k32_breg_gemm = typename Policy::DKK32BRegBlockGemm{};
         const ck_tile::index_t start_n = kv_block * BlockN;
 
         const QDataType* q_ptr =
@@ -101,22 +109,151 @@ struct JengaBwdDkdvPipeline
         const float scale_log2e  = args.sm_scale * qk_scale;
         constexpr int QVecLoadIters = (BlockM * HeadDim) / (8 * ThreadsPerBlock);
         constexpr int KVVecLoadIters = (BlockN * HeadDim) / (8 * ThreadsPerBlock);
+        constexpr int QKChunk = JengaMmacQKChunkConfig::kK;
+        constexpr int QKSubN = 32;
+        constexpr int QKDChunks = HeadDim / QKChunk;
+        static_assert(HeadDim == QKDChunks * QKChunk, "dV split-QK path expects even chunks");
+        static_assert(QKDChunks == 4, "dV fwd-style QK path currently expects four 32-wide chunks");
+        static_assert(BlockN == 2 * QKSubN, "dV split-N QK path expects BlockN=64");
         constexpr int TransposedMVecIters = BlockM / 16;
 
         __shared__ typename Policy::LdsStorage smem;
 
-        const bool block_is_boundary =
-            FullTile ? false : ((start_n + BlockN > seqlen) || (args.D < HeadDim));
+        const bool block_is_boundary = (start_n + BlockN > seqlen) || (args.D < HeadDim);
         const bool block_can_vectorize_transposed_do = (args.stride_dom % 8 == 0) && (args.stride_dod == 1) && (reinterpret_cast<std::uintptr_t>(do_ptr) % 16 == 0);
         const bool block_can_vectorize_transposed_q  = (args.stride_qm % 8 == 0) && (args.stride_qd == 1) && (reinterpret_cast<std::uintptr_t>(q_ptr) % 16 == 0);
 
-        auto dv_acc = decltype(dv_gemm.MakeCBlockTile()){};
-        auto dk_acc = decltype(dk_gemm.MakeCBlockTile()){};
-        ck_tile::clear_tile(dv_acc);
-        ck_tile::clear_tile(dk_acc);
+        auto dv_acc = decltype(dv_breg_gemm.MakeCBlockTile()){};
+        auto dk_acc = decltype(dk_k32_breg_gemm.MakeCBlockTile()){};
+        if constexpr(ComputeDV)
+        {
+            ck_tile::clear_tile(dv_acc);
+        }
+        if constexpr(ComputeDK)
+        {
+            ck_tile::clear_tile(dk_acc);
+        }
 
-        QDataType* q_smem = smem.qk_input.q;
-        KDataType* k_smem = smem.qk_input.k;
+        auto load_do_t_breg = [&](ck_tile::index_t q_start) {
+            auto do_t_dram_view =
+                ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                    do_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_dom,
+                    ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
+                    ck_tile::make_tuple(args.stride_dod, args.stride_dom),
+                    ck_tile::number<1>{},
+                    ck_tile::number<1>{});
+            auto do_t_breg = dv_breg_gemm.MakeBBlockTile();
+            auto do_t_dram_window = ck_tile::make_tile_window(
+                do_t_dram_view,
+                ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
+                ck_tile::multi_index<2>{0, 0},
+                do_t_breg.get_tile_distribution());
+            return ck_tile::load_tile(do_t_dram_window);
+        };
+
+        auto load_q_t_k32_breg = [&](ck_tile::index_t q_start, ck_tile::index_t k_base) {
+            auto q_t_dram_view =
+                ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                    q_ptr + static_cast<ck_tile::long_index_t>(q_start + k_base) * args.stride_qm,
+                    ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
+                    ck_tile::make_tuple(args.stride_qd, args.stride_qm),
+                    ck_tile::number<1>{},
+                    ck_tile::number<1>{});
+            auto q_t_breg = dk_k32_breg_gemm.MakeBBlockTile();
+            auto q_t_dram_window = ck_tile::make_tile_window(
+                q_t_dram_view,
+                ck_tile::make_tuple(ck_tile::number<32>{}, ck_tile::number<BlockM>{}),
+                ck_tile::multi_index<2>{0, 0},
+                q_t_breg.get_tile_distribution());
+            return ck_tile::load_tile(q_t_dram_window);
+        };
+
+        auto load_do_t_k32_breg = [&](ck_tile::index_t q_start, ck_tile::index_t k_base) {
+            auto do_t_dram_view =
+                ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                    do_ptr + static_cast<ck_tile::long_index_t>(q_start + k_base) * args.stride_dom,
+                    ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
+                    ck_tile::make_tuple(args.stride_dod, args.stride_dom),
+                    ck_tile::number<1>{},
+                    ck_tile::number<1>{});
+            auto do_t_breg = dv_k32_breg_gemm.MakeBBlockTile();
+            auto do_t_dram_window = ck_tile::make_tile_window(
+                do_t_dram_view,
+                ck_tile::make_tuple(ck_tile::number<32>{}, ck_tile::number<BlockM>{}),
+                ck_tile::multi_index<2>{0, 0},
+                do_t_breg.get_tile_distribution());
+            return ck_tile::load_tile(do_t_dram_window);
+        };
+
+        QDataType* q_async_smem = smem.q_async;
+        auto k_breg_n0_d0 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n0_d1 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n0_d2 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n0_d3 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n1_d0 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n1_d1 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n1_d2 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto k_breg_n1_d3 = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+        auto load_v_dp_k32_areg = [&](ck_tile::index_t d_base) {
+            auto v_dram_view =
+                ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                    v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn +
+                        static_cast<ck_tile::long_index_t>(d_base) * args.stride_vd,
+                    ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<QKChunk>{}),
+                    ck_tile::make_tuple(args.stride_vn, args.stride_vd),
+                    ck_tile::number<8>{},
+                    ck_tile::number<1>{});
+            auto v_areg = dp_k32_areg_breg_gemm.MakeABlockTile();
+            auto v_dram_window = ck_tile::make_tile_window(
+                v_dram_view,
+                ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<QKChunk>{}),
+                ck_tile::multi_index<2>{0, 0},
+                v_areg.get_tile_distribution());
+            return ck_tile::load_tile(v_dram_window);
+        };
+        auto v_areg_d0 = dp_k32_areg_breg_gemm.MakeABlockTile();
+        auto v_areg_d1 = dp_k32_areg_breg_gemm.MakeABlockTile();
+        auto v_areg_d2 = dp_k32_areg_breg_gemm.MakeABlockTile();
+        auto v_areg_d3 = dp_k32_areg_breg_gemm.MakeABlockTile();
+        if constexpr(Policy::LeanFusedStorage)
+        {
+            auto load_k_chunk_breg = [&](ck_tile::index_t n_base, ck_tile::index_t d_base) {
+                auto k_dram_view =
+                    ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                        k_ptr + static_cast<ck_tile::long_index_t>(start_n + n_base) * args.stride_kn +
+                            static_cast<ck_tile::long_index_t>(d_base) * args.stride_kd,
+                        ck_tile::make_tuple(ck_tile::number<QKSubN>{}, ck_tile::number<QKChunk>{}),
+                        ck_tile::make_tuple(args.stride_kn, args.stride_kd),
+                        ck_tile::number<8>{},
+                        ck_tile::number<1>{});
+                auto k_breg = qk_chunk_asmem_breg_gemm.MakeBBlockTile();
+                auto k_dram_window = ck_tile::make_tile_window(
+                    k_dram_view,
+                    ck_tile::make_tuple(ck_tile::number<QKSubN>{}, ck_tile::number<QKChunk>{}),
+                    ck_tile::multi_index<2>{0, 0},
+                    k_breg.get_tile_distribution());
+                return ck_tile::load_tile(k_dram_window);
+            };
+
+            if(!block_is_boundary)
+            {
+                k_breg_n0_d0 = load_k_chunk_breg(0, 0);
+                k_breg_n0_d1 = load_k_chunk_breg(0, QKChunk);
+                k_breg_n0_d2 = load_k_chunk_breg(0, 2 * QKChunk);
+                k_breg_n0_d3 = load_k_chunk_breg(0, 3 * QKChunk);
+                k_breg_n1_d0 = load_k_chunk_breg(QKSubN, 0);
+                k_breg_n1_d1 = load_k_chunk_breg(QKSubN, QKChunk);
+                k_breg_n1_d2 = load_k_chunk_breg(QKSubN, 2 * QKChunk);
+                k_breg_n1_d3 = load_k_chunk_breg(QKSubN, 3 * QKChunk);
+                if constexpr(ComputeDK)
+                {
+                    v_areg_d0 = load_v_dp_k32_areg(0);
+                    v_areg_d1 = load_v_dp_k32_areg(QKChunk);
+                    v_areg_d2 = load_v_dp_k32_areg(2 * QKChunk);
+                    v_areg_d3 = load_v_dp_k32_areg(3 * QKChunk);
+                }
+            }
+        }
 
         for(ck_tile::index_t active_i = 0; active_i < args.max_nnz_r; ++active_i)
         {
@@ -133,529 +270,383 @@ struct JengaBwdDkdvPipeline
                 continue;
             }
 
-            const bool is_boundary =
-                FullTile ? false : (block_is_boundary || (q_start + BlockM > seqlen));
-            if constexpr(FullTile)
+            const bool is_boundary = block_is_boundary || (q_start + BlockM > seqlen);
+            if constexpr(Policy::LeanFusedStorage)
             {
-                const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_qm);
-                int4* q_smem_vec = reinterpret_cast<int4*>(q_smem);
-                #pragma unroll
-                for(int i = 0; i < QVecLoadIters; ++i)
+                if(is_boundary)
                 {
-                    q_smem_vec[threadIdx.x + i * 256] = q_ptr_vec[threadIdx.x + i * 256];
-                }
-
-                #pragma unroll
-                for(int i = 0; i < KDirectLoadIters; ++i)
-                {
-                    const ck_tile::index_t lds_offset =
-                        (threadIdx.x + i * ThreadsPerBlock) * DirectLoadElems;
-                    const ck_tile::index_t n_rel = lds_offset / HeadDim;
-                    const ck_tile::index_t d     = lds_offset - n_rel * HeadDim;
-                    const ck_tile::index_t global_offset =
-                        (start_n + n_rel) * args.stride_kn + d * args.stride_kd;
-
-                    ck_tile::amd_direct_load_global_to_lds<KDataType, DirectLoadElems>(
-                        k_ptr,
-                        global_offset,
-                        k_smem,
-                        lds_offset,
-                        true,
-                        args.N_KV * args.stride_kn);
-                }
-                ck_tile::async_load_fence();
-            }
-            else if(!is_boundary)
-            {
-                const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(q_start) * args.stride_qm);
-                int4* q_smem_vec = reinterpret_cast<int4*>(q_smem);
-                #pragma unroll
-                for(int i = 0; i < QVecLoadIters; ++i)
-                {
-                    q_smem_vec[threadIdx.x + i * 256] = q_ptr_vec[threadIdx.x + i * 256];
-                }
-
-                const int4* k_ptr_vec = reinterpret_cast<const int4*>(k_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_kn);
-                int4* k_smem_vec = reinterpret_cast<int4*>(k_smem);
-                #pragma unroll
-                for(int i = 0; i < KVVecLoadIters; ++i)
-                {
-                    k_smem_vec[threadIdx.x + i * 256] = k_ptr_vec[threadIdx.x + i * 256];
+                    continue;
                 }
             }
-            else
             {
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t m_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
-                    const ck_tile::index_t m     = q_start + m_rel;
-                    q_smem[linear] =
-                        (m < args.N_Q && m < seqlen && d < args.D)
-                            ? q_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_qm +
-                                    static_cast<ck_tile::long_index_t>(d) * args.stride_qd]
-                            : ck_tile::type_convert<QDataType>(0.0f);
-                }
+                    auto qk_acc_n0 = decltype(qk_chunk_asmem_breg_gemm.MakeCBlockTile()){};
+                    auto qk_acc_n1 = decltype(qk_chunk_asmem_breg_gemm.MakeCBlockTile()){};
+                    ck_tile::clear_tile(qk_acc_n0);
+                    ck_tile::clear_tile(qk_acc_n1);
 
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockN * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t n_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - n_rel * HeadDim;
-                    const ck_tile::index_t n     = start_n + n_rel;
-                    k_smem[linear] =
-                        (n < seqlen && d < args.D)
-                            ? k_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_kn +
-                                    static_cast<ck_tile::long_index_t>(d) * args.stride_kd]
-                            : ck_tile::type_convert<KDataType>(0.0f);
+                    auto load_q_chunk_to_lds = [&](ck_tile::index_t d_base, auto buf_num) {
+                        constexpr int buf = decltype(buf_num)::value;
+                        auto q_dram_view =
+                            ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                                q_ptr + static_cast<ck_tile::long_index_t>(q_start) *
+                                            args.stride_qm +
+                                    static_cast<ck_tile::long_index_t>(d_base) * args.stride_qd,
+                                ck_tile::make_tuple(ck_tile::number<BlockM>{},
+                                                    ck_tile::number<QKChunk>{}),
+                                ck_tile::make_tuple(args.stride_qm, args.stride_qd),
+                                ck_tile::number<8>{},
+                                ck_tile::number<1>{});
+                        auto q_dram_window = ck_tile::make_tile_window(
+                            q_dram_view,
+                            ck_tile::make_tuple(ck_tile::number<BlockM>{},
+                                                ck_tile::number<QKChunk>{}),
+                            ck_tile::multi_index<2>{0, 0},
+                            MakeBwdQAsyncDramDistribution<BlockM, QKChunk>());
+                        q_dram_window.init_raw();
+
+                        auto q_lds_store_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
+                            q_async_smem, MakeBwdQAsyncLdsStoreDescriptor<BlockM, QKChunk, buf>());
+                        auto q_lds_store_window = ck_tile::make_tile_window(
+                            q_lds_store_view,
+                            MakeBwdQAsyncLdsStoreDescriptor<BlockM, QKChunk, buf>().get_lengths(),
+                            ck_tile::multi_index<3>{0, 0, 0});
+                        ck_tile::async_load_tile_raw(q_lds_store_window,
+                                                     q_dram_window,
+                                                     ck_tile::bool_constant<true>{},
+                                                     ck_tile::bool_constant<false>{});
+                    };
+
+                    auto make_q_chunk_window = [&](auto buf_num) {
+                        constexpr int buf = decltype(buf_num)::value;
+                        return ck_tile::make_tile_window(
+                            ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
+                                q_async_smem, MakeBwdQAsyncLdsLoadDescriptor<BlockM, QKChunk>()),
+                            ck_tile::make_tuple(ck_tile::number<BlockM>{},
+                                                ck_tile::number<QKChunk>{}),
+                            ck_tile::multi_index<2>{buf * BlockM, 0});
+                    };
+
+                    load_q_chunk_to_lds(0, ck_tile::number<0>{});
+                    ck_tile::async_load_fence(0);
+                    JengaBwdBlockSyncLdsLight();
+
+                    load_q_chunk_to_lds(QKChunk, ck_tile::number<1>{});
+                    auto q_chunk0_lds_window = make_q_chunk_window(ck_tile::number<0>{});
+                    qk_chunk_asmem_breg_gemm(qk_acc_n0, q_chunk0_lds_window, k_breg_n0_d0);
+                    qk_chunk_asmem_breg_gemm(qk_acc_n1, q_chunk0_lds_window, k_breg_n1_d0);
+
+                    ck_tile::async_load_fence(0);
+                    JengaBwdBlockSyncLdsLight();
+                    load_q_chunk_to_lds(2 * QKChunk, ck_tile::number<0>{});
+                    auto q_chunk1_lds_window = make_q_chunk_window(ck_tile::number<1>{});
+                    qk_chunk_asmem_breg_gemm(qk_acc_n0, q_chunk1_lds_window, k_breg_n0_d1);
+                    qk_chunk_asmem_breg_gemm(qk_acc_n1, q_chunk1_lds_window, k_breg_n1_d1);
+
+                    ck_tile::async_load_fence(0);
+                    JengaBwdBlockSyncLdsLight();
+                    load_q_chunk_to_lds(3 * QKChunk, ck_tile::number<1>{});
+                    auto q_chunk2_lds_window = make_q_chunk_window(ck_tile::number<0>{});
+                    qk_chunk_asmem_breg_gemm(qk_acc_n0, q_chunk2_lds_window, k_breg_n0_d2);
+                    qk_chunk_asmem_breg_gemm(qk_acc_n1, q_chunk2_lds_window, k_breg_n1_d2);
+
+                    ck_tile::async_load_fence(0);
+                    JengaBwdBlockSyncLdsLight();
+                    auto q_chunk3_lds_window = make_q_chunk_window(ck_tile::number<1>{});
+                    qk_chunk_asmem_breg_gemm(qk_acc_n0, q_chunk3_lds_window, k_breg_n0_d3);
+                    qk_chunk_asmem_breg_gemm(qk_acc_n1, q_chunk3_lds_window, k_breg_n1_d3);
+                    ck_tile::block_sync_lds();
+
+                    QDataType* p_t_smem = smem.dv_input.p_t;
+                    const auto qk_out_n0 = qk_chunk_asmem_breg_gemm.MakeOuputLayout(qk_acc_n0);
+                    const auto qk_out_n1 = qk_chunk_asmem_breg_gemm.MakeOuputLayout(qk_acc_n1);
+                    constexpr auto qk_spans = decltype(qk_out_n0)::get_distributed_spans();
+                    constexpr auto M_spans = qk_spans[ck_tile::number<0>{}];
+                    constexpr auto N_spans = qk_spans[ck_tile::number<1>{}];
+                    float lse_regs[decltype(M_spans)::Impl::size()];
+                    float delta_regs[decltype(M_spans)::Impl::size()];
+                    ck_tile::index_t m_rel_regs[decltype(M_spans)::Impl::size()];
+
+                    ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
+                        constexpr auto dummy_tile_idx = ck_tile::make_tuple(
+                            idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
+                        const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                            qk_out_n0.get_tile_distribution(), dummy_tile_idx);
+                        const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
+                        const ck_tile::index_t m     = q_start + m_rel;
+                        const bool row_valid         = m < args.N_Q && m < seqlen;
+                        constexpr int slot = decltype(idx0)::Impl::at(0);
+                        m_rel_regs[slot] = m_rel;
+                        lse_regs[slot] = row_valid
+                                             ? lse_ptr[static_cast<ck_tile::long_index_t>(m) *
+                                                       args.stride_lm]
+                                             : 0.0f;
+                        delta_regs[slot] = row_valid
+                                               ? delta_ptr[static_cast<ck_tile::long_index_t>(m) *
+                                                           args.stride_delta_m]
+                                               : 0.0f;
+                    });
+                    ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
+                        constexpr int m_slot = decltype(idx0)::Impl::at(0);
+                        const ck_tile::index_t m_rel = m_rel_regs[m_slot];
+                        const float row_lse_log2 = lse_regs[m_slot];
+                        ck_tile::sweep_tile_span(N_spans, [&](auto idx1) {
+                            constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
+                            const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                                qk_out_n0.get_tile_distribution(), tile_idx);
+                            const ck_tile::index_t n_rel = x_idx.at(ck_tile::number<1>{});
+                            const float p0 = JengaBwdFastExp2(qk_out_n0[tile_idx] * scale_log2e -
+                                                              row_lse_log2);
+                            const float p1 = JengaBwdFastExp2(qk_out_n1[tile_idx] * scale_log2e -
+                                                              row_lse_log2);
+                            p_t_smem[static_cast<ck_tile::long_index_t>(n_rel) *
+                                         Policy::PTransposeLdsStride +
+                                     m_rel] = ck_tile::type_convert<QDataType>(p0);
+                            p_t_smem[static_cast<ck_tile::long_index_t>(QKSubN + n_rel) *
+                                         Policy::PTransposeLdsStride +
+                                     m_rel] = ck_tile::type_convert<QDataType>(p1);
+                        });
+                    });
+
+                    ck_tile::block_sync_lds();
+
+                    auto p_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
+                        p_t_smem,
+                        MakePaddedRowMajorLdsDescriptor<BlockN,
+                                                        BlockM,
+                                                        Policy::PTransposeLdsStride>());
+                    OGradDataType* do_qhalf_smem =
+                        reinterpret_cast<OGradDataType*>(smem.dv_input.p_t);
+                    auto load_do_qhalf_to_lds = [&](ck_tile::index_t q_base) {
+                        auto load_do_chunk_to_lds = [&](ck_tile::index_t d_base, auto chunk_num) {
+                            constexpr int chunk = decltype(chunk_num)::value;
+                            auto do_dram_view =
+                                ck_tile::make_naive_tensor_view<ck_tile::address_space_enum::global>(
+                                    do_ptr + static_cast<ck_tile::long_index_t>(q_start + q_base) *
+                                                 args.stride_dom +
+                                        static_cast<ck_tile::long_index_t>(d_base) * args.stride_dod,
+                                    ck_tile::make_tuple(ck_tile::number<32>{},
+                                                        ck_tile::number<QKChunk>{}),
+                                    ck_tile::make_tuple(args.stride_dom, args.stride_dod),
+                                    ck_tile::number<kBwdAsyncDoVector>{},
+                                    ck_tile::number<1>{});
+                            auto do_dram_window = ck_tile::make_tile_window(
+                                do_dram_view,
+                                ck_tile::make_tuple(ck_tile::number<32>{},
+                                                    ck_tile::number<QKChunk>{}),
+                                ck_tile::multi_index<2>{0, 0},
+                                MakeBwdDoAsyncDramDistribution<32, QKChunk>());
+                            do_dram_window.init_raw();
+
+                            auto do_lds_store_view =
+                                ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
+                                    do_qhalf_smem,
+                                    MakeBwdDoAsyncLdsStoreDescriptor<
+                                        QKChunk,
+                                        Policy::DoQHalfLdsBaseOffset,
+                                        chunk>());
+                            auto do_lds_store_window = ck_tile::make_tile_window(
+                                do_lds_store_view,
+                                MakeBwdDoAsyncLdsStoreDescriptor<
+                                    QKChunk,
+                                    Policy::DoQHalfLdsBaseOffset,
+                                    chunk>().get_lengths(),
+                                ck_tile::multi_index<3>{0, 0, 0});
+                            ck_tile::async_load_tile_raw(do_lds_store_window,
+                                                         do_dram_window,
+                                                         ck_tile::bool_constant<true>{},
+                                                         ck_tile::bool_constant<false>{});
+                        };
+
+                        load_do_chunk_to_lds(0, ck_tile::number<0>{});
+                        load_do_chunk_to_lds(QKChunk, ck_tile::number<1>{});
+                        load_do_chunk_to_lds(2 * QKChunk, ck_tile::number<2>{});
+                        load_do_chunk_to_lds(3 * QKChunk, ck_tile::number<3>{});
+                    };
+
+                    if constexpr(ComputeDV)
+                    {
+                        if constexpr(ComputeDK)
+                        {
+                            load_do_qhalf_to_lds(0);
+                        }
+                        auto do_t_breg0 = load_do_t_k32_breg(q_start, 0);
+                        auto do_t_breg1 = load_do_t_k32_breg(q_start, 32);
+                        auto p_t_lds_window0 = ck_tile::make_tile_window(
+                            p_t_lds_view,
+                            ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<32>{}),
+                            ck_tile::multi_index<2>{0, 0},
+                            dv_k32_breg_gemm.MakeABlockTile().get_tile_distribution());
+                        auto p_t_areg0 = ck_tile::load_tile(p_t_lds_window0);
+                        dv_k32_breg_gemm(dv_acc, p_t_areg0, do_t_breg0);
+
+                        auto p_t_lds_window1 = ck_tile::make_tile_window(
+                            p_t_lds_view,
+                            ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<32>{}),
+                            ck_tile::multi_index<2>{0, 32},
+                            dv_k32_breg_gemm.MakeABlockTile().get_tile_distribution());
+                        auto p_t_areg1 = ck_tile::load_tile(p_t_lds_window1);
+                        dv_k32_breg_gemm(dv_acc, p_t_areg1, do_t_breg1);
+                    }
+
+                    ck_tile::block_sync_lds();
+
+                    if constexpr(ComputeDK)
+                    {
+                        auto dp_t_acc0 = decltype(dp_k32_areg_breg_gemm.MakeCBlockTile()){};
+                        auto dp_t_acc1 = decltype(dp_k32_areg_breg_gemm.MakeCBlockTile()){};
+                        ck_tile::clear_tile(dp_t_acc0);
+                        ck_tile::clear_tile(dp_t_acc1);
+
+                        auto load_do_dp_k32_breg_from_lds = [&](auto chunk_num) {
+                            constexpr int chunk = decltype(chunk_num)::value;
+                            auto do_breg = dp_k32_gemm.MakeBBlockTile();
+                            auto do_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
+                                do_qhalf_smem,
+                                MakeBwdDoAsyncLdsLoadDescriptor<
+                                    QKChunk,
+                                    Policy::DoQHalfLdsBaseOffset,
+                                    chunk>());
+                            auto do_lds_window = ck_tile::make_tile_window(
+                                do_lds_view,
+                                ck_tile::make_tuple(ck_tile::number<32>{},
+                                                    ck_tile::number<QKChunk>{}),
+                                ck_tile::multi_index<2>{0, 0},
+                                do_breg.get_tile_distribution());
+                            return ck_tile::load_tile(do_lds_window);
+                        };
+
+                        auto accumulate_dp_t_qhalf_from_lds = [&](auto& dp_t_acc) {
+                            auto do_dp_breg0 = load_do_dp_k32_breg_from_lds(ck_tile::number<0>{});
+                            auto do_dp_breg1 = load_do_dp_k32_breg_from_lds(ck_tile::number<1>{});
+                            auto do_dp_breg2 = load_do_dp_k32_breg_from_lds(ck_tile::number<2>{});
+                            auto do_dp_breg3 = load_do_dp_k32_breg_from_lds(ck_tile::number<3>{});
+                            dp_k32_areg_breg_gemm(dp_t_acc, v_areg_d0, do_dp_breg0);
+                            dp_k32_areg_breg_gemm(dp_t_acc, v_areg_d1, do_dp_breg1);
+                            dp_k32_areg_breg_gemm(dp_t_acc, v_areg_d2, do_dp_breg2);
+                            dp_k32_areg_breg_gemm(dp_t_acc, v_areg_d3, do_dp_breg3);
+                        };
+
+                        if constexpr(!ComputeDV)
+                        {
+                            load_do_qhalf_to_lds(0);
+                        }
+                        ck_tile::async_load_fence(0);
+                        JengaBwdBlockSyncLdsLight();
+                        accumulate_dp_t_qhalf_from_lds(dp_t_acc0);
+
+                        ck_tile::block_sync_lds();
+                        load_do_qhalf_to_lds(32);
+                        ck_tile::async_load_fence(0);
+                        JengaBwdBlockSyncLdsLight();
+                        accumulate_dp_t_qhalf_from_lds(dp_t_acc1);
+                        ck_tile::block_sync_lds();
+
+                        auto delta_smem =
+                            reinterpret_cast<AccDataType*>(p_t_smem + Policy::DoQHalfLdsBaseOffset);
+                        if(threadIdx.x < BlockM)
+                        {
+                            delta_smem[threadIdx.x] =
+                                delta_ptr[static_cast<ck_tile::long_index_t>(q_start + threadIdx.x) *
+                                          args.stride_delta_m];
+                        }
+                        ck_tile::block_sync_lds();
+
+                        const auto dp_t_out0 = dp_k32_areg_breg_gemm.MakeOuputLayout(dp_t_acc0);
+                        const auto dp_t_out1 = dp_k32_areg_breg_gemm.MakeOuputLayout(dp_t_acc1);
+                        constexpr auto dp_t_spans = decltype(dp_t_out0)::get_distributed_spans();
+                        ck_tile::sweep_tile_span(dp_t_spans[ck_tile::number<0>{}], [&](auto idx0) {
+                            ck_tile::sweep_tile_span(dp_t_spans[ck_tile::number<1>{}], [&](auto idx1) {
+                                constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
+                                const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                                    dp_t_out0.get_tile_distribution(), tile_idx);
+                                const ck_tile::index_t n_rel = x_idx.at(ck_tile::number<0>{});
+                                const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<1>{});
+                                const float delta0 = delta_smem[m_rel];
+                                const float delta1 = delta_smem[32 + m_rel];
+                                const ck_tile::long_index_t p0_offset =
+                                    static_cast<ck_tile::long_index_t>(n_rel) *
+                                        Policy::PTransposeLdsStride +
+                                    m_rel;
+                                const ck_tile::long_index_t p1_offset =
+                                    static_cast<ck_tile::long_index_t>(n_rel) *
+                                        Policy::PTransposeLdsStride +
+                                    32 + m_rel;
+                                const float p0 = ck_tile::type_convert<float>(p_t_smem[p0_offset]);
+                                const float p1 = ck_tile::type_convert<float>(p_t_smem[p1_offset]);
+                                p_t_smem[p0_offset] = ck_tile::type_convert<QDataType>(
+                                    p0 * (dp_t_out0[tile_idx] - delta0));
+                                p_t_smem[p1_offset] = ck_tile::type_convert<QDataType>(
+                                    p1 * (dp_t_out1[tile_idx] - delta1));
+                            });
+                        });
+
+                        ck_tile::block_sync_lds();
+
+                        auto ds_t_lds_window0 = ck_tile::make_tile_window(
+                            p_t_lds_view,
+                            ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<32>{}),
+                            ck_tile::multi_index<2>{0, 0},
+                            dk_k32_breg_gemm.MakeABlockTile().get_tile_distribution());
+                        auto ds_t_areg0 = ck_tile::load_tile(ds_t_lds_window0);
+                        auto q_t_breg0 = load_q_t_k32_breg(q_start, 0);
+                        dk_k32_breg_gemm(dk_acc, ds_t_areg0, q_t_breg0);
+
+                        auto ds_t_lds_window1 = ck_tile::make_tile_window(
+                            p_t_lds_view,
+                            ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<32>{}),
+                            ck_tile::multi_index<2>{0, 32},
+                            dk_k32_breg_gemm.MakeABlockTile().get_tile_distribution());
+                        auto ds_t_areg1 = ck_tile::load_tile(ds_t_lds_window1);
+                        auto q_t_breg1 = load_q_t_k32_breg(q_start, 32);
+                        dk_k32_breg_gemm(dk_acc, ds_t_areg1, q_t_breg1);
+                    }
+
+                    ck_tile::block_sync_lds();
+                    continue;
                 }
             }
-
-            ck_tile::block_sync_lds();
-
-            auto q_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                q_smem, MakeSimpleLdsDescriptor<BlockM, HeadDim>());
-            auto k_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                k_smem, MakeSimpleLdsDescriptor<BlockN, HeadDim>());
-
-            auto q_lds_window = ck_tile::make_tile_window(
-                q_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockM>{}, ck_tile::number<HeadDim>{}),
-                {0, 0});
-            auto k_lds_window = ck_tile::make_tile_window(
-                k_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<HeadDim>{}),
-                {0, 0});
-
-            auto qk_acc = decltype(qk_gemm.MakeCBlockTile()){};
-            ck_tile::clear_tile(qk_acc);
-            qk_gemm(qk_acc, q_lds_window, k_lds_window);
-            ck_tile::block_sync_lds();
-
-            OGradDataType* do_t_smem = smem.dv_dp_input.do_t;
-            QDataType* p_t_smem      = smem.dv_dp_input.rhs.p_t;
-
-            auto qk_out = qk_gemm.MakeOuputLayout(qk_acc);
-            constexpr auto qk_spans = decltype(qk_out)::get_distributed_spans();
-
-            constexpr auto M_spans = qk_spans[ck_tile::number<0>{}];
-            float lse_regs[decltype(M_spans)::Impl::size()];
-            float delta_regs[decltype(M_spans)::Impl::size()];
-
-            ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
-                constexpr auto dummy_tile_idx = ck_tile::make_tuple(idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
-                const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
-                    qk_out.get_tile_distribution(), dummy_tile_idx);
-                const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
-                const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
-                lse_regs[decltype(idx0)::Impl::at(0)] =
-                    FullTile ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
-                             : (row_valid
-                                    ? lse_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_lm]
-                                    : 0.0f);
-                delta_regs[decltype(idx0)::Impl::at(0)] =
-                    FullTile
-                        ? delta_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_delta_m]
-                        : (row_valid
-                               ? delta_ptr[static_cast<ck_tile::long_index_t>(m) *
-                                           args.stride_delta_m]
-                               : 0.0f);
-            });
-
-            ck_tile::sweep_tile_span(M_spans, [&](auto idx0) {
-                constexpr auto dummy_tile_idx = ck_tile::make_tuple(idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
-                const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
-                    qk_out.get_tile_distribution(), dummy_tile_idx);
-                const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
-                const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
-                const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
-
-                ck_tile::sweep_tile_span(qk_spans[ck_tile::number<1>{}], [&](auto idx1) {
-                    constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
-                    const auto x_idx_inner = ck_tile::get_x_indices_from_distributed_indices(
-                        qk_out.get_tile_distribution(), tile_idx);
-                    const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
-                    const ck_tile::index_t n     = start_n + n_rel;
-                    const bool valid             = FullTile ? true : (!is_boundary || (row_valid && n < seqlen));
-                    const float p =
-                        valid ? ck_tile::exp2(qk_out[tile_idx] * scale_log2e - row_lse_log2) : 0.0f;
-                    qk_out(tile_idx) = p;
-                    p_t_smem[static_cast<ck_tile::long_index_t>(n_rel) * BlockM + m_rel] =
-                        ck_tile::type_convert<QDataType>(p);
+        if constexpr(ComputeDV)
+        {
+                const auto dv_out = dv_breg_gemm.MakeOuputLayout(dv_acc);
+                constexpr auto dv_spans = decltype(dv_out)::get_distributed_spans();
+                ck_tile::sweep_tile_span(dv_spans[ck_tile::number<0>{}], [&](auto idx0) {
+                    ck_tile::sweep_tile_span(dv_spans[ck_tile::number<1>{}], [&](auto idx1) {
+                        constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
+                        const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                            dv_out.get_tile_distribution(), tile_idx);
+                        const ck_tile::index_t n_rel = x_idx.at(ck_tile::number<0>{});
+                        const ck_tile::index_t d     = x_idx.at(ck_tile::number<1>{});
+                        const ck_tile::index_t n     = start_n + n_rel;
+                        if(n < seqlen && d < args.D)
+                        {
+                            dv_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_dvn +
+                                   static_cast<ck_tile::long_index_t>(d) * args.stride_dvd] =
+                                ck_tile::type_convert<VGradDataType>(dv_out[tile_idx]);
+                        }
+                    });
                 });
-            });
+        }
 
-            const bool can_vectorize_transposed_do =
-                FullTile ? true : (!is_boundary && block_can_vectorize_transposed_do);
-            if constexpr(FullTile)
-            {
-                const int thread_m_rel = threadIdx.x >> 4;
-                const int thread_d     = (threadIdx.x & 15) << 3;
-                int4* do_t_smem_base =
-                    reinterpret_cast<int4*>(do_t_smem + thread_m_rel * HeadDim + thread_d);
-                #pragma unroll
-                for(int i = 0; i < TransposedMVecIters; ++i)
-                {
-                    int m_rel = thread_m_rel + i * 16;
-                    int m = q_start + m_rel;
-                    const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
-                    int4 val = *do_ptr_vec;
-                    do_t_smem_base[i * 256] = val;
-                }
-            }
-            else if(can_vectorize_transposed_do)
-            {
-                const int thread_m_rel = threadIdx.x >> 4;
-                const int thread_d     = (threadIdx.x & 15) << 3;
-                int4* do_t_smem_base =
-                    reinterpret_cast<int4*>(do_t_smem + thread_m_rel * HeadDim + thread_d);
-                #pragma unroll
-                for(int i = 0; i < TransposedMVecIters; ++i)
-                {
-                    int m_rel = thread_m_rel + i * 16;
-                    int m = q_start + m_rel;
-                    const int4* do_ptr_vec = reinterpret_cast<const int4*>(do_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_dom + thread_d);
-                    int4 val = *do_ptr_vec;
-                    do_t_smem_base[i * 256] = val;
-                }
-            }
-            else
-            {
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t m_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
-                    const ck_tile::index_t m     = q_start + m_rel;
-                    do_t_smem[linear] =
-                        (m < args.N_Q && m < seqlen && d < args.D)
-                            ? do_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_dom +
-                                     static_cast<ck_tile::long_index_t>(d) * args.stride_dod]
-                            : ck_tile::type_convert<OGradDataType>(0.0f);
-                }
-            }
-
-            ck_tile::block_sync_lds();
-
-            auto p_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                p_t_smem, MakeSimpleLdsDescriptor<BlockN, BlockM>());
-            auto do_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                do_t_smem, MakeTransposedLdsDescriptor<HeadDim, BlockM>());
-
-            auto p_t_lds_window = ck_tile::make_tile_window(
-                p_t_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<BlockM>{}),
-                {0, 0});
-            auto do_t_lds_window = ck_tile::make_tile_window(
-                do_t_lds_view,
-                ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
-                {0, 0});
-
-            dv_gemm(dv_acc, p_t_lds_window, do_t_lds_window);
-
-            ck_tile::block_sync_lds();
-
-            auto dp_do_smem = smem.dv_dp_input.do_t;
-            auto v_smem     = smem.dv_dp_input.rhs.v;
-
-            if constexpr(FullTile)
-            {
-                const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
-                int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
-                #pragma unroll
-                for(int i = 0; i < KVVecLoadIters; ++i)
-                {
-                    v_smem_vec[threadIdx.x + i * 256] = v_ptr_vec[threadIdx.x + i * 256];
-                }
-            }
-            else if(!is_boundary)
-            {
-                const int4* v_ptr_vec = reinterpret_cast<const int4*>(v_ptr + static_cast<ck_tile::long_index_t>(start_n) * args.stride_vn);
-                int4* v_smem_vec = reinterpret_cast<int4*>(v_smem);
-                #pragma unroll
-                for(int i = 0; i < KVVecLoadIters; ++i)
-                {
-                    v_smem_vec[threadIdx.x + i * 256] = v_ptr_vec[threadIdx.x + i * 256];
-                }
-            }
-            else
-            {
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockN * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t n_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - n_rel * HeadDim;
-                    const ck_tile::index_t n     = start_n + n_rel;
-                    v_smem[linear] =
-                        (n < seqlen && d < args.D)
-                            ? v_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_vn +
-                                    static_cast<ck_tile::long_index_t>(d) * args.stride_vd]
-                            : ck_tile::type_convert<VDataType>(0.0f);
-                }
-            }
-
-            ck_tile::block_sync_lds();
-
-            auto dp_do_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                dp_do_smem, MakeSimpleLdsDescriptor<BlockM, HeadDim>());
-            auto v_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                v_smem, MakeSimpleLdsDescriptor<BlockN, HeadDim>());
-
-            auto dp_do_lds_window = ck_tile::make_tile_window(
-                dp_do_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockM>{}, ck_tile::number<HeadDim>{}),
-                {0, 0});
-            auto v_lds_window = ck_tile::make_tile_window(
-                v_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<HeadDim>{}),
-                {0, 0});
-
-            auto dp_acc = decltype(dp_gemm.MakeCBlockTile()){};
-            ck_tile::clear_tile(dp_acc);
-            dp_gemm(dp_acc, dp_do_lds_window, v_lds_window);
-            const auto dp_out       = dp_gemm.MakeOuputLayout(dp_acc);
-            constexpr auto dp_spans = decltype(dp_out)::get_distributed_spans();
-
-            ck_tile::block_sync_lds();
-
-            QDataType* ds_t_smem = smem.dk_input.ds_t;
-            QDataType* q_t_smem  = smem.dk_input.q_t;
-
-            ck_tile::sweep_tile_span(dp_spans[ck_tile::number<0>{}], [&](auto idx0) {
-                constexpr auto dummy_tile_idx = ck_tile::make_tuple(idx0, ck_tile::tile_distributed_index<1, 0, 0, 0>{});
-                const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
-                    dp_out.get_tile_distribution(), dummy_tile_idx);
-                const ck_tile::index_t m_rel = x_idx.at(ck_tile::number<0>{});
-                const ck_tile::index_t m     = q_start + m_rel;
-                const bool row_valid         = FullTile ? true : (m < args.N_Q && m < seqlen);
-                const float row_lse_log2     = lse_regs[decltype(idx0)::Impl::at(0)];
-                const float delta            = delta_regs[decltype(idx0)::Impl::at(0)];
-
-                ck_tile::sweep_tile_span(dp_spans[ck_tile::number<1>{}], [&](auto idx1) {
-                    constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
-                    const auto x_idx_inner = ck_tile::get_x_indices_from_distributed_indices(
-                        dp_out.get_tile_distribution(), tile_idx);
-                    const ck_tile::index_t n_rel = x_idx_inner.at(ck_tile::number<1>{});
-                    const ck_tile::index_t n     = start_n + n_rel;
-                    const bool valid             = FullTile ? true : (!is_boundary || (row_valid && n < seqlen));
- 
-                    const float p = valid ? qk_out[tile_idx] : 0.0f;
-                    const float ds = p * (dp_out[tile_idx] - delta);
-                    ds_t_smem[static_cast<ck_tile::long_index_t>(n_rel) * BlockM + m_rel] =
-                        ck_tile::type_convert<QDataType>(ds);
+        if constexpr(ComputeDK)
+        {
+                const auto dk_out = dk_k32_breg_gemm.MakeOuputLayout(dk_acc);
+                constexpr auto dk_spans = decltype(dk_out)::get_distributed_spans();
+                ck_tile::sweep_tile_span(dk_spans[ck_tile::number<0>{}], [&](auto idx0) {
+                    ck_tile::sweep_tile_span(dk_spans[ck_tile::number<1>{}], [&](auto idx1) {
+                        constexpr auto tile_idx = ck_tile::make_tuple(idx0, idx1);
+                        const auto x_idx = ck_tile::get_x_indices_from_distributed_indices(
+                            dk_out.get_tile_distribution(), tile_idx);
+                        const ck_tile::index_t n_rel = x_idx.at(ck_tile::number<0>{});
+                        const ck_tile::index_t d     = x_idx.at(ck_tile::number<1>{});
+                        const ck_tile::index_t n     = start_n + n_rel;
+                        if(n < seqlen && d < args.D)
+                        {
+                            dk_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_dkn +
+                                   static_cast<ck_tile::long_index_t>(d) * args.stride_dkd] =
+                                ck_tile::type_convert<KGradDataType>(dk_out[tile_idx] * args.sm_scale);
+                        }
+                    });
                 });
-            });
-
-            const bool can_vectorize_transposed_q =
-                FullTile ? true : (!is_boundary && block_can_vectorize_transposed_q);
-            if constexpr(FullTile)
-            {
-                const int thread_m_rel = threadIdx.x >> 4;
-                const int thread_d     = (threadIdx.x & 15) << 3;
-                const int k_outer      = thread_d >> 3;
-                const int k_outer_phys = k_outer ^ thread_m_rel;
-                int4* q_t_smem_base =
-                    reinterpret_cast<int4*>(q_t_smem + thread_m_rel * HeadDim + k_outer_phys * 8);
-                #pragma unroll
-                for(int i = 0; i < TransposedMVecIters; ++i)
-                {
-                    int m_rel = thread_m_rel + i * 16;
-                    int m = q_start + m_rel;
-                    const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
-                    int4 val = *q_ptr_vec;
-                    q_t_smem_base[i * 256] = val;
-                }
-            }
-            else if(can_vectorize_transposed_q)
-            {
-                const int thread_m_rel = threadIdx.x >> 4;
-                const int thread_d     = (threadIdx.x & 15) << 3;
-                const int k_outer      = thread_d >> 3;
-                const int k_outer_phys = k_outer ^ thread_m_rel;
-                int4* q_t_smem_base =
-                    reinterpret_cast<int4*>(q_t_smem + thread_m_rel * HeadDim + k_outer_phys * 8);
-                #pragma unroll
-                for(int i = 0; i < TransposedMVecIters; ++i)
-                {
-                    int m_rel = thread_m_rel + i * 16;
-                    int m = q_start + m_rel;
-                    const int4* q_ptr_vec = reinterpret_cast<const int4*>(q_ptr + static_cast<ck_tile::long_index_t>(m) * args.stride_qm + thread_d);
-                    int4 val = *q_ptr_vec;
-                    q_t_smem_base[i * 256] = val;
-                }
-            }
-            else
-            {
-                for(ck_tile::index_t linear = threadIdx.x; linear < BlockM * HeadDim;
-                    linear += blockDim.x)
-                {
-                    const ck_tile::index_t m_rel = linear / HeadDim;
-                    const ck_tile::index_t d     = linear - m_rel * HeadDim;
-                    const ck_tile::index_t m     = q_start + m_rel;
-                    q_t_smem[GetXorLdsOffset<HeadDim, 8>(m_rel, d)] =
-                        (m < args.N_Q && m < seqlen && d < args.D)
-                            ? q_ptr[static_cast<ck_tile::long_index_t>(m) * args.stride_qm +
-                                    static_cast<ck_tile::long_index_t>(d) * args.stride_qd]
-                            : ck_tile::type_convert<QDataType>(0.0f);
-                }
-            }
-
-            ck_tile::block_sync_lds();
-
-            auto ds_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                ds_t_smem, MakeSimpleLdsDescriptor<BlockN, BlockM>());
-            auto q_t_lds_view = ck_tile::make_tensor_view<ck_tile::address_space_enum::lds>(
-                q_t_smem, MakeXorTransposedLdsDescriptor<HeadDim, BlockM>());
-
-            auto ds_t_lds_window = ck_tile::make_tile_window(
-                ds_t_lds_view,
-                ck_tile::make_tuple(ck_tile::number<BlockN>{}, ck_tile::number<BlockM>{}),
-                {0, 0});
-            auto q_t_lds_window = ck_tile::make_tile_window(
-                q_t_lds_view,
-                ck_tile::make_tuple(ck_tile::number<HeadDim>{}, ck_tile::number<BlockM>{}),
-                {0, 0});
-
-            dk_gemm(dk_acc, ds_t_lds_window, q_t_lds_window);
-
-            ck_tile::block_sync_lds();
-        }
-
-        StoreMmacOutputTileToLdsRowMajor<BlockN, HeadDim>(dv_gemm, dv_acc, smem.qk);
-        ck_tile::block_sync_lds();
-
-        const bool is_boundary_write =
-            FullTile ? false : ((start_n + BlockN > seqlen) || (args.D < HeadDim));
-        const bool can_vectorize_write_dv =
-            FullTile ? true
-                     : (!is_boundary_write && (args.stride_dvn % 8 == 0) &&
-                        (args.stride_dvd == 1) &&
-                        (reinterpret_cast<std::uintptr_t>(dv_ptr) % 16 == 0));
-        if constexpr(FullTile)
-        {
-            const int thread_n_rel = threadIdx.x >> 4;
-            const int thread_d     = (threadIdx.x & 15) << 3;
-            #pragma unroll
-            for(int i = 0; i < BlockN / 16; ++i)
-            {
-                int n_rel = thread_n_rel + i * 16;
-                int n = start_n + n_rel;
-                int offset = n_rel * HeadDim + thread_d;
-                ck_tile::bf16_t val_bf16[8];
-                #pragma unroll
-                for(int j = 0; j < 8; ++j)
-                {
-                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j]);
-                }
-                int4* dv_ptr_vec = reinterpret_cast<int4*>(dv_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dvn + thread_d);
-                *dv_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
-            }
-        }
-        else if(can_vectorize_write_dv)
-        {
-            const int thread_n_rel = threadIdx.x >> 4;
-            const int thread_d     = (threadIdx.x & 15) << 3;
-            #pragma unroll
-            for(int i = 0; i < BlockN / 16; ++i)
-            {
-                int n_rel = thread_n_rel + i * 16;
-                int n = start_n + n_rel;
-                int offset = n_rel * HeadDim + thread_d;
-                ck_tile::bf16_t val_bf16[8];
-                #pragma unroll
-                for(int j = 0; j < 8; ++j)
-                {
-                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j]);
-                }
-                int4* dv_ptr_vec = reinterpret_cast<int4*>(dv_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dvn + thread_d);
-                *dv_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
-            }
-        }
-        else
-        {
-            for(ck_tile::index_t linear = threadIdx.x; linear < BlockN * HeadDim; linear += blockDim.x)
-            {
-                const ck_tile::index_t n_rel = linear / HeadDim;
-                const ck_tile::index_t d     = linear - n_rel * HeadDim;
-                const ck_tile::index_t n     = start_n + n_rel;
-
-                if(n < seqlen && d < args.D)
-                {
-                    dv_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_dvn +
-                           static_cast<ck_tile::long_index_t>(d) * args.stride_dvd] =
-                        ck_tile::type_convert<VGradDataType>(smem.qk[linear]);
-                }
-            }
-        }
-
-        ck_tile::block_sync_lds();
-
-        StoreMmacOutputTileToLdsRowMajor<BlockN, HeadDim>(dk_gemm, dk_acc, smem.qk);
-        ck_tile::block_sync_lds();
-
-        const bool can_vectorize_write_dk =
-            FullTile ? true
-                     : (!is_boundary_write && (args.stride_dkn % 8 == 0) &&
-                        (args.stride_dkd == 1) &&
-                        (reinterpret_cast<std::uintptr_t>(dk_ptr) % 16 == 0));
-        if constexpr(FullTile)
-        {
-            const int thread_n_rel = threadIdx.x >> 4;
-            const int thread_d     = (threadIdx.x & 15) << 3;
-            #pragma unroll
-            for(int i = 0; i < BlockN / 16; ++i)
-            {
-                int n_rel = thread_n_rel + i * 16;
-                int n = start_n + n_rel;
-                int offset = n_rel * HeadDim + thread_d;
-                ck_tile::bf16_t val_bf16[8];
-                #pragma unroll
-                for(int j = 0; j < 8; ++j)
-                {
-                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j] * args.sm_scale);
-                }
-                int4* dk_ptr_vec = reinterpret_cast<int4*>(dk_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dkn + thread_d);
-                *dk_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
-            }
-        }
-        else if(can_vectorize_write_dk)
-        {
-            const int thread_n_rel = threadIdx.x >> 4;
-            const int thread_d     = (threadIdx.x & 15) << 3;
-            #pragma unroll
-            for(int i = 0; i < BlockN / 16; ++i)
-            {
-                int n_rel = thread_n_rel + i * 16;
-                int n = start_n + n_rel;
-                int offset = n_rel * HeadDim + thread_d;
-                ck_tile::bf16_t val_bf16[8];
-                #pragma unroll
-                for(int j = 0; j < 8; ++j)
-                {
-                    val_bf16[j] = ck_tile::type_convert<ck_tile::bf16_t>(smem.qk[offset + j] * args.sm_scale);
-                }
-                int4* dk_ptr_vec = reinterpret_cast<int4*>(dk_ptr + static_cast<ck_tile::long_index_t>(n) * args.stride_dkn + thread_d);
-                *dk_ptr_vec = *reinterpret_cast<const int4*>(val_bf16);
-            }
-        }
-        else
-        {
-            for(ck_tile::index_t linear = threadIdx.x; linear < BlockN * HeadDim; linear += blockDim.x)
-            {
-                const ck_tile::index_t n_rel = linear / HeadDim;
-                const ck_tile::index_t d     = linear - n_rel * HeadDim;
-                const ck_tile::index_t n     = start_n + n_rel;
-
-                if(n < seqlen && d < args.D)
-                {
-                    dk_ptr[static_cast<ck_tile::long_index_t>(n) * args.stride_dkn +
-                           static_cast<ck_tile::long_index_t>(d) * args.stride_dkd] =
-                        ck_tile::type_convert<KGradDataType>(smem.qk[linear] * args.sm_scale);
-                }
-            }
         }
     }
 };

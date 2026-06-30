@@ -4,6 +4,7 @@
 #pragma once
 
 #include "ck_tile/core.hpp"
+#include <string>
 
 namespace ck_tile {
 namespace example {
@@ -20,6 +21,7 @@ template <typename QDataType_,
           index_t BlockM_,
           index_t BlockN_,
           index_t HeadDim_,
+          index_t MaxNnz_,
           index_t ThreadsPerBlock_>
 struct JengaBwdDkdvProblem
 {
@@ -35,7 +37,17 @@ struct JengaBwdDkdvProblem
     static constexpr index_t BlockM          = BlockM_;
     static constexpr index_t BlockN          = BlockN_;
     static constexpr index_t HeadDim         = HeadDim_;
+    static constexpr index_t MaxNnz          = MaxNnz_;
     static constexpr index_t ThreadsPerBlock = ThreadsPerBlock_;
+};
+
+struct jenga_bwd_dkdv_traits
+{
+    std::string data_type = "bf16";
+    index_t block_m      = 64;
+    index_t block_n      = 64;
+    index_t head_dim     = 128;
+    index_t max_nnz      = 28;
 };
 
 struct jenga_bwd_dkdv_args
@@ -43,13 +55,17 @@ struct jenga_bwd_dkdv_args
     const void* q_ptr;
     const void* k_ptr;
     const void* v_ptr;
+    const void* o_ptr;
     const void* do_ptr;
     const void* delta_ptr;
     const void* lse_ptr;
     const void* lse_text_ptr;
+    const void* bias_ptr;
+    const int32_t* block_mask_ptr;
     const int32_t* rlut_ptr;
     const int32_t* rlut_size_ptr;
     const int32_t* seqlens_ptr;
+    void* dq_tmp_ptr;
     void* dk_ptr;
     void* dv_ptr;
 
@@ -107,6 +123,15 @@ struct jenga_bwd_dkdv_args
     index_t stride_rlutk;
     index_t stride_rlut_size_z;
     index_t stride_rlut_size_n;
+};
+
+template <typename T>
+struct JengaBwdDkdvTypeName;
+
+template <>
+struct JengaBwdDkdvTypeName<bf16_t>
+{
+    static constexpr const char* name = "bf16";
 };
 
 } // namespace jenga
