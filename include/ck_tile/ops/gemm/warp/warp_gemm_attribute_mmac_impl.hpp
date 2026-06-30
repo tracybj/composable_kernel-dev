@@ -5,6 +5,16 @@
 
 #include "ck_tile/core.hpp"
 
+// Compatibility macros for compilers using standard AMDGCN builtins
+#define __builtin_hcu_mmac_f32_16x16x16_f16 __builtin_amdgcn_mmac_f32_16x16x16f16
+#define __builtin_hcu_mmac_f32_16x16x16_bf16 __builtin_amdgcn_mmac_f32_16x16x16bf16
+#define __builtin_hcu_mmac_i32_16x16x32_i8(a, b, c) \
+    __builtin_amdgcn_mmac_i32_16x16x32i8( \
+        reinterpret_cast<const long&>(a), \
+        reinterpret_cast<const long&>(b), \
+        (c) \
+    )
+
 namespace ck_tile {
 
 // FP16
