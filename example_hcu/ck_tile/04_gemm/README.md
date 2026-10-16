@@ -2,6 +2,8 @@
 
 四类 H3 单 rank GEMM 在 gfx936 上从约 65–86T 迭代到约 329–333 TFLOPS；这里只是 BF16 单算子，不是 INT8 或 H3 端到端收益。
 
+后续基于v08的**计算/通信融合实验**独立维护在[05_gemm_comm](../05_gemm_comm/README.md)，按三代源码组织，不再混入本目录的纯GEMM历史。
+
 ## 先看哪里
 
 - **当前分层实现**：[v08_ck_tile](versions/v08_ck_tile/README.md)。按 Problem / Policy / Pipeline / Epilogue / Kernel / Dispatch 组织，无历史实验宏；三轮同轮比较通过 1% 平均时间门槛，四 shape 约 330–337T，310 组逐位正确性审计通过。

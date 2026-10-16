@@ -1,0 +1,12 @@
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.o
+*.so
+*.co
+*.mp4
+*.log
+*.csv
+# Runtime analysis outputs; immutable source manifest is explicitly tracked.
+versions/**/*.json
