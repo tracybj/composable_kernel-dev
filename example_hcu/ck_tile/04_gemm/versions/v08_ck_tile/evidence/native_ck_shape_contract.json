@@ -1,0 +1,30 @@
+{
+  "shape_type": "ck_tile::TileGemmShape2Groups",
+  "checks": {
+    "default": {
+      "identical_to_measured_library": true,
+      "sha256": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5"
+    },
+    "structured": {
+      "identical_to_measured_library": true,
+      "sha256": "33130156630a934f7749271a681ca378790c9747278d52fc8c80cd31a34d5e8d"
+    },
+    "producer": {
+      "identical_to_measured_library": true,
+      "sha256": "a751439fa10c7ed9ff31da6c5548f3d200ae258d8c3ba8855900a5a76a2da1e6"
+    }
+  },
+  "final_source_sha256": {
+    "arch/gfx936.hpp": "90fd12107c2ca8ba13ef00bc9f43b95693ead76db9f0efeecd26500ce4170452",
+    "gemm.cpp": "c3c97579c4bbd4f72728c8bef71f922a0c0dcdc115ee1f0ab983e38c06f8714c",
+    "gemm_epilogue.hpp": "56bdf8fdbe794e0c6f492500b376470b1d15c7699626385a7fbb9a4b8dd22aa9",
+    "gemm_kernel.hpp": "5eda5c22f71d0b2b007f618b3cc4dad66333476e123ff1b4e4c25c6f87f73a30",
+    "gemm_pipeline.hpp": "9d07dbe60f0fd9b49c74ab45b6661498aaf0e442ffcebd21dfa6ac443eb06639",
+    "gemm_policy.hpp": "aafd78f51fde746ef126b809461516534ce5a006aae733dc4dfb5d64e2f4c867",
+    "gemm_problem.hpp": "af926c391323d60c0d5d30d4719c41bf45bc3fd7690892bc986e6997b111d206",
+    "gemm_producer.cpp": "7ec7c8a731209feb56241b054aba9bb4325b9a05bbf4b02b417bfb9240a21737",
+    "gemm_structured.cpp": "90bca7715ba6dedc0812763f9bd179b3943dc1ba6b445159241605f9eb83a2af"
+  },
+  "gpu_retest_needed": false,
+  "reason": "All three rebuilt shared libraries are byte-identical to measured libraries"
+}

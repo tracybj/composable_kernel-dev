@@ -1,0 +1,402 @@
+[
+  {
+    "shape": "fc2",
+    "MNK": [
+      18880,
+      5376,
+      7168
+    ],
+    "correctness": {
+      "v07_struct32_330t": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 6.42423692625016e-05
+        }
+      },
+      "v08_ck_tile": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 6.42423692625016e-05
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          4.4242206573486325,
+          4.408412933349609,
+          4.407676696777344,
+          4.401596450805664,
+          4.422812652587891,
+          4.436140823364258
+        ],
+        "median_ms": 4.41561279296875,
+        "TFLOPS": 329.5325047515546
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          4.418124008178711,
+          4.41890869140625,
+          4.424316787719727,
+          4.425212478637695,
+          4.425948715209961,
+          4.428396987915039
+        ],
+        "median_ms": 4.424764633178711,
+        "TFLOPS": 328.8509252603292
+      },
+      "v07_struct32_330t": {
+        "rounds_ms": [
+          4.441595840454101,
+          4.382620620727539,
+          4.380988693237304,
+          4.4253887176513675,
+          4.375708770751953,
+          4.415564727783203
+        ],
+        "median_ms": 4.399092674255371,
+        "TFLOPS": 330.7700135974746
+      },
+      "v08_ck_tile": {
+        "rounds_ms": [
+          4.409740829467774,
+          4.401836776733399,
+          4.384812927246093,
+          4.41828498840332,
+          4.398060989379883,
+          4.348524856567383
+        ],
+        "median_ms": 4.399948883056641,
+        "TFLOPS": 330.7056473504191
+      }
+    }
+  },
+  {
+    "shape": "qkv",
+    "MNK": [
+      18880,
+      10752,
+      5376
+    ],
+    "correctness": {
+      "v07_struct32_330t": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 5.930329280090518e-05
+        }
+      },
+      "v08_ck_tile": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 5.930329280090518e-05
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          6.66802749633789,
+          6.6626029968261715,
+          6.650554656982422,
+          6.670154571533203,
+          6.687770843505859,
+          6.634666442871094
+        ],
+        "median_ms": 6.665315246582031,
+        "TFLOPS": 327.4611679678995
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          6.635642242431641,
+          6.640779113769531,
+          6.642011260986328,
+          6.655883026123047,
+          6.642378234863282,
+          6.692714691162109
+        ],
+        "median_ms": 6.642194747924805,
+        "TFLOPS": 328.60101191732014
+      },
+      "v07_struct32_330t": {
+        "rounds_ms": [
+          6.534362030029297,
+          6.53802719116211,
+          6.5410514831542965,
+          6.5792594909667965,
+          6.5455474853515625,
+          6.550395202636719
+        ],
+        "median_ms": 6.5432994842529295,
+        "TFLOPS": 333.56747933862886
+      },
+      "v08_ck_tile": {
+        "rounds_ms": [
+          6.48863525390625,
+          6.501691436767578,
+          6.478971099853515,
+          6.466859436035156,
+          6.534827423095703,
+          6.48863525390625
+        ],
+        "median_ms": 6.48863525390625,
+        "TFLOPS": 336.3776557182845
+      }
+    }
+  },
+  {
+    "shape": "out_proj",
+    "MNK": [
+      18880,
+      5376,
+      3584
+    ],
+    "correctness": {
+      "v07_struct32_330t": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0625,
+          "relative_l2": 5.161722583579831e-05
+        }
+      },
+      "v08_ck_tile": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0625,
+          "relative_l2": 5.161722583579831e-05
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          2.1916940689086912,
+          2.185902404785156,
+          2.1912303924560548,
+          2.185598373413086,
+          2.184622383117676,
+          2.1870384216308594
+        ],
+        "median_ms": 2.1864704132080077,
+        "TFLOPS": 332.7481439698703
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          2.187358093261719,
+          2.1856143951416014,
+          2.1839344024658205,
+          2.18511848449707,
+          2.182046127319336,
+          2.18625431060791
+        ],
+        "median_ms": 2.1853664398193358,
+        "TFLOPS": 332.91623710490677
+      },
+      "v07_struct32_330t": {
+        "rounds_ms": [
+          2.207838439941406,
+          2.2074703216552733,
+          2.2090063095092773,
+          2.205886459350586,
+          2.2050701141357423,
+          2.2064943313598633
+        ],
+        "median_ms": 2.2069823265075685,
+        "TFLOPS": 329.6555496170644
+      },
+      "v08_ck_tile": {
+        "rounds_ms": [
+          2.2055343627929687,
+          2.2065744400024414,
+          2.207342338562012,
+          2.206110382080078,
+          2.206205940246582,
+          2.2064464569091795
+        ],
+        "median_ms": 2.206326198577881,
+        "TFLOPS": 329.75358417488263
+      }
+    }
+  },
+  {
+    "shape": "fc1",
+    "MNK": [
+      18880,
+      14336,
+      5376
+    ],
+    "correctness": {
+      "v07_struct32_330t": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 5.8827470638789237e-05
+        }
+      },
+      "v08_ck_tile": {
+        "binary_fraction": {
+          "passed": true,
+          "finite": true,
+          "exact": true,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0
+        },
+        "normal": {
+          "passed": true,
+          "finite": true,
+          "exact": false,
+          "guard_unchanged": true,
+          "inputs_unchanged": true,
+          "max_abs": 0.125,
+          "relative_l2": 5.8827470638789237e-05
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          8.89111328125,
+          8.84668197631836,
+          8.871513366699219,
+          8.86197738647461,
+          8.844393157958985,
+          8.857465362548828
+        ],
+        "median_ms": 8.859721374511718,
+        "TFLOPS": 328.4726194361148
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          8.852761840820312,
+          8.821673583984374,
+          8.862857818603516,
+          8.830921173095703,
+          8.863673400878906,
+          8.844441223144532
+        ],
+        "median_ms": 8.848601531982421,
+        "TFLOPS": 328.8854037376921
+      },
+      "v07_struct32_330t": {
+        "rounds_ms": [
+          8.698585510253906,
+          8.726265716552735,
+          8.640937805175781,
+          8.675081634521485,
+          8.744185638427734,
+          8.701225280761719
+        ],
+        "median_ms": 8.699905395507812,
+        "TFLOPS": 334.5066130101445
+      },
+      "v08_ck_tile": {
+        "rounds_ms": [
+          8.602537536621094,
+          8.61645736694336,
+          8.674489593505859,
+          8.650537872314453,
+          8.624457550048827,
+          8.595753479003907
+        ],
+        "median_ms": 8.620457458496094,
+        "TFLOPS": 337.5894958441919
+      }
+    }
+  }
+]

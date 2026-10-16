@@ -1,0 +1,30 @@
+{
+  "name": "v08_ck_tile__producer",
+  "config": [
+    256,
+    256,
+    64,
+    12,
+    1,
+    0
+  ],
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v08_ck_tile/src/gemm_producer.cpp",
+    "-o",
+    "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v08_ck_tile__producer.so",
+    "-mllvm",
+    "--enable-num-vgprs-768=true"
+  ],
+  "exit_code": 0,
+  "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "recorded_library_sha256": "a751439fa10c7ed9ff31da6c5548f3d200ae258d8c3ba8855900a5a76a2da1e6",
+  "sha256": "a751439fa10c7ed9ff31da6c5548f3d200ae258d8c3ba8855900a5a76a2da1e6"
+}

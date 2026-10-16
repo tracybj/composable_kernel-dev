@@ -1,0 +1,60 @@
+{
+  "v07_struct32_330t": {
+    "library_sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+    "kernels": [
+      {
+        "name": "_ZN11h3_original18h3_original_kernelEPKtS1_Ptiii",
+        "vgpr_count": 225,
+        "sgpr_count": 31,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      },
+      {
+        "name": "_ZN11h3_struct3218h3_struct32_kernelEPKtS1_Ptiii",
+        "vgpr_count": 233,
+        "sgpr_count": 38,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      },
+      {
+        "name": "_ZN20h3_struct32_producer27h3_struct32_producer_kernelEPKtS1_Ptiii",
+        "vgpr_count": 233,
+        "sgpr_count": 38,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      }
+    ]
+  },
+  "v08_ck_tile": {
+    "library_sha256": "a42f45e912366f5a96bfa4966468a71ee82f1432a51db2c527e0c1d1b9fe01a5",
+    "kernels": [
+      {
+        "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_26StructuredActivationAccessELb1EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+        "vgpr_count": 237,
+        "sgpr_count": 38,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      },
+      {
+        "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_26StructuredActivationAccessELb0EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+        "vgpr_count": 237,
+        "sgpr_count": 38,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      },
+      {
+        "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_19RawActivationAccessELb0EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+        "vgpr_count": 235,
+        "sgpr_count": 31,
+        "vgpr_spill_count": 0,
+        "group_segment_fixed_size": 65536,
+        "private_segment_fixed_size": 0
+      }
+    ]
+  }
+}

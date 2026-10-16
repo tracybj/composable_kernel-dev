@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-16T12:16:43.952831+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "HIP_VISIBLE_DEVICES": "4",
+  "dtype": "BF16 X/W/Y, FP32 accumulator",
+  "layout": "Y[M,N] = X[M,K] @ W[N,K].T",
+  "benchmark": "HIP events; rotating order; hot-cache; median of round means",
+  "arguments": {
+    "versions": "v07_struct32_330t,v08_ck_tile",
+    "m": 18880,
+    "shapes": "fc2,qkv,out_proj,fc1",
+    "tag": "v08_final_round_a_20261016",
+    "warmup": 5,
+    "rounds": 6,
+    "iterations": 10
+  },
+  "libraries": {
+    "v07_struct32_330t": {
+      "name": "v07_struct32_330t",
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "command": [
+        "/opt/dtk/bin/hipcc",
+        "-O3",
+        "-std=c++17",
+        "--offload-arch=gfx936",
+        "-fPIC",
+        "-shared",
+        "-I/workspace/composable_kernel/include",
+        "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v07_struct32_330t/src/struct32_dispatch.cpp",
+        "-o",
+        "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v07_struct32_330t.so",
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1",
+        "-DH3_PHASE_POSTPRIO=1",
+        "-DH3_PHASE_MID_PREFETCH=1",
+        "-DH3_PHASE_MID_GROUP=0",
+        "-DH3_PHASE_ALWAYS_PREFETCH=1",
+        "-DH3_PHASE_BUFFER_EPILOGUE=1",
+        "-DH3_PHASE_OUTPUT_RNE=1",
+        "-DH3_PHASE_NATIVE_CADENCE=1",
+        "-DH3_PHASE_STATIC_STAGGER=1",
+        "-DH3_PHASE_PAIR_TILES=1"
+      ],
+      "exit_code": 0,
+      "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+      "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+      "recorded_library_sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+      "sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9"
+    },
+    "v08_ck_tile": {
+      "name": "v08_ck_tile",
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "command": [
+        "/opt/dtk/bin/hipcc",
+        "-O3",
+        "-std=c++17",
+        "--offload-arch=gfx936",
+        "-fPIC",
+        "-shared",
+        "-I/workspace/composable_kernel/include",
+        "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v08_ck_tile/src/gemm.cpp",
+        "-o",
+        "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v08_ck_tile.so",
+        "-mllvm",
+        "--enable-num-vgprs-768=true"
+      ],
+      "exit_code": 0,
+      "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+      "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+      "recorded_library_sha256": null,
+      "sha256": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5"
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-16",
+  "reference": "v07_struct32_330t",
+  "candidate": "v08_ck_tile",
+  "gate": {
+    "metric": "mean of three independent same-run median-of-round-means times, per H3 shape",
+    "maximum_mean_regression_percent": 1.0,
+    "h3_passed": true,
+    "square_passed": true
+  },
+  "h3_comparisons": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "v07_round_medians_ms": [
+        4.397796821594238,
+        4.399092674255371,
+        4.353300857543945
+      ],
+      "v08_round_medians_ms": [
+        4.407060813903809,
+        4.399948883056641,
+        4.398044776916504
+      ],
+      "v07_mean_ms": 4.383396784464518,
+      "v08_mean_ms": 4.401684824625652,
+      "time_change_percent": 0.41721160689696113,
+      "v08_TFLOPS": 330.57522327345424,
+      "each_round_time_change_percent": [
+        0.21065075730835048,
+        0.019463304473688048,
+        1.0278159226009276
+      ]
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "v07_round_medians_ms": [
+        6.552298736572265,
+        6.5432994842529295,
+        6.551554870605469
+      ],
+      "v08_round_medians_ms": [
+        6.522515106201172,
+        6.48863525390625,
+        6.500003051757813
+      ],
+      "v07_mean_ms": 6.549051030476888,
+      "v08_mean_ms": 6.5037178039550785,
+      "time_change_percent": -0.6922106166350694,
+      "v08_TFLOPS": 335.59757377429344,
+      "each_round_time_change_percent": [
+        -0.45455238792536656,
+        -0.8354230228684201,
+        -0.7868638798852357
+      ]
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "v07_round_medians_ms": [
+        2.2075103759765624,
+        2.2069823265075685,
+        2.2057262420654298
+      ],
+      "v08_round_medians_ms": [
+        2.2070943832397463,
+        2.206326198577881,
+        2.2064541816711425
+      ],
+      "v07_mean_ms": 2.206739648183187,
+      "v08_mean_ms": 2.2066249211629234,
+      "time_change_percent": -0.005198937734129938,
+      "v08_TFLOPS": 329.70894367338775,
+      "each_round_time_change_percent": [
+        -0.018844429514042194,
+        -0.02972964132095246,
+        0.03300226437126241
+      ]
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "v07_round_medians_ms": [
+        8.660217666625977,
+        8.699905395507812,
+        8.673129653930665
+      ],
+      "v08_round_medians_ms": [
+        8.63957748413086,
+        8.620457458496094,
+        8.623953247070313
+      ],
+      "v07_mean_ms": 8.677750905354818,
+      "v08_mean_ms": 8.627996063232423,
+      "time_change_percent": -0.5733610317356863,
+      "v08_TFLOPS": 337.29453120192096,
+      "each_round_time_change_percent": [
+        -0.23833329934255243,
+        -0.9132046085551737,
+        -0.566997252693735
+      ]
+    }
+  ],
+  "square4096_comparisons": [
+    {
+      "mode": "default raw fallback",
+      "v07_mean_ms": 0.5606115698814391,
+      "v08_mean_ms": 0.56525160074234,
+      "time_change_percent": 0.827673046755395,
+      "v08_TFLOPS": 243.14650907932432
+    },
+    {
+      "mode": "__structured",
+      "v07_mean_ms": 0.49955161809921267,
+      "v08_mean_ms": 0.5023796081542968,
+      "time_change_percent": 0.5661056740932313,
+      "v08_TFLOPS": 273.57590005880195
+    },
+    {
+      "mode": "__producer",
+      "v07_mean_ms": 0.4795636534690857,
+      "v08_mean_ms": 0.47987560033798216,
+      "time_change_percent": 0.06504806330502877,
+      "v08_TFLOPS": 286.4053795925446
+    }
+  ],
+  "audit_groups": 310,
+  "audit_candidate_launches": 924,
+  "api_rejection_checks": 9,
+  "library_sha256": {
+    "v07": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+    "v08": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5",
+    "v07_structured": "62705257603baf0681e580bd556277e486131fc4b02253640d82318c06c4188a",
+    "v07_producer": "6c4bbf59a88321dd7658409b397a6ba7d919fc49d6643fa9af584a3fdc0a4c01",
+    "v08_structured": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5",
+    "v08_producer": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5"
+  },
+  "resources": {
+    "v07_struct32_330t": {
+      "library_sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+      "kernels": [
+        {
+          "name": "_ZN11h3_original18h3_original_kernelEPKtS1_Ptiii",
+          "vgpr_count": 225,
+          "sgpr_count": 31,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        },
+        {
+          "name": "_ZN11h3_struct3218h3_struct32_kernelEPKtS1_Ptiii",
+          "vgpr_count": 233,
+          "sgpr_count": 38,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        },
+        {
+          "name": "_ZN20h3_struct32_producer27h3_struct32_producer_kernelEPKtS1_Ptiii",
+          "vgpr_count": 233,
+          "sgpr_count": 38,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ]
+    },
+    "v08_ck_tile": {
+      "library_sha256": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5",
+      "kernels": [
+        {
+          "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_26StructuredActivationAccessELb1EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+          "vgpr_count": 237,
+          "sgpr_count": 38,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        },
+        {
+          "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_26StructuredActivationAccessELb0EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+          "vgpr_count": 236,
+          "sgpr_count": 38,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        },
+        {
+          "name": "_ZN7ck_tile2h312H3GemmDeviceINS0_12H3GemmKernelINS0_21H3GemmTilePartitionerINS0_13H3GemmProblemEEENS0_14H3GemmPipelineIS4_NS0_12H3GemmPolicyIS4_NS0_19RawActivationAccessELb0EEEEENS0_14H3GemmEpilogueIS4_EEEEEEvPKNT_8DataTypeESH_PSF_iii",
+          "vgpr_count": 234,
+          "sgpr_count": 31,
+          "vgpr_spill_count": 0,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "arch/gfx936.hpp": "90fd12107c2ca8ba13ef00bc9f43b95693ead76db9f0efeecd26500ce4170452",
+    "gemm.cpp": "c3c97579c4bbd4f72728c8bef71f922a0c0dcdc115ee1f0ab983e38c06f8714c",
+    "gemm_epilogue.hpp": "56bdf8fdbe794e0c6f492500b376470b1d15c7699626385a7fbb9a4b8dd22aa9",
+    "gemm_kernel.hpp": "5eda5c22f71d0b2b007f618b3cc4dad66333476e123ff1b4e4c25c6f87f73a30",
+    "gemm_pipeline.hpp": "9d07dbe60f0fd9b49c74ab45b6661498aaf0e442ffcebd21dfa6ac443eb06639",
+    "gemm_policy.hpp": "aafd78f51fde746ef126b809461516534ce5a006aae733dc4dfb5d64e2f4c867",
+    "gemm_problem.hpp": "af926c391323d60c0d5d30d4719c41bf45bc3fd7690892bc986e6997b111d206",
+    "gemm_producer.cpp": "7ec7c8a731209feb56241b054aba9bb4325b9a05bbf4b02b417bfb9240a21737",
+    "gemm_structured.cpp": "90bca7715ba6dedc0812763f9bd179b3943dc1ba6b445159241605f9eb83a2af"
+  },
+  "interpretation": "Performance-preserving under the stated 1% mean-time gate; not identical ISA or a claim that every run/shape is faster."
+}
