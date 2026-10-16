@@ -1,0 +1,211 @@
+{
+  "version": "v01_vector_213t",
+  "title": "恢复连续 K 向量读取",
+  "method": "在转置操作数组织后显式恢复连续 K 的向量化，避免尾部声明使 B 加载退化为标量；保留大 tile、LDS padding、CTA 分组与寄存器池设置。",
+  "evidence_stage": "stage_af_native_m18880",
+  "archive_date": "2026-10-16",
+  "experiment_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "variants": {
+    "default": {
+      "candidate": "large_pad16_g8_trans_groupn_vecb_pad_m_reg768",
+      "library_sha256": "cfddb1994814a1b26e7f203a379293f873b516a48718844aa53beb3d57d17d75",
+      "entry": "gemm.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=32",
+        "-DH3_WM=4",
+        "-DH3_WN=2",
+        "-DH3_SWIZZLE=0",
+        "-DH3_RAW_BARRIER=1",
+        "-DH3_LDS_PAD=16",
+        "-DH3_GROUP_M=8",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_GEMM_TRANSPOSE=1",
+        "-DH3_PAD_N=1",
+        "-DH3_GROUP_N=8",
+        "-DH3_CONTIGUOUS_B_VECTOR=1"
+      ],
+      "config": [
+        256,
+        256,
+        32,
+        4,
+        2,
+        0
+      ],
+      "original_build_record": "build/attempts/large_pad16_g8_trans_groupn_vecb_pad_m_reg768/20261013-102011-099731/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/large_pad16_g8_trans_groupn_vecb_pad_m_reg768/20261013-102011-099731"
+    }
+  },
+  "source_sha256": {
+    "gemm.cpp": "5c2c09c3f73b13f106454deeafda7dfa7be8c973ebf52091bdf6982757faf385",
+    "double_buffer_dynamic.hpp": "79a55121e411169a310309aadc4fc8ee704ac0bc94b366383692f1198413cee3",
+    "double_buffer.hpp": "0173115c0d3be019c41f473798778d125937384a0fea80b4ffe7c4c10999802f",
+    "kpack_policy.hpp": "ea965844e0c64e09558329127208ce70480c7f550d329deb80355787247d3f5f",
+    "xor_policy.hpp": "effeb29cee299ad6d3389645b34fe7af7df6ff74faa36a90d6c50ff03bb4c355",
+    "padded_policy.hpp": "65f74670660a4ad22caa14fff24419566b5bab2c508cb6f89dc05dc640b0c9b0",
+    "warp_variants.hpp": "16843214af28e7a7baecf0959a863b8e33a4c50f7a4db8f74ae9a0a379e42c7b",
+    "policy.hpp": "f72ca173bda4df07cb0aa11ce70b88b40b463168532831a214c4b906ba932700",
+    "grouped_n_partitioner.hpp": "f967e7c90b6568dfe014836b84ba31a57f74331475113c75353c5496e90aaa0c",
+    "grouped_partitioner.hpp": "5d232319b644c01b69147d493c1c21258644289505e2c1e824ef9b997ee190bc"
+  },
+  "historical_performance": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "rounds_ms": [
+        7.062554931640625,
+        7.054939270019531,
+        7.0746513366699215,
+        7.0435630798339846,
+        7.063371276855468,
+        7.053963470458984
+      ],
+      "median_ms": 7.058747100830078,
+      "min_ms": 7.0435630798339846,
+      "max_ms": 7.0746513366699215,
+      "TFLOPS": 206.13969064125953
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "rounds_ms": [
+        10.270953369140624,
+        10.260376739501954,
+        10.251465606689454,
+        10.27205581665039,
+        10.289560699462891,
+        10.234439849853516
+      ],
+      "median_ms": 10.265665054321289,
+      "min_ms": 10.234439849853516,
+      "max_ms": 10.289560699462891,
+      "TFLOPS": 212.61476036579143
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "rounds_ms": [
+        3.5858695983886717,
+        3.58209342956543,
+        3.582765579223633,
+        3.5821414947509767,
+        3.5825736999511717,
+        3.5825736999511717
+      ],
+      "median_ms": 3.5825736999511717,
+      "min_ms": 3.58209342956543,
+      "max_ms": 3.5858695983886717,
+      "TFLOPS": 203.07857779727348
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "rounds_ms": [
+        13.691477966308593,
+        13.679830932617188,
+        13.69970245361328,
+        13.700694274902343,
+        13.738470458984375,
+        13.66314239501953
+      ],
+      "median_ms": 13.695590209960937,
+      "min_ms": 13.66314239501953,
+      "max_ms": 13.738470458984375,
+      "TFLOPS": 212.48999442487704
+    }
+  ],
+  "correctness": {
+    "fc2": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 57728,
+        "relative_l2": 6.42423692625016e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "qkv": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 98622,
+        "relative_l2": 5.930329280090518e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "out_proj": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.0625,
+        "mismatches": 38865,
+        "relative_l2": 5.161722583579831e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "fc1": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 131019,
+        "relative_l2": 5.8827470638789237e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    }
+  }
+}
