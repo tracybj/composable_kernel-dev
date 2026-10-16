@@ -4,7 +4,8 @@
 
 ## 先看哪里
 
-- **当前最快实现**：[v07_struct32_330t](versions/v07_struct32_330t/README.md)。入口是该目录的 `src/struct32_dispatch.cpp`，主要流水是 `src/rolephase.cpp`。
+- **当前分层实现**：[v08_ck_tile](versions/v08_ck_tile/README.md)。按 Problem / Policy / Pipeline / Epilogue / Kernel / Dispatch 组织，无历史实验宏；三轮同轮比较通过 1% 平均时间门槛，四 shape 约 330–337T，310 组逐位正确性审计通过。
+- **历史性能参考**：[v07_struct32_330t](versions/v07_struct32_330t/README.md)。入口是该目录的 `src/struct32_dispatch.cpp`，主要流水是 `src/rolephase.cpp`；保留原样供对照。
 - **关键版本与每次改动**：下面的版本表；每个版本有独立源码、精确编译宏、源文件 SHA 和历史性能。
 - **全部实验经过**：[优化总览](records/experiment_review_20261014/GEMM_实验迭代总览_20261012-14.md)、[112 阶段记录](records/experiment_review_20261014/GEMM_112阶段逐项记录.md)。包含失败、负收益及 profiler 分析。
 - **最终四 shape 验收**：[最终报告](records/FINAL_RESULTS_330T_20261014.md)；**4096³**：[约 287T 的补充测试](records/RESULTS_4096_20261016.md)。
@@ -12,7 +13,7 @@
 
 ## 关键代码版本
 
-下表为历史实测，均 M18880；单位 TFLOPS。早期约 70T 的构建没有独立冻结源码，因此保留完整报告/构建记录，不编造一个精确原版。7 个精确源码快照分别提交，Git commit 时间为 2026-10-16 归档时间。
+下表前七行为历史实测，均 M18880；单位 TFLOPS。早期约 70T 的构建没有独立冻结源码，因此保留完整报告/构建记录，不编造一个精确原版。7 个精确源码快照分别提交，Git commit 时间为 2026-10-16 归档时间。v08 为随后新增的分层重构，数值使用独立三轮测量的平均时间换算，不与旧轮次直接计算加速率。
 
 | 版本 | 主要改动 | FC2 | QKV | out_proj | FC1 |
 |---|---|---:|---:|---:|---:|
@@ -23,6 +24,7 @@
 | [v05_static_301t](versions/v05_static_301t/README.md) | 双 tile 展开与静态 wave 分组 | 296.79 | 301.05 | 282.98 | 299.78 |
 | [v06_rebase_308t](versions/v06_rebase_308t/README.md) | B 公共 K 偏移的标量 rebase | 298.73 | 307.74 | 285.51 | 306.52 |
 | [v07_struct32_330t](versions/v07_struct32_330t/README.md) | K32 Cache Swizzle 与精确 shape 分发 | 329.14 | 333.18 | 329.74 | 331.63 |
+| [v08_ck_tile](versions/v08_ck_tile/README.md) | CK-Tile 分层重构，三轮性能保持验证 | 330.58 | 335.60 | 329.71 | 337.29 |
 
 ## 构建和测试
 
@@ -34,6 +36,8 @@ python3 verify_archive.py
 python3 build.py --version v07_struct32_330t
 HIP_VISIBLE_DEVICES=4 OMP_NUM_THREADS=4 python3 bench.py --tag my_h3_run
 ```
+
+使用 v08 时显式指定版本：`python3 build.py --version v08_ck_tile`；比较命令与完整审计见其 [README](versions/v08_ck_tile/README.md) 和 [RESULTS](versions/v08_ck_tile/RESULTS.md)。现有脚本默认参数保留 v07，旧归档命令不改写。
 
 默认使用当前 checkout 的 CK include。原实验依赖 CK `5c8ea51ed7ac03bdcc24aeb811d51acc57233b60`；目标仓库主线与它不同。重建历史库时显式加 `--ck-root /workspace/composable_kernel` 指向原实验 CK，避免把不同依赖产生的二进制冒充原库。归档的编译/数值验证结果见 [VALIDATION.md](VALIDATION.md)。
 

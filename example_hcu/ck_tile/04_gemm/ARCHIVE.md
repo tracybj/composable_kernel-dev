@@ -10,7 +10,7 @@
   build.py / bench.py        精简的统一构建/测试入口
   verify_archive.py          CPU 校验全部报告和保留源码 SHA
   VERSIONS.json              7 个版本的结构化索引
-  versions/v01…v07/          7 份实测库对应的精确源码及构建参数
+  versions/v01…v08/          7 份历史快照 + 后续分层重构 v08
   records/                   原树的全部文档、结构化结果、日志与文本 counter
   build/                     本地重建产物，新测量输出；Git 忽略
 ```
@@ -39,3 +39,5 @@ tar -xf /root/workspace/yyc/ck_gemm_archives/04_gemm_pre_cleanup_20261016.tar -C
 ```
 
 7 个版本的 commit 是本次按历史顺序新增的归档提交，不冒充当年的开发提交，不更改原始性能记录。保留来源 SHA256，源码字节不做清理/重排以免改变重建依据。
+
+归档之后新增的 v08 是新实现，不是原实验的第八份冻结快照。它的源码、正确性/性能报告及新证据放在 `versions/v08_ck_tile/`；原始 3,402 份报告的 preservation manifest 保持原样。v08 通过 Git 及独立交付包保存，不在整理前的完整备份 tar 中。

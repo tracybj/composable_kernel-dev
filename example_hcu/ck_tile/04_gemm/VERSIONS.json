@@ -628,5 +628,60 @@
         "TFLOPS": 331.63182239737733
       }
     ]
+  },
+  {
+    "id": "v08_ck_tile",
+    "title": "CK-Tile 分层重构，三轮性能保持验证",
+    "method": "Native TileGemmShape2Groups + typed Problem/Policy/Pipeline/Epilogue/Kernel/Dispatch",
+    "stage": "v08_final_round_a/b/c_20261016 (mean of independent medians)",
+    "entry": "gemm.cpp",
+    "sha256": "f95f93180f23f631ea27925c45c0b0b77012228e2fc08254e5b3a8ec607712c5",
+    "source_commit": "3506699487c9a73e4c970259b09573a26194bab5",
+    "performance": [
+      {
+        "shape": "fc2",
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "mean_ms": 4.401684824625652,
+        "TFLOPS": 330.57522327345424,
+        "same_run_v07_time_change_percent": 0.41721160689696113
+      },
+      {
+        "shape": "qkv",
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "mean_ms": 6.5037178039550785,
+        "TFLOPS": 335.59757377429344,
+        "same_run_v07_time_change_percent": -0.6922106166350694
+      },
+      {
+        "shape": "out_proj",
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "mean_ms": 2.2066249211629234,
+        "TFLOPS": 329.70894367338775,
+        "same_run_v07_time_change_percent": -0.005198937734129938
+      },
+      {
+        "shape": "fc1",
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "mean_ms": 8.627996063232423,
+        "TFLOPS": 337.29453120192096,
+        "same_run_v07_time_change_percent": -0.5733610317356863
+      }
+    ]
   }
 ]
