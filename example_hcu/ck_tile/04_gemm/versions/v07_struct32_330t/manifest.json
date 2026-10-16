@@ -1,0 +1,300 @@
+{
+  "version": "v07_struct32_330t",
+  "title": "K32 Cache Swizzle 与精确 shape 分发",
+  "method": "结构化 B descriptor 使用 K32 公共 rebase、row index 与 descriptor bit62 CacheSwizzle；FC2/out 叠加 producer 固定槽 pair 与 A soffset，QKV/FC1 采用 plain structured 路径，其余尺寸保留 raw fallback。",
+  "evidence_stage": "stage_dg_struct32_dispatch_independent_20261014",
+  "archive_date": "2026-10-16",
+  "experiment_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "variants": {
+    "default": {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768",
+      "library_sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+      "entry": "struct32_dispatch.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1",
+        "-DH3_PHASE_POSTPRIO=1",
+        "-DH3_PHASE_MID_PREFETCH=1",
+        "-DH3_PHASE_MID_GROUP=0",
+        "-DH3_PHASE_ALWAYS_PREFETCH=1",
+        "-DH3_PHASE_BUFFER_EPILOGUE=1",
+        "-DH3_PHASE_OUTPUT_RNE=1",
+        "-DH3_PHASE_NATIVE_CADENCE=1",
+        "-DH3_PHASE_STATIC_STAGGER=1",
+        "-DH3_PHASE_PAIR_TILES=1"
+      ],
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "original_build_record": "build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768/20261014-112335-003400/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768/20261014-112335-003400"
+    },
+    "structured": {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768",
+      "library_sha256": "62705257603baf0681e580bd556277e486131fc4b02253640d82318c06c4188a",
+      "entry": "rolephase.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1",
+        "-DH3_PHASE_POSTPRIO=1",
+        "-DH3_PHASE_STRUCT_B32=2",
+        "-DH3_PHASE_MID_PREFETCH=1",
+        "-DH3_PHASE_MID_GROUP=0",
+        "-DH3_PHASE_ALWAYS_PREFETCH=1",
+        "-DH3_PHASE_BUFFER_EPILOGUE=1",
+        "-DH3_PHASE_OUTPUT_RNE=1",
+        "-DH3_PHASE_NATIVE_CADENCE=1",
+        "-DH3_PHASE_STATIC_STAGGER=1",
+        "-DH3_PHASE_PAIR_TILES=1"
+      ],
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "original_build_record": "build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768/20261014-111513-842109/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768/20261014-111513-842109"
+    },
+    "producer": {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768",
+      "library_sha256": "6c4bbf59a88321dd7658409b397a6ba7d919fc49d6643fa9af584a3fdc0a4c01",
+      "entry": "rolephase.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1",
+        "-DH3_PHASE_POSTPRIO=1",
+        "-DH3_PHASE_PRODUCER_PAIRS=1",
+        "-DH3_PHASE_A_SOFFSET=1",
+        "-DH3_PHASE_STRUCT_B32=2",
+        "-DH3_PHASE_MID_PREFETCH=1",
+        "-DH3_PHASE_MID_GROUP=0",
+        "-DH3_PHASE_ALWAYS_PREFETCH=1",
+        "-DH3_PHASE_BUFFER_EPILOGUE=1",
+        "-DH3_PHASE_OUTPUT_RNE=1",
+        "-DH3_PHASE_NATIVE_CADENCE=1",
+        "-DH3_PHASE_STATIC_STAGGER=1",
+        "-DH3_PHASE_PAIR_TILES=1"
+      ],
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "original_build_record": "build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768/20261014-111519-767919/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768/20261014-111519-767919"
+    }
+  },
+  "source_sha256": {
+    "struct32_dispatch.cpp": "b69cdcf75d2c6558fd61a067bfb681acb3f50d93b1dd915bcef3a4c05d407109",
+    "rolephase.cpp": "e12e7f8a5c0970bdd002d2cb5b3ca5d76388082caf8382aa760b44eb046e0c52",
+    "phase_k64_body.hpp": "52bd898d95bea46951c438535314c1a2dca7c84f536f09e5b34d04dd02146999",
+    "phase_k64_native.hpp": "54fcb4b8fee6791a53714216bd1818ab9a893ddaaa466ca6027005468f032088",
+    "phase_k64_prepare.hpp": "a23ea6cd4345b5059558a3e91404530e8cfe84962a1f5e3919c86688569427a7",
+    "mmac_group4.hpp": "5fe3d7206cdbe4941002930e7b48a8a7d555b482c1820eaa1c47668cc25ea208",
+    "paired_output.hpp": "9df9777352bc567efb1eca256e538187de4a29a79f24e856b2f799ec1042e011",
+    "structured_b32.hpp": "1622256c8df1aac9364fd07946f19ab1555fb7acb051ff1180ab900e93d64c6b",
+    "raw_b_base64.hpp": "5a691741c069e563c3265f88685c85c5585ccc0f79336af3201ff2326791027f",
+    "structured_b64.hpp": "5de1de42341b457e678ea340d80f4318feee0cf24fe112f5a46971bd89a9027e",
+    "async_b_soffset.hpp": "e57ad3ffe4ab4b05fa50ca04b0494d546069da10024d1cc1102bb85a00b29f69",
+    "async_a_soffset.hpp": "eee121331cfe3970a212fbc08c062545687481b13d528a90390b860cc45908c9",
+    "output_rne.hpp": "2d76b94528da5473380ea583dc738af04cfab09e454d4a142efe6783a225fd6c",
+    "structured_b.hpp": "4481d9e5a6fbe905e0dcc7fecb4508cde06d50cad9a63596b18b3e1bc2502158"
+  },
+  "historical_performance": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "rounds_ms": [
+        4.414780807495117,
+        4.4269248962402346,
+        4.4700767517089846,
+        4.395724868774414,
+        4.49444465637207,
+        4.395468902587891
+      ],
+      "median_ms": 4.420852851867676,
+      "min_ms": 4.395468902587891,
+      "max_ms": 4.49444465637207,
+      "TFLOPS": 329.1419082327677
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "rounds_ms": [
+        6.549755096435547,
+        6.551995086669922,
+        6.510363006591797,
+        6.533963012695312,
+        6.594058990478516,
+        6.572235107421875
+      ],
+      "median_ms": 6.550875091552735,
+      "min_ms": 6.510363006591797,
+      "max_ms": 6.594058990478516,
+      "TFLOPS": 333.18173297709103
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "rounds_ms": [
+        2.206478309631348,
+        2.2070064544677734,
+        2.207150459289551,
+        2.2059343338012694,
+        2.2063343048095705,
+        2.2060783386230467
+      ],
+      "median_ms": 2.206406307220459,
+      "min_ms": 2.2059343338012694,
+      "max_ms": 2.207150459289551,
+      "TFLOPS": 329.7416117145397
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "rounds_ms": [
+        8.797433471679687,
+        8.761817932128906,
+        8.664073944091797,
+        8.67781753540039,
+        8.861385345458984,
+        8.788825225830077
+      ],
+      "median_ms": 8.775321578979492,
+      "min_ms": 8.664073944091797,
+      "max_ms": 8.861385345458984,
+      "TFLOPS": 331.63182239737733
+    }
+  ],
+  "correctness": {
+    "fc2": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 57728,
+        "relative_l2": 6.42423692625016e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "qkv": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 98622,
+        "relative_l2": 5.930329280090518e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "out_proj": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.0625,
+        "mismatches": 38865,
+        "relative_l2": 5.161722583579831e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "fc1": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 131019,
+        "relative_l2": 5.8827470638789237e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    }
+  }
+}
