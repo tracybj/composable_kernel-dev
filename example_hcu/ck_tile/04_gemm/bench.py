@@ -35,7 +35,7 @@ for name in names:
     lib=ctypes.CDLL(str(path));fn=lib.h3_gemm
     fn.argtypes=[ctypes.c_void_p]*3+[ctypes.c_int]*3+[ctypes.c_void_p];fn.restype=ctypes.c_int
     libraries[name]=(lib,fn)
-    metadata[name]=json.loads((ROOT/'build'/(name+'.json')).read_text())
+    metadata[name]=json.loads((ROOT/'build'/(name+'.json')).read_text(encoding='utf-8'))
     assert hashlib.sha256(path.read_bytes()).hexdigest()==metadata[name]['sha256']
 out.mkdir(parents=True)
 (out/'environment.json').write_text(json.dumps({
@@ -44,7 +44,7 @@ out.mkdir(parents=True)
     'HIP_VISIBLE_DEVICES':os.environ.get('HIP_VISIBLE_DEVICES'),
     'dtype':'BF16 X/W/Y, FP32 accumulator','layout':'Y[M,N] = X[M,K] @ W[N,K].T',
     'benchmark':'HIP events; rotating order; hot-cache; median of round means',
-    'arguments':vars(a),'libraries':metadata},indent=2)+'\n')
+    'arguments':vars(a),'libraries':metadata},indent=2)+'\n',encoding='utf-8')
 shapes={'fc2':(5376,7168),'qkv':(10752,5376),'out_proj':(5376,3584),
         'fc1':(14336,5376),'square4096':(4096,4096)}
 rows=[]
@@ -83,7 +83,7 @@ with torch.inference_mode():
                     'max_abs':float(error.max()),'relative_l2':relative}
             del saved_x,saved_w,reference,error
         if not all(v['passed'] for c in checks.values() for v in c.values()):
-            (out/'FAILED.json').write_text(json.dumps(checks,indent=2)+'\n')
+            (out/'FAILED.json').write_text(json.dumps(checks,indent=2)+'\n',encoding='utf-8')
             raise SystemExit('Correctness failed; no performance reported')
         calls={'rocblas_linear':lambda:F.linear(x,w),'rocblas_mm_out':lambda:torch.mm(x,w.t(),out=original)}
         calls.update({name:lambda fn=fn:launch(fn) for name,(_,fn) in libraries.items()})
@@ -101,7 +101,7 @@ with torch.inference_mode():
         timing={mode:{'rounds_ms':values,'median_ms':statistics.median(values),
                       'TFLOPS':2*m*n*k/(statistics.median(values)*1e9)} for mode,values in times.items()}
         rows.append({'shape':shape,'MNK':[m,n,k],'correctness':checks,'timing':timing})
-        (out/'results.json').write_text(json.dumps(rows,indent=2)+'\n')
+        (out/'results.json').write_text(json.dumps(rows,indent=2)+'\n',encoding='utf-8')
         print(json.dumps({'shape':shape,'timing':timing}),flush=True)
         del x,w,storage,y,original,calls
         torch.cuda.empty_cache()

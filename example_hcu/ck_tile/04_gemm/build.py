@@ -14,7 +14,7 @@ parser.add_argument('--ck-root', type=Path, default=ROOT.parents[2])
 parser.add_argument('--hipcc', default='/opt/dtk/bin/hipcc')
 args = parser.parse_args()
 manifest_path = ROOT/'versions'/args.version/'manifest.json'
-manifest = json.loads(manifest_path.read_text())
+manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
 record = manifest['variants'][args.variant]
 source_root = manifest_path.parent/'src'
 for relative, expected in manifest['source_sha256'].items():
@@ -37,8 +37,8 @@ metadata={'name':name,'config':record['config'],'command':command,'exit_code':re
           'recorded_library_sha256':record['library_sha256']}
 if result.returncode==0:
     metadata['sha256']=hashlib.sha256(target.read_bytes()).hexdigest()
-(out/(name+'.json')).write_text(json.dumps(metadata,indent=2)+'\n')
+(out/(name+'.json')).write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
 if result.returncode:
-    print((out/(name+'.log')).read_text(errors='replace')[-12000:])
+    print((out/(name+'.log')).read_text(encoding='utf-8',errors='replace')[-12000:])
     raise SystemExit(result.returncode)
 print(json.dumps(metadata,indent=2),flush=True)
