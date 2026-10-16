@@ -1,0 +1,35 @@
+{
+  "name": "wide_double",
+  "config": [
+    128,
+    256,
+    32,
+    4,
+    2,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/wide_double.so",
+    "-DH3_BM=128",
+    "-DH3_BN=256",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=2",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1",
+    "-DH3_DOUBLE_BUFFER=1"
+  ],
+  "exit_code": 0,
+  "seconds": 54.52615198912099,
+  "sha256": "1937667b3533333aee394778018f502d0328c9713ef8b65baba5cc6f091f4414"
+}

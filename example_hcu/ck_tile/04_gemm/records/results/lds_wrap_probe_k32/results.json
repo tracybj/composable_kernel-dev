@@ -1,0 +1,287 @@
+{
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-shared",
+    "-fPIC",
+    "-I/workspace/composable_kernel/include",
+    "-DH3_PROBE_K=32",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/lds_wrap_probe.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/lds_wrap_probe_k32.so"
+  ],
+  "source_sha256": "8f0b1e387f7b92808928c4a4f73e29b23a1d9d5bb01c6ecd71b32e0f07df4377",
+  "library_sha256": "bbba5f333b6492f827bf7dc617497df606990c37401a063dfba415e8902abf6e",
+  "results": [
+    {
+      "wrap": 0,
+      "unique_values": 8192,
+      "missing_count": 0,
+      "duplicate_count": 0,
+      "min_index": 0,
+      "max_index": 8191,
+      "examples": {
+        "r0c0": [
+          0
+        ],
+        "r0c8": [
+          8
+        ],
+        "r0c16": [
+          16
+        ],
+        "r0c24": [
+          24
+        ],
+        "r1c0": [
+          512
+        ],
+        "r1c8": [
+          520
+        ],
+        "r1c16": [
+          528
+        ],
+        "r1c24": [
+          536
+        ],
+        "r2c0": [
+          1024
+        ],
+        "r2c8": [
+          1032
+        ],
+        "r2c16": [
+          1040
+        ],
+        "r2c24": [
+          1048
+        ],
+        "r3c0": [
+          1536
+        ],
+        "r3c8": [
+          1544
+        ],
+        "r3c16": [
+          1552
+        ],
+        "r3c24": [
+          1560
+        ],
+        "r4c0": [
+          32
+        ],
+        "r4c8": [
+          40
+        ],
+        "r4c16": [
+          48
+        ],
+        "r4c24": [
+          56
+        ],
+        "r14c0": [
+          1120
+        ],
+        "r14c8": [
+          1128
+        ],
+        "r14c16": [
+          1136
+        ],
+        "r14c24": [
+          1144
+        ],
+        "r15c0": [
+          1632
+        ],
+        "r15c8": [
+          1640
+        ],
+        "r15c16": [
+          1648
+        ],
+        "r15c24": [
+          1656
+        ],
+        "r16c0": [
+          128
+        ],
+        "r16c8": [
+          136
+        ],
+        "r16c16": [
+          144
+        ],
+        "r16c24": [
+          152
+        ],
+        "r63c0": [
+          2016
+        ],
+        "r63c8": [
+          2024
+        ],
+        "r63c16": [
+          2032
+        ],
+        "r63c24": [
+          2040
+        ],
+        "r255c0": [
+          8160
+        ],
+        "r255c8": [
+          8168
+        ],
+        "r255c16": [
+          8176
+        ],
+        "r255c24": [
+          8184
+        ]
+      },
+      "passed": true
+    },
+    {
+      "wrap": 1,
+      "unique_values": 8192,
+      "missing_count": 0,
+      "duplicate_count": 0,
+      "min_index": 0,
+      "max_index": 8191,
+      "examples": {
+        "r0c0": [
+          0
+        ],
+        "r0c8": [
+          8
+        ],
+        "r0c16": [
+          16
+        ],
+        "r0c24": [
+          24
+        ],
+        "r1c0": [
+          528
+        ],
+        "r1c8": [
+          536
+        ],
+        "r1c16": [
+          544
+        ],
+        "r1c24": [
+          552
+        ],
+        "r2c0": [
+          1056
+        ],
+        "r2c8": [
+          1064
+        ],
+        "r2c16": [
+          1072
+        ],
+        "r2c24": [
+          1080
+        ],
+        "r3c0": [
+          1584
+        ],
+        "r3c8": [
+          1592
+        ],
+        "r3c16": [
+          1600
+        ],
+        "r3c24": [
+          1608
+        ],
+        "r4c0": [
+          32
+        ],
+        "r4c8": [
+          40
+        ],
+        "r4c16": [
+          48
+        ],
+        "r4c24": [
+          56
+        ],
+        "r14c0": [
+          1152
+        ],
+        "r14c8": [
+          1160
+        ],
+        "r14c16": [
+          1168
+        ],
+        "r14c24": [
+          1176
+        ],
+        "r15c0": [
+          1680
+        ],
+        "r15c8": [
+          1688
+        ],
+        "r15c16": [
+          1696
+        ],
+        "r15c24": [
+          1704
+        ],
+        "r16c0": [
+          128
+        ],
+        "r16c8": [
+          136
+        ],
+        "r16c16": [
+          144
+        ],
+        "r16c24": [
+          152
+        ],
+        "r63c0": [
+          1552
+        ],
+        "r63c8": [
+          1560
+        ],
+        "r63c16": [
+          1568
+        ],
+        "r63c24": [
+          1576
+        ],
+        "r255c0": [
+          7696
+        ],
+        "r255c8": [
+          7704
+        ],
+        "r255c16": [
+          7712
+        ],
+        "r255c24": [
+          7720
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "tile_k": 32,
+  "purpose": "functional address mapping only; no GEMM performance claim"
+}

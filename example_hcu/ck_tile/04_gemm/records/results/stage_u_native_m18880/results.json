@@ -1,0 +1,362 @@
+[
+  {
+    "shape": "fc2",
+    "MNK": [
+      18880,
+      5376,
+      7168
+    ],
+    "correctness": {
+      "large_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "taller384_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 35.25,
+          "mismatches": 25343247,
+          "relative_l2": 0.6053858399391174,
+          "passed": false,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 37.625,
+          "mismatches": 25398465,
+          "relative_l2": 0.602580189704895,
+          "passed": false,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          4.435580444335938,
+          4.427596664428711,
+          4.445260620117187,
+          4.433739852905274,
+          4.451211929321289,
+          4.441644668579102
+        ],
+        "median_ms": 4.438612556457519,
+        "min_ms": 4.427596664428711,
+        "max_ms": 4.451211929321289,
+        "TFLOPS": 327.82495096650507
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          4.439228820800781,
+          4.466092681884765,
+          4.461083984375,
+          4.468876647949219,
+          4.424604797363282,
+          4.448844909667969
+        ],
+        "median_ms": 4.454964447021484,
+        "min_ms": 4.424604797363282,
+        "max_ms": 4.468876647949219,
+        "TFLOPS": 326.6216736371146
+      },
+      "large_pad16_g8_pad_m_reg768": {
+        "rounds_ms": [
+          7.77066650390625,
+          7.7694343566894535,
+          7.765146636962891,
+          7.764458465576172,
+          7.763417816162109,
+          7.762906646728515
+        ],
+        "median_ms": 7.764802551269531,
+        "min_ms": 7.762906646728515,
+        "max_ms": 7.77066650390625,
+        "TFLOPS": 187.39535668451683
+      }
+    }
+  },
+  {
+    "shape": "qkv",
+    "MNK": [
+      18880,
+      10752,
+      5376
+    ],
+    "correctness": {
+      "large_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "taller384_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 31.8125,
+          "mismatches": 50682058,
+          "relative_l2": 0.6037243604660034,
+          "passed": false,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 34.75,
+          "mismatches": 50784953,
+          "relative_l2": 0.6049984693527222,
+          "passed": false,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          6.633019256591797,
+          6.651787567138672,
+          6.659883117675781,
+          6.651802825927734,
+          6.680091094970703,
+          6.662987518310547
+        ],
+        "median_ms": 6.655842971801757,
+        "min_ms": 6.633019256591797,
+        "max_ms": 6.680091094970703,
+        "TFLOPS": 327.92719491234556
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          6.652299499511718,
+          6.624443054199219,
+          6.624235534667969,
+          6.638571166992188,
+          6.643402862548828,
+          6.691387176513672
+        ],
+        "median_ms": 6.6409870147705075,
+        "min_ms": 6.624235534667969,
+        "max_ms": 6.691387176513672,
+        "TFLOPS": 328.6607714584464
+      },
+      "large_pad16_g8_pad_m_reg768": {
+        "rounds_ms": [
+          11.856391143798827,
+          11.860951232910157,
+          11.862631225585938,
+          11.862215423583985,
+          11.873606872558593,
+          11.87459945678711
+        ],
+        "median_ms": 11.862423324584961,
+        "min_ms": 11.856391143798827,
+        "max_ms": 11.87459945678711,
+        "TFLOPS": 183.99544981643666
+      }
+    }
+  },
+  {
+    "shape": "out_proj",
+    "MNK": [
+      18880,
+      5376,
+      3584
+    ],
+    "correctness": {
+      "large_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "taller384_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 28.4375,
+          "mismatches": 25336487,
+          "relative_l2": 0.604770302772522,
+          "passed": false,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 29.1875,
+          "mismatches": 25384411,
+          "relative_l2": 0.6050487756729126,
+          "passed": false,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          2.1871820449829102,
+          2.187870407104492,
+          2.2052303314208985,
+          2.189646339416504,
+          2.186894416809082,
+          2.189950370788574
+        ],
+        "median_ms": 2.188758373260498,
+        "min_ms": 2.186894416809082,
+        "max_ms": 2.2052303314208985,
+        "TFLOPS": 332.4003145930674
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          2.188414192199707,
+          2.1873104095458986,
+          2.1929264068603516,
+          2.1885583877563475,
+          2.1877744674682615,
+          2.1853424072265626
+        ],
+        "median_ms": 2.1880943298339846,
+        "min_ms": 2.1853424072265626,
+        "max_ms": 2.1929264068603516,
+        "TFLOPS": 332.50119152550445
+      },
+      "large_pad16_g8_pad_m_reg768": {
+        "rounds_ms": [
+          4.414076614379883,
+          4.414060974121094,
+          4.4133247375488285,
+          4.41473274230957,
+          4.412364959716797,
+          4.412444686889648
+        ],
+        "median_ms": 4.413692855834961,
+        "min_ms": 4.412364959716797,
+        "max_ms": 4.41473274230957,
+        "TFLOPS": 164.83792497662748
+      }
+    }
+  },
+  {
+    "shape": "fc1",
+    "MNK": [
+      18880,
+      14336,
+      5376
+    ],
+    "correctness": {
+      "large_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "taller384_pad16_g8_pad_m_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 31.75,
+          "mismatches": 67576274,
+          "relative_l2": 0.6049638986587524,
+          "passed": false,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 34.625,
+          "mismatches": 67712928,
+          "relative_l2": 0.601970374584198,
+          "passed": false,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          8.93463363647461,
+          8.889817047119141,
+          8.877401733398438,
+          8.924553680419923,
+          8.88408966064453,
+          8.883993530273438
+        ],
+        "median_ms": 8.886953353881836,
+        "min_ms": 8.877401733398438,
+        "max_ms": 8.93463363647461,
+        "TFLOPS": 327.46609231259555
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          8.876505279541016,
+          8.892041778564453,
+          8.915608215332032,
+          8.885865783691406,
+          8.893689727783203,
+          8.882281494140624
+        ],
+        "median_ms": 8.88895378112793,
+        "min_ms": 8.876505279541016,
+        "max_ms": 8.915608215332032,
+        "TFLOPS": 327.39239724010855
+      },
+      "large_pad16_g8_pad_m_reg768": {
+        "rounds_ms": [
+          15.833555603027344,
+          15.83147735595703,
+          15.828802490234375,
+          15.834402465820313,
+          15.830467224121094,
+          15.835603332519531
+        ],
+        "median_ms": 15.832516479492188,
+        "min_ms": 15.828802490234375,
+        "max_ms": 15.835603332519531,
+        "TFLOPS": 183.81006526218005
+      }
+    }
+  }
+]

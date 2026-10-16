@@ -1,0 +1,67 @@
+{
+  "argument_offsets": {
+    "A": 40,
+    "B": 48
+  },
+  "loaded_SGPRs": {
+    "A": 32,
+    "B": 34
+  },
+  "derivation": "s24 is offset8; A40 -> s32:s33; B48 -> s34:s35",
+  "actual_model_mapping": {
+    "A": "W weight -> resource s8:s11 -> direct-to-LDS",
+    "B": "X activation -> resource s12:s15 -> registers"
+  },
+  "evidence": {
+    "argument_span": [
+      {
+        "line": 9,
+        "instruction": "s_load_dwordx16 s[24:39], s[0:1], 0x8                      // 00000179130C: C0120600 00000008"
+      }
+    ],
+    "A_to_resource_low": [
+      {
+        "line": 240,
+        "instruction": "s_add_u32 s8, s32, s64                                     // 000001791754: 80084020"
+      }
+    ],
+    "A_to_resource_high": [
+      {
+        "line": 241,
+        "instruction": "s_addc_u32 s9, s33, s65                                    // 000001791758: 82094121"
+      }
+    ],
+    "B_to_resource_low": [
+      {
+        "line": 283,
+        "instruction": "s_add_u32 s12, s34, s64                                    // 000001791800: 800C4022"
+      }
+    ],
+    "B_to_resource_high": [
+      {
+        "line": 284,
+        "instruction": "s_addc_u32 s13, s35, s65                                   // 000001791804: 820D4123"
+      }
+    ],
+    "A_direct_to_LDS": [
+      {
+        "line": 328,
+        "instruction": "buffer_load_dwordx4 v224, s[8:11], 0 offen lds             // 0000017918B0: E05D1000 800200E0"
+      }
+    ],
+    "B_to_registers": [
+      {
+        "line": 534,
+        "instruction": "buffer_load_dwordx4 v[192:195], v[232:233], s[12:15], 0 idxen offen// 000001791C24: E05C3000 8003C0E8"
+      }
+    ],
+    "compute_wave_groups": [
+      {
+        "line": 551,
+        "instruction": "s_cmp_ge_u32 s90, 4                                        // 000001791C70: BF09845A"
+      }
+    ]
+  },
+  "orientation_evidence": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/blas_orientation/orientation.json",
+  "limitation": "Wave-group branch confirms different schedules, not proof of reversed K order"
+}

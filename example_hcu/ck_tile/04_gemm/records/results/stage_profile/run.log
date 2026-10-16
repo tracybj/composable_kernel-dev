@@ -1,0 +1,29 @@
+RPL: on '261012_170935' from '/opt/dtk/rocprofiler' in '/workspace/composable_kernel/example_hcu/ck_tile/04_gemm'
+RPL: profiling '"python3" "profile_once.py"'
+RPL: input file 'profile_counters.txt'
+RPL: output dir '/tmp/rpl_data_261012_170935_10947'
+RPL: result dir '/tmp/rpl_data_261012_170935_10947/input0_results_261012_170935'
+COUNTER_CASE base
+COUNTER_CASE wide_pad16
+COUNTER_WORKLOAD_PASS
+ROCProfiler: input from "/tmp/rpl_data_261012_170935_10947/input0.xml"
+  gpu_index = 
+  kernel = h3_ck_bf16,Cijk_
+  range = 
+  3 metrics
+    SQ_INSTS_MMOP, SQ_ACTIVE_INST_MMOP, GRBM_GUI_ACTIVE
+
+ROCPRofiler: 9 contexts collected, output directory /tmp/rpl_data_261012_170935_10947/input0_results_261012_170935
+RPL: result dir '/tmp/rpl_data_261012_170935_10947/input1_results_261012_170935'
+COUNTER_CASE base
+COUNTER_CASE wide_pad16
+COUNTER_WORKLOAD_PASS
+ROCProfiler: input from "/tmp/rpl_data_261012_170935_10947/input1.xml"
+  gpu_index = 
+  kernel = h3_ck_bf16,Cijk_
+  range = 
+  4 metrics
+    SQ_INSTS_LDS, SQ_LDS_BANK_CONFLICT, SQ_WAVES, GRBM_GUI_ACTIVE
+
+ROCPRofiler: 9 contexts collected, output directory /tmp/rpl_data_261012_170935_10947/input1_results_261012_170935
+File 'results/stage_profile/metrics.csv' is generating

@@ -1,0 +1,17 @@
+RPL: on '261013_151405' from '/opt/dtk/rocprofiler' in '/workspace/composable_kernel/example_hcu/ck_tile/04_gemm'
+RPL: profiling '"python3" "profile_once.py" "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_reg768" "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_reg768"'
+RPL: input file 'profile_wait_banked.txt'
+RPL: output dir '/tmp/rpl_data_261013_151405_104966'
+RPL: result dir '/tmp/rpl_data_261013_151405_104966/input0_results_261013_151405'
+COUNTER_CASE rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_reg768
+COUNTER_CASE rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_reg768
+COUNTER_WORKLOAD_PASS
+ROCProfiler: input from "/tmp/rpl_data_261013_151405_104966/input0.xml"
+  gpu_index = 
+  kernel = h3_ck_rolephase,Cijk_
+  range = 
+  6 metrics
+    SQ_WAIT_CNT_VM, SQ_WAIT_CNT_LGKM, SQ_WAIT_BARRIER, SQ_WAIT_INST_VMEM, SQ_WAIT_INST_LDS, GRBM_GUI_ACTIVE
+
+ROCPRofiler: 9 contexts collected, output directory /tmp/rpl_data_261013_151405_104966/input0_results_261013_151405
+File 'results/xprof_static_wave_20261013/waits.csv' is generating

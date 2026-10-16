@@ -1,0 +1,46 @@
+{
+  "name": "wide4_xor",
+  "config": [
+    128,
+    256,
+    32,
+    4,
+    1,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/wide4_xor/20261012-171808-012536/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/wide4_xor.so",
+    "-DH3_BM=128",
+    "-DH3_BN=256",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=1",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1",
+    "-DH3_LDS_XOR=1"
+  ],
+  "exit_code": 0,
+  "seconds": 80.1257551969029,
+  "frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/wide4_xor/20261012-171808-012536",
+  "source_hashes": {
+    "gemm.cpp": "bf0467c50ccd85c56cb11c404e9c493740ad5bbdc96fb05072bbda04a78ecfe8",
+    "double_buffer.hpp": "0173115c0d3be019c41f473798778d125937384a0fea80b4ffe7c4c10999802f",
+    "double_buffer_dynamic.hpp": "79a55121e411169a310309aadc4fc8ee704ac0bc94b366383692f1198413cee3",
+    "grouped_partitioner.hpp": "5d232319b644c01b69147d493c1c21258644289505e2c1e824ef9b997ee190bc",
+    "padded_policy.hpp": "65f74670660a4ad22caa14fff24419566b5bab2c508cb6f89dc05dc640b0c9b0",
+    "policy.hpp": "6c7f7c762cf6e6e55dea13f640fd6cc7710968be91f0a96f70a0206359fb2d2b",
+    "warp_variants.hpp": "56a38557972e2d6bed1bdb4ac90fd54237e86981faf1f2caf1c29b313c23961c",
+    "xor_policy.hpp": "effeb29cee299ad6d3389645b34fe7af7df6ff74faa36a90d6c50ff03bb4c355"
+  },
+  "sha256": "035edfacd2a169b74937d31ce25b72042e44ab6ec69350a725a6bad3192ac5b9"
+}

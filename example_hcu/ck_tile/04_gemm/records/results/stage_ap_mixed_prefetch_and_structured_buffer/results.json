@@ -1,0 +1,930 @@
+[
+  {
+    "shape": "fc2",
+    "MNK": [
+      18880,
+      5376,
+      7168
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57728,
+          "relative_l2": 6.42423692625016e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          4.480140686035156,
+          4.48636474609375,
+          4.4716449737548825,
+          4.46802864074707,
+          4.483788681030274,
+          4.4807487487792965
+        ],
+        "median_ms": 4.480444717407226,
+        "min_ms": 4.46802864074707,
+        "max_ms": 4.48636474609375,
+        "TFLOPS": 324.7641775439738
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          4.460764694213867,
+          4.479420852661133,
+          4.451340866088867,
+          4.442284393310547,
+          4.451116943359375,
+          4.448076629638672
+        ],
+        "median_ms": 4.451228904724122,
+        "min_ms": 4.442284393310547,
+        "max_ms": 4.479420852661133,
+        "TFLOPS": 326.8957797554973
+      },
+      "rolephase_m1_bank_asmb_reg768": {
+        "rounds_ms": [
+          6.089643859863282,
+          6.088555145263672,
+          6.086203765869141,
+          6.086731338500977,
+          6.085659790039062,
+          6.086571502685547
+        ],
+        "median_ms": 6.086651420593261,
+        "min_ms": 6.085659790039062,
+        "max_ms": 6.089643859863282,
+        "TFLOPS": 239.06214486949764
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "rounds_ms": [
+          5.902075958251953,
+          5.90058708190918,
+          5.902059936523438,
+          5.900875854492187,
+          5.899755859375,
+          5.899979782104492
+        ],
+        "median_ms": 5.900731468200684,
+        "min_ms": 5.899755859375,
+        "max_ms": 5.902075958251953,
+        "TFLOPS": 246.59450299027105
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "rounds_ms": [
+          6.274859619140625,
+          6.275947570800781,
+          6.274523544311523,
+          6.276427459716797,
+          6.273163604736328,
+          6.272331619262696
+        ],
+        "median_ms": 6.274691581726074,
+        "min_ms": 6.272331619262696,
+        "max_ms": 6.276427459716797,
+        "TFLOPS": 231.89792274694193
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "rounds_ms": [
+          6.199963760375977,
+          6.201195526123047,
+          6.200235748291016,
+          6.200427627563476,
+          6.200123596191406,
+          6.198763656616211
+        ],
+        "median_ms": 6.200179672241211,
+        "min_ms": 6.198763656616211,
+        "max_ms": 6.201195526123047,
+        "TFLOPS": 234.68480279604896
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "rounds_ms": [
+          7.299339294433594,
+          7.305339050292969,
+          7.301595306396484,
+          7.301659393310547,
+          7.306123352050781,
+          7.310698699951172
+        ],
+        "median_ms": 7.303499221801758,
+        "min_ms": 7.299339294433594,
+        "max_ms": 7.310698699951172,
+        "TFLOPS": 199.23161480409289
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "rounds_ms": [
+          7.398362731933593,
+          7.391802215576172,
+          7.393034362792969,
+          7.3941703796386715,
+          7.397930145263672,
+          7.396330261230469
+        ],
+        "median_ms": 7.39525032043457,
+        "min_ms": 7.391802215576172,
+        "max_ms": 7.398362731933593,
+        "TFLOPS": 196.7597959002548
+      }
+    }
+  },
+  {
+    "shape": "qkv",
+    "MNK": [
+      18880,
+      10752,
+      5376
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98622,
+          "relative_l2": 5.930329280090518e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          6.681963348388672,
+          6.700603485107422,
+          6.671466827392578,
+          6.662554931640625,
+          6.673579406738281,
+          6.667227172851563
+        ],
+        "median_ms": 6.672523117065429,
+        "min_ms": 6.662554931640625,
+        "max_ms": 6.700603485107422,
+        "TFLOPS": 327.10743405860535
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          6.668251037597656,
+          6.69042739868164,
+          6.623786926269531,
+          6.661434936523437,
+          6.635707092285156,
+          6.6657554626464846
+        ],
+        "median_ms": 6.663595199584961,
+        "min_ms": 6.623786926269531,
+        "max_ms": 6.69042739868164,
+        "TFLOPS": 327.54569420062376
+      },
+      "rolephase_m1_bank_asmb_reg768": {
+        "rounds_ms": [
+          9.103721618652344,
+          9.10680923461914,
+          9.101033782958984,
+          9.104601287841797,
+          9.100761413574219,
+          9.100121307373048
+        ],
+        "median_ms": 9.102377700805665,
+        "min_ms": 9.100121307373048,
+        "max_ms": 9.10680923461914,
+        "TFLOPS": 239.7870081052352
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "rounds_ms": [
+          8.8491455078125,
+          8.853385925292969,
+          8.848041534423828,
+          8.84940185546875,
+          8.848441314697265,
+          8.848457336425781
+        ],
+        "median_ms": 8.848801422119141,
+        "min_ms": 8.848041534423828,
+        "max_ms": 8.853385925292969,
+        "TFLOPS": 246.65848078182955
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "rounds_ms": [
+          9.386457824707032,
+          9.387721252441406,
+          9.3859619140625,
+          9.386489868164062,
+          9.389129638671875,
+          9.387305450439452
+        ],
+        "median_ms": 9.386897659301757,
+        "min_ms": 9.3859619140625,
+        "max_ms": 9.389129638671875,
+        "TFLOPS": 232.51898494463342
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "rounds_ms": [
+          9.255593872070312,
+          9.258841705322265,
+          9.254889678955077,
+          9.255033874511719,
+          9.256905364990235,
+          9.254377746582032
+        ],
+        "median_ms": 9.255313873291016,
+        "min_ms": 9.254377746582032,
+        "max_ms": 9.258841705322265,
+        "TFLOPS": 235.82473219181028
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "rounds_ms": [
+          10.802584838867187,
+          10.806983947753906,
+          10.818215942382812,
+          10.80727310180664,
+          10.811624145507812,
+          10.795623779296875
+        ],
+        "median_ms": 10.807128524780273,
+        "min_ms": 10.795623779296875,
+        "max_ms": 10.818215942382812,
+        "TFLOPS": 201.96224283955914
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "rounds_ms": [
+          10.946727752685547,
+          10.924951934814453,
+          10.929736328125,
+          10.937480163574218,
+          10.922264099121094,
+          10.933992767333985
+        ],
+        "median_ms": 10.931864547729493,
+        "min_ms": 10.922264099121094,
+        "max_ms": 10.946727752685547,
+        "TFLOPS": 199.65778993971568
+      }
+    }
+  },
+  {
+    "shape": "out_proj",
+    "MNK": [
+      18880,
+      5376,
+      3584
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38865,
+          "relative_l2": 5.161722583579831e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          2.1883983612060547,
+          2.212254524230957,
+          2.1888944625854494,
+          2.187566375732422,
+          2.189646339416504,
+          2.188974380493164
+        ],
+        "median_ms": 2.1889344215393067,
+        "min_ms": 2.187566375732422,
+        "max_ms": 2.212254524230957,
+        "TFLOPS": 332.3735808075854
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          2.1830543518066405,
+          2.2064943313598633,
+          2.1843503952026366,
+          2.183758354187012,
+          2.183086395263672,
+          2.181630325317383
+        ],
+        "median_ms": 2.1834223747253416,
+        "min_ms": 2.181630325317383,
+        "max_ms": 2.2064943313598633,
+        "TFLOPS": 333.2126574600664
+      },
+      "rolephase_m1_bank_asmb_reg768": {
+        "rounds_ms": [
+          3.2711658477783203,
+          3.271005630493164,
+          3.2701736450195313,
+          3.268877410888672,
+          3.269661712646484,
+          3.2696136474609374
+        ],
+        "median_ms": 3.269917678833008,
+        "min_ms": 3.268877410888672,
+        "max_ms": 3.2711658477783203,
+        "TFLOPS": 222.49611253199842
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "rounds_ms": [
+          3.1837417602539064,
+          3.182173728942871,
+          3.180925750732422,
+          3.180957794189453,
+          3.1808298110961912,
+          3.180573844909668
+        ],
+        "median_ms": 3.1809417724609377,
+        "min_ms": 3.180573844909668,
+        "max_ms": 3.1837417602539064,
+        "TFLOPS": 228.71967608421048
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "rounds_ms": [
+          3.36519775390625,
+          3.363885498046875,
+          3.362509536743164,
+          3.362925720214844,
+          3.3623497009277346,
+          3.362605667114258
+        ],
+        "median_ms": 3.362765693664551,
+        "min_ms": 3.3623497009277346,
+        "max_ms": 3.36519775390625,
+        "TFLOPS": 216.352858960912
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "rounds_ms": [
+          3.3209095001220703,
+          3.320285415649414,
+          3.319597625732422,
+          3.319757843017578,
+          3.3195175170898437,
+          3.3202537536621093
+        ],
+        "median_ms": 3.3200057983398437,
+        "min_ms": 3.3195175170898437,
+        "max_ms": 3.3209095001220703,
+        "TFLOPS": 219.1393678299615
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "rounds_ms": [
+          3.7072776794433593,
+          3.7070854187011717,
+          3.7108936309814453,
+          3.7054214477539062,
+          3.7043975830078124,
+          3.7032455444335937
+        ],
+        "median_ms": 3.706253433227539,
+        "min_ms": 3.7032455444335937,
+        "max_ms": 3.7108936309814453,
+        "TFLOPS": 196.30173298927065
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "rounds_ms": [
+          3.7281574249267577,
+          3.7255496978759766,
+          3.729197692871094,
+          3.725821685791016,
+          3.725629425048828,
+          3.728509521484375
+        ],
+        "median_ms": 3.7269895553588865,
+        "min_ms": 3.7255496978759766,
+        "max_ms": 3.729197692871094,
+        "TFLOPS": 195.20955479842817
+      }
+    }
+  },
+  {
+    "shape": "fc1",
+    "MNK": [
+      18880,
+      14336,
+      5376
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131019,
+          "relative_l2": 5.8827470638789237e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          8.870905303955078,
+          8.910745239257812,
+          8.915497589111329,
+          8.892233276367188,
+          8.87076187133789,
+          8.921353912353515
+        ],
+        "median_ms": 8.9014892578125,
+        "min_ms": 8.87076187133789,
+        "max_ms": 8.921353912353515,
+        "TFLOPS": 326.9313485724705
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          8.867529296875,
+          8.900425720214844,
+          8.892953491210937,
+          8.86847381591797,
+          8.887017822265625,
+          8.877065277099609
+        ],
+        "median_ms": 8.882041549682617,
+        "min_ms": 8.867529296875,
+        "max_ms": 8.900425720214844,
+        "TFLOPS": 327.64718236023
+      },
+      "rolephase_m1_bank_asmb_reg768": {
+        "rounds_ms": [
+          12.136903381347656,
+          12.133959197998047,
+          12.139143371582032,
+          12.137239074707031,
+          12.141286468505859,
+          12.13680648803711
+        ],
+        "median_ms": 12.137071228027343,
+        "min_ms": 12.133959197998047,
+        "max_ms": 12.141286468505859,
+        "TFLOPS": 239.7757937384203
+      },
+      "rolephase_m1_bank_asmb_mid_reg768": {
+        "rounds_ms": [
+          11.795063781738282,
+          11.794438934326172,
+          11.794615173339844,
+          11.794247436523438,
+          11.800807189941406,
+          11.795111083984375
+        ],
+        "median_ms": 11.794839477539064,
+        "min_ms": 11.794247436523438,
+        "max_ms": 11.800807189941406,
+        "TFLOPS": 246.7329795290435
+      },
+      "rolephase_m1_bank_asmb_midgroup_reg768": {
+        "rounds_ms": [
+          12.512247467041016,
+          12.50986328125,
+          12.510391235351562,
+          12.511175537109375,
+          12.513414764404297,
+          12.508198547363282
+        ],
+        "median_ms": 12.510783386230468,
+        "min_ms": 12.508198547363282,
+        "max_ms": 12.513414764404297,
+        "TFLOPS": 232.6134021761561
+      },
+      "rolephase_m1_bank_asmb_cachea_reg768": {
+        "rounds_ms": [
+          12.337718963623047,
+          12.337511444091797,
+          12.337879180908203,
+          12.336502838134766,
+          12.344374847412109,
+          12.344263458251953
+        ],
+        "median_ms": 12.337799072265625,
+        "min_ms": 12.336502838134766,
+        "max_ms": 12.344374847412109,
+        "TFLOPS": 235.87479989861725
+      },
+      "rolephase_m1_bank_asmb_cacheb_reg768": {
+        "rounds_ms": [
+          14.422181701660156,
+          14.438212585449218,
+          14.37920684814453,
+          14.405989074707032,
+          14.420245361328124,
+          14.399124145507812
+        ],
+        "median_ms": 14.413117218017579,
+        "min_ms": 14.37920684814453,
+        "max_ms": 14.438212585449218,
+        "TFLOPS": 201.91162281827846
+      },
+      "rolephase_m1_bank_asmb_cacheab_reg768": {
+        "rounds_ms": [
+          14.588308715820313,
+          14.604037475585937,
+          14.608453369140625,
+          14.595732116699219,
+          14.593524169921874,
+          14.562644958496094
+        ],
+        "median_ms": 14.594628143310548,
+        "min_ms": 14.562644958496094,
+        "max_ms": 14.608453369140625,
+        "TFLOPS": 199.40048206667603
+      }
+    }
+  }
+]

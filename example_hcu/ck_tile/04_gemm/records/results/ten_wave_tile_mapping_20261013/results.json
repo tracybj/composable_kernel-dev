@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "compute_waves": 8,
+  "physical_producer_waves": 2,
+  "logical_producer_groups": 4,
+  "threads": 640,
+  "feature_tile": 256,
+  "token_tile": 256,
+  "producer_elements": 16384,
+  "k_tile_counts_verified": 257,
+  "lds_elements": 32768
+}

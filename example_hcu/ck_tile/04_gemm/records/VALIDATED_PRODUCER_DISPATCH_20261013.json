@@ -1,0 +1,495 @@
+{
+  "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_shapedispatch_reg768",
+  "library_sha256": "d2e34b972e3961fb99b2ea05802fc458561788dbb9587dc74a52fb96b3a5361f",
+  "baseline_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+  "validated_optional_candidate": true,
+  "default_replaced": false,
+  "goal_achieved": false,
+  "independent_stages": [
+    "stage_cj_two_projection_producer_dispatch",
+    "stage_ck_shape_dispatch_independent"
+  ],
+  "audit_tag": "stress_cj_shape_dispatch_20261013",
+  "audit_groups": 126,
+  "audit_launches": 378,
+  "all_audit_outputs_exact_baseline": true,
+  "kernels": [
+    {
+      "name": "_ZN11h3_original18h3_original_kernelEPKtS1_Ptiii",
+      "vgpr_count": 225,
+      "vgpr_spill_count": 0,
+      "sgpr_count": 31,
+      "group_segment_fixed_size": 65536,
+      "private_segment_fixed_size": 0
+    },
+    {
+      "name": "_ZN11h3_selected18h3_selected_kernelEPKtS1_Ptiii",
+      "vgpr_count": 225,
+      "vgpr_spill_count": 0,
+      "sgpr_count": 31,
+      "group_segment_fixed_size": 65536,
+      "private_segment_fixed_size": 0
+    }
+  ],
+  "performance": [
+    {
+      "stage": "stage_cj_two_projection_producer_dispatch",
+      "environment": {
+        "date": "2026-10-13T19:28:33.241430+08:00",
+        "torch": "2.9.0",
+        "hip": "6.3.26113",
+        "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+        "physical_gpu": 4,
+        "dtype": "BF16 A/W/C; FP32 accumulator",
+        "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+        "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+        "libraries": {
+          "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+          "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_shapedispatch_reg768": "d2e34b972e3961fb99b2ea05802fc458561788dbb9587dc74a52fb96b3a5361f",
+          "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_ppair1_asoff_reg768": "e04cfd5e83d2026cf5613f53effd11e392c2ffdf99217a0be47083a85852b78b"
+        },
+        "duplicate_of": {}
+      },
+      "rows": [
+        {
+          "shape": "fc2",
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "baseline": {
+            "rounds_ms": [
+              4.86591682434082,
+              4.880780410766602,
+              4.864732360839843,
+              4.86638069152832,
+              4.868156814575196,
+              4.862939834594727
+            ],
+            "median_ms": 4.86614875793457,
+            "min_ms": 4.862939834594727,
+            "max_ms": 4.880780410766602,
+            "TFLOPS": 299.022495213979
+          },
+          "candidate": {
+            "rounds_ms": [
+              4.839051818847656,
+              4.8502849578857425,
+              4.842060852050781,
+              4.861324691772461,
+              4.842460632324219,
+              4.842316055297852
+            ],
+            "median_ms": 4.842388343811035,
+            "min_ms": 4.839051818847656,
+            "max_ms": 4.861324691772461,
+            "TFLOPS": 300.48972539340434
+          },
+          "time_reduction_percent": 0.48827964999614837,
+          "paired_round_wins": 6,
+          "rocblas": {
+            "rounds_ms": [
+              4.405276870727539,
+              4.431036758422851,
+              4.4283489227294925,
+              4.440604782104492,
+              4.431788635253906,
+              4.456236267089844
+            ],
+            "median_ms": 4.431412696838379,
+            "min_ms": 4.405276870727539,
+            "max_ms": 4.456236267089844,
+            "TFLOPS": 328.3575787735009
+          }
+        },
+        {
+          "shape": "qkv",
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "baseline": {
+            "rounds_ms": [
+              7.090971374511719,
+              7.089979553222657,
+              7.090283203125,
+              7.099610900878906,
+              7.089738464355468,
+              7.09146728515625
+            ],
+            "median_ms": 7.090627288818359,
+            "min_ms": 7.089738464355468,
+            "max_ms": 7.099610900878906,
+            "TFLOPS": 307.81929815461103
+          },
+          "candidate": {
+            "rounds_ms": [
+              7.089419555664063,
+              7.091114044189453,
+              7.097211456298828,
+              7.090666961669922,
+              7.087226867675781,
+              7.090139007568359
+            ],
+            "median_ms": 7.090402984619141,
+            "min_ms": 7.087226867675781,
+            "max_ms": 7.097211456298828,
+            "TFLOPS": 307.82903598775346
+          },
+          "time_reduction_percent": 0.003163390065241689,
+          "paired_round_wins": 4,
+          "rocblas": {
+            "rounds_ms": [
+              6.63956298828125,
+              6.67921142578125,
+              6.6420753479003904,
+              6.645467376708984,
+              6.6600593566894535,
+              6.646250915527344
+            ],
+            "median_ms": 6.645859146118164,
+            "min_ms": 6.63956298828125,
+            "max_ms": 6.67921142578125,
+            "TFLOPS": 328.41982767493226
+          }
+        },
+        {
+          "shape": "out_proj",
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "baseline": {
+            "rounds_ms": [
+              2.5477102279663084,
+              2.550686264038086,
+              2.54897403717041,
+              2.5447341918945314,
+              2.5418380737304687,
+              2.5450700759887694
+            ],
+            "median_ms": 2.5463901519775387,
+            "min_ms": 2.5418380737304687,
+            "max_ms": 2.550686264038086,
+            "TFLOPS": 285.7158284542476
+          },
+          "candidate": {
+            "rounds_ms": [
+              2.536334228515625,
+              2.537150001525879,
+              2.5360624313354494,
+              2.538414192199707,
+              2.536237907409668,
+              2.535934066772461
+            ],
+            "median_ms": 2.5362860679626467,
+            "min_ms": 2.535934066772461,
+            "max_ms": 2.538414192199707,
+            "TFLOPS": 286.85406627826615
+          },
+          "time_reduction_percent": 0.3968003099228623,
+          "paired_round_wins": 6,
+          "rocblas": {
+            "rounds_ms": [
+              2.1987821578979494,
+              2.2123184204101562,
+              2.1952463150024415,
+              2.1961904525756837,
+              2.1920623779296875,
+              2.192510223388672
+            ],
+            "median_ms": 2.1957183837890626,
+            "min_ms": 2.1920623779296875,
+            "max_ms": 2.2123184204101562,
+            "TFLOPS": 331.3466686854927
+          }
+        },
+        {
+          "shape": "fc1",
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "baseline": {
+            "rounds_ms": [
+              9.492185974121094,
+              9.494377899169923,
+              9.489913940429688,
+              9.491897583007812,
+              9.490921783447266,
+              9.496073913574218
+            ],
+            "median_ms": 9.492041778564452,
+            "min_ms": 9.489913940429688,
+            "max_ms": 9.496073913574218,
+            "TFLOPS": 306.5911376340493
+          },
+          "candidate": {
+            "rounds_ms": [
+              9.491257476806641,
+              9.503817749023437,
+              9.490488433837891,
+              9.495977783203125,
+              9.489609527587891,
+              9.490265655517579
+            ],
+            "median_ms": 9.490872955322267,
+            "min_ms": 9.489609527587891,
+            "max_ms": 9.503817749023437,
+            "TFLOPS": 306.628895051012
+          },
+          "time_reduction_percent": 0.01231371784334856,
+          "paired_round_wins": 3,
+          "rocblas": {
+            "rounds_ms": [
+              8.902617645263671,
+              8.908073425292969,
+              8.84936981201172,
+              8.896808624267578,
+              8.910265350341797,
+              8.860073852539063
+            ],
+            "median_ms": 8.899713134765625,
+            "min_ms": 8.84936981201172,
+            "max_ms": 8.910265350341797,
+            "TFLOPS": 326.9965945297449
+          }
+        }
+      ]
+    },
+    {
+      "stage": "stage_ck_shape_dispatch_independent",
+      "environment": {
+        "date": "2026-10-13T19:31:12.669779+08:00",
+        "torch": "2.9.0",
+        "hip": "6.3.26113",
+        "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+        "physical_gpu": 4,
+        "dtype": "BF16 A/W/C; FP32 accumulator",
+        "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+        "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+        "libraries": {
+          "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+          "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_shapedispatch_reg768": "d2e34b972e3961fb99b2ea05802fc458561788dbb9587dc74a52fb96b3a5361f"
+        },
+        "duplicate_of": {}
+      },
+      "rows": [
+        {
+          "shape": "fc2",
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "baseline": {
+            "rounds_ms": [
+              4.871820449829102,
+              4.865948486328125,
+              4.889420700073242,
+              4.871788787841797,
+              4.869771957397461,
+              4.866140365600586
+            ],
+            "median_ms": 4.870780372619629,
+            "min_ms": 4.865948486328125,
+            "max_ms": 4.889420700073242,
+            "TFLOPS": 298.7381553599833
+          },
+          "candidate": {
+            "rounds_ms": [
+              4.847084426879883,
+              4.8462684631347654,
+              4.85058822631836,
+              4.8458202362060545,
+              4.85191650390625,
+              4.8478843688964846
+            ],
+            "median_ms": 4.847484397888184,
+            "min_ms": 4.8458202362060545,
+            "max_ms": 4.85191650390625,
+            "TFLOPS": 300.17382713266943
+          },
+          "time_reduction_percent": 0.47828013068295094,
+          "paired_round_wins": 6,
+          "rocblas": {
+            "rounds_ms": [
+              4.4447486877441404,
+              4.448764801025391,
+              4.425548934936524,
+              4.438540649414063,
+              4.46143684387207,
+              4.464924621582031
+            ],
+            "median_ms": 4.446756744384766,
+            "min_ms": 4.425548934936524,
+            "max_ms": 4.464924621582031,
+            "TFLOPS": 327.22454303744917
+          }
+        },
+        {
+          "shape": "qkv",
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "baseline": {
+            "rounds_ms": [
+              7.0913551330566404,
+              7.091483306884766,
+              7.087531280517578,
+              7.0902351379394535,
+              7.095195007324219,
+              7.091083526611328
+            ],
+            "median_ms": 7.091219329833985,
+            "min_ms": 7.087531280517578,
+            "max_ms": 7.095195007324219,
+            "TFLOPS": 307.7935985335118
+          },
+          "candidate": {
+            "rounds_ms": [
+              7.091722869873047,
+              7.086363220214844,
+              7.087290954589844,
+              7.0880592346191404,
+              7.087131500244141,
+              7.087322998046875
+            ],
+            "median_ms": 7.087306976318359,
+            "min_ms": 7.086363220214844,
+            "max_ms": 7.091722869873047,
+            "TFLOPS": 307.9635075513282
+          },
+          "time_reduction_percent": 0.05517180238898689,
+          "paired_round_wins": 5,
+          "rocblas": {
+            "rounds_ms": [
+              6.6508430480957035,
+              6.6667633056640625,
+              6.635947418212891,
+              6.673067474365235,
+              6.618394470214843,
+              6.6802513122558596
+            ],
+            "median_ms": 6.658803176879883,
+            "min_ms": 6.618394470214843,
+            "max_ms": 6.6802513122558596,
+            "TFLOPS": 327.78141319724614
+          }
+        },
+        {
+          "shape": "out_proj",
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "baseline": {
+            "rounds_ms": [
+              2.549886131286621,
+              2.5463821411132814,
+              2.5498701095581056,
+              2.5477102279663084,
+              2.5461902618408203,
+              2.547998046875
+            ],
+            "median_ms": 2.5478541374206545,
+            "min_ms": 2.5461902618408203,
+            "max_ms": 2.549886131286621,
+            "TFLOPS": 285.55165743378717
+          },
+          "candidate": {
+            "rounds_ms": [
+              2.53836612701416,
+              2.5397581100463866,
+              2.5397262573242188,
+              2.5379661560058593,
+              2.5372940063476563,
+              2.536349868774414
+            ],
+            "median_ms": 2.5381661415100094,
+            "min_ms": 2.536349868774414,
+            "max_ms": 2.5397581100463866,
+            "TFLOPS": 286.64158738134006
+          },
+          "time_reduction_percent": 0.38024138699136456,
+          "paired_round_wins": 6,
+          "rocblas": {
+            "rounds_ms": [
+              2.1872621536254884,
+              2.18878231048584,
+              2.194926452636719,
+              2.187678337097168,
+              2.187518310546875,
+              2.187566375732422
+            ],
+            "median_ms": 2.1876223564147947,
+            "min_ms": 2.1872621536254884,
+            "max_ms": 2.194926452636719,
+            "TFLOPS": 332.5729277297852
+          }
+        },
+        {
+          "shape": "fc1",
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "baseline": {
+            "rounds_ms": [
+              9.492232513427734,
+              9.49100112915039,
+              9.492408752441406,
+              9.489944458007812,
+              9.494584655761718,
+              9.491400909423827
+            ],
+            "median_ms": 9.49181671142578,
+            "min_ms": 9.489944458007812,
+            "max_ms": 9.494584655761718,
+            "TFLOPS": 306.5984074320434
+          },
+          "candidate": {
+            "rounds_ms": [
+              9.501384735107422,
+              9.492344665527344,
+              9.490969848632812,
+              9.49332046508789,
+              9.489257049560546,
+              9.490840911865234
+            ],
+            "median_ms": 9.491657257080078,
+            "min_ms": 9.489257049560546,
+            "max_ms": 9.501384735107422,
+            "TFLOPS": 306.60355810775013
+          },
+          "time_reduction_percent": 0.001679913872654204,
+          "paired_round_wins": 3,
+          "rocblas": {
+            "rounds_ms": [
+              8.851176452636718,
+              8.852521514892578,
+              8.854665374755859,
+              8.826057434082031,
+              8.865113830566406,
+              8.852377319335938
+            ],
+            "median_ms": 8.852449417114258,
+            "min_ms": 8.826057434082031,
+            "max_ms": 8.865113830566406,
+            "TFLOPS": 328.7424474557084
+          }
+        }
+      ]
+    }
+  ]
+}

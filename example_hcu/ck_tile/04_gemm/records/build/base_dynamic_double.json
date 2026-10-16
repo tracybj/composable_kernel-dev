@@ -1,0 +1,36 @@
+{
+  "name": "base_dynamic_double",
+  "config": [
+    128,
+    128,
+    32,
+    4,
+    1,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/base_dynamic_double.so",
+    "-DH3_BM=128",
+    "-DH3_BN=128",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=1",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1",
+    "-DH3_DOUBLE_BUFFER=1",
+    "-DH3_DYNAMIC_DOUBLE=1"
+  ],
+  "exit_code": 0,
+  "seconds": 52.14944360917434,
+  "sha256": "a1f6179216f0273140461b404132eebe8d34d52221604a03d93d5f5946edee8f"
+}

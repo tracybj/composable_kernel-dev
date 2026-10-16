@@ -1,0 +1,48 @@
+[
+  {
+    "MNK": [
+      1,
+      256,
+      64
+    ],
+    "seed": 1013,
+    "distribution": "binary_fraction",
+    "repeats": [
+      {
+        "repeat": 0,
+        "finite": true,
+        "guard": true,
+        "exact_reference": false,
+        "max_abs": 1.265625,
+        "relative_l2": 0.7184058427810669,
+        "deterministic": true,
+        "exact_baseline": false,
+        "passed": false
+      },
+      {
+        "repeat": 1,
+        "finite": true,
+        "guard": true,
+        "exact_reference": false,
+        "max_abs": 1.265625,
+        "relative_l2": 0.7184058427810669,
+        "deterministic": true,
+        "exact_baseline": false,
+        "passed": false
+      },
+      {
+        "repeat": 2,
+        "finite": true,
+        "guard": true,
+        "exact_reference": false,
+        "max_abs": 1.265625,
+        "relative_l2": 0.7184058427810669,
+        "deterministic": true,
+        "exact_baseline": false,
+        "passed": false
+      }
+    ],
+    "inputs_unchanged": true,
+    "passed": false
+  }
+]

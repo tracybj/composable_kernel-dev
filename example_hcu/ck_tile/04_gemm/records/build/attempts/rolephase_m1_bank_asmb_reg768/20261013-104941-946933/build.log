@@ -1,0 +1,404 @@
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:7:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/coordinate_transform.hpp:12:
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:210:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:222:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:254:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:10:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/static_encoding_pattern.hpp:73:
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:130:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:139:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:148:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:157:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:237:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:244:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:251:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:258:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:10:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/static_encoding_pattern.hpp:80:
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:25:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:32:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:39:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:46:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:53:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:60:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:11:
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:711:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:716:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:879:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:885:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:891:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:898:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:907:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:920:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:922:41: warning: void function is missing a return statement [-Wreturn-type]
+CK_TILE_DEVICE void insert_dummy_dep() {}
+                                        ^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:951:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:1247:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:14:
+In file included from /workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:7:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_ebarrier.hpp:58:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_ebarrier.hpp:67:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:14:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:58:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:64:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:70:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:77:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:84:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:92:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:171:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:180:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:17:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_matrix_addressing.hpp:27:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:19:
+/workspace/composable_kernel/include/ck_tile/core/arch/generic_memory_space_atomic.hpp:60:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:20:
+/workspace/composable_kernel/include/ck_tile/core/arch/utility.hpp:22:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/utility.hpp:28:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:22:
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:27:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:36:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:45:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:48:79: warning: void function is missing a return statement [-Wreturn-type]
+    CK_TILE_DEVICE void aquire(uint32_t offset = 0) { wait_set(offset, 0, 1); }
+                                                                              ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:51:80: warning: void function is missing a return statement [-Wreturn-type]
+    CK_TILE_DEVICE void release(uint32_t offset = 0) { wait_set(offset, 1, 0); }
+                                                                               ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:60:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:52:
+/workspace/composable_kernel/include/ck_tile/core/tensor/load_tile.hpp:350:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:100:
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:54:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:71:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:87:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:21:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:40:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:174:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:15:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_buffer_addressing.hpp:49:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:37:18: note: in instantiation of function template specialization 'ck_tile::hcu_async_buffer_load_asm_impl<unsigned short, 8>' requested here
+        ck_tile::hcu_async_buffer_load_asm_impl<BF,8>(m0,res,(row*k+tile*64+col)*2,0);
+                 ^
+56 warnings generated when compiling for gfx936.
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:7:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/coordinate_transform.hpp:12:
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:210:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:222:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/magic_div.hpp:254:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:10:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/static_encoding_pattern.hpp:73:
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:130:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:139:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:148:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:157:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:237:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:244:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:251:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/arch.hpp:258:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:10:
+In file included from /workspace/composable_kernel/include/ck_tile/core/algorithm/static_encoding_pattern.hpp:80:
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:25:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:32:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:39:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:46:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:53:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/utility/print.hpp:60:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:11:
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:711:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:716:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:879:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:885:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:891:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:898:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:907:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:920:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:922:41: warning: void function is missing a return statement [-Wreturn-type]
+CK_TILE_DEVICE void insert_dummy_dep() {}
+                                        ^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:951:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/amd_buffer_addressing.hpp:1247:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:14:
+In file included from /workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:7:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_ebarrier.hpp:58:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_ebarrier.hpp:67:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:14:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:58:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:64:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:70:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:77:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:84:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:92:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:171:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_abarrier.hpp:180:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:17:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_matrix_addressing.hpp:27:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:19:
+/workspace/composable_kernel/include/ck_tile/core/arch/generic_memory_space_atomic.hpp:60:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:20:
+/workspace/composable_kernel/include/ck_tile/core/arch/utility.hpp:22:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/include/ck_tile/core/arch/utility.hpp:28:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:22:
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:27:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:36:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:45:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:48:79: warning: void function is missing a return statement [-Wreturn-type]
+    CK_TILE_DEVICE void aquire(uint32_t offset = 0) { wait_set(offset, 0, 1); }
+                                                                              ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:51:80: warning: void function is missing a return statement [-Wreturn-type]
+    CK_TILE_DEVICE void release(uint32_t offset = 0) { wait_set(offset, 1, 0); }
+                                                                               ^
+/workspace/composable_kernel/include/ck_tile/core/arch/workgroup_barrier.hpp:60:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:52:
+/workspace/composable_kernel/include/ck_tile/core/tensor/load_tile.hpp:350:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:100:
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:54:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:71:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/include/ck_tile/core/utility/philox_rand.hpp:87:5: warning: void function is missing a return statement [-Wreturn-type]
+    }
+    ^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:21:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:40:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:174:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+In file included from /workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:5:
+In file included from /workspace/composable_kernel/include/ck_tile/core.hpp:15:
+/workspace/composable_kernel/include/ck_tile/core/arch/hcu_buffer_addressing.hpp:49:1: warning: void function is missing a return statement [-Wreturn-type]
+}
+^
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/rolephase.cpp:37:18: note: in instantiation of function template specialization 'ck_tile::hcu_async_buffer_load_asm_impl<unsigned short, 8>' requested here
+        ck_tile::hcu_async_buffer_load_asm_impl<BF,8>(m0,res,(row*k+tile*64+col)*2,0);
+                 ^
+56 warnings generated when compiling for host.

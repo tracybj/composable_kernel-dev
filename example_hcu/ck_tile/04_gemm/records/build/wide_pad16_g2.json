@@ -1,0 +1,46 @@
+{
+  "name": "wide_pad16_g2",
+  "config": [
+    128,
+    256,
+    32,
+    4,
+    2,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/wide_pad16_g2/20261012-170749-054565/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/wide_pad16_g2.so",
+    "-DH3_BM=128",
+    "-DH3_BN=256",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=2",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1",
+    "-DH3_LDS_PAD=16",
+    "-DH3_GROUP_M=2"
+  ],
+  "exit_code": 0,
+  "seconds": 52.79250316275284,
+  "frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/wide_pad16_g2/20261012-170749-054565",
+  "source_hashes": {
+    "gemm.cpp": "d8ec56be0baf5992b1e851e4f8a16202a8475e6e29dbb72f6167f502644e811c",
+    "double_buffer.hpp": "0173115c0d3be019c41f473798778d125937384a0fea80b4ffe7c4c10999802f",
+    "double_buffer_dynamic.hpp": "79a55121e411169a310309aadc4fc8ee704ac0bc94b366383692f1198413cee3",
+    "grouped_partitioner.hpp": "5d232319b644c01b69147d493c1c21258644289505e2c1e824ef9b997ee190bc",
+    "padded_policy.hpp": "65f74670660a4ad22caa14fff24419566b5bab2c508cb6f89dc05dc640b0c9b0",
+    "policy.hpp": "6c7f7c762cf6e6e55dea13f640fd6cc7710968be91f0a96f70a0206359fb2d2b",
+    "warp_variants.hpp": "56a38557972e2d6bed1bdb4ac90fd54237e86981faf1f2caf1c29b313c23961c"
+  },
+  "sha256": "f153efd4fd6055748b5365ea69b2221a3a1fa98feead77e00bbd50f52fbc2f1e"
+}

@@ -1,0 +1,2 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_role64_double_wrap_cacheab_reg768/role64_double_wrap_cacheab_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu

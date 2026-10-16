@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-13T18:58:58.579721+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_mchunk4_reg768": "0a347ba514cac0cb15b5210a61de12b4fff393bfe06f0caf3df19657a2d70b41",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_mchunk8_reg768": "cb927af84e759c61d4ebb7320b8b1367bf17ee3da803e9e6c4f7348319d83b1b",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_mchunk8_atwob1_reg768": "b45492f9b06ee0a4a8ecba3ce16cb9130170c09e46fbb32ffbd94b2bed3da1e6",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_mchunk16_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025"
+  },
+  "duplicate_of": {
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_mchunk16_reg768": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768"
+  }
+}

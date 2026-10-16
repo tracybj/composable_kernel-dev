@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/mmac_micro_768/20261012-192822-723868/mmac_micro.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/mmac_micro_768.so",
+    "-DBLOCK_THREADS=768",
+    "-mllvm",
+    "--enable-num-vgprs-768=true"
+  ],
+  "threads": 768,
+  "sha256": "8b0bdf374d299ad56f5066a483f699d3d419e09d6bed9bc4874120ec8448fe92",
+  "source_sha256": "0aff62e3e14324a4b0b8bba3c9e5fb02932a85ff0c589ba70de6fa6f323d389d"
+}

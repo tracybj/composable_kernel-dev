@@ -1,0 +1,23 @@
+_Z31h3_b_k64_immediate_probe_kernelPKsPsiiiii:
+	s_load_dwordx8 s[8:15], s[4:5], 0x0                        
+	s_load_dword s6, s[4:5], 0x20                              
+	s_waitcnt lgkmcnt(0)                                       
+	s_mul_i32 s0, s12, s13                                     
+	v_mul_lo_u32 v1, v0, s13                                   
+	s_lshl_b32 s2, s14, 7                                      
+	s_lshl_b32 s3, s0, 1                                       
+	s_add_u32 s0, s8, s2                                       
+	s_addc_u32 s1, s9, 0                                       
+	s_sub_i32 s2, s3, s2                                       
+	s_mov_b32 s3, 0x20000                                      
+	s_cmp_lg_u32 s15, 0                                        
+	v_add_lshl_u32 v5, v1, s6, 1                               
+	s_cbranch_scc0 10                                          
+	buffer_load_dwordx4 v[1:4], v5, s[0:3], 0 offen offset:64  
+	s_cbranch_execnz 2                                         
+	buffer_load_dwordx4 v[1:4], v5, s[0:3], 0 offen            
+	s_waitcnt vmcnt(0)                                         
+	v_lshlrev_b32_e32 v0, 4, v0                                
+	global_store_dwordx4 v0, v[1:4], s[10:11]                  
+	s_endpgm                                                   
+

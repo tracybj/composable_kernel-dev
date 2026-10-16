@@ -1,0 +1,47 @@
+Displaying notes found in: .note
+  Owner                Data size 	Description
+  AMDGPU               0x000002c7	NT_AMDGPU_METADATA (AMDGPU Metadata)
+    AMDGPU Metadata:
+        ---
+amdhsa.kernels:
+  - .args:
+      - .address_space:  global
+        .offset:         0
+        .size:           8
+        .value_kind:     global_buffer
+      - .address_space:  global
+        .offset:         8
+        .size:           8
+        .value_kind:     global_buffer
+      - .address_space:  global
+        .offset:         16
+        .size:           8
+        .value_kind:     global_buffer
+      - .offset:         24
+        .size:           4
+        .value_kind:     by_value
+    .fp64_status:    0
+    .group_segment_fixed_size: 0
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 28
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 768
+    .name:           _Z12h3_mmac_onlyPKtS0_Pfi
+    .private_segment_fixed_size: 0
+    .sgpr_count:     14
+    .sgpr_spill_count: 0
+    .symbol:         _Z12h3_mmac_onlyPKtS0_Pfi.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     202
+    .vgpr_spill_count: 0
+    .wavefront_size: 64
+amdhsa.target:   'amdgcn-amd-amdhsa--gfx936:sramecc+'
+amdhsa.version:
+  - 1
+  - 2
+...
+

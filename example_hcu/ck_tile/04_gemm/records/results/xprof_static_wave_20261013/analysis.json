@@ -1,0 +1,5020 @@
+{
+  "MNK_profile": [
+    18880,
+    5376,
+    7168
+  ],
+  "physical_gpu": 4,
+  "xprof": {
+    "pair_tiles": {
+      "GRBM_COUNT": {
+        "mean": 7978197.333333333,
+        "range": [
+          7957477.0,
+          8004313.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 7978197.333333333,
+        "range": [
+          7957477.0,
+          8004313.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 230029296.0,
+        "range": [
+          230029296.0,
+          230029296.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 13712496.0,
+        "range": [
+          13712496.0,
+          13712496.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 286311270.6666667,
+        "range": [
+          285436235.0,
+          287676686.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 79.0,
+        "range": [
+          77.0,
+          80.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 63.666666666666664,
+        "range": [
+          63.0,
+          64.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "static_wave_postprio": {
+      "GRBM_COUNT": {
+        "mean": 7379407.0,
+        "range": [
+          7363918.0,
+          7390017.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 7379407.0,
+        "range": [
+          7363918.0,
+          7390017.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 230047944.0,
+        "range": [
+          230047944.0,
+          230047944.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 13724928.0,
+        "range": [
+          13724928.0,
+          13724928.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 78807824.0,
+        "range": [
+          78643767.0,
+          79031169.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 84.0,
+        "range": [
+          84.0,
+          84.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 69.0,
+        "range": [
+          69.0,
+          69.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "rocBLAS": {
+      "GRBM_COUNT": {
+        "mean": 6718408.666666667,
+        "range": [
+          6576482.0,
+          6823286.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 6718408.666666667,
+        "range": [
+          6576482.0,
+          6823286.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 191041872.0,
+        "range": [
+          191041872.0,
+          191041872.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 27738480.0,
+        "range": [
+          27738480.0,
+          27738480.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11188800.0,
+        "range": [
+          11188800.0,
+          11188800.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 53188719.666666664,
+        "range": [
+          51815107.0,
+          54470734.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 77.0,
+        "range": [
+          75.0,
+          79.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 68.33333333333333,
+        "range": [
+          67.0,
+          70.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 5.0,
+        "range": [
+          5.0,
+          5.0
+        ]
+      }
+    }
+  },
+  "rocprof_waits": {
+    "pair_tiles": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 124335135.33333333,
+        "range": [
+          114910973.0,
+          132587650.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 52421935.333333336,
+        "range": [
+          51949134.0,
+          52881437.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 467905903.3333333,
+        "range": [
+          460536415.0,
+          473099653.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 145104083.0,
+        "range": [
+          137188340.0,
+          152520144.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 286794477.0,
+        "range": [
+          286203988.0,
+          287785363.0
+        ]
+      }
+    },
+    "static_wave_postprio": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 200989196.0,
+        "range": [
+          198004649.0,
+          202486628.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 86243056.0,
+        "range": [
+          85665978.0,
+          87169749.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 333811307.3333333,
+        "range": [
+          330335043.0,
+          340371938.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 109360079.66666667,
+        "range": [
+          105577741.0,
+          114808869.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 78677496.0,
+        "range": [
+          78372276.0,
+          79152358.0
+        ]
+      }
+    },
+    "rocBLAS": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 93184760.0,
+        "range": [
+          86348831.0,
+          106097077.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 158243589.33333334,
+        "range": [
+          157623136.0,
+          158600876.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 470837438.6666667,
+        "range": [
+          466200826.0,
+          479643130.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 168469723.33333334,
+        "range": [
+          162066515.0,
+          178475900.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 57474743.666666664,
+        "range": [
+          53989027.0,
+          59547759.0
+        ]
+      }
+    }
+  },
+  "resources": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_reg768",
+      "fields": {
+        "vgpr_count": 226,
+        "sgpr_count": 27,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcodes": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 53,
+        "s_ashr_i32": 12,
+        "s_add_i32": 20,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 10,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 18,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 7,
+        "v_cmp_gt_u32_e32": 1,
+        "v_lshrrev_b32_e32": 130,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "v_and_b32_e32": 134,
+        "s_add_u32": 3,
+        "s_addc_u32": 3,
+        "v_or_b32_e32": 29,
+        "v_mul_lo_u32": 10,
+        "v_bfe_u32": 129,
+        "v_lshlrev_b32_e32": 27,
+        "v_add_u32_e32": 65,
+        "s_mov_b32": 27,
+        "buffer_load_dwordx4": 26,
+        "v_add_lshl_u32": 6,
+        "s_barrier": 10,
+        "s_cmp_lt_i32": 2,
+        "v_mov_b32_e32": 130,
+        "s_cbranch_scc1": 6,
+        "v_and_or_b32": 3,
+        "v_add3_u32": 129,
+        "v_lshl_add_u32": 9,
+        "v_mov_b64_e32": 64,
+        "s_branch": 4,
+        "s_cmp_ge_i32": 3,
+        "ds_read_b128": 64,
+        "v_mmac_f32_16x16x16_bf16": 256,
+        "v_subrev_u32_e32": 1,
+        "v_mad_u64_u32": 2,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_lshl_or_b32": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 16,
+        "s_cmp_eq_u32": 1,
+        "s_and_b32": 1,
+        "s_endpgm": 1
+      }
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_reg768",
+      "fields": {
+        "vgpr_count": 230,
+        "sgpr_count": 27,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcodes": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 105,
+        "s_ashr_i32": 12,
+        "s_add_i32": 22,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 9,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 19,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 11,
+        "v_cmp_gt_u32_e32": 1,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "s_add_u32": 3,
+        "v_lshrrev_b32_e32": 131,
+        "s_addc_u32": 3,
+        "v_and_b32_e32": 134,
+        "v_lshlrev_b32_e32": 35,
+        "v_or_b32_e32": 40,
+        "v_mul_lo_u32": 11,
+        "v_bfe_u32": 129,
+        "s_mov_b32": 31,
+        "s_cmp_lt_i32": 6,
+        "v_add_lshl_u32": 10,
+        "v_add_u32_e32": 79,
+        "s_cbranch_scc0": 3,
+        "buffer_load_dwordx4": 36,
+        "s_barrier": 16,
+        "v_mov_b32_e32": 258,
+        "s_cbranch_scc1": 7,
+        "v_and_or_b32": 6,
+        "v_lshl_add_u32": 10,
+        "v_mov_b64_e32": 128,
+        "s_branch": 8,
+        "ds_read_b128": 128,
+        "v_mmac_f32_16x16x16_bf16": 512,
+        "s_setprio": 16,
+        "s_cmp_ge_i32": 3,
+        "v_subrev_u32_e32": 2,
+        "s_mov_b64": 2,
+        "s_cbranch_execnz": 1,
+        "v_mad_u64_u32": 2,
+        "v_add3_u32": 128,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_lshl_or_b32": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 16,
+        "s_cmp_eq_u32": 1,
+        "s_and_b32": 1,
+        "s_endpgm": 1
+      }
+    }
+  ],
+  "performance": {
+    "fc2": {
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "before_ms": 5.300459861755371,
+      "after_ms": 4.902676391601562,
+      "TFLOPS": 296.7946132795163,
+      "time_reduction_pct": 7.504697338130084,
+      "reference_TFLOPS": 326.42351505798433
+    },
+    "qkv": {
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "before_ms": 7.831818389892579,
+      "after_ms": 7.250154113769531,
+      "TFLOPS": 301.04627864044073,
+      "time_reduction_pct": 7.426937745054452,
+      "reference_TFLOPS": 328.6666995212864
+    },
+    "out_proj": {
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "before_ms": 2.7667019844055174,
+      "after_ms": 2.5709742546081547,
+      "TFLOPS": 282.983764048188,
+      "time_reduction_pct": 7.074405949776297,
+      "reference_TFLOPS": 331.8823646685572
+    },
+    "fc1": {
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "before_ms": 10.479183959960938,
+      "after_ms": 9.707593154907226,
+      "TFLOPS": 299.783462380569,
+      "time_reduction_pct": 7.363081018539431,
+      "reference_TFLOPS": 328.35520444355143
+    }
+  },
+  "audit": {
+    "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_reg768",
+    "passed": true,
+    "cases": 102,
+    "launches": 306,
+    "seeds": [
+      1013,
+      2013,
+      3013
+    ],
+    "rows": [
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          1,
+          256,
+          64
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.4676620493410155e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.4676620493410155e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.4676620493410155e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 1.0765532351797447e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 1.0765532351797447e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 1.0765532351797447e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          63,
+          256,
+          128
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.5381037782353815e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.5381037782353815e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00048828125,
+            "relative_l2": 5.5381037782353815e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.0763260434032418e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.0763260434032418e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.0763260434032418e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.1665104213752784e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.1665104213752784e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.1665104213752784e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          64,
+          512,
+          256
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 1.9073486328125e-06,
+            "relative_l2": 1.0657447369055717e-08,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 1.9073486328125e-06,
+            "relative_l2": 1.0657447369055717e-08,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 1.9073486328125e-06,
+            "relative_l2": 1.0657447369055717e-08,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.1475046449049842e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.1475046449049842e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.1475046449049842e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.4061875087209046e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.4061875087209046e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.4061875087209046e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          255,
+          256,
+          512
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.9588143156142905e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.9588143156142905e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 4.9588143156142905e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.5352579541504383e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.5352579541504383e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.5352579541504383e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8622140487423167e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8622140487423167e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8622140487423167e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          256,
+          512,
+          768
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.308648643316701e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.308648643316701e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.308648643316701e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.03125,
+            "relative_l2": 4.81386850879062e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.03125,
+            "relative_l2": 4.81386850879062e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.03125,
+            "relative_l2": 4.81386850879062e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.895908255595714e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.895908255595714e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.895908255595714e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          257,
+          512,
+          1024
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.1091185519471765e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.1091185519471765e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.1091185519471765e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.073369276127778e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.073369276127778e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.073369276127778e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.000244140625,
+            "relative_l2": 1.3453939118335256e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.000244140625,
+            "relative_l2": 1.3453939118335256e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.000244140625,
+            "relative_l2": 1.3453939118335256e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          511,
+          256,
+          64
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.1406598282046616e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.1406598282046616e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.1406598282046616e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 9.392556421516929e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 9.392556421516929e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 9.392556421516929e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.7563585060997866e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.7563585060997866e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.7563585060997866e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          512,
+          256
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.3140427654434461e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.3140427654434461e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 1.3140427654434461e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.412917718989775e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.412917718989775e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.412917718989775e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.42429877188988e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.42429877188988e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.42429877188988e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          7168
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.392189243342727e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.392189243342727e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 6.392189243342727e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.875264105270617e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.875264105270617e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.875264105270617e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.932686326559633e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.932686326559633e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.932686326559633e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          10752,
+          5376
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.862545731361024e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.862545731361024e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.862545731361024e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.0535527407191694e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.0535527407191694e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.0535527407191694e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.2362029236974195e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.2362029236974195e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.2362029236974195e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          5376,
+          3584
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.15634601470083e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.15634601470083e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0625,
+            "relative_l2": 5.15634601470083e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.87517861276865e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.87517861276865e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.87517861276865e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.919438262935728e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.919438262935728e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.919438262935728e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          18880,
+          14336,
+          5376
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.8911969972541556e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.8911969972541556e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.125,
+            "relative_l2": 5.8911969972541556e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 6.141192898212466e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 6.141192898212466e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 6.141192898212466e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2454349416657351e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2454349416657351e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2454349416657351e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          65,
+          512,
+          192
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.513313665986061e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.513313665986061e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.513313665986061e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 4.823427843803074e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 4.823427843803074e-06,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0009765625,
+            "relative_l2": 4.823427843803074e-06,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0001220703125,
+            "relative_l2": 6.191375518938003e-07,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0001220703125,
+            "relative_l2": 6.191375518938003e-07,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0001220703125,
+            "relative_l2": 6.191375518938003e-07,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          129,
+          256,
+          320
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.0121844499954022e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.0121844499954022e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 2.0121844499954022e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 3.126848969259299e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 3.126848969259299e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 3.126848969259299e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.8467620470328256e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.8467620470328256e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 3.8467620470328256e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          258,
+          512,
+          448
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8833623471437022e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8833623471437022e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.8833623471437022e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 2.1944206309854053e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 2.1944206309854053e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 2.1944206309854053e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.3933589798398316e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.3933589798398316e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.0078125,
+            "relative_l2": 1.3933589798398316e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          513,
+          256,
+          704
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.602226049930323e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.602226049930323e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.015625,
+            "relative_l2": 2.602226049930323e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 1013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 1013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2993774362257682e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2993774362257682e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.001953125,
+            "relative_l2": 1.2993774362257682e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 2013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 2013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 3013,
+        "distribution": "binary_fraction",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      },
+      {
+        "MNK": [
+          17,
+          512,
+          832
+        ],
+        "seed": 3013,
+        "distribution": "normal",
+        "repeats": [
+          {
+            "repeat": 0,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.375538290129043e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 1,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.375538290129043e-05,
+            "deterministic": true,
+            "passed": true
+          },
+          {
+            "repeat": 2,
+            "finite": true,
+            "guard": true,
+            "exact_reference": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 3.375538290129043e-05,
+            "deterministic": true,
+            "passed": true
+          }
+        ],
+        "inputs_unchanged": true,
+        "passed": true
+      }
+    ],
+    "physical_gpu": 4,
+    "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+    "torch": "2.9.0",
+    "hip": "6.3.26113",
+    "library_sha256": "b13a73b09afbc30fb75563ffa896981b0e260ab5478d40735708047257ae2c7f",
+    "purpose": "correctness only; not performance"
+  },
+  "notes": [
+    "ROCprof gpu-id is its HSA agent index, not the xprof physical ordinal; launcher selects physical HCU4.",
+    "Two static consumer bodies increase code size, not the math performed by each wave.",
+    "SQ instruction and bank-conflict values are emulated in the installed xprof catalog.",
+    "Wait counters are per-SIMD wave aggregates; not milliseconds or additive fractions.",
+    "Unprofiled independent BM timing is the only performance ranking used here."
+  ]
+}

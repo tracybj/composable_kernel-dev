@@ -1,0 +1,1002 @@
+[
+  {
+    "shape": "fc2",
+    "MNK": [
+      18944,
+      5376,
+      7168
+    ],
+    "correctness": {
+      "base": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "wide_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "wide4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "tall4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "base_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "wide_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      },
+      "wide4_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 57910,
+          "relative_l2": 6.42168743070215e-05,
+          "passed": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          4.465436935424805,
+          4.461436462402344,
+          4.4660289764404295,
+          4.435068893432617,
+          4.433884811401367,
+          4.429660797119141
+        ],
+        "median_ms": 4.4482526779174805,
+        "min_ms": 4.429660797119141,
+        "max_ms": 4.4660289764404295,
+        "TFLOPS": 328.2233611485244
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          4.4365886688232425,
+          4.428460693359375,
+          4.4089408874511715,
+          4.421692657470703,
+          4.419548797607422,
+          4.413948822021484
+        ],
+        "median_ms": 4.420620727539062,
+        "min_ms": 4.4089408874511715,
+        "max_ms": 4.4365886688232425,
+        "TFLOPS": 330.27498515955836
+      },
+      "base": {
+        "rounds_ms": [
+          21.60880126953125,
+          21.56196746826172,
+          21.638943481445313,
+          21.56031951904297,
+          21.598367309570314,
+          21.6174560546875
+        ],
+        "median_ms": 21.60358428955078,
+        "min_ms": 21.56031951904297,
+        "max_ms": 21.638943481445313,
+        "TFLOPS": 67.58232456315976
+      },
+      "wide_raw_barrier": {
+        "rounds_ms": [
+          12.475351715087891,
+          12.483863067626952,
+          12.446935272216797,
+          12.439191436767578,
+          12.463590240478515,
+          12.458358764648438
+        ],
+        "median_ms": 12.460974502563477,
+        "min_ms": 12.439191436767578,
+        "max_ms": 12.483863067626952,
+        "TFLOPS": 117.16743701575218
+      },
+      "wide4_raw_barrier": {
+        "rounds_ms": [
+          12.14188003540039,
+          12.114295196533202,
+          12.14261474609375,
+          12.01717529296875,
+          12.041127014160157,
+          12.055335235595702
+        ],
+        "median_ms": 12.084815216064452,
+        "min_ms": 12.01717529296875,
+        "max_ms": 12.14261474609375,
+        "TFLOPS": 120.81446170920195
+      },
+      "tall4_raw_barrier": {
+        "rounds_ms": [
+          16.981907653808594,
+          16.95592498779297,
+          16.95397186279297,
+          16.94381103515625,
+          16.932675170898438,
+          16.98657989501953
+        ],
+        "median_ms": 16.95494842529297,
+        "min_ms": 16.932675170898438,
+        "max_ms": 16.98657989501953,
+        "TFLOPS": 86.11175973888413
+      },
+      "base_double": {
+        "rounds_ms": [
+          17.229411315917968,
+          17.317010498046876,
+          17.268739318847658,
+          17.261923217773436,
+          17.306866455078126,
+          17.239779663085937
+        ],
+        "median_ms": 17.265331268310547,
+        "min_ms": 17.229411315917968,
+        "max_ms": 17.317010498046876,
+        "TFLOPS": 84.56370876959527
+      },
+      "wide_double": {
+        "rounds_ms": [
+          82.28170166015624,
+          82.38884887695312,
+          82.30181274414062,
+          82.36820068359376,
+          82.42364501953125,
+          82.3076171875
+        ],
+        "median_ms": 82.33790893554688,
+        "min_ms": 82.28170166015624,
+        "max_ms": 82.42364501953125,
+        "TFLOPS": 17.732056400981552
+      },
+      "wide4_double": {
+        "rounds_ms": [
+          34.96546325683594,
+          34.974578857421875,
+          34.95538330078125,
+          35.05341491699219,
+          35.45203857421875,
+          35.02586364746094
+        ],
+        "median_ms": 35.000221252441406,
+        "min_ms": 34.95538330078125,
+        "max_ms": 35.45203857421875,
+        "TFLOPS": 41.71460616358697
+      }
+    }
+  },
+  {
+    "shape": "qkv",
+    "MNK": [
+      18944,
+      10752,
+      5376
+    ],
+    "correctness": {
+      "base": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "wide_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "wide4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "tall4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "base_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "wide_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      },
+      "wide4_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 98888,
+          "relative_l2": 5.917733142268844e-05,
+          "passed": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          6.670795440673828,
+          6.705674743652343,
+          6.655723571777344,
+          6.657579040527343,
+          6.695962524414062,
+          6.699210357666016
+        ],
+        "median_ms": 6.683378982543945,
+        "min_ms": 6.655723571777344,
+        "max_ms": 6.705674743652343,
+        "TFLOPS": 327.68314852353205
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          6.664939117431641,
+          6.661354827880859,
+          6.651770782470703,
+          6.635323333740234,
+          6.667866516113281,
+          6.669098663330078
+        ],
+        "median_ms": 6.66314697265625,
+        "min_ms": 6.635323333740234,
+        "max_ms": 6.669098663330078,
+        "TFLOPS": 328.67812713171304
+      },
+      "base": {
+        "rounds_ms": [
+          33.44816589355469,
+          33.69626159667969,
+          33.7810302734375,
+          33.5499267578125,
+          33.62093505859375,
+          33.57222900390625
+        ],
+        "median_ms": 33.59658203125,
+        "min_ms": 33.44816589355469,
+        "max_ms": 33.7810302734375,
+        "TFLOPS": 65.18611523454778
+      },
+      "wide_raw_barrier": {
+        "rounds_ms": [
+          17.66838684082031,
+          17.665058898925782,
+          17.648851013183595,
+          17.712178039550782,
+          17.66717071533203,
+          17.70561828613281
+        ],
+        "median_ms": 17.66777877807617,
+        "min_ms": 17.648851013183595,
+        "max_ms": 17.712178039550782,
+        "TFLOPS": 123.95619705707402
+      },
+      "wide4_raw_barrier": {
+        "rounds_ms": [
+          16.902627563476564,
+          16.89574737548828,
+          16.848226928710936,
+          16.845811462402345,
+          16.846307373046876,
+          16.860546875
+        ],
+        "median_ms": 16.85438690185547,
+        "min_ms": 16.845811462402345,
+        "max_ms": 16.902627563476564,
+        "TFLOPS": 129.93831698113584
+      },
+      "tall4_raw_barrier": {
+        "rounds_ms": [
+          23.955982971191407,
+          23.953518676757813,
+          23.96851043701172,
+          23.970462036132812,
+          23.934590148925782,
+          23.956478881835938
+        ],
+        "median_ms": 23.956230926513673,
+        "min_ms": 23.934590148925782,
+        "max_ms": 23.970462036132812,
+        "TFLOPS": 91.41799786844487
+      },
+      "base_double": {
+        "rounds_ms": [
+          24.842108154296874,
+          24.84113311767578,
+          24.829196166992187,
+          24.85313262939453,
+          24.848220825195312,
+          24.83191680908203
+        ],
+        "median_ms": 24.841620635986327,
+        "min_ms": 24.829196166992187,
+        "max_ms": 24.85313262939453,
+        "TFLOPS": 88.15973401523792
+      },
+      "wide_double": {
+        "rounds_ms": [
+          121.764794921875,
+          121.76431884765626,
+          121.87728271484374,
+          121.7318603515625,
+          121.699560546875,
+          121.646533203125
+        ],
+        "median_ms": 121.74808959960939,
+        "min_ms": 121.646533203125,
+        "max_ms": 121.87728271484374,
+        "TFLOPS": 17.98821381902839
+      },
+      "wide4_double": {
+        "rounds_ms": [
+          52.90956420898438,
+          53.595574951171876,
+          52.415093994140626,
+          53.9279296875,
+          52.72621459960938,
+          52.262152099609374
+        ],
+        "median_ms": 52.81788940429688,
+        "min_ms": 52.262152099609374,
+        "max_ms": 53.9279296875,
+        "TFLOPS": 41.463805019021365
+      }
+    }
+  },
+  {
+    "shape": "out_proj",
+    "MNK": [
+      18944,
+      5376,
+      3584
+    ],
+    "correctness": {
+      "base": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "wide_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "wide4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "tall4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "base_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "wide_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      },
+      "wide4_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 38973,
+          "relative_l2": 5.16089639859274e-05,
+          "passed": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          2.195166015625,
+          2.196254348754883,
+          2.191022491455078,
+          2.1893903732299806,
+          2.191022491455078,
+          2.189726448059082
+        ],
+        "median_ms": 2.191022491455078,
+        "min_ms": 2.1893903732299806,
+        "max_ms": 2.196254348754883,
+        "TFLOPS": 333.18244127525753
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          2.188974380493164,
+          2.18929443359375,
+          2.1850864410400392,
+          2.1839984893798827,
+          2.185246467590332,
+          2.1838064193725586
+        ],
+        "median_ms": 2.1851664543151856,
+        "min_ms": 2.1838064193725586,
+        "max_ms": 2.18929443359375,
+        "TFLOPS": 334.075338357132
+      },
+      "base": {
+        "rounds_ms": [
+          8.507929229736328,
+          8.477993774414063,
+          8.511369323730468,
+          8.526457977294921,
+          8.509113311767578,
+          8.482457733154297
+        ],
+        "median_ms": 8.508521270751952,
+        "min_ms": 8.477993774414063,
+        "max_ms": 8.526457977294921,
+        "TFLOPS": 85.79754335238141
+      },
+      "wide_raw_barrier": {
+        "rounds_ms": [
+          6.073179244995117,
+          6.073611068725586,
+          6.074043273925781,
+          6.076027297973633,
+          6.07489128112793,
+          6.075019073486328
+        ],
+        "median_ms": 6.074467277526855,
+        "min_ms": 6.073179244995117,
+        "max_ms": 6.076027297973633,
+        "TFLOPS": 120.17683020414832
+      },
+      "wide4_raw_barrier": {
+        "rounds_ms": [
+          5.769755554199219,
+          5.7714996337890625,
+          5.770907211303711,
+          5.7738994598388675,
+          5.769707489013672,
+          5.769707489013672
+        ],
+        "median_ms": 5.770331382751465,
+        "min_ms": 5.769707489013672,
+        "max_ms": 5.7738994598388675,
+        "TFLOPS": 126.51097037063225
+      },
+      "tall4_raw_barrier": {
+        "rounds_ms": [
+          7.5857704162597654,
+          7.609514617919922,
+          7.580650329589844,
+          7.616986083984375,
+          7.6154022216796875,
+          7.628105926513672
+        ],
+        "median_ms": 7.612458419799805,
+        "min_ms": 7.580650329589844,
+        "max_ms": 7.628105926513672,
+        "TFLOPS": 95.89677635456931
+      },
+      "base_double": {
+        "rounds_ms": [
+          7.943401336669922,
+          7.953129577636719,
+          7.9464256286621096,
+          7.9372093200683596,
+          7.947465515136718,
+          7.937753295898437
+        ],
+        "median_ms": 7.944913482666015,
+        "min_ms": 7.9372093200683596,
+        "max_ms": 7.953129577636719,
+        "TFLOPS": 91.8839738386976
+      },
+      "wide_double": {
+        "rounds_ms": [
+          39.719198608398436,
+          39.6623046875,
+          39.733969116210936,
+          39.7056640625,
+          39.685055541992185,
+          39.700399780273436
+        ],
+        "median_ms": 39.70303192138672,
+        "min_ms": 39.6623046875,
+        "max_ms": 39.733969116210936,
+        "TFLOPS": 18.38676260385967
+      },
+      "wide4_double": {
+        "rounds_ms": [
+          17.650018310546876,
+          17.59844970703125,
+          17.67206573486328,
+          17.48229064941406,
+          17.62723388671875,
+          17.58212890625
+        ],
+        "median_ms": 17.612841796875,
+        "min_ms": 17.48229064941406,
+        "max_ms": 17.67206573486328,
+        "TFLOPS": 41.44761140825803
+      }
+    }
+  },
+  {
+    "shape": "fc1",
+    "MNK": [
+      18944,
+      14336,
+      5376
+    ],
+    "correctness": {
+      "base": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "wide_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "wide4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "tall4_raw_barrier": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "base_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "wide_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      },
+      "wide4_double": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.125,
+          "mismatches": 131449,
+          "relative_l2": 5.8345398429082707e-05,
+          "passed": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          8.884904479980468,
+          8.8759765625,
+          8.949848937988282,
+          8.847336578369141,
+          8.898472595214844,
+          8.901097106933594
+        ],
+        "median_ms": 8.891688537597656,
+        "min_ms": 8.847336578369141,
+        "max_ms": 8.949848937988282,
+        "TFLOPS": 328.40116677736586
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          8.908712768554688,
+          8.877304840087891,
+          8.90039291381836,
+          8.911737060546875,
+          8.887240600585937,
+          8.885144805908203
+        ],
+        "median_ms": 8.89381675720215,
+        "min_ms": 8.877304840087891,
+        "max_ms": 8.911737060546875,
+        "TFLOPS": 328.32258299040984
+      },
+      "base": {
+        "rounds_ms": [
+          44.638189697265624,
+          44.54593200683594,
+          44.617547607421876,
+          44.36234741210937,
+          44.652093505859376,
+          44.481564331054685
+        ],
+        "median_ms": 44.58173980712891,
+        "min_ms": 44.36234741210937,
+        "max_ms": 44.652093505859376,
+        "TFLOPS": 65.49858536254492
+      },
+      "wide_raw_barrier": {
+        "rounds_ms": [
+          23.70614013671875,
+          23.676284790039062,
+          23.675917053222655,
+          23.690077209472655,
+          23.679869079589842,
+          23.701148986816406
+        ],
+        "median_ms": 23.68497314453125,
+        "min_ms": 23.675917053222655,
+        "max_ms": 23.70614013671875,
+        "TFLOPS": 123.28664561066745
+      },
+      "wide4_raw_barrier": {
+        "rounds_ms": [
+          22.545439147949217,
+          22.582301330566406,
+          22.578477478027345,
+          22.58721466064453,
+          22.635870361328124,
+          22.574238586425782
+        ],
+        "median_ms": 22.580389404296874,
+        "min_ms": 22.545439147949217,
+        "max_ms": 22.635870361328124,
+        "TFLOPS": 129.31756127342686
+      },
+      "tall4_raw_barrier": {
+        "rounds_ms": [
+          32.10789489746094,
+          32.101348876953125,
+          32.100039672851565,
+          32.10755920410156,
+          32.09976501464844,
+          32.1028076171875
+        ],
+        "median_ms": 32.10207824707031,
+        "min_ms": 32.09976501464844,
+        "max_ms": 32.10789489746094,
+        "TFLOPS": 90.96111684403137
+      },
+      "base_double": {
+        "rounds_ms": [
+          33.19395751953125,
+          33.210662841796875,
+          33.199493408203125,
+          33.1962158203125,
+          33.19056701660156,
+          33.20435485839844
+        ],
+        "median_ms": 33.197854614257814,
+        "min_ms": 33.19056701660156,
+        "max_ms": 33.210662841796875,
+        "TFLOPS": 87.9587227637867
+      },
+      "wide_double": {
+        "rounds_ms": [
+          162.80511474609375,
+          162.77176513671876,
+          162.75445556640625,
+          162.75718994140624,
+          162.6313720703125,
+          162.744580078125
+        ],
+        "median_ms": 162.75582275390624,
+        "min_ms": 162.6313720703125,
+        "max_ms": 162.80511474609375,
+        "TFLOPS": 17.941237621852867
+      },
+      "wide4_double": {
+        "rounds_ms": [
+          70.10867919921876,
+          70.75104370117188,
+          71.4311279296875,
+          71.6944091796875,
+          70.06195678710938,
+          70.577880859375
+        ],
+        "median_ms": 70.66446228027344,
+        "min_ms": 70.06195678710938,
+        "max_ms": 71.6944091796875,
+        "TFLOPS": 41.322622378224104
+      }
+    }
+  }
+]

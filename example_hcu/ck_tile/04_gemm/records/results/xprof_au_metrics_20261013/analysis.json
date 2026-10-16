@@ -1,0 +1,564 @@
+{
+  "MNK": [
+    18880,
+    5376,
+    7168
+  ],
+  "physical_gpu": 4,
+  "groups": {
+    "AK": {
+      "dispatches": [
+        5,
+        6,
+        7
+      ],
+      "samples": [
+        {
+          "header": "dispatch[5], gpu-id(4), queue-id(1), queue-index(8), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(64), fbar(0), obj(0x7fa5fc848640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078885216367), end_ts(58078885368739), begin_ns(2323064334115624), end_ns(2323064340210499)",
+          "dispatch": 5,
+          "values": {
+            "GRBM_COUNT": 9177663.0,
+            "GRBM_GUI_ACTIVE": 9177663.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 258277656.0,
+            "SQ_INSTS_SALU": 52182144.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11139072.0,
+            "SQ_INSTS_VMEM_WR": 1585920.0,
+            "SQ_WAIT_INST_LDS": 155965524.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1539405.0,
+            "WriteSize": 198242.0,
+            "L2CacheHit": 84.0,
+            "MemUnitBusy": 73.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 59.0,
+            "SALUBusy": 7.0
+          }
+        },
+        {
+          "header": "dispatch[6], gpu-id(4), queue-id(1), queue-index(9), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(64), fbar(0), obj(0x7fa5fc848640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078891883571), end_ts(58078892035795), begin_ns(2323064600803819), end_ns(2323064606892774)",
+          "dispatch": 6,
+          "values": {
+            "GRBM_COUNT": 9142375.0,
+            "GRBM_GUI_ACTIVE": 9142375.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 258277656.0,
+            "SQ_INSTS_SALU": 52182144.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11139072.0,
+            "SQ_INSTS_VMEM_WR": 1585920.0,
+            "SQ_WAIT_INST_LDS": 156145150.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1539350.0,
+            "WriteSize": 198242.0,
+            "L2CacheHit": 84.0,
+            "MemUnitBusy": 73.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 59.0,
+            "SALUBusy": 7.0
+          }
+        },
+        {
+          "header": "dispatch[7], gpu-id(4), queue-id(1), queue-index(10), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(64), fbar(0), obj(0x7fa5fc848640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078898558139), end_ts(58078898710171), begin_ns(2323064867786276), end_ns(2323064873867551)",
+          "dispatch": 7,
+          "values": {
+            "GRBM_COUNT": 9145623.0,
+            "GRBM_GUI_ACTIVE": 9145623.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 258277656.0,
+            "SQ_INSTS_SALU": 52182144.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11139072.0,
+            "SQ_INSTS_VMEM_WR": 1585920.0,
+            "SQ_WAIT_INST_LDS": 156098604.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1539380.0,
+            "WriteSize": 198243.0,
+            "L2CacheHit": 84.0,
+            "MemUnitBusy": 73.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 59.0,
+            "SALUBusy": 7.0
+          }
+        }
+      ],
+      "metrics": {
+        "GRBM_COUNT": {
+          "mean": 9155220.333333334,
+          "min": 9142375.0,
+          "max": 9177663.0
+        },
+        "GRBM_GUI_ACTIVE": {
+          "mean": 9155220.333333334,
+          "min": 9142375.0,
+          "max": 9177663.0
+        },
+        "SQ_WAVES": {
+          "mean": 18648.0,
+          "min": 18648.0,
+          "max": 18648.0
+        },
+        "SQ_INSTS_VALU": {
+          "mean": 258277656.0,
+          "min": 258277656.0,
+          "max": 258277656.0
+        },
+        "SQ_INSTS_SALU": {
+          "mean": 52182144.0,
+          "min": 52182144.0,
+          "max": 52182144.0
+        },
+        "SQ_INSTS_LDS": {
+          "mean": 44556288.0,
+          "min": 44556288.0,
+          "max": 44556288.0
+        },
+        "SQ_INSTS_VMEM_RD": {
+          "mean": 11139072.0,
+          "min": 11139072.0,
+          "max": 11139072.0
+        },
+        "SQ_INSTS_VMEM_WR": {
+          "mean": 1585920.0,
+          "min": 1585920.0,
+          "max": 1585920.0
+        },
+        "SQ_WAIT_INST_LDS": {
+          "mean": 156069759.33333334,
+          "min": 155965524.0,
+          "max": 156145150.0
+        },
+        "SQ_LDS_BANK_CONFLICT": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "FetchSize": {
+          "mean": 1539378.3333333333,
+          "min": 1539350.0,
+          "max": 1539405.0
+        },
+        "WriteSize": {
+          "mean": 198242.33333333334,
+          "min": 198242.0,
+          "max": 198243.0
+        },
+        "L2CacheHit": {
+          "mean": 84.0,
+          "min": 84.0,
+          "max": 84.0
+        },
+        "MemUnitBusy": {
+          "mean": 73.0,
+          "min": 73.0,
+          "max": 73.0
+        },
+        "MemUnitStalled": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "WriteUnitStalled": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "ALUStalledByLDS": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "VALUBusy": {
+          "mean": 59.0,
+          "min": 59.0,
+          "max": 59.0
+        },
+        "SALUBusy": {
+          "mean": 7.0,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    "AU": {
+      "dispatches": [
+        8,
+        9,
+        10
+      ],
+      "samples": [
+        {
+          "header": "dispatch[8], gpu-id(4), queue-id(1), queue-index(12), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(32), fbar(0), obj(0x7fa552ea8640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078905257467), end_ts(58078905399855), begin_ns(2323065135758925), end_ns(2323065141454440)",
+          "dispatch": 8,
+          "values": {
+            "GRBM_COUNT": 8575759.0,
+            "GRBM_GUI_ACTIVE": 8575759.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 238414680.0,
+            "SQ_INSTS_SALU": 29613024.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11163936.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 173775541.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1585106.0,
+            "WriteSize": 198240.0,
+            "L2CacheHit": 83.0,
+            "MemUnitBusy": 76.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 60.0,
+            "SALUBusy": 4.0
+          }
+        },
+        {
+          "header": "dispatch[9], gpu-id(4), queue-id(1), queue-index(13), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(32), fbar(0), obj(0x7fa552ea8640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078911905447), end_ts(58078912048015), begin_ns(2323065401679436), end_ns(2323065407382152)",
+          "dispatch": 9,
+          "values": {
+            "GRBM_COUNT": 8559207.0,
+            "GRBM_GUI_ACTIVE": 8559207.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 238414680.0,
+            "SQ_INSTS_SALU": 29613024.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11163936.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 173798638.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1603833.0,
+            "WriteSize": 198241.0,
+            "L2CacheHit": 83.0,
+            "MemUnitBusy": 77.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 60.0,
+            "SALUBusy": 4.0
+          }
+        },
+        {
+          "header": "dispatch[10], gpu-id(4), queue-id(1), queue-index(14), pid(75568), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(224), sgpr(32), fbar(0), obj(0x7fa552ea8640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58078918543327), end_ts(58078918685691), begin_ns(2323065667192887), end_ns(2323065672887442)",
+          "dispatch": 10,
+          "values": {
+            "GRBM_COUNT": 8568275.0,
+            "GRBM_GUI_ACTIVE": 8568275.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 238414680.0,
+            "SQ_INSTS_SALU": 29613024.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11163936.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 173521048.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 1609265.0,
+            "WriteSize": 198240.0,
+            "L2CacheHit": 83.0,
+            "MemUnitBusy": 76.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 60.0,
+            "SALUBusy": 4.0
+          }
+        }
+      ],
+      "metrics": {
+        "GRBM_COUNT": {
+          "mean": 8567747.0,
+          "min": 8559207.0,
+          "max": 8575759.0
+        },
+        "GRBM_GUI_ACTIVE": {
+          "mean": 8567747.0,
+          "min": 8559207.0,
+          "max": 8575759.0
+        },
+        "SQ_WAVES": {
+          "mean": 18648.0,
+          "min": 18648.0,
+          "max": 18648.0
+        },
+        "SQ_INSTS_VALU": {
+          "mean": 238414680.0,
+          "min": 238414680.0,
+          "max": 238414680.0
+        },
+        "SQ_INSTS_SALU": {
+          "mean": 29613024.0,
+          "min": 29613024.0,
+          "max": 29613024.0
+        },
+        "SQ_INSTS_LDS": {
+          "mean": 44556288.0,
+          "min": 44556288.0,
+          "max": 44556288.0
+        },
+        "SQ_INSTS_VMEM_RD": {
+          "mean": 11163936.0,
+          "min": 11163936.0,
+          "max": 11163936.0
+        },
+        "SQ_INSTS_VMEM_WR": {
+          "mean": 1591296.0,
+          "min": 1591296.0,
+          "max": 1591296.0
+        },
+        "SQ_WAIT_INST_LDS": {
+          "mean": 173698409.0,
+          "min": 173521048.0,
+          "max": 173798638.0
+        },
+        "SQ_LDS_BANK_CONFLICT": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "FetchSize": {
+          "mean": 1599401.3333333333,
+          "min": 1585106.0,
+          "max": 1609265.0
+        },
+        "WriteSize": {
+          "mean": 198240.33333333334,
+          "min": 198240.0,
+          "max": 198241.0
+        },
+        "L2CacheHit": {
+          "mean": 83.0,
+          "min": 83.0,
+          "max": 83.0
+        },
+        "MemUnitBusy": {
+          "mean": 76.33333333333333,
+          "min": 76.0,
+          "max": 77.0
+        },
+        "MemUnitStalled": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "WriteUnitStalled": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "ALUStalledByLDS": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "VALUBusy": {
+          "mean": 60.0,
+          "min": 60.0,
+          "max": 60.0
+        },
+        "SALUBusy": {
+          "mean": 4.0,
+          "min": 4.0,
+          "max": 4.0
+        }
+      }
+    },
+    "rocBLAS": {
+      "dispatches": [
+        16,
+        17,
+        18
+      ],
+      "samples": [
+        {
+          "header": "dispatch[16], gpu-id(4), queue-id(1), queue-index(26), pid(75568), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f9c90d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58079008224771), end_ts(58079008335979), begin_ns(2323069254447598), end_ns(2323069258895914)",
+          "dispatch": 16,
+          "values": {
+            "GRBM_COUNT": 6624999.0,
+            "GRBM_GUI_ACTIVE": 6624999.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 191041872.0,
+            "SQ_INSTS_SALU": 27738480.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11188800.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 54490166.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 2078192.0,
+            "WriteSize": 198241.0,
+            "L2CacheHit": 78.0,
+            "MemUnitBusy": 83.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 69.0,
+            "SALUBusy": 5.0
+          }
+        },
+        {
+          "header": "dispatch[17], gpu-id(4), queue-id(1), queue-index(27), pid(75568), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f9c90d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58079014072683), end_ts(58079014183035), begin_ns(2323069488363827), end_ns(2323069492777904)",
+          "dispatch": 17,
+          "values": {
+            "GRBM_COUNT": 6758479.0,
+            "GRBM_GUI_ACTIVE": 6758479.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 191041872.0,
+            "SQ_INSTS_SALU": 27738480.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11188800.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 50274962.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 2259704.0,
+            "WriteSize": 198242.0,
+            "L2CacheHit": 78.0,
+            "MemUnitBusy": 84.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 68.0,
+            "SALUBusy": 5.0
+          }
+        },
+        {
+          "header": "dispatch[18], gpu-id(4), queue-id(1), queue-index(28), pid(75568), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f9c90d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58079022885791), end_ts(58079022997851), begin_ns(2323069840889708), end_ns(2323069845372105)",
+          "dispatch": 18,
+          "values": {
+            "GRBM_COUNT": 6665011.0,
+            "GRBM_GUI_ACTIVE": 6665011.0,
+            "SQ_WAVES": 18648.0,
+            "SQ_INSTS_VALU": 191041872.0,
+            "SQ_INSTS_SALU": 27738480.0,
+            "SQ_INSTS_LDS": 44556288.0,
+            "SQ_INSTS_VMEM_RD": 11188800.0,
+            "SQ_INSTS_VMEM_WR": 1591296.0,
+            "SQ_WAIT_INST_LDS": 54008604.0,
+            "SQ_LDS_BANK_CONFLICT": 0.0,
+            "FetchSize": 2129995.0,
+            "WriteSize": 198241.0,
+            "L2CacheHit": 77.0,
+            "MemUnitBusy": 83.0,
+            "MemUnitStalled": 1.0,
+            "WriteUnitStalled": 0.0,
+            "ALUStalledByLDS": 0.0,
+            "VALUBusy": 69.0,
+            "SALUBusy": 5.0
+          }
+        }
+      ],
+      "metrics": {
+        "GRBM_COUNT": {
+          "mean": 6682829.666666667,
+          "min": 6624999.0,
+          "max": 6758479.0
+        },
+        "GRBM_GUI_ACTIVE": {
+          "mean": 6682829.666666667,
+          "min": 6624999.0,
+          "max": 6758479.0
+        },
+        "SQ_WAVES": {
+          "mean": 18648.0,
+          "min": 18648.0,
+          "max": 18648.0
+        },
+        "SQ_INSTS_VALU": {
+          "mean": 191041872.0,
+          "min": 191041872.0,
+          "max": 191041872.0
+        },
+        "SQ_INSTS_SALU": {
+          "mean": 27738480.0,
+          "min": 27738480.0,
+          "max": 27738480.0
+        },
+        "SQ_INSTS_LDS": {
+          "mean": 44556288.0,
+          "min": 44556288.0,
+          "max": 44556288.0
+        },
+        "SQ_INSTS_VMEM_RD": {
+          "mean": 11188800.0,
+          "min": 11188800.0,
+          "max": 11188800.0
+        },
+        "SQ_INSTS_VMEM_WR": {
+          "mean": 1591296.0,
+          "min": 1591296.0,
+          "max": 1591296.0
+        },
+        "SQ_WAIT_INST_LDS": {
+          "mean": 52924577.333333336,
+          "min": 50274962.0,
+          "max": 54490166.0
+        },
+        "SQ_LDS_BANK_CONFLICT": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "FetchSize": {
+          "mean": 2155963.6666666665,
+          "min": 2078192.0,
+          "max": 2259704.0
+        },
+        "WriteSize": {
+          "mean": 198241.33333333334,
+          "min": 198241.0,
+          "max": 198242.0
+        },
+        "L2CacheHit": {
+          "mean": 77.66666666666667,
+          "min": 77.0,
+          "max": 78.0
+        },
+        "MemUnitBusy": {
+          "mean": 83.33333333333333,
+          "min": 83.0,
+          "max": 84.0
+        },
+        "MemUnitStalled": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "WriteUnitStalled": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "ALUStalledByLDS": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "VALUBusy": {
+          "mean": 68.66666666666667,
+          "min": 68.0,
+          "max": 69.0
+        },
+        "SALUBusy": {
+          "mean": 5.0,
+          "min": 5.0,
+          "max": 5.0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Timings under profiling are not used for performance rankings.",
+    "SQ instruction counters and LDS_BANK_CONFLICT are marked emulated in installed xprof catalog.",
+    "SQ_WAIT_INST_LDS is nondeterministic per-SIMD wave wait aggregation in units of four cycles, not kernel ms or an additive time fraction.",
+    "ALUStalledByLDS, busy percentages and zero conflicts do not establish absence of LDS stalls; text values are integer-valued.",
+    "Installed xprof gfx936 inherits gfx9 FETCH_SIZE and omits DTK gfx936 EA1 contribution; FetchSize is not validated total HBM traffic.",
+    "Full sections replay perturbs UTCL2; no natural-workload UTCL2 hit-rate claim.",
+    "Opaque .perf and raw SQTT words require supported XCompute analysis; no instruction-latency claims from guessing binary layout.",
+    "Resource allocation in profiler is rounded (224/256 VGPR); use exact ELF metadata (221/255) for declared register counts."
+  ],
+  "AU_to_rocBLAS_LDS_issue_wait_ratio": 3.2819989833078935
+}

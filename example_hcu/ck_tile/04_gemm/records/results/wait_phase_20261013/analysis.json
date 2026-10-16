@@ -1,0 +1,131 @@
+{
+  "MNK": [
+    18880,
+    5376,
+    7168
+  ],
+  "physical_gpu": 4,
+  "groups": [
+    {
+      "candidate": "phase_llvm",
+      "samples": 3,
+      "raw_counter_mean": {
+        "SQ_WAIT_CNT_VM": 364235429.6666667,
+        "SQ_WAIT_CNT_LGKM": 149585207.33333334,
+        "SQ_WAIT_BARRIER": 717456820.6666666,
+        "SQ_WAIT_INST_VMEM": 139616272.66666666,
+        "SQ_WAIT_INST_LDS": 114047738.0,
+        "GRBM_GUI_ACTIVE": 11243434.333333334
+      },
+      "raw_counter_range": {
+        "SQ_WAIT_CNT_VM": [
+          197560758.0,
+          697040913.0
+        ],
+        "SQ_WAIT_CNT_LGKM": [
+          116354275.0,
+          216007155.0
+        ],
+        "SQ_WAIT_BARRIER": [
+          710016170.0,
+          731174673.0
+        ],
+        "SQ_WAIT_INST_VMEM": [
+          49837662.0,
+          318948256.0
+        ],
+        "SQ_WAIT_INST_LDS": [
+          113773490.0,
+          114252987.0
+        ],
+        "GRBM_GUI_ACTIVE": [
+          9700350.0,
+          14324779.0
+        ]
+      }
+    },
+    {
+      "candidate": "phase_banked_asm",
+      "samples": 3,
+      "raw_counter_mean": {
+        "SQ_WAIT_CNT_VM": 115240694.66666667,
+        "SQ_WAIT_CNT_LGKM": 148111726.0,
+        "SQ_WAIT_BARRIER": 637834359.6666666,
+        "SQ_WAIT_INST_VMEM": 38129676.666666664,
+        "SQ_WAIT_INST_LDS": 155857649.66666666,
+        "GRBM_GUI_ACTIVE": 9190167.0
+      },
+      "raw_counter_range": {
+        "SQ_WAIT_CNT_VM": [
+          114628079.0,
+          115563499.0
+        ],
+        "SQ_WAIT_CNT_LGKM": [
+          147898271.0,
+          148519141.0
+        ],
+        "SQ_WAIT_BARRIER": [
+          634107600.0,
+          643965200.0
+        ],
+        "SQ_WAIT_INST_VMEM": [
+          36030690.0,
+          41783117.0
+        ],
+        "SQ_WAIT_INST_LDS": [
+          155576839.0,
+          156098221.0
+        ],
+        "GRBM_GUI_ACTIVE": [
+          9163418.0,
+          9238089.0
+        ]
+      }
+    },
+    {
+      "candidate": "rocblas",
+      "samples": 3,
+      "raw_counter_mean": {
+        "SQ_WAIT_CNT_VM": 103968634.66666667,
+        "SQ_WAIT_CNT_LGKM": 157469510.33333334,
+        "SQ_WAIT_BARRIER": 472496928.0,
+        "SQ_WAIT_INST_VMEM": 171780091.33333334,
+        "SQ_WAIT_INST_LDS": 54784041.0,
+        "GRBM_GUI_ACTIVE": 6652133.666666667
+      },
+      "raw_counter_range": {
+        "SQ_WAIT_CNT_VM": [
+          94710244.0,
+          116261416.0
+        ],
+        "SQ_WAIT_CNT_LGKM": [
+          156664163.0,
+          158394912.0
+        ],
+        "SQ_WAIT_BARRIER": [
+          469644725.0,
+          476790099.0
+        ],
+        "SQ_WAIT_INST_VMEM": [
+          169427393.0,
+          173917398.0
+        ],
+        "SQ_WAIT_INST_LDS": [
+          50392500.0,
+          58784150.0
+        ],
+        "GRBM_GUI_ACTIVE": [
+          6603671.0,
+          6704249.0
+        ]
+      }
+    }
+  ],
+  "interpretation": "Per-SIMD cross-wave waiting aggregates (catalog unit 4 cycles, nondeterministic); NOT ms or additive wallclock percentages",
+  "libraries": {
+    "rolephase_m1_reg768": "3ef9c0533b24267a260d33fbf4e8c3db110d6e03a85e8e41b01ac464540fc64b",
+    "rolephase_m1_bank_asmb_reg768": "d89f4906cd47339c8ccb9d920f3d22c5d05c1bf8479e7d26bd8cffa59cb207fc"
+  },
+  "catalog_names_verified": true,
+  "performance_ranking_from": "unprofiled stage_ak/stage_al HIP event benchmark"
+}

@@ -1,0 +1,596 @@
+{
+  "MNK": [
+    18880,
+    5376,
+    7168
+  ],
+  "static_isa": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_reg768",
+      "resources": {
+        "vgpr_count": 221,
+        "sgpr_count": 25,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcode_counts": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 31,
+        "s_ashr_i32": 12,
+        "s_add_i32": 19,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 11,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 18,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 3,
+        "v_cmp_gt_u32_e32": 1,
+        "v_lshrrev_b32_e32": 130,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "v_and_b32_e32": 137,
+        "s_add_u32": 3,
+        "s_addc_u32": 3,
+        "v_or_b32_e32": 24,
+        "v_mul_lo_u32": 10,
+        "v_bfe_u32": 129,
+        "v_lshlrev_b32_e32": 22,
+        "v_add_u32_e32": 63,
+        "s_mov_b32": 25,
+        "buffer_load_dwordx4": 22,
+        "v_add_lshl_u32": 4,
+        "s_barrier": 8,
+        "s_cmp_lt_i32": 2,
+        "v_mov_b32_e32": 258,
+        "s_cbranch_scc1": 5,
+        "v_lshl_add_u32": 11,
+        "v_add3_u32": 130,
+        "s_and_b32": 2,
+        "v_lshl_or_b32": 135,
+        "ds_read_b128": 32,
+        "v_mmac_f32_16x16x16_bf16": 128,
+        "s_addk_i32": 1,
+        "s_cmp_lg_u32": 1,
+        "s_branch": 3,
+        "v_mad_u64_u32": 2,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 16,
+        "s_cmp_eq_u32": 1,
+        "s_cmp_ge_i32": 1,
+        "s_endpgm": 1
+      }
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_reg768",
+      "resources": {
+        "vgpr_count": 226,
+        "sgpr_count": 27,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcode_counts": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 53,
+        "s_ashr_i32": 12,
+        "s_add_i32": 20,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 10,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 18,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 7,
+        "v_cmp_gt_u32_e32": 1,
+        "v_lshrrev_b32_e32": 130,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "v_and_b32_e32": 134,
+        "s_add_u32": 3,
+        "s_addc_u32": 3,
+        "v_or_b32_e32": 29,
+        "v_mul_lo_u32": 10,
+        "v_bfe_u32": 129,
+        "v_lshlrev_b32_e32": 27,
+        "v_add_u32_e32": 65,
+        "s_mov_b32": 27,
+        "buffer_load_dwordx4": 26,
+        "v_add_lshl_u32": 6,
+        "s_barrier": 10,
+        "s_cmp_lt_i32": 2,
+        "v_mov_b32_e32": 130,
+        "s_cbranch_scc1": 6,
+        "v_and_or_b32": 3,
+        "v_add3_u32": 129,
+        "v_lshl_add_u32": 9,
+        "v_mov_b64_e32": 64,
+        "s_branch": 4,
+        "s_cmp_ge_i32": 3,
+        "ds_read_b128": 64,
+        "v_mmac_f32_16x16x16_bf16": 256,
+        "v_subrev_u32_e32": 1,
+        "v_mad_u64_u32": 2,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_lshl_or_b32": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 16,
+        "s_cmp_eq_u32": 1,
+        "s_and_b32": 1,
+        "s_endpgm": 1
+      }
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_aburst_cc_reg768",
+      "resources": {
+        "vgpr_count": 226,
+        "sgpr_count": 27,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcode_counts": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 53,
+        "s_ashr_i32": 12,
+        "s_add_i32": 20,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 10,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 4,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 7,
+        "v_cmp_gt_u32_e32": 1,
+        "v_lshrrev_b32_e32": 130,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "v_and_b32_e32": 134,
+        "s_add_u32": 17,
+        "s_addc_u32": 3,
+        "v_or_b32_e32": 15,
+        "v_mul_lo_u32": 10,
+        "v_bfe_u32": 129,
+        "v_lshlrev_b32_e32": 27,
+        "v_add_u32_e32": 51,
+        "s_mov_b32": 13,
+        "buffer_load_dwordx4": 26,
+        "v_add_lshl_u32": 6,
+        "s_barrier": 10,
+        "s_cmp_lt_i32": 2,
+        "v_mov_b32_e32": 130,
+        "s_cbranch_scc1": 6,
+        "v_and_or_b32": 3,
+        "v_add3_u32": 129,
+        "v_lshl_add_u32": 9,
+        "v_mov_b64_e32": 64,
+        "s_branch": 4,
+        "s_cmp_ge_i32": 3,
+        "ds_read_b128": 64,
+        "v_mmac_f32_16x16x16_bf16": 256,
+        "v_subrev_u32_e32": 1,
+        "v_mad_u64_u32": 2,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_lshl_or_b32": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 2,
+        "s_cmp_eq_u32": 1,
+        "s_and_b32": 1,
+        "s_endpgm": 1
+      }
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_aburst_abase_cc_reg768",
+      "resources": {
+        "vgpr_count": 226,
+        "sgpr_count": 27,
+        "vgpr_spill_count": 0,
+        "private_segment_fixed_size": 0,
+        "group_segment_fixed_size": 65536
+      },
+      "static_opcode_counts": {
+        "s_load_dwordx4": 2,
+        "s_waitcnt": 53,
+        "s_ashr_i32": 12,
+        "s_add_i32": 21,
+        "s_xor_b32": 8,
+        "s_lshr_b32": 3,
+        "s_lshl_b32": 10,
+        "s_bfe_i32": 1,
+        "v_cvt_f32_u32_e32": 2,
+        "v_rcp_iflag_f32_e32": 2,
+        "s_sub_i32": 13,
+        "v_mul_f32_e32": 2,
+        "v_cvt_u32_f32_e32": 2,
+        "v_readfirstlane_b32": 4,
+        "s_mul_i32": 12,
+        "s_mul_hi_u32": 4,
+        "s_cmp_ge_u32": 4,
+        "s_cselect_b32": 6,
+        "s_min_i32": 1,
+        "s_load_dwordx2": 1,
+        "s_movk_i32": 7,
+        "v_cmp_gt_u32_e32": 1,
+        "v_lshrrev_b32_e32": 130,
+        "s_and_saveexec_b64": 1,
+        "s_xor_b64": 1,
+        "s_cbranch_execz": 2,
+        "s_lshl_b64": 3,
+        "v_and_b32_e32": 133,
+        "s_add_u32": 18,
+        "s_addc_u32": 4,
+        "v_or_b32_e32": 15,
+        "v_mul_lo_u32": 2,
+        "v_bfe_u32": 129,
+        "v_lshlrev_b32_e32": 26,
+        "v_add_u32_e32": 27,
+        "s_mov_b32": 14,
+        "buffer_load_dwordx4": 26,
+        "v_add_lshl_u32": 6,
+        "s_barrier": 10,
+        "s_cmp_lt_i32": 2,
+        "v_mov_b32_e32": 129,
+        "s_cbranch_scc1": 6,
+        "v_and_or_b32": 3,
+        "v_add3_u32": 129,
+        "v_lshl_add_u32": 1,
+        "v_mov_b64_e32": 64,
+        "s_branch": 4,
+        "s_cmp_ge_i32": 3,
+        "ds_read_b128": 64,
+        "v_mmac_f32_16x16x16_bf16": 256,
+        "v_subrev_u32_e32": 1,
+        "v_mad_u64_u32": 3,
+        "v_cmp_ne_u32_sdwa": 128,
+        "v_cndmask_b32_e64": 128,
+        "v_lshl_or_b32": 128,
+        "v_cmp_eq_u32_e32": 128,
+        "v_cndmask_b32_e32": 128,
+        "buffer_store_short": 128,
+        "s_andn2_saveexec_b64": 1,
+        "s_nop": 2,
+        "s_addk_i32": 2,
+        "s_cmp_eq_u32": 1,
+        "s_and_b32": 1,
+        "s_endpgm": 1
+      }
+    }
+  ],
+  "xprof": {
+    "previous_cadence": {
+      "GRBM_COUNT": {
+        "mean": 8063255.0,
+        "range": [
+          8060246.0,
+          8065374.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 8063255.0,
+        "range": [
+          8060246.0,
+          8065374.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 238420896.0,
+        "range": [
+          238420896.0,
+          238420896.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 17815056.0,
+        "range": [
+          17815056.0,
+          17815056.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 276248714.0,
+        "range": [
+          276141743.0,
+          276313992.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 84.0,
+        "range": [
+          84.0,
+          84.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 64.0,
+        "range": [
+          64.0,
+          64.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "pair_tiles": {
+      "GRBM_COUNT": {
+        "mean": 7989693.666666667,
+        "range": [
+          7958070.0,
+          8023493.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 7989693.666666667,
+        "range": [
+          7958070.0,
+          8023493.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 230029296.0,
+        "range": [
+          230029296.0,
+          230029296.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 13712496.0,
+        "range": [
+          13712496.0,
+          13712496.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 286941333.3333333,
+        "range": [
+          286686206.0,
+          287355559.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 78.0,
+        "range": [
+          77.0,
+          80.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 63.333333333333336,
+        "range": [
+          63.0,
+          64.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "rocBLAS": {
+      "GRBM_COUNT": {
+        "mean": 6722513.333333333,
+        "range": [
+          6662014.0,
+          6755317.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 6722513.333333333,
+        "range": [
+          6662014.0,
+          6755317.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 191041872.0,
+        "range": [
+          191041872.0,
+          191041872.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 27738480.0,
+        "range": [
+          27738480.0,
+          27738480.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11188800.0,
+        "range": [
+          11188800.0,
+          11188800.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 53295787.666666664,
+        "range": [
+          50199181.0,
+          56723196.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 78.0,
+        "range": [
+          77.0,
+          80.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 68.33333333333333,
+        "range": [
+          68.0,
+          69.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 5.0,
+        "range": [
+          5.0,
+          5.0
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Static opcode counts are not dynamic counts/cycles; pair expansion doubles body size, not mathematical work.",
+    "Installed xprof instruction/bank-conflict counters are emulated.",
+    "SQ_WAIT_INST_LDS is per-SIMD wave aggregate in four-cycle units, not kernel ms or additive fraction.",
+    "Performance ranking uses independent six-round HIP-event results."
+  ]
+}

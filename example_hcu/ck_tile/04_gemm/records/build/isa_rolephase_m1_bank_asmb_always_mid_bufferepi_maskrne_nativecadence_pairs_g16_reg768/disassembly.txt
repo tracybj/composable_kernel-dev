@@ -1,0 +1,2 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_g16_reg768/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_g16_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu

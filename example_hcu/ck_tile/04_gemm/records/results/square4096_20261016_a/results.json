@@ -1,0 +1,139 @@
+[
+  {
+    "shape": "square4096",
+    "MNK": [
+      4096,
+      4096,
+      4096
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          0.4508955001831055,
+          0.4492476940155029,
+          0.4499997138977051,
+          0.4499516010284424,
+          0.4514875888824463,
+          0.450335693359375
+        ],
+        "median_ms": 0.4501677036285401,
+        "min_ms": 0.4492476940155029,
+        "max_ms": 0.4514875888824463,
+        "TFLOPS": 305.3061167297976
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          0.44849557876586915,
+          0.44913558959960936,
+          0.44785561561584475,
+          0.4490555763244629,
+          0.44854369163513186,
+          0.4489596843719482
+        ],
+        "median_ms": 0.44875168800354004,
+        "min_ms": 0.44785561561584475,
+        "max_ms": 0.44913558959960936,
+        "TFLOPS": 306.2694963521024
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768": {
+        "rounds_ms": [
+          0.5600955963134766,
+          0.5598235130310059,
+          0.5596155166625977,
+          0.5599355220794677,
+          0.5599514961242675,
+          0.560943603515625
+        ],
+        "median_ms": 0.5599435091018676,
+        "min_ms": 0.5596155166625977,
+        "max_ms": 0.560943603515625,
+        "TFLOPS": 245.4514629385523
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768": {
+        "rounds_ms": [
+          0.4979196071624756,
+          0.4980475902557373,
+          0.4979355812072754,
+          0.4984476089477539,
+          0.498767614364624,
+          0.4986717224121094
+        ],
+        "median_ms": 0.4982475996017456,
+        "min_ms": 0.4979196071624756,
+        "max_ms": 0.498767614364624,
+        "TFLOPS": 275.8446876249005
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768": {
+        "rounds_ms": [
+          0.4785916805267334,
+          0.4785915851593018,
+          0.47875161170959474,
+          0.4785275936126709,
+          0.4794395923614502,
+          0.47939162254333495
+        ],
+        "median_ms": 0.47867164611816404,
+        "min_ms": 0.4785275936126709,
+        "max_ms": 0.4794395923614502,
+        "TFLOPS": 287.12574598177065
+      }
+    },
+    "duplicate_of": {}
+  }
+]

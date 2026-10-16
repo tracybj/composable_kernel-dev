@@ -1,0 +1,45 @@
+COUNTER_MNK fc2 18880 5376 7168
+COUNTER_CASE rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768
+COUNTER_CASE rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768
+COUNTER_WORKLOAD_PASS
+******** Profiling Configs ********
+sqtt status: disabled
+total 0 sections:
+    
+total 13 metrics:
+    GRBM_COUNT, GRBM_GUI_ACTIVE, SQ_WAVES, SQ_INSTS_VALU, SQ_INSTS_SALU, SQ_INSTS_LDS, SQ_INSTS_VMEM_RD, SQ_INSTS_VMEM_WR, SQ_WAIT_INST_LDS, SQ_LDS_BANK_CONFLICT, L2CacheHit, VALUBusy, SALUBusy, 
+metrics mode: pmc
+import metrics path: /opt/rocm-6.3.3/lib/xprofiler/metrics.xml
+output directory: results/profile_struct32_four_20261014/fc2/capture
+filters:
+    gpu_index: 
+    kernel: h3_ck_rolephase, h3_struct32, Cijk_, 
+    dispatch: 
+**********************************
+== dispatch kernel [5]: begin(2406320943663276 ns), end(2406320948526632 ns), execution(4863356 ns) ==
+== replay kernel [5:1]: begin(2406321155229133 ns), end(2406321160096649 ns), execution(4867516 ns) ==
+output profiling results [5] ...
+== dispatch kernel [6]: begin(2406321177281433 ns), end(2406321182158229 ns), execution(4876796 ns) ==
+== replay kernel [6:1]: begin(2406321351113345 ns), end(2406321355987742 ns), execution(4874397 ns) ==
+output profiling results [6] ...
+== dispatch kernel [7]: begin(2406321377429966 ns), end(2406321382282602 ns), execution(4852636 ns) ==
+== replay kernel [7:1]: begin(2406321533570612 ns), end(2406321538444528 ns), execution(4873916 ns) ==
+output profiling results [7] ...
+== dispatch kernel [8]: begin(2406321560913468 ns), end(2406321565216345 ns), execution(4302877 ns) ==
+== replay kernel [8:1]: begin(2406321714463119 ns), end(2406321718841516 ns), execution(4378397 ns) ==
+output profiling results [8] ...
+== dispatch kernel [9]: begin(2406321740733819 ns), end(2406321745083576 ns), execution(4349757 ns) ==
+== replay kernel [9:1]: begin(2406321895658802 ns), end(2406321900047598 ns), execution(4388796 ns) ==
+output profiling results [9] ...
+== dispatch kernel [10]: begin(2406321921411419 ns), end(2406321925702935 ns), execution(4291516 ns) ==
+== replay kernel [10:1]: begin(2406322099239065 ns), end(2406322103612982 ns), execution(4373917 ns) ==
+output profiling results [10] ...
+== dispatch kernel [16]: begin(2406325283081528 ns), end(2406325287506484 ns), execution(4424956 ns) ==
+== replay kernel [16:1]: begin(2406325471420109 ns), end(2406325475862025 ns), execution(4441916 ns) ==
+output profiling results [16] ...
+== dispatch kernel [17]: begin(2406325503065041 ns), end(2406325507493677 ns), execution(4428636 ns) ==
+== replay kernel [17:1]: begin(2406325701622793 ns), end(2406325706084710 ns), execution(4461917 ns) ==
+output profiling results [17] ...
+== dispatch kernel [18]: begin(2406325733556208 ns), end(2406325737932525 ns), execution(4376317 ns) ==
+== replay kernel [18:1]: begin(2406325933234274 ns), end(2406325937627710 ns), execution(4393436 ns) ==
+output profiling results [18] ...

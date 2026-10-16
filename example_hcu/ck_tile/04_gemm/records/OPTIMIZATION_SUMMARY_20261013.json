@@ -1,0 +1,1019 @@
+{
+  "date": "2026-10-13",
+  "goal_achieved": false,
+  "gpu_experiments_stopped": true,
+  "completed_stages": [
+    "stage_a_layout",
+    "stage_aa_k16_residency",
+    "stage_ab_scheduling_controls",
+    "stage_ac_blas_operand_orientation",
+    "stage_ac_native_m18880",
+    "stage_ad_generic_column_output",
+    "stage_ae_vgpr_allocation_shift",
+    "stage_af_contiguous_vector_restore",
+    "stage_af_native_m18880",
+    "stage_ag_transposed_cache_swizzle",
+    "stage_ah_vector_group_tile",
+    "stage_ai_phase_register_prefetch",
+    "stage_aj_phase_cache_swizzle",
+    "stage_ak_banked_wait_schedule",
+    "stage_al_weight_k32_buffer",
+    "stage_am_ready_wait_and_phase_stagger",
+    "stage_an_ordered_lds_reads",
+    "stage_ao_phase_vgpr_alignment",
+    "stage_ap_mixed_prefetch_and_structured_buffer",
+    "stage_aq_branchfree_prefetch_and_unroll",
+    "stage_ar_mixed_prefetch_rebuild_verify",
+    "stage_as_combined_mixed_branchfree",
+    "stage_at_combined_prefetch_independent",
+    "stage_au_bounded_buffer_output",
+    "stage_av_xprof_guided_prefetch_points",
+    "stage_aw_mmac_burst_boundaries",
+    "stage_ax_k64_activation_banks",
+    "stage_ay_branchless_bf16_output",
+    "stage_az_branchless_rne_independent",
+    "stage_b_tiles",
+    "stage_ba_producer_consumer_cadence",
+    "stage_bb_cadence_independent",
+    "stage_bc_native_pow2_b",
+    "stage_bd_scalar_addressing",
+    "stage_be_scalar_wave_livepads",
+    "stage_bf_wave_group_barrier_stagger",
+    "stage_bg_explicit_pair_tiles",
+    "stage_bh_pair_tiles_independent",
+    "stage_bi_scalar_m0_burst",
+    "stage_bj_aburst_declared_clobbers",
+    "stage_bk_grid_and_token_groups",
+    "stage_bl_static_wave_groups",
+    "stage_bm_static_wave_independent",
+    "stage_bn_static_wave_lds_schedule",
+    "stage_bo_static_wave_b_prefetch",
+    "stage_bp_scalar_b_base_independent",
+    "stage_bq_fpclass_rne_and_b_prefetch",
+    "stage_bs_accumulator_subbanks",
+    "stage_bt_producer_priority_balance",
+    "stage_bu_low_register_constraints",
+    "stage_bv_native_k64_activation_banks",
+    "stage_bw_native_k64_late_wait",
+    "stage_c_raw_barrier",
+    "stage_d_double_buffer",
+    "stage_e_lds_padding",
+    "stage_f_dynamic_double",
+    "stage_g_warp_k16",
+    "stage_h_tile_order",
+    "stage_i_pack_xor",
+    "stage_j_launch_bounds",
+    "stage_k_n_interleave",
+    "stage_l_balanced_operands",
+    "stage_m_kpack_major",
+    "stage_n_wave_specialized",
+    "stage_o_register_pool",
+    "stage_p_large_pipeline",
+    "stage_q_specialized_layout",
+    "stage_r_buffer_priority",
+    "stage_s_aspect_k64",
+    "stage_u_12_math_waves",
+    "stage_u_native_m18880",
+    "stage_v_k64_wrapped_pipeline",
+    "stage_w_mmac_order",
+    "stage_x_cooperative_prefetch",
+    "stage_y_structured_cache_swizzle",
+    "stage_z_structured_wait_tracking"
+  ],
+  "current_candidate": {
+    "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+    "library_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+    "independent_stage": "stage_bp_scalar_b_base_independent",
+    "audit": "stress_bo_scalar_b_base_20261013",
+    "audit_groups": 102,
+    "audit_launches": 306,
+    "performance": {
+      "fc2": {
+        "rounds_ms": [
+          4.876284408569336,
+          4.876396560668946,
+          4.868412017822266,
+          4.868364334106445,
+          4.866780471801758,
+          4.87354850769043
+        ],
+        "median_ms": 4.870980262756348,
+        "min_ms": 4.866780471801758,
+        "max_ms": 4.876396560668946,
+        "TFLOPS": 298.7258960594941
+      },
+      "qkv": {
+        "rounds_ms": [
+          7.10037841796875,
+          7.093291473388672,
+          7.09039535522461,
+          7.09146728515625,
+          7.103067016601562,
+          7.090491485595703
+        ],
+        "median_ms": 7.092379379272462,
+        "min_ms": 7.09039535522461,
+        "max_ms": 7.103067016601562,
+        "TFLOPS": 307.74325495034293
+      },
+      "out_proj": {
+        "rounds_ms": [
+          2.5469261169433595,
+          2.5484941482543944,
+          2.547966194152832,
+          2.547486114501953,
+          2.5514219284057615,
+          2.549741744995117
+        ],
+        "median_ms": 2.5482301712036133,
+        "min_ms": 2.5469261169433595,
+        "max_ms": 2.5514219284057615,
+        "TFLOPS": 285.5095195330636
+      },
+      "fc1": {
+        "rounds_ms": [
+          9.493928527832031,
+          9.496136474609376,
+          9.492472076416016,
+          9.494600677490235,
+          9.490825653076172,
+          9.5010009765625
+        ],
+        "median_ms": 9.494264602661133,
+        "min_ms": 9.490825653076172,
+        "max_ms": 9.5010009765625,
+        "TFLOPS": 306.51935764928135
+      }
+    },
+    "note": "Screening minima from other candidates are not automatically adopted; near-zero changes require independent confirmation."
+  },
+  "comparison": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "initial_M": 18944,
+      "initial_TFLOPS": 67.88064822070004,
+      "current_ms": 4.870980262756348,
+      "current_TFLOPS": 298.7258960594941,
+      "reference_ms": 4.459836769104004,
+      "reference_TFLOPS": 326.26484309028467,
+      "normalized_throughput_ratio": 4.40075196524712,
+      "reference_throughput_pct": 91.559327456201,
+      "remaining_time_reduction_to_reference_pct": 8.44067254379901
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "initial_M": 18944,
+      "initial_TFLOPS": 64.62590494569203,
+      "current_ms": 7.092379379272462,
+      "current_TFLOPS": 307.74325495034293,
+      "reference_ms": 6.670859146118164,
+      "reference_TFLOPS": 327.18902733692016,
+      "normalized_throughput_ratio": 4.761917921442694,
+      "reference_throughput_pct": 94.05671622155192,
+      "remaining_time_reduction_to_reference_pct": 5.9432837784480945
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "initial_M": 18944,
+      "initial_TFLOPS": 86.12720770337103,
+      "current_ms": 2.5482301712036133,
+      "current_TFLOPS": 285.5095195330636,
+      "reference_ms": 2.1867343902587892,
+      "reference_TFLOPS": 332.70797545462244,
+      "normalized_throughput_ratio": 3.3149747582248477,
+      "reference_throughput_pct": 85.8138489595672,
+      "remaining_time_reduction_to_reference_pct": 14.186151040432804
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "initial_M": 18944,
+      "initial_TFLOPS": 64.68797665674457,
+      "current_ms": 9.494264602661133,
+      "current_TFLOPS": 306.51935764928135,
+      "reference_ms": 8.886177444458006,
+      "reference_TFLOPS": 327.4946854876248,
+      "normalized_throughput_ratio": 4.7384285842757565,
+      "reference_throughput_pct": 93.59521581026203,
+      "remaining_time_reduction_to_reference_pct": 6.404784189737944
+    }
+  ],
+  "milestones": [
+    {
+      "method": "起点：03派生base",
+      "stage": "stage_a_layout",
+      "candidate": "base",
+      "verification": "初始控制",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 21.50864028930664,
+          "TFLOPS": 67.88064822070004
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 33.887814331054685,
+          "TFLOPS": 64.62590494569203
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 8.475953674316406,
+          "TFLOPS": 86.12720770337103
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 45.14039611816406,
+          "TFLOPS": 64.68797665674457
+        }
+      }
+    },
+    {
+      "method": "扩大输出tile",
+      "stage": "stage_b_tiles",
+      "candidate": "wide",
+      "verification": "筛选",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 13.90202865600586,
+          "TFLOPS": 105.02211449213577
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 20.558456420898438,
+          "TFLOPS": 106.52699905766039
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 7.028914260864258,
+          "TFLOPS": 103.85817716636079
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 27.418641662597658,
+          "TFLOPS": 106.49837896059195
+        }
+      }
+    },
+    {
+      "method": "避免提前等待未来VMEM",
+      "stage": "stage_c_raw_barrier",
+      "candidate": "wide_raw_barrier",
+      "verification": "筛选",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 12.450035476684569,
+          "TFLOPS": 117.27038432285671
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 17.65921096801758,
+          "TFLOPS": 124.01633752166747
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 6.07545166015625,
+          "TFLOPS": 120.15735840341218
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 23.679558563232423,
+          "TFLOPS": 123.31483640501592
+        }
+      }
+    },
+    {
+      "method": "LDS padding16",
+      "stage": "stage_e_lds_padding",
+      "candidate": "wide_pad16",
+      "verification": "筛选",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 10.563504409790038,
+          "TFLOPS": 138.2136446907603
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 16.13826141357422,
+          "TFLOPS": 135.70425039303927
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 5.6459959030151365,
+          "TFLOPS": 129.29698057381725
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 21.569728088378906,
+          "TFLOPS": 135.37680579020497
+        }
+      }
+    },
+    {
+      "method": "CTA分组、wave分区",
+      "stage": "stage_l_balanced_operands",
+      "candidate": "wide_mr4_pad16_g8",
+      "verification": "筛选",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 9.762248611450195,
+          "TFLOPS": 149.55780202847262
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 14.581684875488282,
+          "TFLOPS": 150.19050860558835
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 5.23409194946289,
+          "TFLOPS": 139.4721815437178
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 19.520800018310545,
+          "TFLOPS": 149.5861280085343
+        }
+      }
+    },
+    {
+      "method": "大tile＋允许足够VGPR",
+      "stage": "stage_o_register_pool",
+      "candidate": "large_pad16_g8_reg768",
+      "verification": "筛选",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18944,
+            5376,
+            7168
+          ],
+          "ms": 7.772762298583984,
+          "TFLOPS": 187.8380412392106
+        },
+        "qkv": {
+          "MNK": [
+            18944,
+            10752,
+            5376
+          ],
+          "ms": 11.871406936645506,
+          "TFLOPS": 184.4794538224157
+        },
+        "out_proj": {
+          "MNK": [
+            18944,
+            5376,
+            3584
+          ],
+          "ms": 4.411892700195312,
+          "TFLOPS": 165.4641833333079
+        },
+        "fc1": {
+          "MNK": [
+            18944,
+            14336,
+            5376
+          ],
+          "ms": 15.84171829223633,
+          "TFLOPS": 184.32602047967526
+        }
+      }
+    },
+    {
+      "method": "同一大tile的真实M控制",
+      "stage": "stage_u_native_m18880",
+      "candidate": "large_pad16_g8_pad_m_reg768",
+      "verification": "真实尾行验证",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 7.764802551269531,
+          "TFLOPS": 187.39535668451683
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 11.862423324584961,
+          "TFLOPS": 183.99544981643666
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 4.413692855834961,
+          "TFLOPS": 164.83792497662748
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 15.832516479492188,
+          "TFLOPS": 183.81006526218005
+        }
+      }
+    },
+    {
+      "method": "恢复连续K向量读取",
+      "stage": "stage_af_native_m18880",
+      "candidate": "large_pad16_g8_trans_groupn_vecb_pad_m_reg768",
+      "verification": "真实shape验证",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 7.058747100830078,
+          "TFLOPS": 206.13969064125953
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 10.265665054321289,
+          "TFLOPS": 212.61476036579143
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 3.5825736999511717,
+          "TFLOPS": 203.07857779727348
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 13.695590209960937,
+          "TFLOPS": 212.48999442487704
+        }
+      }
+    },
+    {
+      "method": "A经LDS、B K32寄存器预取",
+      "stage": "stage_ai_phase_register_prefetch",
+      "candidate": "rolephase_m1_reg768",
+      "verification": "真实shape验证",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 6.442275619506836,
+          "TFLOPS": 225.8655216914468
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 9.541432571411132,
+          "TFLOPS": 228.75306188923778
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 3.423565483093262,
+          "TFLOPS": 212.51060493303288
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 12.713846206665039,
+          "TFLOPS": 228.89815088642374
+        }
+      }
+    },
+    {
+      "method": "B双bank＋显式完成等待",
+      "stage": "stage_ak_banked_wait_schedule",
+      "candidate": "rolephase_m1_bank_asmb_reg768",
+      "verification": "真实shape验证",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 6.086107635498047,
+          "TFLOPS": 239.08350473346914
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 9.101345825195313,
+          "TFLOPS": 239.81419423463797
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 3.2694375991821287,
+          "TFLOPS": 222.52878355041852
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 12.135063171386719,
+          "TFLOPS": 239.8154707774334
+        }
+      }
+    },
+    {
+      "method": "DS读取与未来B预取交错",
+      "stage": "stage_ar_mixed_prefetch_rebuild_verify",
+      "candidate": "rolephase_m1_bank_asmb_mid_reg768",
+      "verification": "独立复测",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.905939865112305,
+          "TFLOPS": 246.3770334465352
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 8.858000946044921,
+          "TFLOPS": 246.4023123066543
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 3.1831175804138185,
+          "TFLOPS": 228.563335616844
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 11.805679321289062,
+          "TFLOPS": 246.5064320451352
+        }
+      }
+    },
+    {
+      "method": "交错预取＋移除终末分支",
+      "stage": "stage_at_combined_prefetch_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_reg768",
+      "verification": "独立复测/广审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.863387489318848,
+          "TFLOPS": 248.1650660698596
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 8.752337646484374,
+          "TFLOPS": 249.37702402245827
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 3.142493724822998,
+          "TFLOPS": 231.51803489471698
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 11.66163101196289,
+          "TFLOPS": 249.5513607294421
+        }
+      }
+    },
+    {
+      "method": "有界buffer输出",
+      "stage": "stage_au_bounded_buffer_output",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_reg768",
+      "verification": "独立审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.69423599243164,
+          "TFLOPS": 255.5369931302454
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 8.449161529541016,
+          "TFLOPS": 258.3252678847255
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.9821496963500973,
+          "TFLOPS": 243.96628134746328
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 11.263695907592773,
+          "TFLOPS": 258.3677605676723
+        }
+      }
+    },
+    {
+      "method": "保持CK语义的branchless RNE",
+      "stage": "stage_az_branchless_rne_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_reg768",
+      "verification": "独立复测/广审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.642339515686035,
+          "TFLOPS": 257.8873425880825
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 8.38617820739746,
+          "TFLOPS": 260.26538687130414
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.9356220245361326,
+          "TFLOPS": 247.83298590865476
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 11.163951873779297,
+          "TFLOPS": 260.6761405157175
+        }
+      }
+    },
+    {
+      "method": "producer/consumer同步节奏",
+      "stage": "stage_bb_cadence_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_reg768",
+      "verification": "独立复测/广审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.359892272949219,
+          "TFLOPS": 271.47708751977484
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 7.960746383666992,
+          "TFLOPS": 274.1742809440696
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.8112380027771,
+          "TFLOPS": 258.7984265726669
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 10.653847885131835,
+          "TFLOPS": 273.15725911774535
+        }
+      }
+    },
+    {
+      "method": "显式双K64 tile展开",
+      "stage": "stage_bh_pair_tiles_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_reg768",
+      "verification": "独立复测/102组审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 5.304715919494629,
+          "TFLOPS": 274.3008232227116
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 7.834146499633789,
+          "TFLOPS": 278.60494000489115
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.7677979469299316,
+          "TFLOPS": 262.86021804698527
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 10.481719970703125,
+          "TFLOPS": 277.64297228833357
+        }
+      }
+    },
+    {
+      "method": "静态wave分组＋post-priority",
+      "stage": "stage_bm_static_wave_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_reg768",
+      "verification": "独立复测/102组审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 4.902676391601562,
+          "TFLOPS": 296.7946132795163
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 7.250154113769531,
+          "TFLOPS": 301.04627864044073
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.5709742546081547,
+          "TFLOPS": 282.983764048188
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 9.707593154907226,
+          "TFLOPS": 299.783462380569
+        }
+      }
+    },
+    {
+      "method": "B标量resource rebase",
+      "stage": "stage_bp_scalar_b_base_independent",
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+      "verification": "独立复测/102组审计",
+      "values": {
+        "fc2": {
+          "MNK": [
+            18880,
+            5376,
+            7168
+          ],
+          "ms": 4.870980262756348,
+          "TFLOPS": 298.7258960594941
+        },
+        "qkv": {
+          "MNK": [
+            18880,
+            10752,
+            5376
+          ],
+          "ms": 7.092379379272462,
+          "TFLOPS": 307.74325495034293
+        },
+        "out_proj": {
+          "MNK": [
+            18880,
+            5376,
+            3584
+          ],
+          "ms": 2.5482301712036133,
+          "TFLOPS": 285.5095195330636
+        },
+        "fc1": {
+          "MNK": [
+            18880,
+            14336,
+            5376
+          ],
+          "ms": 9.494264602661133,
+          "TFLOPS": 306.51935764928135
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Initial M18944 vs current M18880, normalized throughput comparison.",
+    "Independent single-GPU hot-cache GEMM, not H3 E2E.",
+    "Profiler counters correspond to their specific version and are not time fractions."
+  ]
+}

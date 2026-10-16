@@ -1,0 +1,90 @@
+{
+  "environment": {
+    "torch": "2.9.0",
+    "hip": "6.3.26113",
+    "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+    "physical_gpu": 4,
+    "dtype": "BF16 MMAC, FP32 accumulation/output"
+  },
+  "purpose": "diagnostic arithmetic-only kernel; NOT GEMM; cannot satisfy task objective",
+  "instruction_work": {
+    "blocks": 1554,
+    "math_waves_per_block": 8,
+    "mmac_per_wave_iteration": 64,
+    "repeats": 224,
+    "flops": 1460020445184
+  },
+  "expected_output": 112,
+  "checks": {
+    "mmac_micro_512": true,
+    "mmac_micro_768": true
+  },
+  "builds": {
+    "mmac_micro_512": {
+      "command": [
+        "/opt/dtk/bin/hipcc",
+        "-O3",
+        "-std=c++17",
+        "--offload-arch=gfx936",
+        "-fPIC",
+        "-shared",
+        "-I/workspace/composable_kernel/include",
+        "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/mmac_micro_512/20261012-192818-082273/mmac_micro.cpp",
+        "-o",
+        "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/mmac_micro_512.so",
+        "-DBLOCK_THREADS=512",
+        "-mllvm",
+        "--enable-num-vgprs-768=true"
+      ],
+      "threads": 512,
+      "sha256": "2b1fc687181723342fb8cd832027d136243ec8643e4d245de448fa93d1dd1254",
+      "source_sha256": "0aff62e3e14324a4b0b8bba3c9e5fb02932a85ff0c589ba70de6fa6f323d389d"
+    },
+    "mmac_micro_768": {
+      "command": [
+        "/opt/dtk/bin/hipcc",
+        "-O3",
+        "-std=c++17",
+        "--offload-arch=gfx936",
+        "-fPIC",
+        "-shared",
+        "-I/workspace/composable_kernel/include",
+        "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/mmac_micro_768/20261012-192822-723868/mmac_micro.cpp",
+        "-o",
+        "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/mmac_micro_768.so",
+        "-DBLOCK_THREADS=768",
+        "-mllvm",
+        "--enable-num-vgprs-768=true"
+      ],
+      "threads": 768,
+      "sha256": "8b0bdf374d299ad56f5066a483f699d3d419e09d6bed9bc4874120ec8448fe92",
+      "source_sha256": "0aff62e3e14324a4b0b8bba3c9e5fb02932a85ff0c589ba70de6fa6f323d389d"
+    }
+  },
+  "timing": {
+    "mmac_micro_512": {
+      "rounds_ms": [
+        3.167917823791504,
+        3.167885971069336,
+        3.1676780700683596,
+        3.1678699493408202,
+        3.1677900314331056,
+        3.167486000061035
+      ],
+      "median_ms": 3.167829990386963,
+      "TFLOPS": 460.8897730037756
+    },
+    "mmac_micro_768": {
+      "rounds_ms": [
+        3.624989700317383,
+        3.6246856689453124,
+        3.6240776062011717,
+        3.6242534637451174,
+        3.6244937896728517,
+        3.6240615844726562
+      ],
+      "median_ms": 3.6243736267089846,
+      "TFLOPS": 402.8338674646335
+    }
+  }
+}

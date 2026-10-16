@@ -1,0 +1,150 @@
+{
+  "rows": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+      "sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "ds_between_math_same_barrier_region": 0,
+      "snippets": [],
+      "whole_static_counts": {
+        "ds_read_b128": 128,
+        "s_waitcnt": 105,
+        "s_barrier": 16,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "limit": "Static regions may include control paths; not dynamic overlap or critical-path milliseconds"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_a1stream1_reg768",
+      "sha256": "809be1c4e3661258e920c0b7cf317db05bd39f7c9ff54b0b913b30b06ce707f7",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 241,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "ds_between_math_same_barrier_region": 64,
+      "snippets": [
+        {
+          "line": 309,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[81:84], v[207:208], v[135:136], v[81:84]  // 000000001CF8: FFD40051 05470FCF",
+            "\tv_mmac_f32_16x16x16_bf16 v[61:64], v[163:164], v[131:132], v[61:64]  // 000000001D00: FFD4003D 04F707A3",
+            "\tv_mmac_f32_16x16x16_bf16 v[57:60], v[167:168], v[131:132], v[57:60]  // 000000001D08: FFD40039 04E707A7",
+            "\tds_read_b128 v[161:164], v151 offset:64                    // 000000001D10: D9FE0040 A1000097",
+            "\tds_read_b128 v[165:168], v154                              // 000000001D18: D9FE0000 A500009A",
+            "\tv_mmac_f32_16x16x16_bf16 v[53:56], v[187:188], v[131:132], v[53:56]  // 000000001D20: FFD40035 04D707BB",
+            "\tv_mmac_f32_16x16x16_bf16 v[49:52], v[171:172], v[131:132], v[49:52]  // 000000001D28: FFD40031 04C707AB"
+          ]
+        },
+        {
+          "line": 310,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[61:64], v[163:164], v[131:132], v[61:64]  // 000000001D00: FFD4003D 04F707A3",
+            "\tv_mmac_f32_16x16x16_bf16 v[57:60], v[167:168], v[131:132], v[57:60]  // 000000001D08: FFD40039 04E707A7",
+            "\tds_read_b128 v[161:164], v151 offset:64                    // 000000001D10: D9FE0040 A1000097",
+            "\tds_read_b128 v[165:168], v154                              // 000000001D18: D9FE0000 A500009A",
+            "\tv_mmac_f32_16x16x16_bf16 v[53:56], v[187:188], v[131:132], v[53:56]  // 000000001D20: FFD40035 04D707BB",
+            "\tv_mmac_f32_16x16x16_bf16 v[49:52], v[171:172], v[131:132], v[49:52]  // 000000001D28: FFD40031 04C707AB",
+            "\tv_mmac_f32_16x16x16_bf16 v[45:48], v[179:180], v[131:132], v[45:48]  // 000000001D30: FFD4002D 04B707B3"
+          ]
+        },
+        {
+          "line": 315,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[49:52], v[171:172], v[131:132], v[49:52]  // 000000001D28: FFD40031 04C707AB",
+            "\tv_mmac_f32_16x16x16_bf16 v[45:48], v[179:180], v[131:132], v[45:48]  // 000000001D30: FFD4002D 04B707B3",
+            "\tv_mmac_f32_16x16x16_bf16 v[41:44], v[175:176], v[131:132], v[41:44]  // 000000001D38: FFD40029 04A707AF",
+            "\tds_read_b128 v[169:172], v154 offset:4096                  // 000000001D40: D9FE1000 A900009A",
+            "\tds_read_b128 v[173:176], v154 offset:8192                  // 000000001D48: D9FE2000 AD00009A",
+            "\tv_mmac_f32_16x16x16_bf16 v[37:40], v[183:184], v[131:132], v[37:40]  // 000000001D50: FFD40025 049707B7",
+            "\tds_read_b128 v[177:180], v155 offset:8192                  // 000000001D58: D9FE2000 B100009B"
+          ]
+        }
+      ],
+      "whole_static_counts": {
+        "ds_read_b128": 128,
+        "s_waitcnt": 83,
+        "s_barrier": 16,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "limit": "Static regions may include control paths; not dynamic overlap or critical-path milliseconds"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_a1stream4_reg768",
+      "sha256": "ad15a0380ffb3a6cb6b1392e316723bd4f79a07dfa0fddf34f635d778e553ed3",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 241,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "ds_between_math_same_barrier_region": 64,
+      "snippets": [
+        {
+          "line": 311,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[57:60], v[167:168], v[131:132], v[57:60]  // 000000001D08: FFD40039 04E707A7",
+            "\tv_mmac_f32_16x16x16_bf16 v[53:56], v[187:188], v[131:132], v[53:56]  // 000000001D10: FFD40035 04D707BB",
+            "\tv_mmac_f32_16x16x16_bf16 v[49:52], v[171:172], v[131:132], v[49:52]  // 000000001D18: FFD40031 04C707AB",
+            "\tds_read_b128 v[161:164], v151 offset:64                    // 000000001D20: D9FE0040 A1000097",
+            "\tds_read_b128 v[165:168], v154                              // 000000001D28: D9FE0000 A500009A",
+            "\tv_mmac_f32_16x16x16_bf16 v[45:48], v[179:180], v[131:132], v[45:48]  // 000000001D30: FFD4002D 04B707B3",
+            "\tv_mmac_f32_16x16x16_bf16 v[41:44], v[175:176], v[131:132], v[41:44]  // 000000001D38: FFD40029 04A707AF"
+          ]
+        },
+        {
+          "line": 312,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[53:56], v[187:188], v[131:132], v[53:56]  // 000000001D10: FFD40035 04D707BB",
+            "\tv_mmac_f32_16x16x16_bf16 v[49:52], v[171:172], v[131:132], v[49:52]  // 000000001D18: FFD40031 04C707AB",
+            "\tds_read_b128 v[161:164], v151 offset:64                    // 000000001D20: D9FE0040 A1000097",
+            "\tds_read_b128 v[165:168], v154                              // 000000001D28: D9FE0000 A500009A",
+            "\tv_mmac_f32_16x16x16_bf16 v[45:48], v[179:180], v[131:132], v[45:48]  // 000000001D30: FFD4002D 04B707B3",
+            "\tv_mmac_f32_16x16x16_bf16 v[41:44], v[175:176], v[131:132], v[41:44]  // 000000001D38: FFD40029 04A707AF",
+            "\tv_mmac_f32_16x16x16_bf16 v[37:40], v[183:184], v[131:132], v[37:40]  // 000000001D40: FFD40025 049707B7"
+          ]
+        },
+        {
+          "line": 317,
+          "lines": [
+            "\tv_mmac_f32_16x16x16_bf16 v[41:44], v[175:176], v[131:132], v[41:44]  // 000000001D38: FFD40029 04A707AF",
+            "\tv_mmac_f32_16x16x16_bf16 v[37:40], v[183:184], v[131:132], v[37:40]  // 000000001D40: FFD40025 049707B7",
+            "\tv_mmac_f32_16x16x16_bf16 v[33:36], v[191:192], v[131:132], v[33:36]  // 000000001D48: FFD40021 048707BF",
+            "\tds_read_b128 v[169:172], v154 offset:4096                  // 000000001D50: D9FE1000 A900009A",
+            "\tds_read_b128 v[173:176], v154 offset:8192                  // 000000001D58: D9FE2000 AD00009A",
+            "\tds_read_b128 v[177:180], v155 offset:8192                  // 000000001D60: D9FE2000 B100009B",
+            "\tds_read_b128 v[181:184], v155 offset:12288                 // 000000001D68: D9FE3000 B500009B"
+          ]
+        }
+      ],
+      "whole_static_counts": {
+        "ds_read_b128": 128,
+        "s_waitcnt": 83,
+        "s_barrier": 16,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "limit": "Static regions may include control paths; not dynamic overlap or critical-path milliseconds"
+    }
+  ]
+}

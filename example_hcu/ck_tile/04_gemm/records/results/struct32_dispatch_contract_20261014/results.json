@@ -1,0 +1,1846 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        7168
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        10752,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        5376,
+        3584
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        1,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        3,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "negative_zero",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "inf",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "nan_payload",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "subnormal",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 0,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    },
+    {
+      "MNK": [
+        63,
+        14336,
+        5376
+      ],
+      "kind": "large_finite",
+      "repeat": 1,
+      "bitwise_reference": true,
+      "input_unchanged": true,
+      "guard": true
+    }
+  ],
+  "special_cases": 72,
+  "special_launches": 144,
+  "fallback": [
+    {
+      "MNK": [
+        3,
+        256,
+        8192
+      ],
+      "bitwise_baseline": true
+    },
+    {
+      "MNK": [
+        17,
+        512,
+        16384
+      ],
+      "bitwise_baseline": true
+    },
+    {
+      "MNK": [
+        65,
+        256,
+        8128
+      ],
+      "bitwise_baseline": true
+    }
+  ],
+  "invalid": [
+    {
+      "MNK": [
+        0,
+        5376,
+        7168
+      ],
+      "a_offset_bytes": 0,
+      "w_offset_bytes": 0,
+      "statuses": [
+        1,
+        1
+      ]
+    },
+    {
+      "MNK": [
+        -1,
+        5376,
+        3584
+      ],
+      "a_offset_bytes": 0,
+      "w_offset_bytes": 0,
+      "statuses": [
+        1,
+        1
+      ]
+    },
+    {
+      "MNK": [
+        1,
+        255,
+        64
+      ],
+      "a_offset_bytes": 0,
+      "w_offset_bytes": 0,
+      "statuses": [
+        1,
+        1
+      ]
+    },
+    {
+      "MNK": [
+        1,
+        256,
+        63
+      ],
+      "a_offset_bytes": 0,
+      "w_offset_bytes": 0,
+      "statuses": [
+        1,
+        1
+      ]
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        7168
+      ],
+      "a_offset_bytes": 2,
+      "w_offset_bytes": 0,
+      "statuses": [
+        1,
+        1
+      ]
+    },
+    {
+      "MNK": [
+        1,
+        5376,
+        3584
+      ],
+      "a_offset_bytes": 0,
+      "w_offset_bytes": 2,
+      "statuses": [
+        1,
+        1
+      ]
+    }
+  ],
+  "library_sha256": {
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9"
+  },
+  "scope": "Only tested patterns and representative shapes; NaN bit comparison against baseline, not universal floating-point proof."
+}

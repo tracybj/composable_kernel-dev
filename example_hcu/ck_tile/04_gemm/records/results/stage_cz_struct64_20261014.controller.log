@@ -1,0 +1,104 @@
+STRUCT64_ADDRESS_MODEL_PASS 225280
+{"name": "b_struct64_probe", "exit_code": 0, "seconds": 4.448796382639557, "sha256": "8adf812149e31e415dab70d15314293d429c11cb872f90a81f220c129efd88a7"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c0_reg768", "exit_code": 0, "seconds": 5.763010047841817, "sha256": "19c162cdc7d73b55610732daf349ac0876ac9ae4cf5b423e276e7fafafbdd25a"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c1_reg768", "exit_code": 0, "seconds": 5.630986051168293, "sha256": "322f0ac4497f0b53f0d88eb0c0880aeb1ab68f8a8a7ab1ea741b6a24923b9210"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c0_reg768", "exit_code": 0, "seconds": 5.745353135280311, "sha256": "0ec437c4a4263709b752fede76b5a229ea377ac334366f5e3ca38f574ca58fdb"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c1_reg768", "exit_code": 0, "seconds": 5.6401328491047025, "sha256": "e3afdc6923d1c3340c36467aec5aa875a4a1ac21b916011ca3abf9f4fc809f5f"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_compat_reg768", "exit_code": 0, "seconds": 5.8924169526435435, "sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025"}
+{"name": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_compat_reg768", "exit_code": 0, "seconds": 5.582208359148353, "sha256": "7c2663ad82c2a5e32d6fc3a3270894748e9d1c0238872cbb089865edc35053fc"}
+BASE_AND_ROW_PARENT_COMPAT_IDENTICAL
+STRUCT64_BIT62_BOUNDS_PASS 2640 5280 8adf812149e31e415dab70d15314293d429c11cb872f90a81f220c129efd88a7
+STRESS_SHAPE_PASS 1 256 64
+STRESS_SHAPE_PASS 63 256 128
+STRESS_SHAPE_PASS 64 512 256
+STRESS_SHAPE_PASS 255 256 512
+STRESS_SHAPE_PASS 256 512 768
+STRESS_SHAPE_PASS 257 512 1024
+STRESS_SHAPE_PASS 511 256 64
+STRESS_SHAPE_PASS 513 512 256
+STRESS_SHAPE_PASS 18880 5376 7168
+STRESS_SHAPE_PASS 18880 10752 5376
+STRESS_SHAPE_PASS 18880 5376 3584
+STRESS_SHAPE_PASS 18880 14336 5376
+STRESS_SHAPE_PASS 65 512 192
+STRESS_SHAPE_PASS 129 256 320
+STRESS_SHAPE_PASS 258 512 448
+STRESS_SHAPE_PASS 513 256 704
+STRESS_SHAPE_PASS 17 512 832
+STRESS_SHAPE_PASS 1 5376 7168
+STRESS_SHAPE_PASS 63 10752 5376
+STRESS_SHAPE_PASS 257 5376 3584
+STRESS_SHAPE_PASS 513 14336 5376
+STRESS_COMPLETE 126 378 19c162cdc7d73b55610732daf349ac0876ac9ae4cf5b423e276e7fafafbdd25a
+STRESS_SHAPE_PASS 1 256 64
+STRESS_SHAPE_PASS 63 256 128
+STRESS_SHAPE_PASS 64 512 256
+STRESS_SHAPE_PASS 255 256 512
+STRESS_SHAPE_PASS 256 512 768
+STRESS_SHAPE_PASS 257 512 1024
+STRESS_SHAPE_PASS 511 256 64
+STRESS_SHAPE_PASS 513 512 256
+STRESS_SHAPE_PASS 18880 5376 7168
+STRESS_SHAPE_PASS 18880 10752 5376
+STRESS_SHAPE_PASS 18880 5376 3584
+STRESS_SHAPE_PASS 18880 14336 5376
+STRESS_SHAPE_PASS 65 512 192
+STRESS_SHAPE_PASS 129 256 320
+STRESS_SHAPE_PASS 258 512 448
+STRESS_SHAPE_PASS 513 256 704
+STRESS_SHAPE_PASS 17 512 832
+STRESS_SHAPE_PASS 1 5376 7168
+STRESS_SHAPE_PASS 63 10752 5376
+STRESS_SHAPE_PASS 257 5376 3584
+STRESS_SHAPE_PASS 513 14336 5376
+STRESS_COMPLETE 126 378 322f0ac4497f0b53f0d88eb0c0880aeb1ab68f8a8a7ab1ea741b6a24923b9210
+STRESS_SHAPE_PASS 1 256 64
+STRESS_SHAPE_PASS 63 256 128
+STRESS_SHAPE_PASS 64 512 256
+STRESS_SHAPE_PASS 255 256 512
+STRESS_SHAPE_PASS 256 512 768
+STRESS_SHAPE_PASS 257 512 1024
+STRESS_SHAPE_PASS 511 256 64
+STRESS_SHAPE_PASS 513 512 256
+STRESS_SHAPE_PASS 18880 5376 7168
+STRESS_SHAPE_PASS 18880 10752 5376
+STRESS_SHAPE_PASS 18880 5376 3584
+STRESS_SHAPE_PASS 18880 14336 5376
+STRESS_SHAPE_PASS 65 512 192
+STRESS_SHAPE_PASS 129 256 320
+STRESS_SHAPE_PASS 258 512 448
+STRESS_SHAPE_PASS 513 256 704
+STRESS_SHAPE_PASS 17 512 832
+STRESS_SHAPE_PASS 1 5376 7168
+STRESS_SHAPE_PASS 63 10752 5376
+STRESS_SHAPE_PASS 257 5376 3584
+STRESS_SHAPE_PASS 513 14336 5376
+STRESS_COMPLETE 126 378 0ec437c4a4263709b752fede76b5a229ea377ac334366f5e3ca38f574ca58fdb
+STRESS_SHAPE_PASS 1 256 64
+STRESS_SHAPE_PASS 63 256 128
+STRESS_SHAPE_PASS 64 512 256
+STRESS_SHAPE_PASS 255 256 512
+STRESS_SHAPE_PASS 256 512 768
+STRESS_SHAPE_PASS 257 512 1024
+STRESS_SHAPE_PASS 511 256 64
+STRESS_SHAPE_PASS 513 512 256
+STRESS_SHAPE_PASS 18880 5376 7168
+STRESS_SHAPE_PASS 18880 10752 5376
+STRESS_SHAPE_PASS 18880 5376 3584
+STRESS_SHAPE_PASS 18880 14336 5376
+STRESS_SHAPE_PASS 65 512 192
+STRESS_SHAPE_PASS 129 256 320
+STRESS_SHAPE_PASS 258 512 448
+STRESS_SHAPE_PASS 513 256 704
+STRESS_SHAPE_PASS 17 512 832
+STRESS_SHAPE_PASS 1 5376 7168
+STRESS_SHAPE_PASS 63 10752 5376
+STRESS_SHAPE_PASS 257 5376 3584
+STRESS_SHAPE_PASS 513 14336 5376
+STRESS_COMPLETE 126 378 e3afdc6923d1c3340c36467aec5aa875a4a1ac21b916011ca3abf9f4fc809f5f
+b_struct64_probe DEVICE_ELF b_struct64_probe.so-hipv4-amdgcn-amd-amdhsa--gfx936.out
+rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c0_reg768 DEVICE_ELF rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c0_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out
+rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c1_reg768 DEVICE_ELF rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_brow2_sb64c1_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out
+rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c0_reg768 DEVICE_ELF rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c0_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out
+rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c1_reg768 DEVICE_ELF rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_nb64p1_late_base64_atwob1_pwait_brow2_sb64c1_reg768.so-hipv4-amdgcn-amd-amdhsa--gfx936.out
+CZ_COMPLETE

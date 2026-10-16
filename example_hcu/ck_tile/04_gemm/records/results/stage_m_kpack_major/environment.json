@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-12T17:50:55.870939+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "base": "3bcfb1ebe0b3c6ac3875476c7d436a8f8bfbe640d5674565d609bc4816201333",
+    "wide_pad16_g8": "c7f73530e169fa14365bd57606102a18d1f2aea22afee22e40e498494360ca7c",
+    "wide_kpack4_g8": "c816182e49692ffc92fa310f6efd50f0593ac4d1cb16ea2e98a14e62abfb70bf",
+    "wide_kpack8_g8": "e3f87b2046cfd52a0d9da2a771f7d4e38cebe0b669010d28b91b71c8a9eb1702",
+    "wide4_kpack4_g8": "d1cf9f767d59cfdea471727e88ddad441101b03edcabac26ead6905430bc9550",
+    "wide4_kpack8_g8": "3bdb5488094f0637b8171208bc7fa24527f444e101927fc3292939923d71ea6a"
+  }
+}

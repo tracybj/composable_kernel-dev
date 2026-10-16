@@ -1,0 +1,28 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_b_k64_immediate_probe/b_k64_immediate_probe.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu
+
+Disassembly of section .text:
+
+0000000000001700 <_Z31h3_b_k64_immediate_probe_kernelPKsPsiiiii>:
+	s_load_dwordx8 s[8:15], s[4:5], 0x0                        // 000000001700: C00E0202 00000000
+	s_load_dword s6, s[4:5], 0x20                              // 000000001708: C0020182 00000020
+	s_waitcnt lgkmcnt(0)                                       // 000000001710: BF8CC07F
+	s_mul_i32 s0, s12, s13                                     // 000000001714: 92000D0C
+	v_mul_lo_u32 v1, v0, s13                                   // 000000001718: D2850001 00001B00
+	s_lshl_b32 s2, s14, 7                                      // 000000001720: 8E02870E
+	s_lshl_b32 s3, s0, 1                                       // 000000001724: 8E038100
+	s_add_u32 s0, s8, s2                                       // 000000001728: 80000208
+	s_addc_u32 s1, s9, 0                                       // 00000000172C: 82018009
+	s_sub_i32 s2, s3, s2                                       // 000000001730: 81820203
+	s_mov_b32 s3, 0x20000                                      // 000000001734: BE8300FF 00020000
+	s_cmp_lg_u32 s15, 0                                        // 00000000173C: BF07800F
+	v_add_lshl_u32 v5, v1, s6, 1                               // 000000001740: D1FE0005 02040D01
+	s_cbranch_scc0 10                                          // 000000001748: BF84000A <_Z31h3_b_k64_immediate_probe_kernelPKsPsiiiii+0x74>
+	buffer_load_dwordx4 v[1:4], v5, s[0:3], 0 offen offset:64  // 00000000174C: E05C1040 80000105
+	s_cbranch_execnz 2                                         // 000000001754: BF890002 <_Z31h3_b_k64_immediate_probe_kernelPKsPsiiiii+0x60>
+	buffer_load_dwordx4 v[1:4], v5, s[0:3], 0 offen            // 000000001758: E05C1000 80000105
+	s_waitcnt vmcnt(0)                                         // 000000001760: BF8C0F70
+	v_lshlrev_b32_e32 v0, 4, v0                                // 000000001764: 24000084
+	global_store_dwordx4 v0, v[1:4], s[10:11]                  // 000000001768: DC7C8000 000A0100
+	s_endpgm                                                   // 000000001770: BF810000
+	s_branch 65528                                             // 000000001774: BF82FFF8 <_Z31h3_b_k64_immediate_probe_kernelPKsPsiiiii+0x58>

@@ -1,0 +1,2 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_wide4_raw_barrier/wide4_raw_barrier.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu

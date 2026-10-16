@@ -1,0 +1,74 @@
+Displaying notes found in: .note
+  Owner                Data size 	Description
+  AMDGPU               0x000008df	NT_AMDGPU_METADATA (AMDGPU Metadata)
+    AMDGPU Metadata:
+        ---
+amdhsa.kernels:
+  - .args:
+      - .offset:         0
+        .size:           48
+        .value_kind:     by_value
+      - .offset:         48
+        .size:           4
+        .value_kind:     hidden_block_count_x
+      - .offset:         52
+        .size:           4
+        .value_kind:     hidden_block_count_y
+      - .offset:         56
+        .size:           4
+        .value_kind:     hidden_block_count_z
+      - .offset:         60
+        .size:           2
+        .value_kind:     hidden_group_size_x
+      - .offset:         62
+        .size:           2
+        .value_kind:     hidden_group_size_y
+      - .offset:         64
+        .size:           2
+        .value_kind:     hidden_group_size_z
+      - .offset:         66
+        .size:           2
+        .value_kind:     hidden_remainder_x
+      - .offset:         68
+        .size:           2
+        .value_kind:     hidden_remainder_y
+      - .offset:         70
+        .size:           2
+        .value_kind:     hidden_remainder_z
+      - .offset:         88
+        .size:           8
+        .value_kind:     hidden_global_offset_x
+      - .offset:         96
+        .size:           8
+        .value_kind:     hidden_global_offset_y
+      - .offset:         104
+        .size:           8
+        .value_kind:     hidden_global_offset_z
+      - .offset:         112
+        .size:           2
+        .value_kind:     hidden_grid_dims
+    .fp64_status:    0
+    .group_segment_fixed_size: 16384
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 304
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 512
+    .name:           _Z10h3_ck_bf16N7ck_tile10GemmKernelINS_20H3GroupedPartitionerINS_13TileGemmShapeINS_8sequenceIJLi256ELi256ELi16EEEENS3_IJLi4ELi2ELi1EEEENS3_IJLi32ELi64ELi16EEEELb0ELb0EEEEENS_32MmacGemmPipelineAGmemBGmemCRegV1INS_32MmacUniversalGemmPipelineProblemIttfS7_NS_18MmacTileGemmTraitsILb1ELb0ELb0ENS_13tensor_layout4gemm8RowMajorENSD_11ColumnMajorESE_Li2ELi4ELi1ELi1EEELNS_21GemmPipelineSchedulerE1ELb1ELNS_10TailNumberE10ENS_9null_typeESJ_EENS_13H3KPackPolicyEEENS_17Default2DEpilogueINS_24Default2DEpilogueProblemIftLb1ELb0ELb1ELNS_21memory_operation_enumE0EEEvEEE15GemmCommonKargsE
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _Z10h3_ck_bf16N7ck_tile10GemmKernelINS_20H3GroupedPartitionerINS_13TileGemmShapeINS_8sequenceIJLi256ELi256ELi16EEEENS3_IJLi4ELi2ELi1EEEENS3_IJLi32ELi64ELi16EEEELb0ELb0EEEEENS_32MmacGemmPipelineAGmemBGmemCRegV1INS_32MmacUniversalGemmPipelineProblemIttfS7_NS_18MmacTileGemmTraitsILb1ELb0ELb0ENS_13tensor_layout4gemm8RowMajorENSD_11ColumnMajorESE_Li2ELi4ELi1ELi1EEELNS_21GemmPipelineSchedulerE1ELb1ELNS_10TailNumberE10ENS_9null_typeESJ_EENS_13H3KPackPolicyEEENS_17Default2DEpilogueINS_24Default2DEpilogueProblemIftLb1ELb0ELb1ELNS_21memory_operation_enumE0EEEvEEE15GemmCommonKargsE.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     166
+    .vgpr_spill_count: 0
+    .wavefront_size: 64
+amdhsa.target:   'amdgcn-amd-amdhsa--gfx936:sramecc+'
+amdhsa.version:
+  - 1
+  - 2
+...
+

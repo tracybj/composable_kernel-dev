@@ -1,0 +1,34 @@
+{
+  "name": "base_raw_barrier",
+  "config": [
+    128,
+    128,
+    32,
+    4,
+    1,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/base_raw_barrier.so",
+    "-DH3_BM=128",
+    "-DH3_BN=128",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=1",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1"
+  ],
+  "exit_code": 0,
+  "seconds": 53.229542643763125,
+  "sha256": "fd3b5162a177a68bf7873d6f7220cabf625d64ca59b31b8ce032cd8d1317b2ea"
+}

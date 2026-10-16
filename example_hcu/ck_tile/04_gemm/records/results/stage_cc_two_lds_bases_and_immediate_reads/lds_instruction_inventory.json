@@ -1,0 +1,771 @@
+{
+  "purpose": "First static DS sequence and register operands, not measured bottleneck or all dynamic paths",
+  "rows": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+      "sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_phase_ds": [
+        {
+          "line": 240,
+          "dst_first": 161,
+          "dst_last": 164,
+          "address_register": 151,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[161:164], v151                              // 000000001B18: D9FE0000 A1000097"
+        },
+        {
+          "line": 241,
+          "dst_first": 165,
+          "dst_last": 168,
+          "address_register": 152,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[165:168], v152                              // 000000001B20: D9FE0000 A5000098"
+        },
+        {
+          "line": 242,
+          "dst_first": 169,
+          "dst_last": 172,
+          "address_register": 152,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[169:172], v152 offset:4096                  // 000000001B28: D9FE1000 A9000098"
+        },
+        {
+          "line": 243,
+          "dst_first": 173,
+          "dst_last": 176,
+          "address_register": 152,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[173:176], v152 offset:8192                  // 000000001B30: D9FE2000 AD000098"
+        },
+        {
+          "line": 244,
+          "dst_first": 177,
+          "dst_last": 180,
+          "address_register": 153,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[177:180], v153 offset:8192                  // 000000001B38: D9FE2000 B1000099"
+        },
+        {
+          "line": 245,
+          "dst_first": 181,
+          "dst_last": 184,
+          "address_register": 153,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[181:184], v153 offset:12288                 // 000000001B40: D9FE3000 B5000099"
+        },
+        {
+          "line": 246,
+          "dst_first": 185,
+          "dst_last": 188,
+          "address_register": 153,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[185:188], v153 offset:4096                  // 000000001B48: D9FE1000 B9000099"
+        },
+        {
+          "line": 247,
+          "dst_first": 189,
+          "dst_last": 192,
+          "address_register": 152,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[189:192], v152 offset:12288                 // 000000001B50: D9FE3000 BD000098"
+        },
+        {
+          "line": 255,
+          "dst_first": 193,
+          "dst_last": 196,
+          "address_register": 153,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[193:196], v153 offset:16384                 // 000000001B80: D9FE4000 C1000099"
+        },
+        {
+          "line": 256,
+          "dst_first": 197,
+          "dst_last": 200,
+          "address_register": 153,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[197:200], v153 offset:20480                 // 000000001B88: D9FE5000 C5000099"
+        },
+        {
+          "line": 257,
+          "dst_first": 201,
+          "dst_last": 204,
+          "address_register": 152,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[201:204], v152 offset:16384                 // 000000001B90: D9FE4000 C9000098"
+        },
+        {
+          "line": 258,
+          "dst_first": 205,
+          "dst_last": 208,
+          "address_register": 152,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[205:208], v152 offset:20480                 // 000000001B98: D9FE5000 CD000098"
+        },
+        {
+          "line": 259,
+          "dst_first": 209,
+          "dst_last": 212,
+          "address_register": 153,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[209:212], v153 offset:24576                 // 000000001BA0: D9FE6000 D1000099"
+        },
+        {
+          "line": 260,
+          "dst_first": 213,
+          "dst_last": 216,
+          "address_register": 153,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[213:216], v153 offset:28672                 // 000000001BA8: D9FE7000 D5000099"
+        },
+        {
+          "line": 261,
+          "dst_first": 217,
+          "dst_last": 220,
+          "address_register": 152,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[217:220], v152 offset:24576                 // 000000001BB0: D9FE6000 D9000098"
+        },
+        {
+          "line": 262,
+          "dst_first": 221,
+          "dst_last": 224,
+          "address_register": 152,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[221:224], v152 offset:28672                 // 000000001BB8: D9FE7000 DD000098"
+        }
+      ],
+      "distinct_ds_address_registers": [
+        151,
+        152,
+        153
+      ],
+      "first_mmac_registers": [
+        125,
+        161,
+        133
+      ]
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_atwob1_reg768",
+      "sha256": "4cd15da65ffdd4ae13ea32487fa7c564b2215ab2cd727ee1940234593c953b06",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 221,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_phase_ds": [
+        {
+          "line": 233,
+          "dst_first": 157,
+          "dst_last": 160,
+          "address_register": 151,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[157:160], v151                              // 000000001AF4: D9FE0000 9D000097"
+        },
+        {
+          "line": 234,
+          "dst_first": 161,
+          "dst_last": 164,
+          "address_register": 151,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[161:164], v151 offset:4096                  // 000000001AFC: D9FE1000 A1000097"
+        },
+        {
+          "line": 235,
+          "dst_first": 165,
+          "dst_last": 168,
+          "address_register": 152,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[165:168], v152                              // 000000001B04: D9FE0000 A5000098"
+        },
+        {
+          "line": 236,
+          "dst_first": 169,
+          "dst_last": 172,
+          "address_register": 152,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[169:172], v152 offset:4096                  // 000000001B0C: D9FE1000 A9000098"
+        },
+        {
+          "line": 237,
+          "dst_first": 173,
+          "dst_last": 176,
+          "address_register": 151,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[173:176], v151 offset:8192                  // 000000001B14: D9FE2000 AD000097"
+        },
+        {
+          "line": 238,
+          "dst_first": 177,
+          "dst_last": 180,
+          "address_register": 151,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[177:180], v151 offset:12288                 // 000000001B1C: D9FE3000 B1000097"
+        },
+        {
+          "line": 239,
+          "dst_first": 181,
+          "dst_last": 184,
+          "address_register": 152,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[181:184], v152 offset:8192                  // 000000001B24: D9FE2000 B5000098"
+        },
+        {
+          "line": 240,
+          "dst_first": 185,
+          "dst_last": 188,
+          "address_register": 152,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[185:188], v152 offset:12288                 // 000000001B2C: D9FE3000 B9000098"
+        },
+        {
+          "line": 248,
+          "dst_first": 189,
+          "dst_last": 192,
+          "address_register": 151,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[189:192], v151 offset:16384                 // 000000001B5C: D9FE4000 BD000097"
+        },
+        {
+          "line": 249,
+          "dst_first": 193,
+          "dst_last": 196,
+          "address_register": 151,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[193:196], v151 offset:20480                 // 000000001B64: D9FE5000 C1000097"
+        },
+        {
+          "line": 250,
+          "dst_first": 197,
+          "dst_last": 200,
+          "address_register": 152,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[197:200], v152 offset:16384                 // 000000001B6C: D9FE4000 C5000098"
+        },
+        {
+          "line": 251,
+          "dst_first": 201,
+          "dst_last": 204,
+          "address_register": 152,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[201:204], v152 offset:20480                 // 000000001B74: D9FE5000 C9000098"
+        },
+        {
+          "line": 252,
+          "dst_first": 205,
+          "dst_last": 208,
+          "address_register": 151,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[205:208], v151 offset:24576                 // 000000001B7C: D9FE6000 CD000097"
+        },
+        {
+          "line": 253,
+          "dst_first": 209,
+          "dst_last": 212,
+          "address_register": 151,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[209:212], v151 offset:28672                 // 000000001B84: D9FE7000 D1000097"
+        },
+        {
+          "line": 254,
+          "dst_first": 213,
+          "dst_last": 216,
+          "address_register": 152,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[213:216], v152 offset:24576                 // 000000001B8C: D9FE6000 D5000098"
+        },
+        {
+          "line": 255,
+          "dst_first": 217,
+          "dst_last": 220,
+          "address_register": 152,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[217:220], v152 offset:28672                 // 000000001B94: D9FE7000 D9000098"
+        }
+      ],
+      "distinct_ds_address_registers": [
+        151,
+        152
+      ],
+      "first_mmac_registers": [
+        125,
+        157,
+        133
+      ]
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_atwob1_areadwait_reg768",
+      "sha256": "b073c70d9e517f3c1a691b8fc246c27c6b2e08a6d84a49d2cad16e4c76bccdbf",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 221,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_phase_ds": [
+        {
+          "line": 233,
+          "dst_first": 157,
+          "dst_last": 160,
+          "address_register": 151,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[157:160], v151                              // 000000001AF4: D9FE0000 9D000097"
+        },
+        {
+          "line": 234,
+          "dst_first": 161,
+          "dst_last": 164,
+          "address_register": 151,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[161:164], v151 offset:4096                  // 000000001AFC: D9FE1000 A1000097"
+        },
+        {
+          "line": 235,
+          "dst_first": 165,
+          "dst_last": 168,
+          "address_register": 152,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[165:168], v152                              // 000000001B04: D9FE0000 A5000098"
+        },
+        {
+          "line": 236,
+          "dst_first": 169,
+          "dst_last": 172,
+          "address_register": 152,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[169:172], v152 offset:4096                  // 000000001B0C: D9FE1000 A9000098"
+        },
+        {
+          "line": 237,
+          "dst_first": 173,
+          "dst_last": 176,
+          "address_register": 151,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[173:176], v151 offset:8192                  // 000000001B14: D9FE2000 AD000097"
+        },
+        {
+          "line": 238,
+          "dst_first": 177,
+          "dst_last": 180,
+          "address_register": 151,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[177:180], v151 offset:12288                 // 000000001B1C: D9FE3000 B1000097"
+        },
+        {
+          "line": 239,
+          "dst_first": 181,
+          "dst_last": 184,
+          "address_register": 152,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[181:184], v152 offset:8192                  // 000000001B24: D9FE2000 B5000098"
+        },
+        {
+          "line": 240,
+          "dst_first": 185,
+          "dst_last": 188,
+          "address_register": 152,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[185:188], v152 offset:12288                 // 000000001B2C: D9FE3000 B9000098"
+        },
+        {
+          "line": 248,
+          "dst_first": 189,
+          "dst_last": 192,
+          "address_register": 151,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[189:192], v151 offset:16384                 // 000000001B5C: D9FE4000 BD000097"
+        },
+        {
+          "line": 249,
+          "dst_first": 193,
+          "dst_last": 196,
+          "address_register": 151,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[193:196], v151 offset:20480                 // 000000001B64: D9FE5000 C1000097"
+        },
+        {
+          "line": 250,
+          "dst_first": 197,
+          "dst_last": 200,
+          "address_register": 152,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[197:200], v152 offset:16384                 // 000000001B6C: D9FE4000 C5000098"
+        },
+        {
+          "line": 251,
+          "dst_first": 201,
+          "dst_last": 204,
+          "address_register": 152,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[201:204], v152 offset:20480                 // 000000001B74: D9FE5000 C9000098"
+        },
+        {
+          "line": 252,
+          "dst_first": 205,
+          "dst_last": 208,
+          "address_register": 151,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[205:208], v151 offset:24576                 // 000000001B7C: D9FE6000 CD000097"
+        },
+        {
+          "line": 253,
+          "dst_first": 209,
+          "dst_last": 212,
+          "address_register": 151,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[209:212], v151 offset:28672                 // 000000001B84: D9FE7000 D1000097"
+        },
+        {
+          "line": 254,
+          "dst_first": 213,
+          "dst_last": 216,
+          "address_register": 152,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[213:216], v152 offset:24576                 // 000000001B8C: D9FE6000 D5000098"
+        },
+        {
+          "line": 255,
+          "dst_first": 217,
+          "dst_last": 220,
+          "address_register": 152,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[217:220], v152 offset:28672                 // 000000001B94: D9FE7000 D9000098"
+        }
+      ],
+      "distinct_ds_address_registers": [
+        151,
+        152
+      ],
+      "first_mmac_registers": [
+        125,
+        157,
+        133
+      ]
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_atwob2_reg768",
+      "sha256": "f747cae0af1b291c72d8aaa90f97d05ec21a3320792416c36989d062d1ee7700",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 223,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_phase_ds": [
+        {
+          "line": 236,
+          "dst_first": 159,
+          "dst_last": 162,
+          "address_register": 152,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[159:162], v152                              // 000000001B08: D9FE0000 9F000098"
+        },
+        {
+          "line": 237,
+          "dst_first": 163,
+          "dst_last": 166,
+          "address_register": 151,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[163:166], v151                              // 000000001B10: D9FE0000 A3000097"
+        },
+        {
+          "line": 238,
+          "dst_first": 167,
+          "dst_last": 170,
+          "address_register": 152,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[167:170], v152 offset:4096                  // 000000001B18: D9FE1000 A7000098"
+        },
+        {
+          "line": 239,
+          "dst_first": 171,
+          "dst_last": 174,
+          "address_register": 151,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[171:174], v151 offset:4096                  // 000000001B20: D9FE1000 AB000097"
+        },
+        {
+          "line": 240,
+          "dst_first": 175,
+          "dst_last": 178,
+          "address_register": 152,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[175:178], v152 offset:8192                  // 000000001B28: D9FE2000 AF000098"
+        },
+        {
+          "line": 241,
+          "dst_first": 179,
+          "dst_last": 182,
+          "address_register": 151,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[179:182], v151 offset:8192                  // 000000001B30: D9FE2000 B3000097"
+        },
+        {
+          "line": 242,
+          "dst_first": 183,
+          "dst_last": 186,
+          "address_register": 152,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[183:186], v152 offset:12288                 // 000000001B38: D9FE3000 B7000098"
+        },
+        {
+          "line": 243,
+          "dst_first": 187,
+          "dst_last": 190,
+          "address_register": 151,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[187:190], v151 offset:12288                 // 000000001B40: D9FE3000 BB000097"
+        },
+        {
+          "line": 250,
+          "dst_first": 191,
+          "dst_last": 194,
+          "address_register": 152,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[191:194], v152 offset:16384                 // 000000001B68: D9FE4000 BF000098"
+        },
+        {
+          "line": 251,
+          "dst_first": 195,
+          "dst_last": 198,
+          "address_register": 151,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[195:198], v151 offset:16384                 // 000000001B70: D9FE4000 C3000097"
+        },
+        {
+          "line": 252,
+          "dst_first": 199,
+          "dst_last": 202,
+          "address_register": 152,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[199:202], v152 offset:20480                 // 000000001B78: D9FE5000 C7000098"
+        },
+        {
+          "line": 253,
+          "dst_first": 203,
+          "dst_last": 206,
+          "address_register": 151,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[203:206], v151 offset:20480                 // 000000001B80: D9FE5000 CB000097"
+        },
+        {
+          "line": 254,
+          "dst_first": 207,
+          "dst_last": 210,
+          "address_register": 152,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[207:210], v152 offset:24576                 // 000000001B88: D9FE6000 CF000098"
+        },
+        {
+          "line": 255,
+          "dst_first": 211,
+          "dst_last": 214,
+          "address_register": 151,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[211:214], v151 offset:24576                 // 000000001B90: D9FE6000 D3000097"
+        },
+        {
+          "line": 256,
+          "dst_first": 215,
+          "dst_last": 218,
+          "address_register": 152,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[215:218], v152 offset:28672                 // 000000001B98: D9FE7000 D7000098"
+        },
+        {
+          "line": 257,
+          "dst_first": 219,
+          "dst_last": 222,
+          "address_register": 151,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[219:222], v151 offset:28672                 // 000000001BA0: D9FE7000 DB000097"
+        }
+      ],
+      "distinct_ds_address_registers": [
+        151,
+        152
+      ],
+      "first_mmac_registers": [
+        125,
+        159,
+        133
+      ]
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_atwob3_reg768",
+      "sha256": "f747cae0af1b291c72d8aaa90f97d05ec21a3320792416c36989d062d1ee7700",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 223,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_phase_ds": [
+        {
+          "line": 236,
+          "dst_first": 159,
+          "dst_last": 162,
+          "address_register": 152,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[159:162], v152                              // 000000001B08: D9FE0000 9F000098"
+        },
+        {
+          "line": 237,
+          "dst_first": 163,
+          "dst_last": 166,
+          "address_register": 151,
+          "byte_offset": 0,
+          "isa": "ds_read_b128 v[163:166], v151                              // 000000001B10: D9FE0000 A3000097"
+        },
+        {
+          "line": 238,
+          "dst_first": 167,
+          "dst_last": 170,
+          "address_register": 152,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[167:170], v152 offset:4096                  // 000000001B18: D9FE1000 A7000098"
+        },
+        {
+          "line": 239,
+          "dst_first": 171,
+          "dst_last": 174,
+          "address_register": 151,
+          "byte_offset": 4096,
+          "isa": "ds_read_b128 v[171:174], v151 offset:4096                  // 000000001B20: D9FE1000 AB000097"
+        },
+        {
+          "line": 240,
+          "dst_first": 175,
+          "dst_last": 178,
+          "address_register": 152,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[175:178], v152 offset:8192                  // 000000001B28: D9FE2000 AF000098"
+        },
+        {
+          "line": 241,
+          "dst_first": 179,
+          "dst_last": 182,
+          "address_register": 151,
+          "byte_offset": 8192,
+          "isa": "ds_read_b128 v[179:182], v151 offset:8192                  // 000000001B30: D9FE2000 B3000097"
+        },
+        {
+          "line": 242,
+          "dst_first": 183,
+          "dst_last": 186,
+          "address_register": 152,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[183:186], v152 offset:12288                 // 000000001B38: D9FE3000 B7000098"
+        },
+        {
+          "line": 243,
+          "dst_first": 187,
+          "dst_last": 190,
+          "address_register": 151,
+          "byte_offset": 12288,
+          "isa": "ds_read_b128 v[187:190], v151 offset:12288                 // 000000001B40: D9FE3000 BB000097"
+        },
+        {
+          "line": 250,
+          "dst_first": 191,
+          "dst_last": 194,
+          "address_register": 152,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[191:194], v152 offset:16384                 // 000000001B68: D9FE4000 BF000098"
+        },
+        {
+          "line": 251,
+          "dst_first": 195,
+          "dst_last": 198,
+          "address_register": 151,
+          "byte_offset": 16384,
+          "isa": "ds_read_b128 v[195:198], v151 offset:16384                 // 000000001B70: D9FE4000 C3000097"
+        },
+        {
+          "line": 252,
+          "dst_first": 199,
+          "dst_last": 202,
+          "address_register": 152,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[199:202], v152 offset:20480                 // 000000001B78: D9FE5000 C7000098"
+        },
+        {
+          "line": 253,
+          "dst_first": 203,
+          "dst_last": 206,
+          "address_register": 151,
+          "byte_offset": 20480,
+          "isa": "ds_read_b128 v[203:206], v151 offset:20480                 // 000000001B80: D9FE5000 CB000097"
+        },
+        {
+          "line": 254,
+          "dst_first": 207,
+          "dst_last": 210,
+          "address_register": 152,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[207:210], v152 offset:24576                 // 000000001B88: D9FE6000 CF000098"
+        },
+        {
+          "line": 255,
+          "dst_first": 211,
+          "dst_last": 214,
+          "address_register": 151,
+          "byte_offset": 24576,
+          "isa": "ds_read_b128 v[211:214], v151 offset:24576                 // 000000001B90: D9FE6000 D3000097"
+        },
+        {
+          "line": 256,
+          "dst_first": 215,
+          "dst_last": 218,
+          "address_register": 152,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[215:218], v152 offset:28672                 // 000000001B98: D9FE7000 D7000098"
+        },
+        {
+          "line": 257,
+          "dst_first": 219,
+          "dst_last": 222,
+          "address_register": 151,
+          "byte_offset": 28672,
+          "isa": "ds_read_b128 v[219:222], v151 offset:28672                 // 000000001BA0: D9FE7000 DB000097"
+        }
+      ],
+      "distinct_ds_address_registers": [
+        151,
+        152
+      ],
+      "first_mmac_registers": [
+        125,
+        159,
+        133
+      ]
+    }
+  ]
+}

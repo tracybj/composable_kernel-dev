@@ -1,0 +1,264 @@
+{
+  "rows": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+      "library_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "static_producer_loads": 16,
+      "scalar_offset_operands": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "producer_excerpt_range": [
+        2737,
+        2933
+      ],
+      "static_instruction_counts": {
+        "v_readfirstlane_b32": 16,
+        "v_add_u32": 47,
+        "s_nop": 16,
+        "s_and_b32": 1,
+        "s_barrier": 4,
+        "s_cbranch": 4,
+        "buffer_load_dwordx4": 16
+      },
+      "counts_limit": "Static startup plus expanded loop/tail code; not counts per dynamic K tile or measured bottleneck"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_ppair1_reg768",
+      "library_sha256": "03025bda0a3fab1618265c05a1ec6ebdbb47f27193470e5d14c9e5ba1d516b53",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "static_producer_loads": 24,
+      "scalar_offset_operands": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "producer_excerpt_range": [
+        2737,
+        2980
+      ],
+      "static_instruction_counts": {
+        "v_readfirstlane_b32": 24,
+        "v_add_u32": 55,
+        "s_nop": 24,
+        "s_and_b32": 0,
+        "s_barrier": 6,
+        "s_cbranch": 6,
+        "buffer_load_dwordx4": 24
+      },
+      "counts_limit": "Static startup plus expanded loop/tail code; not counts per dynamic K tile or measured bottleneck"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_ppair2_reg768",
+      "library_sha256": "03025bda0a3fab1618265c05a1ec6ebdbb47f27193470e5d14c9e5ba1d516b53",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "static_producer_loads": 24,
+      "scalar_offset_operands": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "producer_excerpt_range": [
+        2737,
+        2980
+      ],
+      "static_instruction_counts": {
+        "v_readfirstlane_b32": 24,
+        "v_add_u32": 55,
+        "s_nop": 24,
+        "s_and_b32": 0,
+        "s_barrier": 6,
+        "s_cbranch": 6,
+        "buffer_load_dwordx4": 24
+      },
+      "counts_limit": "Static startup plus expanded loop/tail code; not counts per dynamic K tile or measured bottleneck"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_asoff_reg768",
+      "library_sha256": "8d0f77fda874bb849b59c624794fd8523a6f201473f624bf9b586db3c0bfbd4e",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "static_producer_loads": 16,
+      "scalar_offset_operands": [
+        "s0",
+        "s0",
+        "s0",
+        "s0",
+        "s0",
+        "s0",
+        "s0",
+        "s0",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2"
+      ],
+      "producer_excerpt_range": [
+        2737,
+        2892
+      ],
+      "static_instruction_counts": {
+        "v_readfirstlane_b32": 16,
+        "v_add_u32": 23,
+        "s_nop": 16,
+        "s_and_b32": 1,
+        "s_barrier": 4,
+        "s_cbranch": 4,
+        "buffer_load_dwordx4": 16
+      },
+      "counts_limit": "Static startup plus expanded loop/tail code; not counts per dynamic K tile or measured bottleneck"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_ppair1_asoff_reg768",
+      "library_sha256": "e04cfd5e83d2026cf5613f53effd11e392c2ffdf99217a0be47083a85852b78b",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "static_producer_loads": 24,
+      "scalar_offset_operands": [
+        "s8",
+        "s8",
+        "s8",
+        "s8",
+        "s8",
+        "s8",
+        "s8",
+        "s8",
+        "s9",
+        "s9",
+        "s9",
+        "s9",
+        "s9",
+        "s9",
+        "s9",
+        "s9",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2",
+        "s2"
+      ],
+      "producer_excerpt_range": [
+        2737,
+        2932
+      ],
+      "static_instruction_counts": {
+        "v_readfirstlane_b32": 24,
+        "v_add_u32": 23,
+        "s_nop": 24,
+        "s_and_b32": 0,
+        "s_barrier": 6,
+        "s_cbranch": 6,
+        "buffer_load_dwordx4": 24
+      },
+      "counts_limit": "Static startup plus expanded loop/tail code; not counts per dynamic K tile or measured bottleneck"
+    }
+  ],
+  "purpose": "Verify actual scalar-offset operands and fixed-slot generated ISA; performance from independent HIP events"
+}

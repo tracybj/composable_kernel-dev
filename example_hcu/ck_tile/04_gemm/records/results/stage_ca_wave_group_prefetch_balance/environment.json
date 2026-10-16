@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-13T18:33:46.873263+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_sf2_reg768": "98a4e191f5d454f63d0b8b02008fc0f6ff55fa8b8d5a54ca69f1898cf6aba261",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_sf6_reg768": "ce1f9a26cbdb731861eae4ce860631e08f77f233c2ced536dbd5f82494f92283",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_gp4x8_reg768": "f84d990441c0033154d741a6a05e91f06cbb7e591e78dcf1a386c622ab70c35f",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_gp8x4_reg768": "728e7f4efc395bd9c3d3f9058156e0b455bce67fe9d38bd7bab5fd203aac4305",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_gp8x12_reg768": "84f5d43d057d1cc9c4d24875cdea893ae51bcf573964b062ac05ceb1b90b8408",
+    "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_gp12x8_reg768": "9a491b43d91523213754be7b32c26f37961269ded1e117b7e5e4b25e579e32ef"
+  },
+  "duplicate_of": {}
+}

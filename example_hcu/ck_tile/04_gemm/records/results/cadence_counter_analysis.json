@@ -1,0 +1,408 @@
+{
+  "MNK": [
+    18880,
+    5376,
+    7168
+  ],
+  "physical_GPU": 4,
+  "xprof": {
+    "previous_RNE": {
+      "GRBM_COUNT": {
+        "mean": 8491408.0,
+        "range": [
+          8488129.0,
+          8495769.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 8491408.0,
+        "range": [
+          8488129.0,
+          8495769.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 238427112.0,
+        "range": [
+          238427112.0,
+          238427112.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 18511248.0,
+        "range": [
+          18511248.0,
+          18511248.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 172792306.0,
+        "range": [
+          172640231.0,
+          173052675.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 81.0,
+        "range": [
+          81.0,
+          81.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 61.0,
+        "range": [
+          61.0,
+          61.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "new_cadence": {
+      "GRBM_COUNT": {
+        "mean": 8060562.333333333,
+        "range": [
+          8054042.0,
+          8069014.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 8060562.333333333,
+        "range": [
+          8054042.0,
+          8069014.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 238420896.0,
+        "range": [
+          238420896.0,
+          238420896.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 17815056.0,
+        "range": [
+          17815056.0,
+          17815056.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11163936.0,
+        "range": [
+          11163936.0,
+          11163936.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 276156230.0,
+        "range": [
+          276088840.0,
+          276194512.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 84.0,
+        "range": [
+          84.0,
+          84.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 64.0,
+        "range": [
+          64.0,
+          64.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 2.0,
+        "range": [
+          2.0,
+          2.0
+        ]
+      }
+    },
+    "rocBLAS": {
+      "GRBM_COUNT": {
+        "mean": 6720385.666666667,
+        "range": [
+          6669942.0,
+          6759402.0
+        ]
+      },
+      "GRBM_GUI_ACTIVE": {
+        "mean": 6720385.666666667,
+        "range": [
+          6669942.0,
+          6759402.0
+        ]
+      },
+      "SQ_WAVES": {
+        "mean": 18648.0,
+        "range": [
+          18648.0,
+          18648.0
+        ]
+      },
+      "SQ_INSTS_VALU": {
+        "mean": 191041872.0,
+        "range": [
+          191041872.0,
+          191041872.0
+        ]
+      },
+      "SQ_INSTS_SALU": {
+        "mean": 27738480.0,
+        "range": [
+          27738480.0,
+          27738480.0
+        ]
+      },
+      "SQ_INSTS_LDS": {
+        "mean": 44556288.0,
+        "range": [
+          44556288.0,
+          44556288.0
+        ]
+      },
+      "SQ_INSTS_VMEM_RD": {
+        "mean": 11188800.0,
+        "range": [
+          11188800.0,
+          11188800.0
+        ]
+      },
+      "SQ_INSTS_VMEM_WR": {
+        "mean": 1591296.0,
+        "range": [
+          1591296.0,
+          1591296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 54183806.0,
+        "range": [
+          52151562.0,
+          55637318.0
+        ]
+      },
+      "SQ_LDS_BANK_CONFLICT": {
+        "mean": 0.0,
+        "range": [
+          0.0,
+          0.0
+        ]
+      },
+      "L2CacheHit": {
+        "mean": 77.66666666666667,
+        "range": [
+          77.0,
+          79.0
+        ]
+      },
+      "VALUBusy": {
+        "mean": 68.33333333333333,
+        "range": [
+          68.0,
+          69.0
+        ]
+      },
+      "SALUBusy": {
+        "mean": 5.0,
+        "range": [
+          5.0,
+          5.0
+        ]
+      }
+    }
+  },
+  "rocprof_waits": {
+    "previous_RNE": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 118038824.66666667,
+        "range": [
+          113676078.0,
+          123853835.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 131345799.66666667,
+        "range": [
+          130709602.0,
+          132011321.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 600111501.0,
+        "range": [
+          594114928.0,
+          608712887.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 14988863.666666666,
+        "range": [
+          11903313.0,
+          17742296.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 173169641.33333334,
+        "range": [
+          172447710.0,
+          173675167.0
+        ]
+      }
+    },
+    "new_cadence": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 118169637.0,
+        "range": [
+          110630856.0,
+          124031993.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 50664243.666666664,
+        "range": [
+          50533558.0,
+          50799939.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 460046755.3333333,
+        "range": [
+          451753786.0,
+          473037619.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 131418055.0,
+        "range": [
+          127462917.0,
+          137846728.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 276018286.6666667,
+        "range": [
+          275807075.0,
+          276152364.0
+        ]
+      }
+    },
+    "rocBLAS": {
+      "SQ_WAIT_CNT_VM": {
+        "mean": 96819734.66666667,
+        "range": [
+          87661819.0,
+          113601090.0
+        ]
+      },
+      "SQ_WAIT_CNT_LGKM": {
+        "mean": 157716466.66666666,
+        "range": [
+          156377957.0,
+          158703549.0
+        ]
+      },
+      "SQ_WAIT_BARRIER": {
+        "mean": 473951822.6666667,
+        "range": [
+          469535461.0,
+          478711509.0
+        ]
+      },
+      "SQ_WAIT_INST_VMEM": {
+        "mean": 170039376.66666666,
+        "range": [
+          163250201.0,
+          174867672.0
+        ]
+      },
+      "SQ_WAIT_INST_LDS": {
+        "mean": 55949068.0,
+        "range": [
+          50906143.0,
+          59673949.0
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Per-SIMD wave wait aggregates are not kernel ms or additive time fractions.",
+    "Profiler runs change execution; xprof and rocprof are independent runs.",
+    "xprof instruction/bank-conflict counters are emulated; zero conflict not proof of no LDS contention.",
+    "Performance ranking uses independent HIP-event bench, not these durations."
+  ]
+}

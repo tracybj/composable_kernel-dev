@@ -1,0 +1,181 @@
+  - .args:
+      - .name:           sizeC
+        .offset:         0
+        .size:           8
+        .value_kind:     by_value
+        .value_type:     u64
+      - .name:           sizeA
+        .offset:         8
+        .size:           8
+        .value_kind:     by_value
+        .value_type:     u64
+      - .name:           sizeB
+        .offset:         16
+        .size:           8
+        .value_kind:     by_value
+        .value_type:     u64
+      - .address_space:  generic
+        .name:           D
+        .offset:         24
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     struct
+      - .address_space:  generic
+        .name:           C
+        .offset:         32
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     struct
+      - .address_space:  generic
+        .name:           A
+        .offset:         40
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     struct
+      - .address_space:  generic
+        .name:           B
+        .offset:         48
+        .size:           8
+        .value_kind:     global_buffer
+        .value_type:     struct
+      - .name:           alpha
+        .offset:         56
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     f32
+      - .name:           beta
+        .offset:         60
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     f32
+      - .name:           strideD0
+        .offset:         64
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideD1
+        .offset:         68
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideC0
+        .offset:         72
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideC1
+        .offset:         76
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideA0
+        .offset:         80
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideA1
+        .offset:         84
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideB0
+        .offset:         88
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           strideB1
+        .offset:         92
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           SizesFree0
+        .offset:         96
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           SizesFree1
+        .offset:         100
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           SizesFree2
+        .offset:         104
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           SizesSum0
+        .offset:         108
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           OrigStaggerUIter
+        .offset:         112
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     i32
+      - .name:           NumWorkGroups0
+        .offset:         116
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           NumWorkGroups1
+        .offset:         120
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           NumFullBlocks
+        .offset:         124
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           WgmRemainder1
+        .offset:         128
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           MagicNumberWgmRemainder1
+        .offset:         132
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           OffsetD
+        .offset:         136
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           OffsetC
+        .offset:         140
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           OffsetA
+        .offset:         144
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           OffsetB
+        .offset:         148
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+      - .name:           padding
+        .offset:         152
+        .size:           4
+        .value_kind:     by_value
+        .value_type:     u32
+    .group_segment_fixed_size: 65536
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 160
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 768
+    .name:           Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8
+    .private_segment_fixed_size: 0
+    .sgpr_count:     100
+    .sgpr_spill_count: 0
+    .symbol:         Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8.kd
+    .vgpr_count:     255
+    .vgpr_spill_count: 0
+    .wavefront_size: 64

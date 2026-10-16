@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "BLAS_A": "W weights; transposed column-major input",
+  "BLAS_B": "X activations",
+  "BLAS_dimensions": {
+    "m_feature": 5376,
+    "n_token": 18944,
+    "k": 7168
+  },
+  "output": "column-major Feature x Token == row-major Token x Feature",
+  "mathematical_operation": "Y = X @ W.T",
+  "trace": "current_rocblas.log",
+  "pointers": "inputs.json"
+}

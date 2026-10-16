@@ -1,0 +1,139 @@
+[
+  {
+    "shape": "square4096",
+    "MNK": [
+      4096,
+      4096,
+      4096
+    ],
+    "correctness": {
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768": {
+        "binary_fraction": {
+          "finite": true,
+          "max_abs": 0.0,
+          "mismatches": 0,
+          "relative_l2": 0.0,
+          "passed": true,
+          "output_guard_unchanged": true
+        },
+        "normal": {
+          "finite": true,
+          "max_abs": 0.0625,
+          "mismatches": 6858,
+          "relative_l2": 5.5007159971864894e-05,
+          "passed": true,
+          "output_guard_unchanged": true
+        }
+      }
+    },
+    "timing": {
+      "rocblas_linear": {
+        "rounds_ms": [
+          0.44975948333740234,
+          0.45012760162353516,
+          0.4527836799621582,
+          0.45108771324157715,
+          0.45014371871948244,
+          0.450335693359375
+        ],
+        "median_ms": 0.45023970603942876,
+        "min_ms": 0.44975948333740234,
+        "max_ms": 0.4527836799621582,
+        "TFLOPS": 305.2572921233297
+      },
+      "rocblas_mm_out": {
+        "rounds_ms": [
+          0.4480155944824219,
+          0.44838361740112304,
+          0.44884772300720216,
+          0.44937567710876464,
+          0.4489916801452637,
+          0.4490396976470947
+        ],
+        "median_ms": 0.44891970157623295,
+        "min_ms": 0.4480155944824219,
+        "max_ms": 0.44937567710876464,
+        "TFLOPS": 306.1548713264947
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32dispatch_reg768": {
+        "rounds_ms": [
+          0.559855604171753,
+          0.5597115993499756,
+          0.5595675945281983,
+          0.5598236083984375,
+          0.5595675945281983,
+          0.5599996089935303
+        ],
+        "median_ms": 0.5597676038742065,
+        "min_ms": 0.5595675945281983,
+        "max_ms": 0.5599996089935303,
+        "TFLOPS": 245.52859529699737
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_reg768": {
+        "rounds_ms": [
+          0.4977436065673828,
+          0.49785561561584474,
+          0.4981276035308838,
+          0.499135684967041,
+          0.4990877151489258,
+          0.49894371032714846
+        ],
+        "median_ms": 0.49853565692901614,
+        "min_ms": 0.4977436065673828,
+        "max_ms": 0.499135684967041,
+        "TFLOPS": 275.68530266947226
+      },
+      "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_sb32c1_ppair1_asoff_reg768": {
+        "rounds_ms": [
+          0.4788156032562256,
+          0.47838358879089354,
+          0.47863969802856443,
+          0.479807710647583,
+          0.4793276786804199,
+          0.47969560623168944
+        ],
+        "median_ms": 0.4790716409683228,
+        "min_ms": 0.47838358879089354,
+        "max_ms": 0.479807710647583,
+        "TFLOPS": 286.8860139460598
+      }
+    },
+    "duplicate_of": {}
+  }
+]

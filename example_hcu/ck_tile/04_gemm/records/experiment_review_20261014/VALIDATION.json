@@ -1,0 +1,26 @@
+{
+  "stages": 112,
+  "unique_library_hashes": 293,
+  "source_snapshot_verified": 267,
+  "failed_builds": 24,
+  "server_stage_rows_environment_matched": true,
+  "source_current_hashes_matched": true,
+  "outputs": {
+    "GEMM_112阶段逐项记录.md": {
+      "bytes": 395802,
+      "sha256": "2a028d80396e5091268566a6eb49d5c96eeb16220b3698bd9f79ed5fdae594cc"
+    },
+    "GEMM_实验迭代总览_20261012-14.md": {
+      "bytes": 48772,
+      "sha256": "257190f44438b185acedb1ead516fd8c9bfdd293f1c286f1b1a27f29b36bad9d"
+    },
+    "GEMM_源码与构建索引.md": {
+      "bytes": 372696,
+      "sha256": "1c8c0215a46f33f5b499224a1cef4dca106607af2a15655181a8b6b2e4314525"
+    },
+    "README.md": {
+      "bytes": 975,
+      "sha256": "b19ce2166dd6c7f819e24f6d15a93330adb8b7243e3d95abba989d206d808aa1"
+    }
+  }
+}

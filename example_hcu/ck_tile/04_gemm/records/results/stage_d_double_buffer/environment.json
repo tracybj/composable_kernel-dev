@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-12T16:47:00.828088+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "base": "3bcfb1ebe0b3c6ac3875476c7d436a8f8bfbe640d5674565d609bc4816201333",
+    "wide_raw_barrier": "716cd310a96703802f0a8b19ea3e9048f7e255d63621d11b5c4d11ef661e6063",
+    "wide4_raw_barrier": "d53ee963ab0b6b7b084d142988d81c44f5fe136012a806f9f13fcb680027e7e5",
+    "tall4_raw_barrier": "ed6eabad7fe9a065fa8f6ba8556f5169c97ca12601c47e5cf4e7e4b936845a8a",
+    "base_double": "515c62adfcd476a480f08234980d5f354cc69194a43b5d47e9271792ca74fd92",
+    "wide_double": "1937667b3533333aee394778018f502d0328c9713ef8b65baba5cc6f091f4414",
+    "wide4_double": "e6e564b226bf80bf0a7c9a32b1920c1e2c36a623faa74ad857fbf6cecd73644c"
+  }
+}

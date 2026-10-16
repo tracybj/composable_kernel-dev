@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "feature_tile": 128,
+      "lds_elements": 16384,
+      "producer_elements": 8192,
+      "output_elements": 32768,
+      "grid_shapes": 35
+    },
+    {
+      "feature_tile": 256,
+      "lds_elements": 32768,
+      "producer_elements": 16384,
+      "output_elements": 65536,
+      "grid_shapes": 35
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+      "sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 31,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_dpp_snippets": [],
+      "static_counts": {
+        "buffer_store_short": 128,
+        "buffer_store_dword": 0,
+        "_dpp ": 0,
+        "ds_swizzle_b32": 0,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "count_limit": "Whole static kernel including alignment fallback; not dynamic executed instruction count"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_pairout1_reg768",
+      "sha256": "ca25a3f1ac5a4fc48c70cc1c6885347ae67946a35e652e6882d592c5cc203b31",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 33,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_dpp_snippets": [
+        {
+          "line": 1343,
+          "lines": [
+            "\ts_cselect_b64 s[2:3], -1, 0                                // 000000003708: 858280C1",
+            "\tv_or3_b32 v129, v146, v129, v145                           // 00000000370C: D2020081 06470392",
+            "\tv_cndmask_b32_e64 v130, v126, v125, s[0:1]                 // 000000003714: D1000082 0002FB7E",
+            "\tv_cndmask_b32_e64 v125, v125, v126, s[0:1]                 // 00000000371C: D100007D 0002FD7D",
+            "\tv_and_or_b32 v0, v0, 14, s28                               // 000000003724: D2010000 00711D00",
+            "\tv_mov_b32_dpp v132, v125 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 00000000372C: 7F0802FA FF08B17D",
+            "\tv_mad_u64_u32 v[125:126], s[16:17], v129, s8, v[0:1]       // 000000003734: D1E8107D 04001181",
+            "\tv_lshl_or_b32 v126, v130, 16, v132                         // 00000000373C: D200007E 06112182",
+            "\tv_alignbit_b32 v130, v132, v131, 16                        // 000000003744: D1CE0082 02430784"
+          ]
+        },
+        {
+          "line": 1381,
+          "lines": [
+            "\tv_cndmask_b32_e32 v128, v132, v131, vcc                    // 000000003808: 01010784",
+            "\tv_lshrrev_b32_e32 v130, 16, v127                           // 00000000380C: 2104FE90",
+            "\tv_lshrrev_b32_e32 v128, 16, v128                           // 000000003810: 21010090",
+            "\tv_cndmask_b32_e64 v131, v130, v128, s[0:1]                 // 000000003814: D1000083 00030182",
+            "\tv_cndmask_b32_e64 v128, v128, v130, s[0:1]                 // 00000000381C: D1000080 00030580",
+            "\tv_mov_b32_dpp v130, v131 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 000000003824: 7F0402FA FF08B183",
+            "\ts_lshl_b32 s9, s8, 3                                       // 00000000382C: 8E098308",
+            "\tv_lshl_or_b32 v128, v128, 16, v130                         // 000000003830: D2000080 06092180",
+            "\tv_alignbit_b32 v127, v130, v127, 16                        // 000000003838: D1CE007F 0242FF82"
+          ]
+        },
+        {
+          "line": 1420,
+          "lines": [
+            "\tv_cndmask_b32_e32 v122, v130, v128, vcc                    // 000000003904: 00F50182",
+            "\tv_lshrrev_b32_e32 v127, 16, v121                           // 000000003908: 20FEF290",
+            "\tv_lshrrev_b32_e32 v122, 16, v122                           // 00000000390C: 20F4F490",
+            "\tv_cndmask_b32_e64 v128, v127, v122, s[0:1]                 // 000000003910: D1000080 0002F57F",
+            "\tv_cndmask_b32_e64 v122, v122, v127, s[0:1]                 // 000000003918: D100007A 0002FF7A",
+            "\tv_mov_b32_dpp v127, v128 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 000000003920: 7EFE02FA FF08B180",
+            "\tv_lshl_or_b32 v122, v122, 16, v127                         // 000000003928: D200007A 05FD217A",
+            "\tv_alignbit_b32 v121, v127, v121, 16                        // 000000003930: D1CE0079 0242F37F",
+            "\ts_andn2_b64 vcc, exec, s[2:3]                              // 000000003938: 89EA027E"
+          ]
+        }
+      ],
+      "static_counts": {
+        "buffer_store_short": 128,
+        "buffer_store_dword": 64,
+        "_dpp ": 64,
+        "ds_swizzle_b32": 0,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "count_limit": "Whole static kernel including alignment fallback; not dynamic executed instruction count"
+    },
+    {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_pairout2_reg768",
+      "sha256": "543659fbde3e6f1d26a15baee27dada0006e43b6ad389538b3290cb7fd0df425",
+      "resources": [
+        {
+          "name": "_Z15h3_ck_rolephasePKtS0_Ptiii",
+          "vgpr_count": 225,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 33,
+          "group_segment_fixed_size": 65536,
+          "private_segment_fixed_size": 0
+        }
+      ],
+      "first_dpp_snippets": [],
+      "static_counts": {
+        "buffer_store_short": 128,
+        "buffer_store_dword": 64,
+        "_dpp ": 0,
+        "ds_swizzle_b32": 64,
+        "s_nop": 16,
+        "v_mmac_f32_16x16x16_bf16": 512
+      },
+      "count_limit": "Whole static kernel including alignment fallback; not dynamic executed instruction count"
+    }
+  ]
+}

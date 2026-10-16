@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "cases": 225280,
+  "scope": "CPU address model only; hardware idxen/bit62 behavior requires independent raw bit probe"
+}

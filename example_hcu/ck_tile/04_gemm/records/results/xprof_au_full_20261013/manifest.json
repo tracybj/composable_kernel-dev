@@ -1,0 +1,95 @@
+{
+  "raw_complete": true,
+  "perf_files": 1,
+  "raw_sqtt_files": 16,
+  "workload_check_passed": true,
+  "total_raw_bytes": 1382329707,
+  "entries": [
+    {
+      "file": "capture/74693_python3.10.perf",
+      "bytes": 60204187,
+      "sha256": "6c6f6f8d6b07ef8f609b103a6f9594ec10b494df19530499d9b0b52de38c1f4b"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se0_cu10.out",
+      "bytes": 74124160,
+      "sha256": "4e80554c475dab7e0d0dd26b153479946c18e8b607ba079dea099de039001303"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se1_cu2.out",
+      "bytes": 74004960,
+      "sha256": "ee4760af3acc71b1fe5c09ee5700b2a0799dd8db18b47df49470141f251b8ee0"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se2_cu6.out",
+      "bytes": 70713920,
+      "sha256": "e6e7816dc3d5f237348541967095c3d68a3b89db813472e56f9c183cb20ad495"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se3_cu9.out",
+      "bytes": 74593680,
+      "sha256": "975c24b9a797aa1326308867e4235abc6a85193c847a60e92e50bb3d90c3fae0"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se4_cu7.out",
+      "bytes": 70821280,
+      "sha256": "1a3b4a770d84eb7e31dda2441c469c28367052c8ebfc8a19c17dce9908f10892"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se5_cu3.out",
+      "bytes": 70664080,
+      "sha256": "a483a502c313288ef173359349327770b499b4cfed0c98b846c73915df0aefd4"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se6_cu0.out",
+      "bytes": 70327600,
+      "sha256": "1d63c57124ea8edcd682e19fa34d7dca2d8cc48f243c3239b3c1b723b3ad4452"
+    },
+    {
+      "file": "capture/thread_trace_11_Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_L_se7_cu6.out",
+      "bytes": 70373280,
+      "sha256": "fa84b9becfea5b7d371dec50122ccee4a7879a98d5ce7d3c839d65b2fc845071"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se0_cu10.out",
+      "bytes": 91091760,
+      "sha256": "bdf322b7d3aebb125219bb7a8a8b54c0b86fc84bb494fbd6ab4762d07bb4b873"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se1_cu2.out",
+      "bytes": 95560160,
+      "sha256": "ba7c40cb9c9d05d131de2197d91072b565de542eedc49a0ab1b29d7a0e7685ad"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se2_cu6.out",
+      "bytes": 91106080,
+      "sha256": "f7edd22ea60b43e2532e18b4d426ac160077e7cab31dc5c94259ac7837383256"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se3_cu9.out",
+      "bytes": 90804720,
+      "sha256": "7a42baf7f2b5fb2f43fee6edded6912952540f96bd9f45fb71fd42b0d1c505a6"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se4_cu7.out",
+      "bytes": 90894000,
+      "sha256": "308446a1ff1c5fb3ae9347f34bf8bf553cb9f8ee676fc1b7077cfbe137662059"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se5_cu3.out",
+      "bytes": 95643840,
+      "sha256": "b37e8a7189b1e600c564eedfdb33602a8f3a1f1930704580fa6481a5fd07a7db"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se6_cu0.out",
+      "bytes": 95756960,
+      "sha256": "95cfd285f7245a79c8f64ccd141daa60cd56f39aae59ce26cec12a77d13b43f7"
+    },
+    {
+      "file": "capture/thread_trace_5__Z15h3_ck_rolephasePKtS0_Ptiii_se7_cu6.out",
+      "bytes": 95645040,
+      "sha256": "09ffe37757ff723e6d5942334c851e0a018fa702f818b4f8101d68de4f3c2b77"
+    }
+  ],
+  "profile_not_ranking": true
+}

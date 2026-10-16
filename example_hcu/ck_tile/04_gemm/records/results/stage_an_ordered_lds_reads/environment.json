@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-13T11:29:38.878592+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "rolephase_m1_bank_asmb_reg768": "d89f4906cd47339c8ccb9d920f3d22c5d05c1bf8479e7d26bd8cffa59cb207fc",
+    "rolephase_m1_bank_asmb_dsasm_reg768": "27fd3a4061f5f8bf354b3486f999a9b0f6bd5ce74ebdc93ba2f3bd71759ec8df",
+    "rolephase_m1_bank_asmb_dsasm_postprio_reg768": "22d3e7400a85c9987265e0fd07233f7b1aca0bb84ed1abbf655842b4ca0c77e5",
+    "rolephase_m1_bank_asmb_dsprogress_reg768": "ab9be1505178f97ff392f7d59c159e16c66e0e4223bcd57f2983a02e101935c7"
+  }
+}

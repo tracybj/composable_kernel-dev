@@ -1,0 +1,26 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_b_soffset_probe/b_soffset_probe.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu
+
+Disassembly of section .text:
+
+0000000000001700 <_Z25h3_b_soffset_probe_kernelPKsPsiii>:
+	s_load_dwordx8 s[0:7], s[4:5], 0x0                         // 000000001700: C00E0002 00000000
+	s_waitcnt lgkmcnt(0)                                       // 000000001708: BF8CC07F
+	v_mul_lo_u32 v1, v0, s5                                    // 00000000170C: D2850001 00000B00
+	s_mul_i32 s4, s4, s5                                       // 000000001714: 92040504
+	s_lshl_b32 s7, s6, 1                                       // 000000001718: 8E078106
+	s_and_b32 s6, s6, 31                                       // 00000000171C: 86069F06
+	s_lshl_b32 s5, s5, 1                                       // 000000001720: 8E058105
+	s_lshl_b32 s4, s4, 1                                       // 000000001724: 8E048104
+	s_and_b32 s8, s7, 0xffffffc0                               // 000000001728: 8608FF07 FFFFFFC0
+	s_cmp_lt_u32 s8, s5                                        // 000000001730: BF0A0508
+	v_add_lshl_u32 v1, s6, v1, 1                               // 000000001734: D1FE0001 02060206
+	s_cselect_b32 s6, s4, 0                                    // 00000000173C: 85068004
+	s_mov_b32 s7, 0x20000                                      // 000000001740: BE8700FF 00020000
+	s_mov_b32 s4, s0                                           // 000000001748: BE840000
+	s_mov_b32 s5, s1                                           // 00000000174C: BE850001
+	buffer_load_dwordx4 v[1:4], v1, s[4:7], s8 offen           // 000000001750: E05C1000 08010101
+	s_waitcnt vmcnt(0)                                         // 000000001758: BF8C0F70
+	v_lshlrev_b32_e32 v0, 4, v0                                // 00000000175C: 24000084
+	global_store_dwordx4 v0, v[1:4], s[2:3]                    // 000000001760: DC7C8000 00020100
+	s_endpgm                                                   // 000000001768: BF810000

@@ -1,0 +1,222 @@
+{
+  "passed": true,
+  "cases": 30,
+  "records": [
+    {
+      "rows": 1,
+      "K": 64,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 64,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 128,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 128,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 3584,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 3584,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 5376,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 5376,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 7168,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 1,
+      "K": 7168,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 64,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 64,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 128,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 128,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 3584,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 3584,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 5376,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 5376,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 7168,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 63,
+      "K": 7168,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 64,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 64,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 128,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 128,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 3584,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 3584,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 5376,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 5376,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 7168,
+      "bias_bytes": 0,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    },
+    {
+      "rows": 257,
+      "K": 7168,
+      "bias_bytes": 16,
+      "mismatches": 0,
+      "output_guard_unchanged": true
+    }
+  ],
+  "hashes": {
+    "structured_b.hpp": "4481d9e5a6fbe905e0dcc7fecb4508cde06d50cad9a63596b18b3e1bc2502158",
+    "structured_b_probe.cpp": "79a5cf0a56729dee0f623140724e7c892aa9d464e7e790366b031e4271d67a70",
+    "probe.so": "c4f9386b37b85321c766e4d20ae2be972ae28bb3ee9b1586a85e607539e3fd1c"
+  },
+  "not_gemm_throughput": true
+}

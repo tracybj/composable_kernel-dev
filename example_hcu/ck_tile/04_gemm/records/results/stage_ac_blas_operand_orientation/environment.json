@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-12T20:07:21.723985+08:00",
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303134-6264-6363-3764-303432383431, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "physical_gpu": 4,
+  "dtype": "BF16 A/W/C; FP32 accumulator",
+  "layout": "A row-major M,K; W contiguous N,K interpreted as column-major B K,N",
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "benchmark": "HIP event; 5 warmups; 6 rotated-order rounds x10; profiler off; hot-cache repeat",
+  "libraries": {
+    "large_pad16_g8_pad_m_reg768": "8f7d5fcbdf9cd4bda64afec0865ae960e6b6f0000564bd90f18dde9a18792ef4",
+    "role64_double_wrap_reg768": "3f7b081145e578ed98a0cb025d289d02916c794a757f2ef4b5348a24b0082251",
+    "role64_double_wrap_trans_reg768": "2f6106adb0681ef1fa431f8ea8c18730e5168626829d403c791c88eee954c548",
+    "role64_double_wrap_trans_groupn_reg768": "b63d376a41da4503eb39939c117fec71dd292e58f6661e936e57547ea949b0a5",
+    "role64_double_wrap_trans_groupn_nosched_noprio_reg768": "5886594748c2f8844d1ce92755f19f621318aee5217893c2cc14b35e771829a8"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "device": "gfx936 (prior probe)",
+  "physical_gpu": 4,
+  "shape": [
+    18944,
+    5376,
+    7168
+  ],
+  "loaded_rocblas_paths": [
+    "/opt/dtk/lib/librocblas.so.4.3"
+  ],
+  "searched_code_objects": [
+    "/opt/dtk/lib/librocblas.so.4.3",
+    "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co",
+    "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BS_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co"
+  ],
+  "matches": [
+    {
+      "path": "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co",
+      "symbol": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS0_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW8_WG16_32_1_WGM8",
+      "sha256": "415bf79aa50f44e603add9ceb458e90dd1294da9b2da1728277f6c558406b635",
+      "disassembler": "/opt/dtk/aillvm/bin/llvm-objdump",
+      "command": [
+        "/opt/dtk/aillvm/bin/llvm-objdump",
+        "--disassemble",
+        "--mcpu=gfx936",
+        "--start-address=13753344",
+        "--stop-address=13813504",
+        "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co"
+      ],
+      "returncode": 0,
+      "output_bytes": 832731,
+      "start": 13753344,
+      "size": 60160,
+      "stderr": ""
+    },
+    {
+      "path": "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co",
+      "symbol": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS0_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR2_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW8_WG16_32_1_WGM8",
+      "sha256": "415bf79aa50f44e603add9ceb458e90dd1294da9b2da1728277f6c558406b635",
+      "disassembler": "/opt/dtk/aillvm/bin/llvm-objdump",
+      "command": [
+        "/opt/dtk/aillvm/bin/llvm-objdump",
+        "--disassemble",
+        "--mcpu=gfx936",
+        "--start-address=13995264",
+        "--stop-address=14055936",
+        "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co"
+      ],
+      "returncode": 0,
+      "output_bytes": 838666,
+      "start": 13995264,
+      "size": 60672,
+      "stderr": ""
+    },
+    {
+      "path": "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co",
+      "symbol": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+      "sha256": "415bf79aa50f44e603add9ceb458e90dd1294da9b2da1728277f6c558406b635",
+      "disassembler": "/opt/dtk/aillvm/bin/llvm-objdump",
+      "command": [
+        "/opt/dtk/aillvm/bin/llvm-objdump",
+        "--disassemble",
+        "--mcpu=gfx936",
+        "--start-address=24711936",
+        "--stop-address=24784640",
+        "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co"
+      ],
+      "returncode": 0,
+      "output_bytes": 1005128,
+      "start": 24711936,
+      "size": 72704,
+      "stderr": ""
+    },
+    {
+      "path": "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co",
+      "symbol": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME1_ETSP_EPS0_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW8_WG16_32_1_WGM8",
+      "sha256": "415bf79aa50f44e603add9ceb458e90dd1294da9b2da1728277f6c558406b635",
+      "disassembler": "/opt/dtk/aillvm/bin/llvm-objdump",
+      "command": [
+        "/opt/dtk/aillvm/bin/llvm-objdump",
+        "--disassemble",
+        "--mcpu=gfx936",
+        "--start-address=14178048",
+        "--stop-address=14237184",
+        "/opt/dtk/lib/rocblas/library_gpu5/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co"
+      ],
+      "returncode": 0,
+      "output_bytes": 804209,
+      "start": 14178048,
+      "size": 59136,
+      "stderr": ""
+    }
+  ],
+  "attribution": "Exact symbol match with stage_waits dispatch; CO may be unmapped after HSA loading"
+}

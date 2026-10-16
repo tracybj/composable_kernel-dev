@@ -1,0 +1,34 @@
+{
+  "name": "wide4_raw_barrier",
+  "config": [
+    128,
+    256,
+    32,
+    4,
+    1,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/wide4_raw_barrier.so",
+    "-DH3_BM=128",
+    "-DH3_BN=256",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=1",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1"
+  ],
+  "exit_code": 0,
+  "seconds": 76.97407757723704,
+  "sha256": "d53ee963ab0b6b7b084d142988d81c44f5fe136012a806f9f13fcb680027e7e5"
+}

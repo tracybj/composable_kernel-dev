@@ -1,0 +1,28 @@
+{
+  "torch": "2.9.0",
+  "hip": "6.3.26113",
+  "physical_gpu": 4,
+  "X": {
+    "shape": [
+      18944,
+      7168
+    ],
+    "pointer": "0x7efb7a200000"
+  },
+  "W": {
+    "shape": [
+      5376,
+      7168
+    ],
+    "pointer": "0x7efb6c600000"
+  },
+  "Y": {
+    "shape": [
+      18944,
+      5376
+    ],
+    "pointer": "0x7efb60000000"
+  },
+  "purpose": "one attribution call; not a timing test",
+  "trace_path": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/blas_orientation/current_rocblas.log"
+}

@@ -1,0 +1,11 @@
+{
+  "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_aburst_cc_reg768",
+  "asm_instances": 2,
+  "all_implicitly_clobber_scc": true,
+  "all_clobber_m0": true,
+  "asm_ir": [
+    "  tail call void asm sideeffect \"s_mov_b32 m0, $0\\0A\\09buffer_load_dwordx4 $1, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $2, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $3, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $4, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $5, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $6, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $7, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $8, $9, 0 offen lds\\0A\\09\", \"s,v,v,v,v,v,v,v,v,s,~{memory},~{m0},~{scc}\"(i32 %91, i32 %58, i32 %62, i32 %66, i32 %70, i32 %74, i32 %78, i32 %82, i32 %86, <4 x i32> %48) #6, !srcloc !9",
+    "  tail call void asm sideeffect \"s_mov_b32 m0, $0\\0A\\09buffer_load_dwordx4 $1, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $2, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $3, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $4, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $5, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $6, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $7, $9, 0 offen lds\\0A\\09s_add_u32 m0, m0, 0x1000\\0A\\09buffer_load_dwordx4 $8, $9, 0 offen lds\\0A\\09\", \"s,v,v,v,v,v,v,v,v,s,~{memory},~{m0},~{scc}\"(i32 %120, i32 %101, i32 %103, i32 %105, i32 %107, i32 %109, i32 %111, i32 %113, i32 %115, <4 x i32> %48) #6, !srcloc !9"
+  ],
+  "note": "Compiler IR evidence, not a performance or hardware latency claim"
+}

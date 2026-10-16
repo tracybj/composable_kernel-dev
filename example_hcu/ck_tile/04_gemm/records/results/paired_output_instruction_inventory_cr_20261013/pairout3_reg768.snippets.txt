@@ -1,0 +1,27 @@
+	v_bfe_u32 v163, v100, 16, 1                                // 000000003A58: D1C800A3 02052164
+	s_cbranch_scc0 6220                                        // 000000003A60: BF84184C <_Z15h3_ck_rolephasePKtS0_Ptiii+0x8494>
+	v_and_b32_e32 v161, 4, v159                                // 000000003A64: 27433E84
+	v_or3_b32 v159, v158, v161, v145                           // 000000003A68: D202009F 0647439E
+	v_mul_lo_u32 v159, v159, s8                                // 000000003A70: D285009F 0000119F
+	v_mov_b32_dpp v160, v155 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 000000003A78: 7F4002FA FF08B19B
+	v_lshl_or_b32 v162, v154, 16, v160                         // 000000003A80: D20000A2 0681219A
+	v_lshl_or_b32 v160, v160, 16, v152                         // 000000003A88: D20000A0 066121A0
+	v_cndmask_b32_e64 v160, v162, v160, s[0:1]                 // 000000003A90: D10000A0 000341A2
+	v_add_u32_e32 v161, 8, v158                                // 000000003B30: 69433C88
+	v_cndmask_b32_e64 v171, v170, v169, s[0:1]                 // 000000003B34: D10000AB 000353AA
+	v_cndmask_b32_e64 v169, v169, v170, s[0:1]                 // 000000003B3C: D10000A9 000355A9
+	v_mul_lo_u32 v161, v161, s8                                // 000000003B44: D28500A1 000011A1
+	v_add_lshl_u32 v161, v157, v161, 1                         // 000000003B4C: D1FE00A1 0207439D
+	v_mov_b32_dpp v169, v169 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 000000003B54: 7F5202FA FF08B1A9
+	v_lshl_or_b32 v170, v171, 16, v169                         // 000000003B5C: D20000AA 06A521AB
+	v_alignbit_b32 v162, v169, v162, 16                        // 000000003B64: D1CE00A2 024345A9
+	v_cndmask_b32_e64 v162, v170, v162, s[0:1]                 // 000000003B6C: D10000A2 000345AA
+	v_lshrrev_b32_e32 v170, 16, v169                           // 000000003BF4: 21555290
+	v_lshrrev_b32_e32 v171, 16, v171                           // 000000003BF8: 21575690
+	v_cndmask_b32_e64 v172, v171, v170, s[0:1]                 // 000000003BFC: D10000AC 000355AB
+	v_cndmask_b32_e64 v170, v170, v171, s[0:1]                 // 000000003C04: D10000AA 000357AA
+	s_nop 1                                                    // 000000003C0C: BF800001
+	v_mov_b32_dpp v170, v170 quad_perm:[1,0,3,2] row_mask:0xf bank_mask:0xf bound_ctrl:1// 000000003C10: 7F5402FA FF08B1AA
+	v_lshl_or_b32 v171, v172, 16, v170                         // 000000003C18: D20000AB 06A921AC
+	v_alignbit_b32 v169, v170, v169, 16                        // 000000003C20: D1CE00A9 024353AA
+	v_cndmask_b32_e64 v169, v171, v169, s[0:1]                 // 000000003C28: D10000A9 000353AB

@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "date": "2026-10-13T12:44:43.201300+08:00",
+  "patterns": 1507328,
+  "cases": [
+    {
+      "case": "all_upper_words_x_7_low_boundary_patterns",
+      "patterns": 458752,
+      "mask_mismatches": 0,
+      "select_mismatches": 0,
+      "input_unchanged": true,
+      "output_guard_unchanged": true
+    },
+    {
+      "case": "random_32bit_words",
+      "patterns": 1048576,
+      "mask_mismatches": 0,
+      "select_mismatches": 0,
+      "input_unchanged": true,
+      "output_guard_unchanged": true
+    }
+  ],
+  "hashes": {
+    "rne_probe.cpp": "0a5288cc5bab626f1543b287ec7cac4cf1de5c707a7cb6c67ec9c87bd6b63650",
+    "output_rne.hpp": "a11077f156f94e31f407766cb26630f6a1c4d961b49ee7ee770b73b0e00c963c",
+    "rne_probe.so": "1c18967d1385d7769e3d8f3ee93e2dae06db0f076d6e8907a2a24b37a7c30c63"
+  },
+  "covers": "zeros/subnormals/normals/ties/overflow/Inf/NaN payloads and signs",
+  "not_exhaustive_all_2pow32": true,
+  "not_gemm_performance": true
+}

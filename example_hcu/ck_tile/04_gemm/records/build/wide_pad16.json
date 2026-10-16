@@ -1,0 +1,35 @@
+{
+  "name": "wide_pad16",
+  "config": [
+    128,
+    256,
+    32,
+    4,
+    2,
+    0
+  ],
+  "lds_only_sync": false,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/wide_pad16.so",
+    "-DH3_BM=128",
+    "-DH3_BN=256",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=2",
+    "-DH3_SWIZZLE=0",
+    "-DH3_RAW_BARRIER=1",
+    "-DH3_LDS_PAD=16"
+  ],
+  "exit_code": 0,
+  "seconds": 53.31048915302381,
+  "sha256": "6514e5cd018fac5cb1f069538a94f424e6a12454e62f545f4dba8eba98b5455a"
+}

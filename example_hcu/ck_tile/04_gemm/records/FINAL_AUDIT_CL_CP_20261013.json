@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-13",
+  "own_gpu_test_processes": [],
+  "original_03_and_include_match_HEAD": true,
+  "ck_sha": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "default_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+  "optional_shape_dispatch_sha256": "d2e34b972e3961fb99b2ea05802fc458561788dbb9587dc74a52fb96b3a5361f",
+  "completed_timing_stages": 95,
+  "new_candidates_audited": 12,
+  "audit_groups": 1224,
+  "candidate_audit_launches": 3672,
+  "launch_count_note": "Excludes baseline comparison and FP32 reference launches.",
+  "all_audited_outputs_exact_baseline": true,
+  "new_k64_candidate_adopted": false,
+  "default_replaced": false,
+  "goal_achieved": false,
+  "e2e_measured": false,
+  "committed_or_pushed": false,
+  "report": "B64_BANK_EXPERIMENTS_20261013.md"
+}

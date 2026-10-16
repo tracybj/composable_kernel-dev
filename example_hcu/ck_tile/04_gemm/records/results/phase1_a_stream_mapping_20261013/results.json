@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "group": 1,
+      "last_use_verified": true,
+      "phase1_elements": 8192,
+      "tile_slots_verified": 257
+    },
+    {
+      "group": 4,
+      "last_use_verified": true,
+      "phase1_elements": 8192,
+      "tile_slots_verified": 257
+    }
+  ]
+}

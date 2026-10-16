@@ -1,0 +1,2 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_base_double/base_double.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu

@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "begin": 0,
+      "count": 4,
+      "prefetched": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "phase1_regular": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "exact_coverage": true,
+      "last_use": true,
+      "source_slot_protection": "ACK1 after all phase1 LGKM completion"
+    },
+    {
+      "begin": 0,
+      "count": 8,
+      "prefetched": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "phase1_regular": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "exact_coverage": true,
+      "last_use": true,
+      "source_slot_protection": "ACK1 after all phase1 LGKM completion"
+    },
+    {
+      "begin": 12,
+      "count": 4,
+      "prefetched": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "phase1_regular": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "exact_coverage": true,
+      "last_use": true,
+      "source_slot_protection": "ACK1 after all phase1 LGKM completion"
+    },
+    {
+      "begin": 8,
+      "count": 8,
+      "prefetched": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "phase1_regular": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "exact_coverage": true,
+      "last_use": true,
+      "source_slot_protection": "ACK1 after all phase1 LGKM completion"
+    }
+  ]
+}

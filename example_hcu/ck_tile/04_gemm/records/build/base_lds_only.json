@@ -1,0 +1,34 @@
+{
+  "name": "base_lds_only",
+  "config": [
+    128,
+    128,
+    32,
+    4,
+    1,
+    0
+  ],
+  "lds_only_sync": true,
+  "command": [
+    "/opt/dtk/bin/hipcc",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx936",
+    "-fPIC",
+    "-shared",
+    "-I/workspace/composable_kernel/include",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/gemm.cpp",
+    "-o",
+    "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/base_lds_only.so",
+    "-DH3_BM=128",
+    "-DH3_BN=128",
+    "-DH3_BK=32",
+    "-DH3_WM=4",
+    "-DH3_WN=1",
+    "-DH3_SWIZZLE=0",
+    "-DCK_TILE_EXPERIMENTAL_BLOCK_SYNC_LDS_WITHOUT_SYNC_VMEM=1"
+  ],
+  "exit_code": 0,
+  "seconds": 52.94342081993818,
+  "sha256": "3bcfb1ebe0b3c6ac3875476c7d436a8f8bfbe640d5674565d609bc4816201333"
+}

@@ -1,0 +1,272 @@
+[
+  {
+    "rows": 1,
+    "K": 64,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 64,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 128,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 128,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 3584,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 3584,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 5376,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 5376,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 7168,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 1,
+    "K": 7168,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 64,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 64,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 128,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 128,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 3584,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 3584,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 5376,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 5376,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 7168,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 63,
+    "K": 7168,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 64,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 64,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 128,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 128,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 3584,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 3584,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 5376,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 5376,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 7168,
+    "bias_bytes": 0,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  },
+  {
+    "rows": 257,
+    "K": 7168,
+    "bias_bytes": 16,
+    "distribution": "random_int16",
+    "mismatches": 0,
+    "input_unchanged": true,
+    "output_guard_unchanged": true
+  }
+]

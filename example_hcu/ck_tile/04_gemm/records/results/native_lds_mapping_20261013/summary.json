@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "elements": 16384,
+  "unique_logical_elements": 16384,
+  "isa_sha256": "02d435f9b611d5789eb35ce662c5902a2b6230bebcacc34679df8fc2519542c3",
+  "source": "decoded native first kernel DS address sequence and prior HCU wrap probe",
+  "global_A_bias": "resource subtracts 16 bytes and offsets add 8 BF16 elements; net zero bias",
+  "m0_wave_bits": "native (wave&3)<<17 equals experimental (2*wave)<<16",
+  "conclusion": "current K64 wrap mapping equals native DS-read map for all 16384 tile elements",
+  "limitation": "CPU address proof, not native opcode latency/occupancy or a new GPU benchmark"
+}

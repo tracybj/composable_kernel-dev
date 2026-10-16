@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-14T10:47:21.635093+08:00",
+  "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "shared_include_and_03_unchanged": true,
+  "own_gpu_jobs": [],
+  "default_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+  "optional_cache_sha256": "de1cd4cc831fae0153f5cb0ef8dee163582501db7d83e776e192a33de05a5484",
+  "status": "?? example_hcu/ck_tile/04_gemm/\n",
+  "gpu_readonly": "\n================================= System Management Interface ==================================\n================================================================================================\nHCU[0]\t\t: HCU use (%): 0.0\nHCU[1]\t\t: HCU use (%): 0.0\nHCU[2]\t\t: HCU use (%): 0.0\nHCU[3]\t\t: HCU use (%): 0.0\nHCU[4]\t\t: HCU use (%): 0.0\nHCU[5]\t\t: HCU use (%): 0.0\nHCU[6]\t\t: HCU use (%): 0.0\nHCU[7]\t\t: HCU use (%): 0.0\n================================================================================================\n================================================================================================\nNo KFD PIDs currently running!\n================================================================================================\n======================================== End of SMI Log ========================================\n\n",
+  "note": "No process stopped by finalizer. No H3, commit/push, driver/toolchain/include/03 changes."
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "compute_waves": 4,
+  "producer_waves": 2,
+  "threads": 384,
+  "logical_producer_groups": 4,
+  "producer_elements": 8192,
+  "output_elements": 32768,
+  "accumulators_per_compute_lane": 128,
+  "k_tile_counts_verified": 257,
+  "wait_proof_limit": "FIFO load issue ordering proof; actual compiler/GPU correctness still required"
+}

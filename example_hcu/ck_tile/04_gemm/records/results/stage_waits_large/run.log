@@ -1,0 +1,16 @@
+RPL: on '261012_185535' from '/opt/dtk/rocprofiler' in '/workspace/composable_kernel/example_hcu/ck_tile/04_gemm'
+RPL: profiling '"python3" "profile_once.py" "large_pad16_g8_reg768"'
+RPL: input file 'profile_waits.txt'
+RPL: output dir '/tmp/rpl_data_261012_185535_32561'
+RPL: result dir '/tmp/rpl_data_261012_185535_32561/input0_results_261012_185535'
+COUNTER_CASE large_pad16_g8_reg768
+COUNTER_WORKLOAD_PASS
+ROCProfiler: input from "/tmp/rpl_data_261012_185535_32561/input0.xml"
+  gpu_index = 
+  kernel = h3_ck_bf16,Cijk_
+  range = 
+  6 metrics
+    SQ_WAIT_CNT_VM, SQ_WAIT_CNT_LGKM, SQ_WAIT_BARRIER, SQ_WAIT_INST_VMEM, SQ_WAIT_INST_LDS, GRBM_GUI_ACTIVE
+
+ROCPRofiler: 6 contexts collected, output directory /tmp/rpl_data_261012_185535_32561/input0_results_261012_185535
+File 'results/stage_waits_large/metrics.csv' is generating

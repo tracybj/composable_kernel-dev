@@ -1,0 +1,1133 @@
+{
+  "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+  "library_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+  "physical_gpu": 4,
+  "shapes": {
+    "fc2": {
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "xprof": {
+        "CK": {
+          "GRBM_COUNT": {
+            "mean": 7305276.0,
+            "range": [
+              7287921.0,
+              7326317.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 7305276.0,
+            "range": [
+              7287921.0,
+              7326317.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 18648.0,
+            "range": [
+              18648.0,
+              18648.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 222340104.0,
+            "range": [
+              222340104.0,
+              222340104.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 27661200.0,
+            "range": [
+              27661200.0,
+              27661200.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 44556288.0,
+            "range": [
+              44556288.0,
+              44556288.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 11163936.0,
+            "range": [
+              11163936.0,
+              11163936.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 1591296.0,
+            "range": [
+              1591296.0,
+              1591296.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 81693627.66666667,
+            "range": [
+              80539089.0,
+              82364272.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 84.0,
+            "range": [
+              84.0,
+              84.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 68.0,
+            "range": [
+              68.0,
+              68.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 4.0,
+            "range": [
+              4.0,
+              4.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "GRBM_COUNT": {
+            "mean": 6767489.0,
+            "range": [
+              6694161.0,
+              6814461.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 6767489.0,
+            "range": [
+              6694161.0,
+              6814461.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 18648.0,
+            "range": [
+              18648.0,
+              18648.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 191041872.0,
+            "range": [
+              191041872.0,
+              191041872.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 27738480.0,
+            "range": [
+              27738480.0,
+              27738480.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 44556288.0,
+            "range": [
+              44556288.0,
+              44556288.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 11188800.0,
+            "range": [
+              11188800.0,
+              11188800.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 1591296.0,
+            "range": [
+              1591296.0,
+              1591296.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 50258702.0,
+            "range": [
+              48109948.0,
+              51973526.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 77.0,
+            "range": [
+              76.0,
+              79.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 67.33333333333333,
+            "range": [
+              67.0,
+              68.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 5.0,
+            "range": [
+              5.0,
+              5.0
+            ]
+          }
+        }
+      },
+      "waits": {
+        "CK": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 194687268.66666666,
+            "range": [
+              193768504.0,
+              195374696.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 88714083.66666667,
+            "range": [
+              88050262.0,
+              89665508.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 366409957.0,
+            "range": [
+              363640636.0,
+              371566031.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 124124140.66666667,
+            "range": [
+              121015297.0,
+              128891346.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 82047201.66666667,
+            "range": [
+              81872475.0,
+              82285655.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 97423256.33333333,
+            "range": [
+              86102967.0,
+              109064413.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 157875464.0,
+            "range": [
+              156926780.0,
+              158719891.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 472800337.6666667,
+            "range": [
+              469755925.0,
+              477719092.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 169871818.66666666,
+            "range": [
+              167634364.0,
+              173080408.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 56150473.666666664,
+            "range": [
+              51634733.0,
+              60978848.0
+            ]
+          }
+        }
+      },
+      "reference_kernel": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8.kd",
+      "raw_headers": [
+        "dispatch[5], gpu-id(4), queue-id(1), queue-index(8), pid(122642), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7ff4078b0640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58523562294675), end_ts(58523562416619), begin_ns(2340851402198484), end_ns(2340851407076240)",
+        "dispatch[6], gpu-id(4), queue-id(1), queue-index(9), pid(122642), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7ff4078b0640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58523569156183), end_ts(58523569277687), begin_ns(2340851676660349), end_ns(2340851681520506)",
+        "dispatch[7], gpu-id(4), queue-id(1), queue-index(10), pid(122642), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7ff4078b0640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58523573003003), end_ts(58523573128087), begin_ns(2340851830531207), end_ns(2340851835534563)",
+        "dispatch[13], gpu-id(4), queue-id(1), queue-index(22), pid(122642), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7feb45736940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58523650335727), end_ts(58523650447251), begin_ns(2340854923837408), end_ns(2340854928298364)",
+        "dispatch[14], gpu-id(4), queue-id(1), queue-index(23), pid(122642), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7feb45736940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58523655936199), end_ts(58523656047871), begin_ns(2340855147856396), end_ns(2340855152323272)",
+        "dispatch[15], gpu-id(4), queue-id(1), queue-index(24), pid(122642), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7feb45736940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58523661489039), end_ts(58523661602435), begin_ns(2340855369971514), end_ns(2340855374507351)"
+      ]
+    },
+    "qkv": {
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "xprof": {
+        "CK": {
+          "GRBM_COUNT": {
+            "mean": 10689548.333333334,
+            "range": [
+              10689497.0,
+              10689637.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 10689548.333333334,
+            "range": [
+              10689497.0,
+              10689637.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 37296.0,
+            "range": [
+              37296.0,
+              37296.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 341643792.0,
+            "range": [
+              341643792.0,
+              341643792.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 42442848.0,
+            "range": [
+              42442848.0,
+              42442848.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 66834432.0,
+            "range": [
+              66834432.0,
+              66834432.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 16758336.0,
+            "range": [
+              16758336.0,
+              16758336.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 3182592.0,
+            "range": [
+              3182592.0,
+              3182592.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 123862446.66666667,
+            "range": [
+              123358095.0,
+              124188959.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 85.0,
+            "range": [
+              85.0,
+              85.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 71.0,
+            "range": [
+              71.0,
+              71.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 4.0,
+            "range": [
+              4.0,
+              4.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "GRBM_COUNT": {
+            "mean": 9969347.0,
+            "range": [
+              9941625.0,
+              9992774.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 9969347.0,
+            "range": [
+              9941625.0,
+              9992774.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 37296.0,
+            "range": [
+              37296.0,
+              37296.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 292971168.0,
+            "range": [
+              292971168.0,
+              292971168.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 43293600.0,
+            "range": [
+              43293600.0,
+              43293600.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 66834432.0,
+            "range": [
+              66834432.0,
+              66834432.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 16808064.0,
+            "range": [
+              16808064.0,
+              16808064.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 3182592.0,
+            "range": [
+              3182592.0,
+              3182592.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 92579635.0,
+            "range": [
+              78597221.0,
+              106014725.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 80.66666666666667,
+            "range": [
+              80.0,
+              81.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 70.0,
+            "range": [
+              70.0,
+              70.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 5.0,
+            "range": [
+              5.0,
+              5.0
+            ]
+          }
+        }
+      },
+      "waits": {
+        "CK": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 281464794.0,
+            "range": [
+              280164809.0,
+              282849535.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 136790442.33333334,
+            "range": [
+              135990216.0,
+              138122920.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 525323025.0,
+            "range": [
+              520759777.0,
+              533790847.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 161040968.66666666,
+            "range": [
+              157693658.0,
+              167164597.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 124057769.66666667,
+            "range": [
+              123962797.0,
+              124160990.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 128480333.0,
+            "range": [
+              114511785.0,
+              142137303.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 233052281.66666666,
+            "range": [
+              232111959.0,
+              234305436.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 764109419.0,
+            "range": [
+              750854730.0,
+              776642666.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 271803046.0,
+            "range": [
+              264191035.0,
+              281200783.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 95811261.0,
+            "range": [
+              92137843.0,
+              101431089.0
+            ]
+          }
+        }
+      },
+      "reference_kernel": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8.kd",
+      "raw_headers": [
+        "dispatch[5], gpu-id(4), queue-id(1), queue-index(8), pid(124352), grd(2386944, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7f0df3048640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58524762514067), end_ts(58524762693135), begin_ns(2340899410932845), end_ns(2340899418095559)",
+        "dispatch[6], gpu-id(4), queue-id(1), queue-index(9), pid(124352), grd(2386944, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7f0df3048640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58524771637403), end_ts(58524771814947), begin_ns(2340899775867985), end_ns(2340899782969740)",
+        "dispatch[7], gpu-id(4), queue-id(1), queue-index(10), pid(124352), grd(2386944, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7f0df3048640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58524780756719), end_ts(58524780934139), begin_ns(2340900140640275), end_ns(2340900147737070)",
+        "dispatch[13], gpu-id(4), queue-id(1), queue-index(22), pid(124352), grd(32256, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f0510336940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58524864188423), end_ts(58524864353275), begin_ns(2340903477904035), end_ns(2340903484498110)",
+        "dispatch[14], gpu-id(4), queue-id(1), queue-index(23), pid(124352), grd(32256, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f0510336940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58524879453335), end_ts(58524879621139), begin_ns(2340904088499874), end_ns(2340904095212028)",
+        "dispatch[15], gpu-id(4), queue-id(1), queue-index(24), pid(124352), grd(32256, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7f0510336940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58524893581767), end_ts(58524893753215), begin_ns(2340904653638263), end_ns(2340904660496178)"
+      ]
+    },
+    "out_proj": {
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "xprof": {
+        "CK": {
+          "GRBM_COUNT": {
+            "mean": 3837889.3333333335,
+            "range": [
+              3830157.0,
+              3847490.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 3837889.3333333335,
+            "range": [
+              3830157.0,
+              3847490.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 18648.0,
+            "range": [
+              18648.0,
+              18648.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 119303688.0,
+            "range": [
+              119303688.0,
+              119303688.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 14781648.0,
+            "range": [
+              14781648.0,
+              14781648.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 22278144.0,
+            "range": [
+              22278144.0,
+              22278144.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 5594400.0,
+            "range": [
+              5594400.0,
+              5594400.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 1591296.0,
+            "range": [
+              1591296.0,
+              1591296.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 40894044.0,
+            "range": [
+              40884311.0,
+              40906271.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 82.0,
+            "range": [
+              82.0,
+              82.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 67.33333333333333,
+            "range": [
+              67.0,
+              68.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 4.0,
+            "range": [
+              4.0,
+              4.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "GRBM_COUNT": {
+            "mean": 3312601.3333333335,
+            "range": [
+              3307901.0,
+              3317073.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 3312601.3333333335,
+            "range": [
+              3307901.0,
+              3317073.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 18648.0,
+            "range": [
+              18648.0,
+              18648.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 101929296.0,
+            "range": [
+              101929296.0,
+              101929296.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 15219456.0,
+            "range": [
+              15219456.0,
+              15219456.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 22278144.0,
+            "range": [
+              22278144.0,
+              22278144.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 5619264.0,
+            "range": [
+              5619264.0,
+              5619264.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 1591296.0,
+            "range": [
+              1591296.0,
+              1591296.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 32870096.0,
+            "range": [
+              32735387.0,
+              33047012.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 83.0,
+            "range": [
+              83.0,
+              83.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 71.66666666666667,
+            "range": [
+              71.0,
+              72.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 5.0,
+            "range": [
+              5.0,
+              5.0
+            ]
+          }
+        }
+      },
+      "waits": {
+        "CK": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 268813846.0,
+            "range": [
+              100191093.0,
+              604885245.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 105533858.66666667,
+            "range": [
+              44169994.0,
+              228019677.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 189115108.33333334,
+            "range": [
+              183860945.0,
+              198129971.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 176388695.33333334,
+            "range": [
+              62611146.0,
+              403336897.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 40851895.333333336,
+            "range": [
+              40795646.0,
+              40900393.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 45438548.666666664,
+            "range": [
+              44641202.0,
+              47014858.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 81374928.33333333,
+            "range": [
+              81183075.0,
+              81709328.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 210413873.66666666,
+            "range": [
+              207616425.0,
+              214710705.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 89841225.0,
+            "range": [
+              85563027.0,
+              94869868.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 32701840.666666668,
+            "range": [
+              32392443.0,
+              32946132.0
+            ]
+          }
+        }
+      },
+      "reference_kernel": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1.kd",
+      "raw_headers": [
+        "dispatch[5], gpu-id(4), queue-id(1), queue-index(8), pid(126062), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fce6ff38640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58525981407263), end_ts(58525981471163), begin_ns(2340948166619674), end_ns(2340948169175672)",
+        "dispatch[6], gpu-id(4), queue-id(1), queue-index(9), pid(126062), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fce6ff38640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58525986167451), end_ts(58525986231231), begin_ns(2340948357027252), end_ns(2340948359578450)",
+        "dispatch[7], gpu-id(4), queue-id(1), queue-index(10), pid(126062), grd(1193472, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fce6ff38640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58525990925147), end_ts(58525990988907), begin_ns(2340948547336840), end_ns(2340948549887238)",
+        "dispatch[13], gpu-id(4), queue-id(1), queue-index(22), pid(126062), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19172864), obj(0x7fc5a89368c0), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1), start_ts(58526071071603), end_ts(58526071126687), begin_ns(2340951753189837), end_ns(2340951755393195)",
+        "dispatch[14], gpu-id(4), queue-id(1), queue-index(23), pid(126062), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19172864), obj(0x7fc5a89368c0), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1), start_ts(58526080139235), end_ts(58526080194075), begin_ns(2340952115894778), end_ns(2340952118088376)",
+        "dispatch[15], gpu-id(4), queue-id(1), queue-index(24), pid(126062), grd(16128, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19172864), obj(0x7fc5a89368c0), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM1), start_ts(58526089195947), end_ts(58526089251047), begin_ns(2340952478163428), end_ns(2340952480367426)"
+      ]
+    },
+    "fc1": {
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "xprof": {
+        "CK": {
+          "GRBM_COUNT": {
+            "mean": 14273410.333333334,
+            "range": [
+              14266985.0,
+              14281421.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 14273410.333333334,
+            "range": [
+              14266985.0,
+              14281421.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 49728.0,
+            "range": [
+              49728.0,
+              49728.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 455525056.0,
+            "range": [
+              455525056.0,
+              455525056.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 56590464.0,
+            "range": [
+              56590464.0,
+              56590464.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 89112576.0,
+            "range": [
+              89112576.0,
+              89112576.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 22344448.0,
+            "range": [
+              22344448.0,
+              22344448.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 4243456.0,
+            "range": [
+              4243456.0,
+              4243456.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 165109820.0,
+            "range": [
+              165019357.0,
+              165289834.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 85.0,
+            "range": [
+              85.0,
+              85.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 71.0,
+            "range": [
+              71.0,
+              71.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 4.0,
+            "range": [
+              4.0,
+              4.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "GRBM_COUNT": {
+            "mean": 13368614.333333334,
+            "range": [
+              13263821.0,
+              13546801.0
+            ]
+          },
+          "GRBM_GUI_ACTIVE": {
+            "mean": 13368614.333333334,
+            "range": [
+              13263821.0,
+              13546801.0
+            ]
+          },
+          "SQ_WAVES": {
+            "mean": 49728.0,
+            "range": [
+              49728.0,
+              49728.0
+            ]
+          },
+          "SQ_INSTS_VALU": {
+            "mean": 390628224.0,
+            "range": [
+              390628224.0,
+              390628224.0
+            ]
+          },
+          "SQ_INSTS_SALU": {
+            "mean": 57724800.0,
+            "range": [
+              57724800.0,
+              57724800.0
+            ]
+          },
+          "SQ_INSTS_LDS": {
+            "mean": 89112576.0,
+            "range": [
+              89112576.0,
+              89112576.0
+            ]
+          },
+          "SQ_INSTS_VMEM_RD": {
+            "mean": 22410752.0,
+            "range": [
+              22410752.0,
+              22410752.0
+            ]
+          },
+          "SQ_INSTS_VMEM_WR": {
+            "mean": 4243456.0,
+            "range": [
+              4243456.0,
+              4243456.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 132541778.0,
+            "range": [
+              130493997.0,
+              135942363.0
+            ]
+          },
+          "SQ_LDS_BANK_CONFLICT": {
+            "mean": 0.0,
+            "range": [
+              0.0,
+              0.0
+            ]
+          },
+          "L2CacheHit": {
+            "mean": 78.33333333333333,
+            "range": [
+              77.0,
+              79.0
+            ]
+          },
+          "VALUBusy": {
+            "mean": 69.33333333333333,
+            "range": [
+              68.0,
+              70.0
+            ]
+          },
+          "SALUBusy": {
+            "mean": 5.0,
+            "range": [
+              5.0,
+              5.0
+            ]
+          }
+        }
+      },
+      "waits": {
+        "CK": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 379976135.6666667,
+            "range": [
+              378446286.0,
+              381216172.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 181710790.33333334,
+            "range": [
+              180519995.0,
+              183890342.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 703174434.6666666,
+            "range": [
+              700743728.0,
+              707645925.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 218518434.33333334,
+            "range": [
+              214301145.0,
+              225580565.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 165069075.33333334,
+            "range": [
+              164933991.0,
+              165250352.0
+            ]
+          }
+        },
+        "rocBLAS": {
+          "SQ_WAIT_CNT_VM": {
+            "mean": 159905754.0,
+            "range": [
+              151246935.0,
+              170294532.0
+            ]
+          },
+          "SQ_WAIT_CNT_LGKM": {
+            "mean": 311801273.6666667,
+            "range": [
+              310982209.0,
+              312234668.0
+            ]
+          },
+          "SQ_WAIT_BARRIER": {
+            "mean": 1001739090.0,
+            "range": [
+              994265475.0,
+              1016472129.0
+            ]
+          },
+          "SQ_WAIT_INST_VMEM": {
+            "mean": 352654344.0,
+            "range": [
+              344167234.0,
+              363200985.0
+            ]
+          },
+          "SQ_WAIT_INST_LDS": {
+            "mean": 133687435.66666667,
+            "range": [
+              128890943.0,
+              136417668.0
+            ]
+          }
+        }
+      },
+      "reference_kernel": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8.kd",
+      "raw_headers": [
+        "dispatch[5], gpu-id(4), queue-id(1), queue-index(8), pid(127772), grd(3182592, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fdbe1444640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58527191043015), end_ts(58527191280975), begin_ns(2340996552009477), end_ns(2340996561527870)",
+        "dispatch[6], gpu-id(4), queue-id(1), queue-index(9), pid(127772), grd(3182592, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fdbe1444640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58527197292155), end_ts(58527197529483), begin_ns(2340996801976301), end_ns(2340996811469415)",
+        "dispatch[7], gpu-id(4), queue-id(1), queue-index(10), pid(127772), grd(3182592, 1, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(228), sgpr(32), fbar(0), obj(0x7fdbe1444640), kernel-name(h3_ck_rolephase(unsigned short const*, unsigned short const*, unsigned short*, int, int, int)), start_ts(58527203553767), end_ts(58527203791511), begin_ns(2340997052440867), end_ns(2340997061950621)",
+        "dispatch[13], gpu-id(4), queue-id(1), queue-index(22), pid(127772), grd(43008, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7fd237d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58527288534711), end_ts(58527288755523), begin_ns(2341000451676064), end_ns(2341000460508538)",
+        "dispatch[14], gpu-id(4), queue-id(1), queue-index(23), pid(127772), grd(43008, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7fd237d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58527298789295), end_ts(58527299012039), begin_ns(2341000861856602), end_ns(2341000870766355)",
+        "dispatch[15], gpu-id(4), queue-id(1), queue-index(24), pid(127772), grd(43008, 74, 1), wgr(768, 1, 1), lds(65536), scr(0), vgpr(256), sgpr(112), fbar(19318144), obj(0x7fd237d36940), kernel-name(Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8), start_ts(58527309547935), end_ts(58527309769707), begin_ns(2341001292201983), end_ns(2341001301072856)"
+      ]
+    }
+  },
+  "limits": [
+    "Per-SIMD wave wait aggregates, not wall-clock fractions.",
+    "SQ instruction/bank-conflict counters are emulated in installed xprof.",
+    "Profiling durations are not performance rankings.",
+    "ROCprof gpu-id is its HSA agent index, not the physical ordinal."
+  ]
+}

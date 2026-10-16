@@ -1,0 +1,25 @@
+[
+  {
+    "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_pairs_staticstagger_postprio_bbase_reg768",
+    "first_MMAC": "v_mmac_f32_16x16x16_bf16 v[125:128], v[161:162], v[133:134], v[125:128]  // 000000001BC8: FFD4007D 05F70BA1",
+    "register_starts": [
+      125,
+      161,
+      133,
+      125
+    ],
+    "register_start_mod4": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "resources": {
+      "vgpr_count": 225,
+      "sgpr_count": 31,
+      "vgpr_spill_count": 0,
+      "private_segment_fixed_size": 0,
+      "group_segment_fixed_size": 65536
+    }
+  }
+]

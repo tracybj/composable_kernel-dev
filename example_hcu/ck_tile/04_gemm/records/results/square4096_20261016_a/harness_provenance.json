@@ -1,0 +1,7 @@
+{
+  "original_bench_sha256": "2d3afa56de86cf931f1890cf1864f3cf44d10df9f71d89eaed137df955c6f1f6",
+  "adapted_bench_sha256": "9ad155cf50c028ceb7980d17207911668dbf99e0bde8d3d0d314fa13b202b61d",
+  "modification": "Only replace shape dictionary; M=4096 supplied by CLI",
+  "unified_dispatch": "4096 N/K takes h3_original raw-buffer fallback",
+  "direct_variants": "Existing structured K32/cache ON kernels; plain and producer-pair+A-soffset"
+}

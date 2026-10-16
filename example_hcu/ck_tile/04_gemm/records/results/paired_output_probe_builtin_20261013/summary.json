@@ -1,0 +1,655 @@
+{
+  "passed": true,
+  "cases": 72,
+  "launches": 216,
+  "physical_gpu": 4,
+  "library_sha256": "42ea1050af97e40a85126b6426fe22b4d70b6c321fd971f4257ae91dc038c88d",
+  "rows": [
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 1013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 1013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 2013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 2013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 3013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 64,
+      "seed": 3013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 1013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 1013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 2013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 2013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 3013,
+      "method": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "neighbor",
+      "count": 256,
+      "seed": 3013,
+      "method": 1,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 1,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 3,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 7,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 13,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 1013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 1013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 2013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 2013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 3013,
+      "method": 0,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 0,
+      "repeats": 3,
+      "passed": true
+    },
+    {
+      "kind": "pack",
+      "rows": 16,
+      "seed": 3013,
+      "method": 1,
+      "output_byte_alignment": 2,
+      "repeats": 3,
+      "passed": true
+    }
+  ],
+  "methods": [
+    "DPP quad_perm [1,0,3,2]",
+    "DS swizzle QUAD_PERM_ENC | 0xb1 = 0x80b1"
+  ],
+  "source_hashes": {
+    "paired_output.hpp": "9df9777352bc567efb1eca256e538187de4a29a79f24e856b2f799ec1042e011",
+    "paired_output_probe.cpp": "b3f4a590f985a5ed391e9bfe15786bf314bf41b2242a8ed77f62845324483dd7",
+    "probe_paired_output.py": "17e80fb4f807156fa448408fe836016e5a3bf3e57236b9fff8453d58bb72c030"
+  },
+  "purpose": "Bitwise payload mapping only; not GEMM throughput"
+}

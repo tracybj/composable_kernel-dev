@@ -1,0 +1,13 @@
+{
+  "symbol": "Cijk_Alik_Bljk_BBH_MT256x256x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW8_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW8_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT16_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW8_WG16_32_1_WGM8",
+  "notes": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/library_reference/TensileLibrary_Type_BB_HPA_Contraction_l_Alik_Bljk_Cijk_Dijk_gfx936.co.notes.txt",
+  "resources": {
+    "group_segment_fixed_size": 65536,
+    "max_flat_workgroup_size": 768,
+    "vgpr_count": 255,
+    "vgpr_spill_count": 0,
+    "sgpr_count": 100,
+    "private_segment_fixed_size": 0
+  },
+  "exact_notes": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/library_reference/exact_notes.txt"
+}

@@ -1,0 +1,35 @@
+Displaying notes found in: .note
+  Owner                Data size 	Description
+  AMDGPU               0x00000655	NT_AMDGPU_METADATA (AMDGPU Metadata)
+    AMDGPU Metadata:
+        ---
+amdhsa.kernels:
+  - .args:
+      - .offset:         0
+        .size:           48
+        .value_kind:     by_value
+    .fp64_status:    0
+    .group_segment_fixed_size: 24576
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 48
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 512
+    .name:           _Z10h3_ck_bf16N7ck_tile10GemmKernelINS_19GemmTilePartitionerINS_13TileGemmShapeINS_8sequenceIJLi128ELi256ELi32EEEENS3_IJLi4ELi2ELi1EEEENS3_IJLi32ELi64ELi32EEEELb0ELb0EEEEENS_32MmacGemmPipelineAGmemBGmemCRegV1INS_32MmacUniversalGemmPipelineProblemIttfS7_NS_18MmacTileGemmTraitsILb0ELb0ELb0ENS_13tensor_layout4gemm8RowMajorENSD_11ColumnMajorESE_Li2ELi4ELi1ELi1EEELNS_21GemmPipelineSchedulerE1ELb1ELNS_10TailNumberE10ENS_9null_typeESJ_EENS_12H3GemmPolicyEEENS_17Default2DEpilogueINS_24Default2DEpilogueProblemIftLb0ELb0ELb1ELNS_21memory_operation_enumE0EEEvEEE15GemmCommonKargsE
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _Z10h3_ck_bf16N7ck_tile10GemmKernelINS_19GemmTilePartitionerINS_13TileGemmShapeINS_8sequenceIJLi128ELi256ELi32EEEENS3_IJLi4ELi2ELi1EEEENS3_IJLi32ELi64ELi32EEEELb0ELb0EEEEENS_32MmacGemmPipelineAGmemBGmemCRegV1INS_32MmacUniversalGemmPipelineProblemIttfS7_NS_18MmacTileGemmTraitsILb0ELb0ELb0ENS_13tensor_layout4gemm8RowMajorENSD_11ColumnMajorESE_Li2ELi4ELi1ELi1EEELNS_21GemmPipelineSchedulerE1ELb1ELNS_10TailNumberE10ENS_9null_typeESJ_EENS_12H3GemmPolicyEEENS_17Default2DEpilogueINS_24Default2DEpilogueProblemIftLb0ELb0ELb1ELNS_21memory_operation_enumE0EEEvEEE15GemmCommonKargsE.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     124
+    .vgpr_spill_count: 0
+    .wavefront_size: 64
+amdhsa.target:   'amdgcn-amd-amdhsa--gfx936:sramecc+'
+amdhsa.version:
+  - 1
+  - 2
+...
+

@@ -1,0 +1,2 @@
+
+/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/isa_mmac_micro_512/mmac_micro_512.so-hipv4-amdgcn-amd-amdhsa--gfx936.out:	file format elf64-amdgpu

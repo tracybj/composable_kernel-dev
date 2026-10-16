@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "old_order": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "row_major_order": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "phase0_vmcnt": 1,
+  "phase1_vmcnt_after_four_future": 4,
+  "old_phase0_vmcnt2_rejected": true,
+  "limit": "FIFO issue-order proof only; actual HCU compiler and load completion still require tests"
+}

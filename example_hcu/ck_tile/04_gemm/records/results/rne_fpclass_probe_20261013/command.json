@@ -1,0 +1,13 @@
+[
+  "/opt/dtk/bin/hipcc",
+  "-O3",
+  "-std=c++17",
+  "--offload-arch=gfx936",
+  "-fPIC",
+  "-shared",
+  "-I/workspace/composable_kernel/include",
+  "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/rne_fpclass_probe_20261013/rne_probe.cpp",
+  "-o",
+  "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/results/rne_fpclass_probe_20261013/rne_probe.so",
+  "-DH3_RNE_FPCLASS_PROBE=1"
+]

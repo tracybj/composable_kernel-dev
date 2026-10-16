@@ -1,0 +1,81 @@
+xprof [option] [app command]
+
+--sections <section name> - sections to be profiled
+    supported list of sections:
+        (*) speed_of_light
+        (*) memory_workload
+        (*) occupancy
+        (*) memory_chart
+        (*) instruction_statistics
+        (*) compute_workload
+        (*) scheduler_statistics
+        (*) wave_state
+        (*) cache_counter
+        (*) umc_statistics
+        (*) utcl2_statistics
+
+    a list can be used with '--sections', e.g.
+        --sections speed_of_light,memory_workload,occupancy
+
+--metrics <metric> - metric to be profiled
+    metrics list definition, also the form '<block-name>:<event-id>' can be used,
+    all defined metrics can be found in the 'metrics.xml',
+    there are basic metrics for raw HW counters and high-level metrics for derived counters.
+
+    a list can be used with '--metrics', e.g.
+        --metrics SQ_WAVES,SQ_INSTS_VALU,SQ:29,TCC_HIT[0]
+    attention: the form '<block-name>:<event-id>' only works under accumulate counter mode
+
+--import <metric file> - '.xml' file defining custom metrics to use in-place of defaults
+--output-dir <path> - save path of profiling result file
+    by default, it is the current working directory
+
+--devices <gpu index> - filter by GPU index
+    a list can be used with '--devices', e.g.
+        --devices 0,1,2
+
+--kernels <kernel name sub-strings> - filter by kernel names
+    a list of kernel name sub-strings can be used with '--kernels', e.g.
+        --kernels vectoradd,SimpleConv
+
+--dispatches <dispatches range> - filter by dispatches range
+    supported range formats: '3:9', '3:', '3'
+
+--enable-sqtt - enable SQ thread trace with default trace parameters
+--sqtt-mode <mode> - set SQ thread trace mode
+    supported mode: 'device' or 'kernel'
+    by default, it is 'kernel'
+--target-se <SE index> - select active SEs for SQ thread trace
+    by default, all of active SEs are selected
+
+    a list can be used with '--target-se', e.g.
+        --target-se 1,2
+    and then, it will select the 2nd and 3rd active SE
+
+--target-cu <CU index> - select active CU on all of selected SEs for detail SQ thread trace
+    by default, the CU assigned for the first kernel dispatch will be selected as the target CU
+
+--token-mask <mask> - mask of SQ thread trace token type
+    by default, only the token types necessary for supporting instruction matching are enabled
+
+--target-tuple <{SE index.CU index}> - select active CU on active SE for SQ thread trace
+    a list can be used with '--target-tuple', e.g.
+        --target-tuple {0.2},{2.4}
+    and then, it will select the 3rd active CU on the 1st active SE and the 5th active CU on the 3rd active SE
+
+    attention: it can overwrite the settings configured with '--target-se' or '--target-cu'
+
+--sample-rate <interval> - set spm sample interval
+    by default, it is 1024 cycles
+
+--metrics-mode <mode> - set profiled mode for metrics
+    supported mode: 'pmc' or 'spm'
+    by default, it is 'pmc'
+
+--trace-size <MB> - set spm and sqtt (with '--replay-mode off') trace buffer size
+    by default, it is 32MB
+
+--enable-raw - enable sqtt raw data output
+--replay-mode <mode> - set replay mode
+    supported mode: 'off' or 'kernel'
+    by default, it is 'kernel'
