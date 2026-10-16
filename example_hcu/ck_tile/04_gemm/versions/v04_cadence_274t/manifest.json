@@ -1,0 +1,206 @@
+{
+  "version": "v04_cadence_274t",
+  "title": "RNE 与 producer/consumer 同步节奏",
+  "method": "先保留 CK BF16 舍入及 NaN payload 语义地减少输出转换控制流，再调整两组 compute waves 的屏障位置，让权重槽在最后 LDS 读取完成后即可供 producer 复用。",
+  "evidence_stage": "stage_bb_cadence_independent",
+  "archive_date": "2026-10-16",
+  "experiment_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "variants": {
+    "default": {
+      "candidate": "rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_reg768",
+      "library_sha256": "b44b845565a273e2986622fca58f599703511796779171aa0f0f7716ac16ac47",
+      "entry": "rolephase.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1",
+        "-DH3_PHASE_MID_PREFETCH=1",
+        "-DH3_PHASE_MID_GROUP=0",
+        "-DH3_PHASE_ALWAYS_PREFETCH=1",
+        "-DH3_PHASE_BUFFER_EPILOGUE=1",
+        "-DH3_PHASE_OUTPUT_RNE=1",
+        "-DH3_PHASE_NATIVE_CADENCE=1"
+      ],
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "original_build_record": "build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_reg768/20261013-125904-120795/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_always_mid_bufferepi_maskrne_nativecadence_reg768/20261013-125904-120795"
+    }
+  },
+  "source_sha256": {
+    "rolephase.cpp": "60f52e2a6b0e5fdc9175cc08906430ad20fb7f870a8a588166aecf2e53709430",
+    "phase_k64_body.hpp": "52bd898d95bea46951c438535314c1a2dca7c84f536f09e5b34d04dd02146999",
+    "output_rne.hpp": "a11077f156f94e31f407766cb26630f6a1c4d961b49ee7ee770b73b0e00c963c"
+  },
+  "historical_performance": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "rounds_ms": [
+        5.359788131713867,
+        5.35999641418457,
+        5.3603160858154295,
+        5.359708023071289,
+        5.3596759796142575,
+        5.360683822631836
+      ],
+      "median_ms": 5.359892272949219,
+      "min_ms": 5.3596759796142575,
+      "max_ms": 5.360683822631836,
+      "TFLOPS": 271.47708751977484
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "rounds_ms": [
+        7.960842132568359,
+        7.960650634765625,
+        7.960218048095703,
+        7.96124267578125,
+        7.9604743957519535,
+        7.96304931640625
+      ],
+      "median_ms": 7.960746383666992,
+      "min_ms": 7.960218048095703,
+      "max_ms": 7.96304931640625,
+      "TFLOPS": 274.1742809440696
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "rounds_ms": [
+        2.810557556152344,
+        2.8113420486450194,
+        2.811245918273926,
+        2.8112300872802733,
+        2.812078094482422,
+        2.810782051086426
+      ],
+      "median_ms": 2.8112380027771,
+      "min_ms": 2.810557556152344,
+      "max_ms": 2.812078094482422,
+      "TFLOPS": 258.7984265726669
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "rounds_ms": [
+        10.657223510742188,
+        10.653399658203124,
+        10.65274429321289,
+        10.65413589477539,
+        10.655799865722656,
+        10.65355987548828
+      ],
+      "median_ms": 10.653847885131835,
+      "min_ms": 10.65274429321289,
+      "max_ms": 10.657223510742188,
+      "TFLOPS": 273.15725911774535
+    }
+  ],
+  "correctness": {
+    "fc2": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 57728,
+        "relative_l2": 6.42423692625016e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "qkv": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 98622,
+        "relative_l2": 5.930329280090518e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "out_proj": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.0625,
+        "mismatches": 38865,
+        "relative_l2": 5.161722583579831e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "fc1": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 131019,
+        "relative_l2": 5.8827470638789237e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    }
+  }
+}
