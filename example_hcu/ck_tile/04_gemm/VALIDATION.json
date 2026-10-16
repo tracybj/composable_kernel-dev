@@ -1,0 +1,1127 @@
+{
+  "scope": "Archival packaging validation only; smoke timings are not new historical performance claims",
+  "builds": {
+    "v01_vector_213t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v01_vector_213t",
+        "config": [
+          256,
+          256,
+          32,
+          4,
+          2,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v01_vector_213t/src/gemm.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v01_vector_213t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=32",
+          "-DH3_WM=4",
+          "-DH3_WN=2",
+          "-DH3_SWIZZLE=0",
+          "-DH3_RAW_BARRIER=1",
+          "-DH3_LDS_PAD=16",
+          "-DH3_GROUP_M=8",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_GEMM_TRANSPOSE=1",
+          "-DH3_PAD_N=1",
+          "-DH3_GROUP_N=8",
+          "-DH3_CONTIGUOUS_B_VECTOR=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "cfddb1994814a1b26e7f203a379293f873b516a48718844aa53beb3d57d17d75",
+        "sha256": "cfddb1994814a1b26e7f203a379293f873b516a48718844aa53beb3d57d17d75"
+      }
+    },
+    "v02_banked_240t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v02_banked_240t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v02_banked_240t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v02_banked_240t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "d89f4906cd47339c8ccb9d920f3d22c5d05c1bf8479e7d26bd8cffa59cb207fc",
+        "sha256": "d89f4906cd47339c8ccb9d920f3d22c5d05c1bf8479e7d26bd8cffa59cb207fc"
+      }
+    },
+    "v03_prefetch_258t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v03_prefetch_258t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v03_prefetch_258t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v03_prefetch_258t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "a0e23fd8c4751c2f7843e782ab7e717dcd82c1a2c021973ad78e807745a2bc8b",
+        "sha256": "a0e23fd8c4751c2f7843e782ab7e717dcd82c1a2c021973ad78e807745a2bc8b"
+      }
+    },
+    "v04_cadence_274t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v04_cadence_274t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v04_cadence_274t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v04_cadence_274t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "b44b845565a273e2986622fca58f599703511796779171aa0f0f7716ac16ac47",
+        "sha256": "b44b845565a273e2986622fca58f599703511796779171aa0f0f7716ac16ac47"
+      }
+    },
+    "v05_static_301t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v05_static_301t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v05_static_301t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v05_static_301t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_POSTPRIO=1",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1",
+          "-DH3_PHASE_STATIC_STAGGER=1",
+          "-DH3_PHASE_PAIR_TILES=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "b13a73b09afbc30fb75563ffa896981b0e260ab5478d40735708047257ae2c7f",
+        "sha256": "b13a73b09afbc30fb75563ffa896981b0e260ab5478d40735708047257ae2c7f"
+      }
+    },
+    "v06_rebase_308t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v06_rebase_308t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v06_rebase_308t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v06_rebase_308t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_POSTPRIO=1",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1",
+          "-DH3_PHASE_SCALAR_B_BASE=1",
+          "-DH3_PHASE_STATIC_STAGGER=1",
+          "-DH3_PHASE_PAIR_TILES=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025",
+        "sha256": "22ef3280c50201d0f66966e4fdfe6af75741f5d6dc4a2c46704bb4d7acd73025"
+      }
+    },
+    "v07_struct32_330t": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v07_struct32_330t",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v07_struct32_330t/src/struct32_dispatch.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v07_struct32_330t.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_POSTPRIO=1",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1",
+          "-DH3_PHASE_STATIC_STAGGER=1",
+          "-DH3_PHASE_PAIR_TILES=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9",
+        "sha256": "cbd4638fde724142b41314e7d2578e79fbbdc0a6bcd43d6e154716e768f5f6b9"
+      }
+    },
+    "v07_struct32_330t__structured": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v07_struct32_330t__structured",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v07_struct32_330t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v07_struct32_330t__structured.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_POSTPRIO=1",
+          "-DH3_PHASE_STRUCT_B32=2",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1",
+          "-DH3_PHASE_STATIC_STAGGER=1",
+          "-DH3_PHASE_PAIR_TILES=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "62705257603baf0681e580bd556277e486131fc4b02253640d82318c06c4188a",
+        "sha256": "62705257603baf0681e580bd556277e486131fc4b02253640d82318c06c4188a"
+      }
+    },
+    "v07_struct32_330t__producer": {
+      "exit_code": 0,
+      "metadata": {
+        "name": "v07_struct32_330t__producer",
+        "config": [
+          256,
+          256,
+          64,
+          12,
+          1,
+          0
+        ],
+        "command": [
+          "/opt/dtk/bin/hipcc",
+          "-O3",
+          "-std=c++17",
+          "--offload-arch=gfx936",
+          "-fPIC",
+          "-shared",
+          "-I/workspace/composable_kernel/include",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/versions/v07_struct32_330t/src/rolephase.cpp",
+          "-o",
+          "/workspace/composable_kernel_publish_20261016/example_hcu/ck_tile/04_gemm/build/v07_struct32_330t__producer.so",
+          "-DH3_BM=256",
+          "-DH3_BN=256",
+          "-DH3_BK=64",
+          "-DH3_WM=12",
+          "-DH3_WN=1",
+          "-DH3_SWIZZLE=0",
+          "-mllvm",
+          "--enable-num-vgprs-768=true",
+          "-DH3_PAD_M=1",
+          "-DH3_PHASE_M_WAVES=1",
+          "-DH3_PHASE_BANK=1",
+          "-DH3_PHASE_ASM_B=1",
+          "-DH3_PHASE_POSTPRIO=1",
+          "-DH3_PHASE_PRODUCER_PAIRS=1",
+          "-DH3_PHASE_A_SOFFSET=1",
+          "-DH3_PHASE_STRUCT_B32=2",
+          "-DH3_PHASE_MID_PREFETCH=1",
+          "-DH3_PHASE_MID_GROUP=0",
+          "-DH3_PHASE_ALWAYS_PREFETCH=1",
+          "-DH3_PHASE_BUFFER_EPILOGUE=1",
+          "-DH3_PHASE_OUTPUT_RNE=1",
+          "-DH3_PHASE_NATIVE_CADENCE=1",
+          "-DH3_PHASE_STATIC_STAGGER=1",
+          "-DH3_PHASE_PAIR_TILES=1"
+        ],
+        "exit_code": 0,
+        "ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+        "recorded_library_sha256": "6c4bbf59a88321dd7658409b397a6ba7d919fc49d6643fa9af584a3fdc0a4c01",
+        "sha256": "6c4bbf59a88321dd7658409b397a6ba7d919fc49d6643fa9af584a3fdc0a4c01"
+      }
+    }
+  },
+  "target_checkout_ck_revision": "f069a70d973b19534739476fcf5c4283ca691806",
+  "all_reports_and_sources_hash_verified": true,
+  "target_checkout_build_exit_code": 0,
+  "target_checkout_build_log": "build/target_checkout_build.console.log",
+  "four_shape_smoke_exit_code": 0,
+  "smoke": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        256,
+        5376,
+        7168
+      ],
+      "correctness": {
+        "v01_vector_213t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v02_banked_240t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v03_prefetch_258t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v04_cadence_274t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v05_static_301t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v06_rebase_308t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        },
+        "v07_struct32_330t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 5.487667294801213e-05
+          }
+        }
+      }
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        256,
+        10752,
+        5376
+      ],
+      "correctness": {
+        "v01_vector_213t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v02_banked_240t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v03_prefetch_258t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v04_cadence_274t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v05_static_301t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v06_rebase_308t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        },
+        "v07_struct32_330t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 3.9918504626257345e-05
+          }
+        }
+      }
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        256,
+        5376,
+        3584
+      ],
+      "correctness": {
+        "v01_vector_213t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v02_banked_240t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v03_prefetch_258t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v04_cadence_274t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v05_static_301t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v06_rebase_308t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        },
+        "v07_struct32_330t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 4.758586874231696e-05
+          }
+        }
+      }
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        256,
+        14336,
+        5376
+      ],
+      "correctness": {
+        "v01_vector_213t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v02_banked_240t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v03_prefetch_258t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v04_cadence_274t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v05_static_301t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v06_rebase_308t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        },
+        "v07_struct32_330t": {
+          "binary_fraction": {
+            "passed": true,
+            "finite": true,
+            "exact": true,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "normal": {
+            "passed": true,
+            "finite": true,
+            "exact": false,
+            "guard_unchanged": true,
+            "inputs_unchanged": true,
+            "max_abs": 0.0625,
+            "relative_l2": 6.53744864393957e-05
+          }
+        }
+      }
+    }
+  ],
+  "all_7_versions_four_shapes_correctness_passed": true,
+  "square_smoke_exit_code": 0,
+  "square_smoke_correctness": {
+    "v07_struct32_330t": {
+      "binary_fraction": {
+        "passed": true,
+        "finite": true,
+        "exact": true,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "normal": {
+        "passed": true,
+        "finite": true,
+        "exact": false,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0625,
+        "relative_l2": 5.5007159971864894e-05
+      }
+    },
+    "v07_struct32_330t__structured": {
+      "binary_fraction": {
+        "passed": true,
+        "finite": true,
+        "exact": true,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "normal": {
+        "passed": true,
+        "finite": true,
+        "exact": false,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0625,
+        "relative_l2": 5.5007159971864894e-05
+      }
+    },
+    "v07_struct32_330t__producer": {
+      "binary_fraction": {
+        "passed": true,
+        "finite": true,
+        "exact": true,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "normal": {
+        "passed": true,
+        "finite": true,
+        "exact": false,
+        "guard_unchanged": true,
+        "inputs_unchanged": true,
+        "max_abs": 0.0625,
+        "relative_l2": 5.5007159971864894e-05
+      }
+    }
+  }
+}
