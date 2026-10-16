@@ -1,0 +1,198 @@
+{
+  "version": "v02_banked_240t",
+  "title": "K32 双寄存器 bank 与完成等待",
+  "method": "转为 8 compute + 4 producer waves 的私有流水：A 权重经过双槽 LDS，B 激活使用 K32 phase 的 VGPR 双 bank，并在消费前明确等待对应加载完成。",
+  "evidence_stage": "stage_ak_banked_wait_schedule",
+  "archive_date": "2026-10-16",
+  "experiment_ck_revision": "5c8ea51ed7ac03bdcc24aeb811d51acc57233b60",
+  "variants": {
+    "default": {
+      "candidate": "rolephase_m1_bank_asmb_reg768",
+      "library_sha256": "d89f4906cd47339c8ccb9d920f3d22c5d05c1bf8479e7d26bd8cffa59cb207fc",
+      "entry": "rolephase.cpp",
+      "flags": [
+        "-DH3_BM=256",
+        "-DH3_BN=256",
+        "-DH3_BK=64",
+        "-DH3_WM=12",
+        "-DH3_WN=1",
+        "-DH3_SWIZZLE=0",
+        "-mllvm",
+        "--enable-num-vgprs-768=true",
+        "-DH3_PAD_M=1",
+        "-DH3_PHASE_M_WAVES=1",
+        "-DH3_PHASE_BANK=1",
+        "-DH3_PHASE_ASM_B=1"
+      ],
+      "config": [
+        256,
+        256,
+        64,
+        12,
+        1,
+        0
+      ],
+      "original_build_record": "build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933/build.json",
+      "original_frozen_source": "/workspace/composable_kernel/example_hcu/ck_tile/04_gemm/build/attempts/rolephase_m1_bank_asmb_reg768/20261013-104941-946933"
+    }
+  },
+  "source_sha256": {
+    "rolephase.cpp": "8d9b2cafadde608d876649fd76b23c3b6ab20335094160790422a72802705095"
+  },
+  "historical_performance": [
+    {
+      "shape": "fc2",
+      "MNK": [
+        18880,
+        5376,
+        7168
+      ],
+      "rounds_ms": [
+        6.0860435485839846,
+        6.085851669311523,
+        6.086171722412109,
+        6.089067459106445,
+        6.089212036132812,
+        6.085867691040039
+      ],
+      "median_ms": 6.086107635498047,
+      "min_ms": 6.085851669311523,
+      "max_ms": 6.089212036132812,
+      "TFLOPS": 239.08350473346914
+    },
+    {
+      "shape": "qkv",
+      "MNK": [
+        18880,
+        10752,
+        5376
+      ],
+      "rounds_ms": [
+        9.100809478759766,
+        9.101113891601562,
+        9.100697326660157,
+        9.104393768310548,
+        9.101577758789062,
+        9.10162582397461
+      ],
+      "median_ms": 9.101345825195313,
+      "min_ms": 9.100697326660157,
+      "max_ms": 9.104393768310548,
+      "TFLOPS": 239.81419423463797
+    },
+    {
+      "shape": "out_proj",
+      "MNK": [
+        18880,
+        5376,
+        3584
+      ],
+      "rounds_ms": [
+        3.269917678833008,
+        3.269405746459961,
+        3.2693256378173827,
+        3.270221710205078,
+        3.2689254760742186,
+        3.269469451904297
+      ],
+      "median_ms": 3.2694375991821287,
+      "min_ms": 3.2689254760742186,
+      "max_ms": 3.270221710205078,
+      "TFLOPS": 222.52878355041852
+    },
+    {
+      "shape": "fc1",
+      "MNK": [
+        18880,
+        14336,
+        5376
+      ],
+      "rounds_ms": [
+        12.13512725830078,
+        12.136455535888672,
+        12.135831451416015,
+        12.134999084472657,
+        12.134886932373046,
+        12.134278869628906
+      ],
+      "median_ms": 12.135063171386719,
+      "min_ms": 12.134278869628906,
+      "max_ms": 12.136455535888672,
+      "TFLOPS": 239.8154707774334
+    }
+  ],
+  "correctness": {
+    "fc2": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 57728,
+        "relative_l2": 6.42423692625016e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "qkv": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 98622,
+        "relative_l2": 5.930329280090518e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "out_proj": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.0625,
+        "mismatches": 38865,
+        "relative_l2": 5.161722583579831e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    },
+    "fc1": {
+      "binary_fraction": {
+        "finite": true,
+        "max_abs": 0.0,
+        "mismatches": 0,
+        "relative_l2": 0.0,
+        "passed": true,
+        "output_guard_unchanged": true
+      },
+      "normal": {
+        "finite": true,
+        "max_abs": 0.125,
+        "mismatches": 131019,
+        "relative_l2": 5.8827470638789237e-05,
+        "passed": true,
+        "output_guard_unchanged": true
+      }
+    }
+  }
+}
